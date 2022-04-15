@@ -1,13 +1,14 @@
-
+// @ts-nocheck
+// @ts-nocheck
 import React from 'react';
 import {Box, Button, Heading, HStack, Icon, useBreakpointValue, useColorMode, View,} from 'native-base';
 import {Floaters} from './Floaters';
-import config from "../../../config.json";
 import {SafeAreaTop} from "./SafeAreaTop";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import ServerAPI from "../ServerAPI";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";
+import App from "../App";
 
 const padding = 0;
 

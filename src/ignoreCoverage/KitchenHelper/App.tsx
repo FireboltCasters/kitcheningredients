@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import {NativeBaseProvider} from 'native-base';
 import {Root} from './navigation/RootComponent';

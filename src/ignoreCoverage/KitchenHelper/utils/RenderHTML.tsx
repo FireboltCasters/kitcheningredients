@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {View, Text} from "native-base";
 import {Platform} from "react-native";

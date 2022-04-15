@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, Ref} from "react";
 import {NavigationContainerRef, StackActions, DrawerActions, CommonActions} from "@react-navigation/native";
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";

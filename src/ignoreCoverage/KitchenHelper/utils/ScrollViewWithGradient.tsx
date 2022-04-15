@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from "react";
 import {ScrollView, ScrollViewProps} from 'react-native';
 import {ShowMoreGradient} from "./ShowMoreGradient";

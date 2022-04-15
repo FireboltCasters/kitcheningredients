@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {PureComponent, useEffect, useState} from "react";
 import { Platform, View, Animated } from "react-native";
 import LottieView from "lottie-react-native";

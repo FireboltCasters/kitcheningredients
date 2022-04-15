@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {AuthProvider} from "./AuthProvider";
 import {Provider} from "./Provider";

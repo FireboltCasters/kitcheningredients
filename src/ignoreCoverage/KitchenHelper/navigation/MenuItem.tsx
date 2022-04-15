@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {NavigatorHelper} from "./NavigatorHelper";

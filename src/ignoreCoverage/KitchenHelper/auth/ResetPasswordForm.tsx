@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Flex, FormControl, Input, Text, View} from "native-base";
 import {Slider} from 'primereact/slider';

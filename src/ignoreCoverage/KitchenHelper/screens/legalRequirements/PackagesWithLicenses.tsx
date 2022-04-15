@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect, useState} from "react";
 import {Link, Skeleton, Text, View} from "native-base";
 import {ExpandableDrawerItem} from "../../navigation/ExpandableDrawerItem";

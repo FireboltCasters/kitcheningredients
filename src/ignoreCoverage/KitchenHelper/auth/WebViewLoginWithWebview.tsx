@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {createRef, FunctionComponent} from 'react';
 import {WebView, WebViewNavigation} from 'react-native-webview';
 import {SafeAreaView} from "react-native";

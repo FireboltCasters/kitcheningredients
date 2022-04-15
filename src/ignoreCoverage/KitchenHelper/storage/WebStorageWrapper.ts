@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {StorageImplementationInterface} from "./StorageImplementationInterface";
 
 export class WebStorageWrapper implements StorageImplementationInterface/** extends Storage */{

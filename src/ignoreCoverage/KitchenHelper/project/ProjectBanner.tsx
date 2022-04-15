@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {Flex, View} from "native-base";
 import {ServerInfo} from "@directus/sdk";

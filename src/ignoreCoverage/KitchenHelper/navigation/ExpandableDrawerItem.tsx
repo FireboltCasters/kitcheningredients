@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useState} from 'react';
 import {DrawerContentScrollView} from "@react-navigation/drawer";
 import {TouchableOpacity} from "react-native";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect, useState} from "react";
 import {Icon, Pressable, Text, TextArea, View} from "native-base";
 import {UserProfileAvatar} from "../../project/UserProfileAvatar";

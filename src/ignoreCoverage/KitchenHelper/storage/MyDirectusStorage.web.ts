@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {RequiredStorageKeys} from "./RequiredStorageKeys";
 import {DefaultStorage} from "./DefaultStorage";
 import {StorageImplementationInterface} from "./StorageImplementationInterface";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect, useState} from "react";
 import {AlertDialog, Button, Center, Divider, Text} from "native-base";
 import App from "../../App";

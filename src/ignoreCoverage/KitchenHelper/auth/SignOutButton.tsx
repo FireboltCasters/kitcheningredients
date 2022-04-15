@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useState} from 'react';
 import ServerAPI from "../ServerAPI";
 import {AlertDialog, Button, Divider, Icon, Text} from "native-base";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect} from "react";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {useSynchedState} from "../synchedstate/SynchedState";

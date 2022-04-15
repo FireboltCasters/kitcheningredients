@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import {Box, Icon, View} from "native-base";
 import {Ionicons} from "@expo/vector-icons";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect} from "react";
 import {Text, View} from "native-base";
 import App from "../../App";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {useBreakpointValue, useTheme, View} from "native-base";

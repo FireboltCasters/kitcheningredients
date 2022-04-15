@@ -9,6 +9,7 @@ import {License} from "../screens/legalRequirements/License";
 import {TermsAndConditions} from "../screens/legalRequirements/TermsAndConditions";
 import {BaseTemplate} from "../templates/BaseTemplate";
 import {LoginTemplate} from "../templates/LoginTemplate";
+// @ts-nocheck
 import React from "react";
 import {MyMenuRegisterer} from "./MyMenuRegisterer";
 import {MenuItem} from "./MenuItem";

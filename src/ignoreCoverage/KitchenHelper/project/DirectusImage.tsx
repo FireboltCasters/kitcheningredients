@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useState} from 'react';
 import {Image, Pressable, View} from "native-base";
 import ServerAPI from "../ServerAPI";

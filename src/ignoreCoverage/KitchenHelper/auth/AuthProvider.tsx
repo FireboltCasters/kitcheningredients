@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {Flex, Icon, Link, Text, useColorMode, View,} from "native-base";
 import {MaterialCommunityIcons} from "@expo/vector-icons"

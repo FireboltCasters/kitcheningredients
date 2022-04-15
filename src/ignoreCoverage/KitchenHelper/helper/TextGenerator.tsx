@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import {LoremIpsum} from "lorem-ipsum";
 // const LoremIpsum = require("lorem-ipsum").LoremIpsum;

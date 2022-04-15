@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {Text, View} from "native-base";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {RequestResetPasswordForm} from "./RequestResetPasswordForm";
 import {ResetPasswordForm} from "./ResetPasswordForm";

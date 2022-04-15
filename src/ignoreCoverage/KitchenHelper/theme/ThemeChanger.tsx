@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect} from "react";
 import {useColorMode} from "native-base";
 import ColorCodeHelper from "./ColorCodeHelper";

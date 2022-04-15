@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import {Box,} from 'native-base';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';

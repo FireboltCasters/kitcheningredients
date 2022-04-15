@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import ServerAPI from "../ServerAPI";
 import {NavigatorHelper} from "../navigation/NavigatorHelper";

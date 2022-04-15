@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from "react";
 import {AlertDialog, Button, Center, Divider, Text, View} from "native-base";
 import {BreakPointLayout} from "../templates/BreakPointLayout";

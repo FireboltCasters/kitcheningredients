@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect, useRef, useState} from "react";
 import {Button, Input, Text, View} from "native-base";
 import ServerAPI from "../../ServerAPI";

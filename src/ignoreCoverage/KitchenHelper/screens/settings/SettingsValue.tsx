@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from "react";
 import {Button, Icon, Input, Pressable, Text, TextArea, View} from "native-base";
 import {MyThemedBox} from "../../helper/MyThemedBox";

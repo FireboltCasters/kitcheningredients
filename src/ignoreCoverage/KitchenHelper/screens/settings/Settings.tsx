@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect} from "react";
 import {Button, Text, View} from "native-base";
 import {NavigatorHelper} from "../../navigation/NavigatorHelper";

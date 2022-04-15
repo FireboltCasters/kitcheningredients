@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect} from "react";
 import {Text} from "native-base";
 import TextGenerator from "../../helper/TextGenerator";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect, useState} from "react";
 import {WebViewLogin} from "./WebViewLogin";
 import EnviromentHelper from "../EnviromentHelper";

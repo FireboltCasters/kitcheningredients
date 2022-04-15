@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect} from 'react';
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Divider, Flex, Spinner, Text, View} from "native-base";

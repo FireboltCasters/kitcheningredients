@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect, useState} from "react";
 import {Icon, Text, TextArea, View} from "native-base";
 import {MaterialCommunityIcons} from "@expo/vector-icons";

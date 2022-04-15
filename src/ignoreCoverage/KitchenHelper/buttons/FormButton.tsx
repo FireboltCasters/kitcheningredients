@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {Button, HStack, Spinner} from "native-base";
 import {IButtonProps} from "native-base/src/components/primitives/Button/types";

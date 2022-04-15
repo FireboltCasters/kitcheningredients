@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Flex, useBreakpointValue, View, Wrap} from "native-base";
 import ServerAPI from "../ServerAPI";

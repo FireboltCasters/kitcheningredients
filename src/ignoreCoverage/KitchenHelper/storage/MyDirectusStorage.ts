@@ -1,3 +1,4 @@
+// @ts-nocheck
 import SyncStorage from 'sync-storage';
 import {RequiredStorageKeys} from "./RequiredStorageKeys";
 import {DefaultStorage} from "./DefaultStorage";

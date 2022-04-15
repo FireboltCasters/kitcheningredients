@@ -1,3 +1,4 @@
+// @ts-nocheck
 import EnviromentHelper from "./EnviromentHelper";
 import {Auth, AuthMode, Directus, MemoryStorage, ServerInfo, Transport, UserItem} from "@directus/sdk";
 import App from "./App";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Icon, View} from "native-base";
 import {UserItem} from "@directus/sdk";

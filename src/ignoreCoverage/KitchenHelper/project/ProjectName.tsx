@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {Text, View} from "native-base";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";

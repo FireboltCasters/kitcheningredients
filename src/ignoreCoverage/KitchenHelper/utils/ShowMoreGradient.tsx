@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import {useColorModeValue, useToken, View} from "native-base";
 import {LinearGradient} from "expo-linear-gradient";

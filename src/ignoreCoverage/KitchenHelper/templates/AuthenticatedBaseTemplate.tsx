@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect, useState} from "react";
 import ServerAPI from "../ServerAPI";
 import {BaseTemplate} from "./BaseTemplate";
