@@ -20,7 +20,7 @@ jobs:
           node-version: 12
 
       - name: Install Node.js dependencies
-        run: npm ci
+        run: npm install --force
 
       - name: Test
         run: npm run testOnly
