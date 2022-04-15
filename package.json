@@ -5,11 +5,12 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
+    "fixModules": "cp ./src/ignoreCoverage/module_fix/types.ts ./node_modules/native-base/src/components/primitives/Icon/types.ts && cp ./src/ignoreCoverage/module_fix/getSpacedChildren.tsx ./node_modules/native-base/src/utils/getSpacedChildren.tsx",
     "coverage": "jest --coverage",
     "test": "npm run build && npm run testOnly",
     "testOnly": "npm run coverage",
     "start": "npm run build && node ./build/ignoreCoverage/development.js",
-    "_prepareBuild": "rm -rf ./build",
+    "_prepareBuild": "rm -rf ./build && npm run fixModules",
     "build": "npm run _prepareBuild && rimraf ./build && tsc && cp package.json ./build && cp README.md ./build",
     "dev": "nodemon",
     "_prepareUpload": "npm run build && rimraf ./coverage && rimraf ./build/tests",
