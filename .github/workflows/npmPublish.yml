@@ -18,10 +18,8 @@ jobs:
       - run: npm install --force
       - run: git config --global user.name 'Firebolt Caster'
       - run: git config --global user.email 'nilsbaumgartner@live.de'
-      - run: npm version patch -m "[RELEASE] %s"
       - run: npm run _uploadWithoutPatch
-      - run: git stash
+      - run: npm git stash
       - run: npm version patch -m "[RELEASE] %s"
-      - run: git push
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
