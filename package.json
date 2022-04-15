@@ -1,6 +1,6 @@
 {
   "name": "kitchentemplate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Template for a cross plattform react app",
   "main": "index.js",
   "types": "index.d.ts",
@@ -128,6 +128,5 @@
     "typescript": "^4.1.3",
     "universal-cookie": "^4.0.4"
   },
-  "peerDependencies": {
-  }
+  "peerDependencies": {}
 }
