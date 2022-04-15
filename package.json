@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "fixModules": "cp ./src/ignoreCoverage/module_fix/types.ts ./node_modules/native-base/src/components/primitives/Icon/types.ts && cp ./src/ignoreCoverage/module_fix/getSpacedChildren.tsx ./node_modules/native-base/src/utils/getSpacedChildren.tsx",
+    "fixModules": "cp ./src/ignoreCoverage/module_fix/types.ts ./node_modules/native-base/src/components/primitives/Icon/types.ts && cp ./src/ignoreCoverage/module_fix/getSpacedChildren.tsx ./node_modules/native-base/src/utils/getSpacedChildren.tsx && cp ./src/ignoreCoverage/module_fix/useResponsive/types.ts ./node_modules/native-base/src/utils/useResponsiveQuery/types.ts",
     "coverage": "jest --coverage",
     "test": "npm run build && npm run testOnly",
     "testOnly": "npm run coverage",
