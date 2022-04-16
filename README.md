@@ -3,7 +3,7 @@
 </h2>
 
 <p align="center">
-  <a href="https://badge.fury.io/js/kitchentemplate.svg"><img src="https://badge.fury.io/js/kitchentemplate.svg" alt="npm package" /></a>
+  <a href="https://badge.fury.io/js/kitcheningredients.svg"><img src="https://badge.fury.io/js/kitcheningredients.svg" alt="npm package" /></a>
   <a href="https://img.shields.io/github/license/FireboltCasters/kitchentemplate"><img src="https://img.shields.io/github/license/FireboltCasters/kitchentemplate" alt="MIT" /></a>
   <a href="https://img.shields.io/github/last-commit/FireboltCasters/kitchentemplate?logo=git"><img src="https://img.shields.io/github/last-commit/FireboltCasters/kitchentemplate?logo=git" alt="last commit" /></a>
   <a href="https://www.npmjs.com/package/kitchentemplate"><img src="https://img.shields.io/npm/dm/kitchentemplate.svg" alt="downloads week" /></a>
