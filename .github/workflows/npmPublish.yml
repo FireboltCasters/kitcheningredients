@@ -21,6 +21,7 @@ jobs:
       - run: git stash
       - run: npm run fixModules
       - run: npm version patch -m "[RELEASE] %s"
+      - run: git push
       - run: npm run _uploadWithoutPatch
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
