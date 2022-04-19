@@ -6,29 +6,29 @@
   <a href="https://badge.fury.io/js/kitcheningredients.svg"><img src="https://badge.fury.io/js/kitcheningredients.svg" alt="npm package" /></a>
   <a href="https://img.shields.io/github/license/FireboltCasters/kitcheningredients"><img src="https://img.shields.io/github/license/FireboltCasters/kitcheningredients" alt="MIT" /></a>
   <a href="https://img.shields.io/github/last-commit/FireboltCasters/kitcheningredients?logo=git"><img src="https://img.shields.io/github/last-commit/FireboltCasters/kitcheningredients?logo=git" alt="last commit" /></a>
-  <a href="https://www.npmjs.com/package/kitchentemplate"><img src="https://img.shields.io/npm/dm/kitchentemplate.svg" alt="downloads week" /></a>
-  <a href="https://www.npmjs.com/package/kitchentemplate"><img src="https://img.shields.io/npm/dt/kitchentemplate.svg" alt="downloads total" /></a>
-  <a href="https://github.com/FireboltCasters/kitchentemplate"><img src="https://shields.io/github/languages/code-size/FireboltCasters/kitchentemplate" alt="size" /></a>
-  <a href="https://david-dm.org/FireboltCasters/kitchentemplate"><img src="https://david-dm.org/FireboltCasters/kitchentemplate/status.svg" alt="dependencies" /></a>
-  <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFireboltCasters%2Fkitchentemplate?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFireboltCasters%2Fkitchentemplate.svg?type=shield"/></a>
+  <a href="https://www.npmjs.com/package/kitcheningredients"><img src="https://img.shields.io/npm/dm/kitcheningredients.svg" alt="downloads week" /></a>
+  <a href="https://www.npmjs.com/package/kitcheningredients"><img src="https://img.shields.io/npm/dt/kitcheningredients.svg" alt="downloads total" /></a>
+  <a href="https://github.com/FireboltCasters/kitcheningredients"><img src="https://shields.io/github/languages/code-size/FireboltCasters/kitcheningredients" alt="size" /></a>
+  <a href="https://david-dm.org/FireboltCasters/kitcheningredients"><img src="https://david-dm.org/FireboltCasters/kitcheningredients/status.svg" alt="dependencies" /></a>
+  <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFireboltCasters%2Fkitcheningredients?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFireboltCasters%2Fkitcheningredients.svg?type=shield"/></a>
   <a href="https://github.com/google/gts" alt="Google TypeScript Style"><img src="https://img.shields.io/badge/code%20style-google-blueviolet.svg"/></a>
   <a href="https://shields.io/" alt="Google TypeScript Style"><img src="https://img.shields.io/badge/uses-TypeScript-blue.svg"/></a>
   <a href="https://github.com/marketplace/actions/lint-action"><img src="https://img.shields.io/badge/uses-Lint%20Action-blue.svg"/></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/FireboltCasters/kitchentemplate/actions/workflows/npmPublish.yml"><img src="https://github.com/FireboltCasters/kitchentemplate/actions/workflows/npmPublish.yml/badge.svg" alt="Npm publish" /></a>
-  <a href="https://github.com/FireboltCasters/kitchentemplate/actions/workflows/linter.yml"><img src="https://github.com/FireboltCasters/kitchentemplate/actions/workflows/linter.yml/badge.svg" alt="Build status" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=alert_status" alt="Quality Gate" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=bugs" alt="Bugs" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=coverage" alt="Coverage" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=code_smells" alt="Code Smells" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=duplicated_lines_density" alt="Duplicated Lines (%)" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=sqale_rating" alt="Maintainability Rating" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=reliability_rating" alt="Reliability Rating" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=security_rating" alt="Security Rating" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=sqale_index" alt="Technical Debt" /></a>
-  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitchentemplate"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitchentemplate&metric=vulnerabilities" alt="Vulnerabilities" /></a>
+  <a href="https://github.com/FireboltCasters/kitcheningredients/actions/workflows/npmPublish.yml"><img src="https://github.com/FireboltCasters/kitcheningredients/actions/workflows/npmPublish.yml/badge.svg" alt="Npm publish" /></a>
+  <a href="https://github.com/FireboltCasters/kitcheningredients/actions/workflows/linter.yml"><img src="https://github.com/FireboltCasters/kitcheningredients/actions/workflows/linter.yml/badge.svg" alt="Build status" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=alert_status" alt="Quality Gate" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=bugs" alt="Bugs" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=coverage" alt="Coverage" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=code_smells" alt="Code Smells" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=duplicated_lines_density" alt="Duplicated Lines (%)" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=sqale_rating" alt="Maintainability Rating" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=reliability_rating" alt="Reliability Rating" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=security_rating" alt="Security Rating" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=sqale_index" alt="Technical Debt" /></a>
+  <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=vulnerabilities" alt="Vulnerabilities" /></a>
 </p>
 
 <p align="center">
@@ -76,7 +76,7 @@ For the correct upload to npm and sonar and keep everything working correctly, t
 ```javascript
 {
   "package": {
-    "name": "<kitchentemplate>",
+    "name": "<kitcheningredients>",
     "description": "<packageDescription>",
     "keywords": [
       "npm-template"
@@ -130,4 +130,4 @@ This is because we haven't told Sonarcloud how it should measure the Quality Gat
 
 The FireboltCasters
 
-<a href="https://github.com/FireboltCasters/kitchentemplate"><img src="https://contrib.rocks/image?repo=FireboltCasters/kitchentemplate" alt="Contributors" /></a>
+<a href="https://github.com/FireboltCasters/kitcheningredients"><img src="https://contrib.rocks/image?repo=FireboltCasters/kitcheningredients" alt="Contributors" /></a>

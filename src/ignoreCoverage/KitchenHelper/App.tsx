@@ -38,14 +38,14 @@ export default class App extends React.Component<any, any>{
 	constructor(props) {
 		super(props);
 		App.instance = this;
-		App.plugin = props.project
-		App.nativebaseConfig = props.nativebaseConfig;
-		EnviromentHelper.AppConfig = props.AppConfig;
-		App.styleConfig = props.styleConfig;
-		App.config = props.config;
-		App.currentpackageJson = props.currentpackageJson;
-		App.currentpackageJsonLock = props.currentpackageJsonLock;
-		App.thirdpartyLicense = props.thirdpartyLicense;
+		App.plugin = props.project || App.plugin
+		App.nativebaseConfig = props.nativebaseConfig || App.nativebaseConfig;
+		EnviromentHelper.AppConfig = props.AppConfig || EnviromentHelper.AppConfig;
+		App.styleConfig = props.styleConfig || App.styleConfig;
+		App.config = props.config || App.config;
+		App.currentpackageJson = props.currentpackageJson || App.currentpackageJson;
+		App.currentpackageJsonLock = props.currentpackageJsonLock || App.currentpackageJsonLock;
+		App.thirdpartyLicense = props.thirdpartyLicense || App.thirdpartyLicense;
 
   		App.storage = new MyDirectusStorage();
   		RouteRegisterer.register();
