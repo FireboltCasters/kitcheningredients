@@ -1,0 +1,1 @@
+{"version":3,"sources":["Example.ts"],"names":["Example","multiply","a","b"],"mappings":";;;;;;;AAAe,MAAMA,OAAN,CAAc;AACZ,SAARC,QAAQ,CAACC,CAAD,EAAYC,CAAZ,EAA+B;AAC5C,WAAOD,CAAC,GAAGC,CAAX;AACD;;AAH0B","sourcesContent":["export default class Example {\n  static multiply(a: number, b: number): number {\n    return a * b;\n  }\n}\n"]}

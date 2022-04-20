@@ -26,13 +26,12 @@
     "testOnly": "npm run coverage",
     "start": "npm run build && node ./lib/ignoreCoverage/development.js",
     "_prepareBuild": "rm -rf ./lib && mkdir ./lib",
-    "build": "npm run _prepareBuild && bob build && cp package.json ./lib && cp README.md ./lib",
+    "build": "npm run _prepareBuild && bob build",
     "dev": "nodemon",
     "_prepareUpload": "npm run build && rimraf ./coverage && rimraf ./lib/tests",
     "_uploadBuild": "npm publish",
-    "_uploadWithoutPatch": "npm run _prepareUpload && npm run _uploadBuild && npm run clean",
+    "_uploadWithoutPatch": "npm run _prepareUpload && npm run _uploadBuild",
     "upload": "npm version patch && npm run _uploadWithoutPatch",
-    "clean": "rimraf ./lib",
     "setup": "npm install && node setup.js && rimraf setup.js setup.json"
   },
   "jest": {
