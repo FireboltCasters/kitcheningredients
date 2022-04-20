@@ -2,6 +2,8 @@
 
 A helper for the KitchenBase
 
+Npm Template: https://github.com/callstack/react-native-builder-bob
+
 ## Installation
 
 ```sh

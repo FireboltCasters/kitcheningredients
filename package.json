@@ -22,6 +22,7 @@
     "!**/__mocks__"
   ],
   "scripts": {
+    "testRaw": "jest",
     "test": "jest --coverage",
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -150,7 +151,8 @@
     "preset": "react-native",
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
+      "<rootDir>/lib/",
+      "<rootDir>/src/ignoreCoverage/"
     ]
   },
   "commitlint": {
