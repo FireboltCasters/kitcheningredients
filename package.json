@@ -1,6 +1,6 @@
 {
   "name": "kitcheningredients",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Template for a cross plattform react app",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
