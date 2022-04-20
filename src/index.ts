@@ -5,6 +5,9 @@ export {Example};
 import App from "./ignoreCoverage/KitchenHelper/App"
 export {App}
 
+import EnviromentHelper from "./ignoreCoverage/KitchenHelper/EnviromentHelper"
+export {EnviromentHelper}
+
 import ServerAPI from "./ignoreCoverage/KitchenHelper/ServerAPI"
 export {ServerAPI}
 
