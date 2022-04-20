@@ -10,7 +10,7 @@
     "test": "npm run build && npm run testOnly",
     "testOnly": "npm run coverage",
     "start": "npm run build && node ./build/ignoreCoverage/development.js",
-    "_prepareBuild": "rm -rf ./build && npm run fixModules",
+    "_prepareBuild": "rm -rf ./build",
     "build": "npm run _prepareBuild && rimraf ./build && tsc && cp package.json ./build && cp README.md ./build",
     "dev": "nodemon",
     "_prepareUpload": "npm run build && rimraf ./coverage && rimraf ./build/tests",
