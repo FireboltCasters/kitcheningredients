@@ -19,7 +19,6 @@ jobs:
       - run: git config --global user.name 'Firebolt Caster'
       - run: git config --global user.email 'nilsbaumgartner@live.de'
       - run: git stash
-      #- run: npm run fixModules
       - run: npm version patch -m "[RELEASE] %s"
       - run: npm run _uploadWithoutPatch
       - run: git push

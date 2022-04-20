@@ -1,45 +1,27 @@
 {
   "compilerOptions": {
-    "strict": false /* Enable all strict type-checking options. */,
-    "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
-    "strictNullChecks": false,                    /* Enable strict null checks. */
-    "strictFunctionTypes": false,                 /* Enable strict checking of function types. */
-    "strictBindCallApply": false,                 /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
-    "strictPropertyInitialization": false,        /* Enable strict checking of property initialization in classes. */
-    "noImplicitThis": false,                      /* Raise error on 'this' expressions with an implied 'any' type. */
-    "alwaysStrict": false,                        /* Parse in strict mode and emit "use strict" for each source file. */
-
-    "allowJs": true,
-    "allowUnreachableCode": true,
+    "baseUrl": "./",
+    "paths": {
+      "kitcheningredients": ["./src/index"]
+    },
+    "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,
     "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-native",
-    "lib": ["dom", "esnext"],
+    "jsx": "react",
+    "lib": ["esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
     "noStrictGenericChecks": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "target": "esnext",
-    "outDir": "lib"
-  },
-  "include": [
-    "src",
-    ".eslintrc.js",
-    "babel.config.js",
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "docs",
-    "example",
-    "FabricExample"
-  ]
+    "strict": true,
+    "target": "esnext"
+  }
 }
