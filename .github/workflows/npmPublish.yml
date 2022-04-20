@@ -19,12 +19,6 @@ jobs:
       - run: git config --global user.name 'Firebolt Caster'
       - run: git config --global user.email 'nilsbaumgartner@live.de'
       - run: git stash
-      - run: npm run prepare
-      - run: npm version patch -m "[RELEASE] %s"
-      - run: git push
-      - run: npm whoami
-      - run: npm publish
-      - run: git push
+      - run: npm run release
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
