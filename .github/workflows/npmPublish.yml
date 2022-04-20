@@ -21,8 +21,8 @@ jobs:
       - run: git stash
       - run: npm run prepare
       - run: npm version patch -m "[RELEASE] %s"
-      - run: npm run release
-      - run: npm run _uploadWithoutPatch
+      - run: git push
+      - run: npm publish
       - run: git push
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
