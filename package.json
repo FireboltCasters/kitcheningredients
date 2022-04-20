@@ -1,6 +1,6 @@
 {
   "name": "kitcheningredients",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "Template for a cross plattform react app",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -29,7 +29,7 @@
     "build": "npm run _prepareBuild && bob build && cp package.json ./lib && cp README.md ./lib",
     "dev": "nodemon",
     "_prepareUpload": "npm run build && rimraf ./coverage && rimraf ./lib/tests",
-    "_uploadBuild": "npm pack && npm publish",
+    "_uploadBuild": "npm publish",
     "_uploadWithoutPatch": "npm run _prepareUpload && npm run _uploadBuild && npm run clean",
     "upload": "npm version patch && npm run _uploadWithoutPatch",
     "clean": "rimraf ./lib",
