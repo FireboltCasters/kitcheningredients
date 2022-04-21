@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {Box, useColorModeValue} from "native-base";
-import {IBoxProps} from "native-base/src/components/primitives/Box/index";
+import {IBoxProps} from "native-base/lib/typescript/components/primitives/Box/types";
 
 export interface AppState {
 	_shadeLevel?: number

@@ -7,7 +7,7 @@ import {TextWithIcon} from "./ignoreCoverage/components/TextWithIcon";
 export {TextWithIcon};
 
 
-import {ConfigHolder} from "./ignoreCoverage/helper/ConfigHolder";
+import {ConfigHolder} from "./ignoreCoverage/KitchenHelper/ConfigHolder";
 export {ConfigHolder}
 
 import {ConfigHolderTest} from "./ignoreCoverage/components/ConfigHolderTest";
