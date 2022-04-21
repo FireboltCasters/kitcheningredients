@@ -2,9 +2,9 @@
 import React, {FunctionComponent, useState} from 'react';
 import {Image, Pressable, View} from "native-base";
 import ServerAPI from "../ServerAPI";
-import App from "../App";
 import {LoadingView} from "./LoadingView";
 import {TouchableOpacity} from "react-native";
+import {ConfigHolder} from "../ConfigHolder";
 
 interface AppState {
 	assetId: string;
@@ -30,7 +30,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 		let url = imageURL;
 		console.log(url);
 		if(!props.isPublic){
-			let token = App.storage.get_auth_access_token();
+			let token = ConfigHolder.storage.get_auth_access_token();
 			if(!!url && !!token){
 				if(!url.includes("?")){
 					url+="?";

@@ -1,21 +1,19 @@
 // @ts-nocheck
 import React, {useEffect} from "react";
 import {Text, View} from "native-base";
-import App from "../../App";
-
-import {RenderHTML} from "../../utils/RenderHTML";
 import TextGenerator from "../../helper/TextGenerator";
+import {ConfigHolder} from "../../ConfigHolder";
 
 export const PrivacyPolicy = (props) => {
 
-	App.setHideDrawer(false);
+	ConfigHolder.instance.setHideDrawer(false);
 
 	// corresponding componentDidMount
 	useEffect(() => {
 
 	}, [props.route.params])
 
-	let component = App.plugin.getPrivacyPolicyComponent();
+	let component = ConfigHolder.plugin.getPrivacyPolicyComponent();
 
 	if(!!component){
 		return component

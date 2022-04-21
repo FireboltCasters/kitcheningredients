@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, {useEffect, useState} from "react";
 import {AlertDialog, Button, Center, Divider, Text} from "native-base";
-import App from "../../App";
 import {Platform} from "react-native";
+import {ConfigHolder} from "../../ConfigHolder";
 
 export const CookieInformation = (props) => {
 
@@ -11,7 +11,7 @@ export const CookieInformation = (props) => {
 	}
 
 	function hasCookieConfig(){
-		return App.storage.has_cookie_config()
+		return ConfigHolder.storage.has_cookie_config()
 	}
 
 	const [isOpen, setIsOpen] = React.useState(!hasCookieConfig())
@@ -32,7 +32,7 @@ export const CookieInformation = (props) => {
 	}
 
 	function handleDecision(cookie_config){
-		App.storage.set_cookie_config(cookie_config);
+		ConfigHolder.storage.set_cookie_config(cookie_config);
 		setIsOpen(!hasCookieConfig())
 	}
 

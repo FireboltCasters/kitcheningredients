@@ -9,6 +9,7 @@ import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import ServerAPI from "../ServerAPI";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import App from "../App";
+import {ConfigHolder} from "../ConfigHolder";
 
 const padding = 0;
 
@@ -77,7 +78,7 @@ export const Layout = ({
 				isTruncated
 			>
 				{burgerButton}
-				{title ? title : App.config.title}
+				{title ? title : ConfigHolder.config.title}
 			</Heading>
 		)
 	}

@@ -5,6 +5,7 @@ import {Provider} from "./Provider";
 import App from "../App";
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Home} from "../screens/home/Home";
+import {ConfigHolder} from "../ConfigHolder";
 
 interface AppState {
 	serverInfo: any;
@@ -19,9 +20,9 @@ export const AuthProviderGuest: FunctionComponent<AppState> = ({serverInfo}) => 
 	};
 
 	async function handleOpened(){
-		await App.setUserAsGuest();
+		await ConfigHolder.instance.setUserAsGuest();
 		await NavigatorHelper.navigate(Home)
-		await App.setHideDrawer(false);
+		await ConfigHolder.instance.setHideDrawer(false);
 	}
 
 	return (

@@ -4,6 +4,7 @@ import {KeyExtractorHelper} from "../storage/KeyExtractorHelper";
 import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
 import App from "../App";
 import {RequiredSynchedStates} from "./RequiredSynchedStates";
+import {ConfigHolder} from "../ConfigHolder";
 
 export function useSynchedState(storageKey): [value: string, setValue: (value) => {}] {
     const value = useStoreState((state) => state[storageKey].value);
@@ -28,8 +29,8 @@ export default class SynchedState {
     }
 
     static getPluginStorageKeys(){
-        if(!!App.plugin){
-            return KeyExtractorHelper.getListOfStaticKeyValues(App.plugin.getStorageKeysClass())
+        if(!!ConfigHolder.plugin){
+            return KeyExtractorHelper.getListOfStaticKeyValues(ConfigHolder.plugin.getStorageKeysClass())
         }
         return [];
     }
@@ -39,8 +40,8 @@ export default class SynchedState {
     }
 
     static getPluginSynchedStates(){
-        if(!!App.plugin){
-            return KeyExtractorHelper.getListOfStaticKeyValues(App.plugin.getSynchedStateKeysClass())
+        if(!!ConfigHolder.plugin){
+            return KeyExtractorHelper.getListOfStaticKeyValues(ConfigHolder.plugin.getSynchedStateKeysClass())
         }
         return [];
     }

@@ -4,8 +4,8 @@ import {NavigationContainerRef, StackActions, DrawerActions, CommonActions} from
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {Home} from "../screens/home/Home";
-import App from "../App";
 import {NavigationQueueItem} from "./NavigationQueueItem";
+import {ConfigHolder} from "../ConfigHolder";
 
 
 // todo Update to newest ReactNavigation
@@ -42,13 +42,13 @@ export class NavigatorHelper {
 
     static async handleContinueAfterAuthenticated(){
         await NavigatorHelper.navigate(Home)
-        await App.setHideDrawer(false);
+        await ConfigHolder.instance.setHideDrawer(false);
     }
 
     static async navigateHome(){
         let me = null;
         try {
-            me = await App.loadUser();
+            me = await ConfigHolder.instance.loadUser();
         } catch (err){
             console.log(err);
         }

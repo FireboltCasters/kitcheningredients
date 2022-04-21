@@ -4,11 +4,12 @@ import {useColorModeValue, useToken, View} from "native-base";
 import {LinearGradient} from "expo-linear-gradient";
 import ShowMoreGradientPlaceholder from "./ShowMoreGradientPlaceholder";
 import App from "../App";
+import {ConfigHolder} from "../ConfigHolder";
 
 export const ShowMoreGradient = (props) => {
 	const [lightBg, darkBg] = useToken(
 		'colors',
-		[App.styleConfig.backgroundColor.light, App.styleConfig.backgroundColor.dark],
+		[ConfigHolder.styleConfig.backgroundColor.light, ConfigHolder.styleConfig.backgroundColor.dark],
 		'blueGray.900',
 	);
 	const bgColor = useColorModeValue(lightBg, darkBg);

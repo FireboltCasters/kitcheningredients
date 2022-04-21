@@ -3,15 +3,14 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Box, useColorModeValue, useToken, View} from 'native-base';
 import EnviromentHelper from "../EnviromentHelper";
-import {RouteRegisterer} from "./RouteRegisterer";
 import {navigationRef, isReadyRef} from "./NavigatorHelper";
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
-import App from "../App";
+import {ConfigHolder} from "../ConfigHolder";
 
 export const Root = (props) => {
 	const [lightBg, darkBg] = useToken(
 		'colors',
-		[App.styleConfig.backgroundColor.light, App.styleConfig.backgroundColor.dark],
+		[ConfigHolder.styleConfig.backgroundColor.light, ConfigHolder.styleConfig.backgroundColor.dark],
 		'blueGray.900',
 	);
 	const bgColor = useColorModeValue(lightBg, darkBg);

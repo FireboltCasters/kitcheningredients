@@ -2,13 +2,13 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Divider, Flex, Spinner, Text, View} from "native-base";
-import {FormButton} from "kitcheningredients/lib/commonjs/ignoreCoverage/buttons/FormButton"
 import {UserItem} from "@directus/sdk";
 import {SignOutButton} from "./SignOutButton";
-import App from "../App";
 import {EmailLogin} from "./EmailLogin";
 import {AuthProvidersLoginOptions} from "./AuthProvidersLoginOptions";
 import {RegisteredRoutesMap} from "../navigation/RegisteredRoutesMap";
+import {FormButton} from "../buttons/FormButton";
+import {ConfigHolder} from "../ConfigHolder";
 
 export interface WebViewLoginFormState {
 	user?: UserItem;
@@ -54,7 +54,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 						<SignOutButton />
 						<FormButton onPress={async () => {
 							await NavigatorHelper.navigate(RegisteredRoutesMap.getHome())
-							await App.setHideDrawer(false);
+							await ConfigHolder.instance.setHideDrawer(false);
 							//
 						}}>
 							{"Continue"}

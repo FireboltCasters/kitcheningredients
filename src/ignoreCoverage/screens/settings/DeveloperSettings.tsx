@@ -2,13 +2,13 @@
 import React, {useEffect, useState} from "react";
 import {Button, Icon, Input, Pressable, Text, TextArea, View} from "native-base";
 import {MyThemedBox} from "../../helper/MyThemedBox";
-import App from "../../App";
 import {SynchedVariable} from "./../../storage/SynchedVariable";
 import {SettingsValue} from "./SettingsValue";
 import {RequiredStorageKeys} from "../../storage/RequiredStorageKeys";
 import {ThemeChanger} from "../../theme/ThemeChanger";
 import ServerAPI from "../../ServerAPI";
 import SynchedState from "../../synchedstate/SynchedState";
+import {ConfigHolder} from "../../ConfigHolder";
 
 export const DeveloperSettings = (props) => {
 
@@ -67,7 +67,7 @@ export const DeveloperSettings = (props) => {
 					<Text>{"Reset App"}</Text>
 					<Button onPress={async () => {
 						await ServerAPI.handleLogout()
-						App.storage.deleteAll();
+						ConfigHolder.storage.deleteAll();
 						}}><Text>{"Delete"}</Text></Button>
 				</MyThemedBox>
 			</>

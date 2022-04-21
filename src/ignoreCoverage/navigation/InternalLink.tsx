@@ -4,7 +4,7 @@ import {Text} from "native-base";
 import {IButtonProps} from "native-base/src/components/primitives/Button/types";
 import {IBoxProps} from "native-base/src/components/primitives/Box/index";
 import {NavigatorHelper} from "./NavigatorHelper";
-import {TransparentButton} from "kitcheningredients/lib/commonjs/ignoreCoverage/buttons/TransparentButton";
+import {TransparentButton} from "../buttons/TransparentButton";
 
 interface AppState {
 	destination: FunctionComponent;

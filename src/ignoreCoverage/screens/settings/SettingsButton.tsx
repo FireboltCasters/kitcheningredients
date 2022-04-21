@@ -4,7 +4,7 @@ import {Button, Icon, Text} from "native-base";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {NavigatorHelper} from "../../navigation/NavigatorHelper";
 import {Settings} from "./Settings";
-import {TransparentTextButton} from "kitcheningredients/lib/commonjs/ignoreCoverage/buttons/TransparentTextButton";
+import {TransparentTextButton} from "../../buttons/TransparentTextButton";
 
 export interface AppState {
 	onlyIcon?: boolean;

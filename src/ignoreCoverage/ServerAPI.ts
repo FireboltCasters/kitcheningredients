@@ -1,12 +1,12 @@
 // @ts-nocheck
 import EnviromentHelper from "./EnviromentHelper";
-import {Auth, AuthMode, Directus, MemoryStorage, ServerInfo, Transport, UserItem} from "@directus/sdk";
-import App from "./App";
+import {Auth, AuthMode, Directus, MemoryStorage, ServerInfo, UserItem} from "@directus/sdk";
 import axios, {AxiosInstance} from "axios";
 import {NavigatorHelper} from "./navigation/NavigatorHelper";
 import {Login} from "./auth/Login";
 import TransportWrapper from "./server/TransportWrapper";
 import AuthTransportWrapper from "./server/AuthTransportWrapper";
+import {ConfigHolder} from "./ConfigHolder";
 
 export default class ServerAPI{
 
@@ -35,22 +35,22 @@ export default class ServerAPI{
 	}
 
 	static areCredentialsSaved(){
-		return App.storage.has_credentials_saved();
+		return ConfigHolder.storage.has_credentials_saved();
 	}
 
 	static async handleLogoutError(){
-		let storage = App.storage;
+		let storage = ConfigHolder.storage;
 		storage.clear_credentials();
 	}
 
 	static async handleLogout(error=null){
 		console.log("handleLogout")
-		if(!!App.plugin && !!App.plugin.onLogout){
-			App.plugin.onLogout(error);
+		if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.onLogout){
+			ConfigHolder.plugin.onLogout(error);
 		}
 
 		try{
-			let directus = ServerAPI.getDirectus(App.storage, ServerAPI.handleLogoutError);
+			let directus = ServerAPI.getDirectus(ConfigHolder.storage, ServerAPI.handleLogoutError);
 			let response = await directus.auth.logout();
 			await ServerAPI.handleLogoutError(); // we better make sure to reset variables in storage
 		} catch (err){
@@ -60,8 +60,8 @@ export default class ServerAPI{
 		}
 		console.log("navigate to login")
 		NavigatorHelper.navigate(Login, null, false);
-		await App.setRedirectToLogin(true);
-		await App.setUser(null);
+		await ConfigHolder.instance.setRedirectToLogin(true);
+		await ConfigHolder.instance.setUser(null);
 	}
 
 	static getClient(): Directus<any>{
@@ -69,10 +69,10 @@ export default class ServerAPI{
 			return ServerAPI.directus;
 		}
 		let errorHandler = ServerAPI.handleLogoutError; //use default error handler
-		if(App.storage.is_guest()){
+		if(ConfigHolder.storage.is_guest()){
 			errorHandler = () => {}; //as guest we ignore errors
 		}
-		const directus = ServerAPI.getDirectus(App.storage, errorHandler);
+		const directus = ServerAPI.getDirectus(ConfigHolder.storage, errorHandler);
 		// api.interceptors.response.use(onResponse, onError);
 
 		ServerAPI.directus = directus;
@@ -95,7 +95,7 @@ export default class ServerAPI{
 	static async loginWithAccessDirectusAccessToken(directus_access_token){
 		let data = await ServerAPI.refreshWithDirectusAccessToken(directus_access_token);
 		console.log(data);
-		let storage = App.storage;
+		let storage = ConfigHolder.storage;
 		let access_token = data.access_token;
 		let refresh_token = data.refresh_token;
 		let expires = data.expires || ""+0;
@@ -122,7 +122,7 @@ export default class ServerAPI{
 		return auth;
 	}
 
-	static getAuthorizationHeader(storage = App.storage){
+	static getAuthorizationHeader(storage = ConfigHolder.storage){
 		const token = storage.auth_token;
 		const bearer = token
 			? token.startsWith(`Bearer `)
@@ -227,7 +227,7 @@ export default class ServerAPI{
 	}
 
 	static async isRefreshTokenSaved(){
-		let token = App.storage.auth_refresh_token;
+		let token = ConfigHolder.storage.auth_refresh_token;
 		return !!token;
 	}
 

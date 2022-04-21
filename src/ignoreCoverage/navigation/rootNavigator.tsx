@@ -3,9 +3,9 @@ import React from 'react';
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {useBreakpointValue, useTheme, View} from "native-base";
 import {CustomDrawerContent} from "./CustomDrawerContent";
-import App from "../App";
 import {RouteRegisterer} from "./RouteRegisterer";
 import BreakPointValues from "../templates/BreakPointValues";
+import {ConfigHolder} from "../ConfigHolder";
 
 export const RootStack = (props) => {
 
@@ -18,7 +18,7 @@ export const RootStack = (props) => {
 
 	let largeScreenDrawerType = "front";
 
-	const hideDrawer = App.shouldHideDrawer()
+	const hideDrawer = ConfigHolder.instance.shouldHideDrawer()
 	if(!hideDrawer){
 		largeScreenDrawerType = "permanent";
 		//TODO need to hide on login screen
@@ -32,7 +32,7 @@ export const RootStack = (props) => {
 
 	let Drawer = RouteRegisterer.getDrawer();
 
-	let screens = App.shouldRedirectToLogin() ? RouteRegisterer.loginScreens : RouteRegisterer.screens;
+	let screens = ConfigHolder.instance.shouldRedirectToLogin() ? RouteRegisterer.loginScreens : RouteRegisterer.screens;
 
 	//TODO maybe add Drawer instead of custom implementation: https://reactnavigation.org/docs/5.x/drawer-navigator
 	return(
@@ -42,7 +42,7 @@ export const RootStack = (props) => {
 						drawerStyle={drawerStyle}
 						drawerType={drawerType}
 						redirectToLogin={props.redirectToLogin+""}
-						reloadNumber={App.instance.state.reloadNumber}
+						reloadNumber={ConfigHolder.instance.state.reloadNumber}
 						swipeEnabled={false}
 						drawerPosition={'left' /** | 'right' */}
 						drawerContent={(props) => <CustomDrawerContent {...props} />}

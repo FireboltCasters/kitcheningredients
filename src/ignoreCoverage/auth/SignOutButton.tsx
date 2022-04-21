@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import ServerAPI from "../ServerAPI";
 import {AlertDialog, Button, Divider, Icon, Text} from "native-base";
-import {TransparentTextButton} from "kitcheningredients/lib/commonjs/ignoreCoverage/buttons/TransparentTextButton";
+import {TransparentTextButton} from "../buttons/TransparentTextButton";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 export interface AppState {

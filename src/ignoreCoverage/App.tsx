@@ -13,41 +13,18 @@ import {Linking} from "react-native";
 import * as ExpoLinking from "expo-linking";
 import {URL_Helper} from "./helper/URL_Helper";
 import {NavigatorHelper} from "./navigation/NavigatorHelper";
-import LogIgnorer from "./helper/LogIgnorer";
 import UserHelper from "./utils/UserHelper";
 import {StoreProvider} from "easy-peasy";
 import SynchedState from "./synchedstate/SynchedState";
-import PluginInterface from "./PluginInterface";
-import {DefaultStorage} from "./storage/DefaultStorage";
-import EnviromentHelper from "./EnviromentHelper";
-
-LogIgnorer.ignoreLogs(undefined);
+import {ConfigHolder} from "./ConfigHolder";
 
 export default class App extends React.Component<any, any>{
 
-	static storage: DefaultStorage = null;
-	static instance: App = null;
-	static plugin: PluginInterface = null;
-	static nativebaseConfig = null;
-	static styleConfig = null;
-	static config = null;
-	static currentpackageJson = null;
-	static currentpackageJsonLock = null;
-	static thirdpartyLicense = null;
-
 	constructor(props) {
 		super(props);
-		App.instance = this;
-		App.plugin = props.project || App.plugin
-		App.nativebaseConfig = props.nativebaseConfig || App.nativebaseConfig;
-		EnviromentHelper.AppConfig = props.AppConfig || EnviromentHelper.AppConfig;
-		App.styleConfig = props.styleConfig || App.styleConfig;
-		App.config = props.config || App.config;
-		App.currentpackageJson = props.currentpackageJson || App.currentpackageJson;
-		App.currentpackageJsonLock = props.currentpackageJsonLock || App.currentpackageJsonLock;
-		App.thirdpartyLicense = props.thirdpartyLicense || App.thirdpartyLicense;
+		ConfigHolder.instance = this;
 
-  		App.storage = new MyDirectusStorage();
+  		ConfigHolder.storage = new MyDirectusStorage();
   		RouteRegisterer.register();
   		RouteRegisterer.loadDrawerScreens();
 		this.subscribe(( url ) => {
@@ -97,27 +74,27 @@ export default class App extends React.Component<any, any>{
 	}
 
 	static shouldRedirectToLogin(){
-		return App.instance.state.redirectToLogin;
+		return ConfigHolder.instance.state.redirectToLogin;
 	}
 
 	static shouldHideDrawer(){
-		return App.instance.state.hideDrawer;
+		return ConfigHolder.instance.state.hideDrawer;
 	}
 
 	static async setHideDrawer(visible){
-		if(App.instance.state.hideDrawer!==visible){
-			await App.instance.setState({
+		if(ConfigHolder.instance.state.hideDrawer!==visible){
+			await ConfigHolder.instance.setState({
 				hideDrawer: visible,
-				reloadNumber: App.instance.state.reloadNumber+1,
+				reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
 			});
 		}
 	}
 
 	static async setRedirectToLogin(redirect){
-		if(App.instance.state.redirectToLogin!==redirect){
-			await App.instance.setState({
+		if(ConfigHolder.instance.state.redirectToLogin!==redirect){
+			await ConfigHolder.instance.setState({
 				redirectToLogin: redirect,
-				reloadNumber: App.instance.state.reloadNumber+1,
+				reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
 			});
 		}
 	}
@@ -126,12 +103,12 @@ export default class App extends React.Component<any, any>{
 		if(!!user){
 			user.isGuest = UserHelper.isGuest(user);
 		}
-		App.instance.setUser(user);
+		ConfigHolder.instance.setUser(user);
 	}
 
 	static async setUserAsGuest(){
-		App.storage.set_is_guest(true);
-		await App.setUser(UserHelper.getGuestUser());
+		ConfigHolder.storage.set_is_guest(true);
+		await ConfigHolder.instance.setUser(UserHelper.getGuestUser());
 	}
 
 	async setUser(user, callback=() => {}){
@@ -145,11 +122,11 @@ export default class App extends React.Component<any, any>{
 	}
 
 	static getRole(){
-		return App.instance.state?.role;
+		return ConfigHolder.instance.state?.role;
 	}
 
 	static getUser(){
-		return App.instance.getUser();
+		return ConfigHolder.instance.getUser();
 	}
 
 	getUser(){
@@ -162,7 +139,7 @@ export default class App extends React.Component<any, any>{
 				let directus = ServerAPI.getClient();
 				let user = await ServerAPI.getMe(directus);
 				return user;
-			} else if(App.storage.is_guest()){
+			} else if(ConfigHolder.storage.is_guest()){
 				return UserHelper.getGuestUser();
 			}
 		} catch (err){
@@ -173,19 +150,19 @@ export default class App extends React.Component<any, any>{
 	}
 
 	async loadSynchedVariables(){
-		await MyDirectusStorage.init(); //before App.storage.initContextStores();
-		await App.storage.initContextStores(); //before SynchedState.initContextStores();
+		await MyDirectusStorage.init(); //before ConfigHolder.storage.initContextStores();
+		await ConfigHolder.storage.initContextStores(); //before SynchedState.initContextStores();
 		SynchedState.initSynchedKeys();
-		await SynchedState.initContextStores(); //after App.storage.initContextStores();
+		await SynchedState.initContextStores(); //after ConfigHolder.storage.initContextStores();
 	}
 
 	async componentDidMount() {
 		await this.loadSynchedVariables();
-		if(!!App.plugin && !!App.plugin.initApp){
-			App.plugin.initApp();
+		if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.initApp){
+			ConfigHolder.plugin.initApp();
 		}
 		await this.loadServerInfo();
-		let user = await App.loadUser();
+		let user = await ConfigHolder.instance.loadUser();
 		await this.setUser(user);
 	}
 
@@ -208,7 +185,7 @@ export default class App extends React.Component<any, any>{
 
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>
-				<NativeBaseProvider reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={App.nativebaseConfig}>
+				<NativeBaseProvider reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
 					<Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin}>{content}</Root>
 					<ColorStatusBar />
 				</NativeBaseProvider>

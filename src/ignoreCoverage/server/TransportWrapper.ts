@@ -1,6 +1,6 @@
 import {Transport, TransportMethods, TransportOptions, TransportResponse} from "@directus/sdk";
 import ServerAPI from "../ServerAPI";
-import App from "../App";
+import {ConfigHolder} from "../ConfigHolder";
 
 export default class TransportWrapper extends Transport{
 	customErrorHandleCallback = null;
@@ -38,7 +38,7 @@ export default class TransportWrapper extends Transport{
 			//Happens when the refresh or access token is too old
 			if(this.isTokenExpired(error, status, code)){
 				console.log("Token is expired, lets try to refresh it")
-				let directus = ServerAPI.getDirectus(App.storage, ServerAPI.handleLogoutError);
+				let directus = ServerAPI.getDirectus(ConfigHolder.storage, ServerAPI.handleLogoutError);
 				let refreshAnswer = await directus.auth.refresh();
 				if(this.isRefreshSuccessfull(refreshAnswer)){
 					console.log("Okay lets try to resend the request")

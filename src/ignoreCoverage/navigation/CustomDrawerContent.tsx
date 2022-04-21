@@ -8,13 +8,13 @@ import {ProjectName} from "../project/ProjectName";
 import {MyMenuRegisterer} from "./MyMenuRegisterer";
 import {MyThemedBox} from "../helper/MyThemedBox";
 import {ExpandableDrawerItem} from "./ExpandableDrawerItem";
-import App from "../App";
 import {UserProfileAvatar} from "../project/UserProfileAvatar";
 import {SignOutButton} from "../auth/SignOutButton";
 import {Users} from "../screens/user/Users";
 import {SafeAreaView} from "react-native";
 import {SettingsButton} from "../screens/settings/SettingsButton";
 import {RouteRegisterer} from "./RouteRegisterer";
+import {ConfigHolder} from "../ConfigHolder";
 
 export const CustomDrawerContent: FunctionComponent = (props) => {
 
@@ -24,7 +24,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	//console.log("props", props);
 
 	const currentRouteKey = currentRoute?.key;
-	let user = App.getUser()
+	let user = ConfigHolder.instance.getUser()
 
 	function renderDrawerItems(){
 		let routes = props?.state?.routes || [];
@@ -78,7 +78,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	}
 
 	function renderUserRoleNameMenu(){
-		let role = App.getRole();
+		let role = ConfigHolder.instance.getRole();
 		return renderMenuByName(role?.name);
 	}
 

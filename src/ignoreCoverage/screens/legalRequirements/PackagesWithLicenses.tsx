@@ -4,8 +4,8 @@ import {Link, Skeleton, Text, View} from "native-base";
 import {ExpandableDrawerItem} from "../../navigation/ExpandableDrawerItem";
 import {MyThemedBox} from "../../helper/MyThemedBox";
 import {MoreInformationButton} from "../../components/MoreInformationButton";
-import App from "../../App";
-import {TextWithIcon} from "kitcheningredients/lib/commonjs/ignoreCoverage/components/TextWithIcon";
+import {ConfigHolder} from "../../ConfigHolder";
+import {TextWithIcon} from "../../components/TextWithIcon";
 
 export const PackagesWithLicenses = (props) => {
 
@@ -20,8 +20,8 @@ export const PackagesWithLicenses = (props) => {
 
 	function renderAllPackages(){
 		let output = [];
-		let dependencies = App.currentpackageJson?.dependencies || {};
-		let lockPackageDependencies = App.currentpackageJsonLock?.packages || {};
+		let dependencies = ConfigHolder.currentpackageJson?.dependencies || {};
+		let lockPackageDependencies = ConfigHolder.currentpackageJsonLock?.packages || {};
 
 		let dependencyKeys = Object.keys(dependencies);
 		for(let dependencyKey of dependencyKeys){
@@ -31,7 +31,7 @@ export const PackagesWithLicenses = (props) => {
 			let packageLockDependency = lockPackageDependencies[keyInPackageLockDependency] || {};
 			let currentVersion = packageLockDependency?.version;
 
-			let thirdpartyDependency = App.thirdpartyLicense[dependencyKey+"@"+currentVersion];
+			let thirdpartyDependency = ConfigHolder.thirdpartyLicense[dependencyKey+"@"+currentVersion];
 
 			output.push(renderPackage(dependencyKey, upperVersion, currentVersion, thirdpartyDependency));
 		}

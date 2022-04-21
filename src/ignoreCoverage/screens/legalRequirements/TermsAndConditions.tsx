@@ -2,18 +2,18 @@
 import React, {useEffect} from "react";
 import {Text} from "native-base";
 import TextGenerator from "../../helper/TextGenerator";
-import App from "../../App";
+import {ConfigHolder} from "../../ConfigHolder";
 
 export const TermsAndConditions = (props) => {
 
-	App.setHideDrawer(false);
+	ConfigHolder.instance.setHideDrawer(false);
 
 	// corresponding componentDidMount
 	useEffect(() => {
 
 	}, [props.route.params])
 
-	let component = App.plugin.getTermsAndConditionsComponent();
+	let component = ConfigHolder.plugin.getTermsAndConditionsComponent();
 
 	if(!!component){
 		return component

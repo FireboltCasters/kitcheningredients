@@ -7,7 +7,7 @@ import EnviromentHelper from "../EnviromentHelper";
 import {Button, Flex, FormControl, Input, View} from "native-base";
 import {InternalLink} from "../navigation/InternalLink";
 import {ResetPassword} from "./ResetPassword";
-import {FormButton} from "kitcheningredients/lib/commonjs/ignoreCoverage/buttons/FormButton"
+import {FormButton} from "../buttons/FormButton"
 
 const showResetPassword = false;
 const showEmailLogin = true;

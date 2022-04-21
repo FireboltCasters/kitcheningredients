@@ -6,12 +6,13 @@ import ServerAPI from "../ServerAPI";
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import App from "../App";
 import {Platform} from "react-native";
+import {ConfigHolder} from "../ConfigHolder";
 
 export const Login = (props) => {
 
 	let hideDrawer = false;
 
-	if(!App.shouldHideDrawer()){
+	if(!ConfigHolder.instance.shouldHideDrawer()){
 		//console.log("Login calls hide drawer");
 		hideDrawer = true;
 	}
@@ -22,7 +23,7 @@ export const Login = (props) => {
 
 	//console.log("Login passed drawer Check")
 
-	const user = App.getUser();
+	const user = ConfigHolder.instance.getUser();
 
 	const [loaded, setLoaded] = useState(false);
 	const [firstload, setFirstload] = useState(true);
@@ -35,7 +36,7 @@ export const Login = (props) => {
 			let data = await ServerAPI.loginWithAccessDirectusAccessToken(directus_access_token);
 			let directus = ServerAPI.getClient();
 			let me = await ServerAPI.getMe(directus);
-			await App.setUser(me);
+			await ConfigHolder.instance.setUser(me);
 			return true;
 		} catch (err){
 			console.log(err);
@@ -80,12 +81,12 @@ export const Login = (props) => {
 	// corresponding componentDidMount
 	useEffect(() => {
 		//console.log("Login useEffect")
-		if(App.shouldRedirectToLogin()){
-			App.setRedirectToLogin(false);
+		if(ConfigHolder.instance.shouldRedirectToLogin()){
+			ConfigHolder.instance.setRedirectToLogin(false);
 		}
 
 		if(hideDrawer){
-			App.setHideDrawer(true);
+			ConfigHolder.instance.setHideDrawer(true);
 		} else {
 			fetchAccessToken();
 		}
