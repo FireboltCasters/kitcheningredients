@@ -11,6 +11,9 @@ export {ServerAPI}
 import {RegisteredRoutesMap} from "./ignoreCoverage/KitchenHelper/navigation/RegisteredRoutesMap";
 export {RegisteredRoutesMap}
 
+import {TextWithIcon} from "./ignoreCoverage/KitchenHelper/components/TextWithIcon";
+export {TextWithIcon};
+
 import {MenuItem} from "./ignoreCoverage/KitchenHelper/navigation/MenuItem";
 export {MenuItem}
 
