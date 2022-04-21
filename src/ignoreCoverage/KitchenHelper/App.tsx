@@ -84,7 +84,7 @@ export default class App extends React.Component<any, any>{
 		return ConfigHolder.instance.state.hideDrawer;
 	}
 
-	static async setHideDrawer(visible){
+	async setHideDrawer(visible){
 		if(ConfigHolder.instance.state.hideDrawer!==visible){
 			await ConfigHolder.instance.setState({
 				hideDrawer: visible,
@@ -93,7 +93,7 @@ export default class App extends React.Component<any, any>{
 		}
 	}
 
-	static async setRedirectToLogin(redirect){
+	async setRedirectToLogin(redirect){
 		if(ConfigHolder.instance.state.redirectToLogin!==redirect){
 			await ConfigHolder.instance.setState({
 				redirectToLogin: redirect,
@@ -102,19 +102,15 @@ export default class App extends React.Component<any, any>{
 		}
 	}
 
-	static async setUser(user){
-		if(!!user){
-			user.isGuest = UserHelper.isGuest(user);
-		}
-		ConfigHolder.instance.setUser(user);
-	}
-
-	static async setUserAsGuest(){
+	async setUserAsGuest(){
 		ConfigHolder.storage.set_is_guest(true);
 		await ConfigHolder.instance.setUser(UserHelper.getGuestUser());
 	}
 
 	async setUser(user, callback=() => {}){
+    if(!!user){
+      user.isGuest = UserHelper.isGuest(user);
+    }
 		let role = await this.loadRole(user);
 		await this.setState({
 			reloadNumber: this.state.reloadNumber+1,
@@ -124,16 +120,12 @@ export default class App extends React.Component<any, any>{
 		}, callback)
 	}
 
-	static getRole(){
+	getRole(){
 		return ConfigHolder.instance.state?.role;
 	}
 
-	static getUser(){
-		return ConfigHolder.instance.getUser();
-	}
-
 	getUser(){
-		return this.state.user;
+		return ConfigHolder.instance.state.user;
 	}
 
 	async loadUser(){
