@@ -1,7 +1,18 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'kitcheningredients';
+import { multiply, TextWithIcon } from 'kitcheningredients';
+import {NativeBaseProvider} from 'native-base';
+import {ConfigHolderTest} from "kitcheningredients";
+
+const config = {
+  dependencies: {
+// For Expo projects (Bare or managed workflow)
+    'linear-gradient': require('expo-linear-gradient').LinearGradient,
+// For non expo projects
+// 'linear-gradient': require('react-native-linear-gradient').default,
+  },
+};
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
@@ -11,9 +22,12 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <>
+      <View style={styles.container}>
+        <Text>Result: {result}</Text>
+        <ConfigHolderTest><Text>Hi</Text></ConfigHolderTest>
+      </View>
+    </>
   );
 }
 
