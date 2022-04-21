@@ -2,6 +2,7 @@
 import React from "react";
 import {Icon, Text, View} from "native-base";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {ConfigHolder} from "../helper/ConfigHolder";
 
 export const TextWithIcon = (props) => {
 
@@ -10,7 +11,7 @@ export const TextWithIcon = (props) => {
 
 		return (
 			<View style={{alignItems: "center", flexDirection: "row", margin: 3}}>
-				{renderedIcon}<Text>{content}</Text>
+				{renderedIcon}<Text>{content}{ConfigHolder["a"]}</Text>
 			</View>
 		)
 	}

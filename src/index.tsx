@@ -5,5 +5,4 @@ export function multiply(a: number, b: number): Promise<number> {
 import {TextWithIcon} from "./ignoreCoverage/components/TextWithIcon";
 export {TextWithIcon};
 
-import {OtherTextWithIcon} from "./ignoreCoverage/OtherTextWithIcon";
-export {OtherTextWithIcon};
+
