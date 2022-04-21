@@ -22,11 +22,12 @@
     "!**/__mocks__"
   ],
   "scripts": {
+    "fixNodeModules": "node scripts/fixNodeModules.js",
     "testRaw": "jest",
     "test": "jest --coverage",
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "build": "bob build",
+    "build": "npm run fixNodeModules && bob build",
     "prepare": "npm run build",
     "release": "release-it",
     "releaseCI": "release-it --npm.skipChecks",
