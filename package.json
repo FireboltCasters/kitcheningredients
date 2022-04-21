@@ -30,7 +30,7 @@
     "build": "npm run fixNodeModules && bob build",
     "prepare": "npm run build",
     "release": "release-it",
-    "releaseCI": "release-it --npm.skipChecks",
+    "releaseCI": "npm run fixNodeModules && release-it --npm.skipChecks",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
