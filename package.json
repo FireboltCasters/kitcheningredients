@@ -22,12 +22,12 @@
     "!**/__mocks__"
   ],
   "scripts": {
+    "fixNodeModules": "node scripts/fixNodeModules.js",
     "testRaw": "jest",
     "test": "jest --coverage",
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "build": "bob build",
-    "prepare": "npm run build",
+    "build": "npm run fixNodeModules && bob build",
     "release": "release-it",
     "releaseCI": "release-it --npm.skipChecks",
     "example": "yarn --cwd example",
@@ -55,6 +55,7 @@
     "@release-it/conventional-changelog": "^2.0.0",
     "@types/jest": "^26.0.0",
     "@types/react": "^16.9.19",
+    "@types/react": "^16.9.19",
     "@types/react-native": "0.62.13",
     "commitlint": "^11.0.0",
     "eslint": "^7.2.0",
@@ -75,6 +76,7 @@
     "react-native": "*"
   },
   "dependencies": {
+    "native-base": "^3.0.2",
     "@directus/sdk": "^9.8.0",
     "@jsonforms/editor": "^2.0.2",
     "@react-native-async-storage/async-storage": "^1.15.7",
@@ -116,7 +118,6 @@
     "lottie-ios": "^3.2.3",
     "lottie-react": "^2.2.1",
     "lottie-react-native": "^5.0.1",
-    "native-base": "^3.0.2",
     "npm": "^6.14.10",
     "primeicons": "^5.0.0",
     "primereact": "^6.6.0",

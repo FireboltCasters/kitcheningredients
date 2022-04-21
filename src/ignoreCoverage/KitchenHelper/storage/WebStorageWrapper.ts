@@ -4,7 +4,8 @@ import {StorageImplementationInterface} from "./StorageImplementationInterface";
 export class WebStorageWrapper implements StorageImplementationInterface/** extends Storage */{
     private webstorage: any;
 
-    constructor(webstorage: Storage) {
+    // webstorage: Storage
+    constructor(webstorage: any) {
         this.webstorage = webstorage;
     }
 
