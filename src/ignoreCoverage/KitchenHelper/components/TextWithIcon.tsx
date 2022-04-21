@@ -1,8 +1,9 @@
+// @ts-nocheck
 import React from "react";
 import {Icon, Text, View} from "native-base";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 
-export const OtherTextWithIcon = (props) => {
+export const TextWithIcon = (props) => {
 
 	function renderRowInformation(icon, content){
 		let renderedIcon = !!icon ? <Text><Icon as={MaterialCommunityIcons} name={icon} marginRight={15}/></Text> : null;
