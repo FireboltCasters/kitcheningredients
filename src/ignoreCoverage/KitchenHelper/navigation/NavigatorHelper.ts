@@ -47,7 +47,7 @@ export class NavigatorHelper {
     static async navigateHome(){
         let me = null;
         try {
-            me = await ConfigHolder.loadUser();
+            me = await ConfigHolder.instance.loadUser();
         } catch (err){
             console.log(err);
         }

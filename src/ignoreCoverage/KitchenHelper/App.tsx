@@ -134,7 +134,7 @@ export default class App extends React.Component<any, any>{
 		return this.state.user;
 	}
 
-	static async loadUser(){
+	async loadUser(){
 		try{
 			if(ServerAPI.areCredentialsSaved()){
 				let directus = ServerAPI.getClient();
@@ -163,7 +163,7 @@ export default class App extends React.Component<any, any>{
 			ConfigHolder.plugin.initApp();
 		}
 		await this.loadServerInfo();
-		let user = await ConfigHolder.loadUser();
+		let user = await ConfigHolder.instance.loadUser();
 		await this.setUser(user);
 	}
 
