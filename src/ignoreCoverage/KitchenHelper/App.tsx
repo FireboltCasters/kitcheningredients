@@ -24,7 +24,9 @@ export default class App extends React.Component<any, any>{
 		super(props);
 
 		ConfigHolder.instance = this;
-    ConfigHolder.storage = new MyDirectusStorage();
+		if(!!ConfigHolder.storage){
+      ConfigHolder.storage = new MyDirectusStorage();
+    }
 
     RouteRegisterer.register();
     RouteRegisterer.loadDrawerScreens();
