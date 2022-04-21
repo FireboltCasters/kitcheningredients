@@ -11,7 +11,7 @@ export const TextWithIcon = (props) => {
 
 		return (
 			<View style={{alignItems: "center", flexDirection: "row", margin: 3}}>
-				{renderedIcon}<Text>{content}{ConfigHolder["a"]}</Text>
+				{renderedIcon}<Text>{content}{ConfigHolder.test["a"]}</Text>
 			</View>
 		)
 	}
