@@ -1,6 +1,7 @@
 import {FunctionComponent} from "react";
 import {StringHelper} from "../helper/StringHelper";
 import {Home} from "../screens/home/Home";
+import {Route} from "./Route";
 
 export class RegisteredRoutesMap {
 
@@ -31,30 +32,30 @@ export class RegisteredRoutesMap {
         return RegisteredRoutesMap.homeComponent;
     }
 
-    static registerRoute(component: FunctionComponent, template: FunctionComponent = null,title: string, route: string, params: any=null){
-        let componentName = route
+  static registerRoute(routeItem: Route){
+    let componentName = routeItem.route+""
 
-        // https://reactnavigation.org/docs/configuring-links/#marking-params-as-optional
-        if(!!params){
-            route+=params;
-        }
-
-        let otherRegisteredRoute = RegisteredRoutesMap.mapRouteToScreenItem[route];
-        if(!!otherRegisteredRoute){
-            let otherComonentName = otherRegisteredRoute.screenName;
-            let errorMsg = "The route: "+route+" resolved to both '"+componentName+"' and '"+otherComonentName+"'. Patterns must be unique and cannot resolve to more than one screen.";
-            throw new Error("RegisteredRoutesMap.registerRoute: Found conflicting route which wants to be registered: "+errorMsg)
-        }
-
-        RegisteredRoutesMap.mapFunctionComponentToRoute[component.name] = route;
-        RegisteredRoutesMap.mapRouteToScreenItem[route] = {
-            screenName: route,
-            component: component,
-            route: route,
-            template: template,
-            title: title
-        }
+    // https://reactnavigation.org/docs/configuring-links/#marking-params-as-optional
+    if(!!routeItem.params){
+      routeItem.route+=routeItem.params;
     }
+
+    let otherRegisteredRoute = RegisteredRoutesMap.mapRouteToScreenItem[routeItem.route];
+    if(!!otherRegisteredRoute){
+      let otherComonentName = otherRegisteredRoute.screenName+"";
+      let errorMsg = "The route: "+routeItem.route+" resolved to both '"+componentName+"' and '"+otherComonentName+"'. Patterns must be unique and cannot resolve to more than one screen.";
+      throw new Error("Menu.registerRoute: Found conflicting route which wants to be registered: "+errorMsg)
+    }
+
+    RegisteredRoutesMap.mapFunctionComponentToRoute[routeItem.component.name] = routeItem.route+"";
+    RegisteredRoutesMap.mapRouteToScreenItem[routeItem.route] = {
+      screenName: routeItem.route+"",
+      component: routeItem.component+"",
+      route: routeItem.route+"",
+      template: routeItem.template+"",
+      title: routeItem.title+""
+    }
+  }
 
     /**
      * Converts a CamelCase word into

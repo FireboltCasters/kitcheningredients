@@ -11,7 +11,7 @@ import {BaseTemplate} from "../templates/BaseTemplate";
 import {LoginTemplate} from "../templates/LoginTemplate";
 // @ts-nocheck
 import React from "react";
-import {MyMenuRegisterer} from "./MyMenuRegisterer";
+import {Menu} from "./Menu";
 import {MenuItem} from "./MenuItem";
 import {Users} from "../screens/user/Users";
 import {ConfigHolder} from "../ConfigHolder";
@@ -53,14 +53,14 @@ export class RouteRegisterer {
 
     static registerLegalRequirements(){
         // Legal Requirements
-        RegisteredRoutesMap.registerRoute(AboutUs, BaseTemplate, "About us", "about-us");
-        RegisteredRoutesMap.registerRoute(License, BaseTemplate, "License", "license");
-        RegisteredRoutesMap.registerRoute(PrivacyPolicy, BaseTemplate, "Privacy Policy", "privacy-policy");
-        RegisteredRoutesMap.registerRoute(TermsAndConditions, BaseTemplate, "Terms and Conditions", "terms-and-conditions");
+        Menu.registerRoute(AboutUs, BaseTemplate, "About us", "about-us");
+        Menu.registerRoute(License, BaseTemplate, "License", "license");
+        Menu.registerRoute(PrivacyPolicy, BaseTemplate, "Privacy Policy", "privacy-policy");
+        Menu.registerRoute(TermsAndConditions, BaseTemplate, "Terms and Conditions", "terms-and-conditions");
 
         let legalRequirements = new MenuItem("LegalRequirements", "Legal Requirements", null);
         legalRequirements.addChildsFromFunctionComponents(AboutUs, License, PrivacyPolicy, TermsAndConditions);
-        MyMenuRegisterer.registerCommonMenu(legalRequirements);
+        Menu.registerCommonMenu(legalRequirements);
     }
 
     static register(){
@@ -69,18 +69,18 @@ export class RouteRegisterer {
 
         RouteRegisterer.registerLegalRequirements();
 
-        RegisteredRoutesMap.registerRoute(Login, LoginTemplate, "Login", RouteRegisterer.routeLogin);
-        RegisteredRoutesMap.registerRoute(ResetPassword, LoginTemplate, "Reset Password", "reset-password");
-        MyMenuRegisterer.registerUnauthenticatedMenu(MenuItem.getMenuItemFromComponent(Login));
+        Menu.registerRoute(Login, LoginTemplate, "Login", RouteRegisterer.routeLogin);
+        Menu.registerRoute(ResetPassword, LoginTemplate, "Reset Password", "reset-password");
+        Menu.registerUnauthenticatedMenu(MenuItem.getMenuItemFromComponent(Login));
 
-        RegisteredRoutesMap.registerRoute(Home, BaseTemplate, "Home", "home");
+        Menu.registerRoute(Home, BaseTemplate, "Home", "home");
 
-        RegisteredRoutesMap.registerRoute(Debug, BaseTemplate, "Debug", "debug");
-        MyMenuRegisterer.registerUnsafeMenuForRoleByName(MyMenuRegisterer.ROLE_ADMINISTRATOR, MenuItem.getMenuItemFromComponent(Debug))
+        Menu.registerRoute(Debug, BaseTemplate, "Debug", "debug");
+        Menu.registerUnsafeMenuForRoleByName(Menu.ROLE_ADMINISTRATOR, MenuItem.getMenuItemFromComponent(Debug))
 
-        RegisteredRoutesMap.registerRoute(Users, BaseTemplate, "Users", "users", "/:id?");
-        RegisteredRoutesMap.registerRoute(Settings, BaseTemplate, "Settings", "settings");
-        RegisteredRoutesMap.registerRoute(DeveloperSettings, BaseTemplate, "Developer Settings", "settings/developer", "/:id?");
+        Menu.registerRoute(Users, BaseTemplate, "Users", "users", "/:id?");
+        Menu.registerRoute(Settings, BaseTemplate, "Settings", "settings");
+        Menu.registerRoute(DeveloperSettings, BaseTemplate, "Developer Settings", "settings/developer", "/:id?");
 
 
         if(!!ConfigHolder.plugin){
