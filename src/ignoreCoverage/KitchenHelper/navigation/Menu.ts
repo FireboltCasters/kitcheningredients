@@ -34,7 +34,7 @@ export class Menu {
     }
 
     static registerRoute(component: FunctionComponent, template: FunctionComponent = null,title: string, route: string, params: any=null){
-      Menu.registerRoute(new Route(component, template, title, route, params));
+      RegisteredRoutesMap.registerRoute(new Route(component, template, title, route, params));
     }
 
     /**
