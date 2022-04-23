@@ -22,9 +22,6 @@ export {MyDirectusStorageWeb}
 import {EmailHelper} from "./ignoreCoverage/KitchenHelper/helper/EmailHelper";
 export {EmailHelper}
 
-import {CodePushWrapper} from "./ignoreCoverage/KitchenHelper/codepush/CodePushWrapper";
-export {CodePushWrapper}
-
 import ServerAPI from "./ignoreCoverage/KitchenHelper/ServerAPI";
 export {ServerAPI}
 
