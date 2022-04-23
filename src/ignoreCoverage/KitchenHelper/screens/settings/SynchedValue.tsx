@@ -9,33 +9,33 @@ export interface AppState {
 	setValue?: any;
 	readOnly?: boolean
 }
-export const SettingsValue: FunctionComponent<AppState> = (props) => {
+export const SynchedValue: FunctionComponent<AppState> = (props) => {
 
-	const [text, setText] = React.useState(props.value)
+	const [value, setValue] = React.useState(props.value)
 
 	// corresponding componentDidMount
 	useEffect(() => {
 
 	}, [])
 
-	const handleChange = (event: any) => setText(event.target.value)
+	const handleChange = (event: any) => setValue(event.target.value)
 
 	function renderValue(){
 		if(props.readOnly){
 			return(
-				<Text>{text}</Text>
+				<Text>{value}</Text>
 			)
 		} else {
 			return(
 			<>
 				<Input
-					value={text}
+					value={value}
 					w={"100%"}
 					onChange={handleChange}
 					placeholder="Value Controlled Input"
 				/>
 				<Button onPress={() => {
-					props.setValue(text);
+					props.setValue(value);
 				}} >{"Change"}</Button>
 			</>
 			)

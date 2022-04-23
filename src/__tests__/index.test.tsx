@@ -1,6 +1,5 @@
-import {multiply} from "./../index";
+import {EmailHelper} from "./../index";
 
 test('Example Test', async () => {
-  let result = await multiply(3, 4);
-  expect(result).toBe(12);
+  expect(EmailHelper.isValidEmail("mail@example.com")).toBeTruthy()
 });

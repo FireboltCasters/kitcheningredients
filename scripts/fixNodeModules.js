@@ -21,8 +21,11 @@ if (os.type() === 'Windows_NT') {
 let modules = ["native-base"];
 let fileEndings = [".tsx", ".ts"];
 
+console.log("Fix modules before building")
+
 for(let module of modules){
   const brokenLib = path.resolve(root, 'node_modules', module);
+  console.log("Fix module: "+module)
   handleDir(brokenLib);
 }
 
@@ -39,7 +42,7 @@ function handleDir(dirFile){
         // Make one pass and make the file complete
         for(let ending of fileEndings){
           if(file.endsWith(ending)){
-            console.log(file);
+            //console.log(file);
             const data = fs.readFileSync(file).toString().split("\n");
             if(!data[0].includes("@ts-nocheck")){
               data.splice(0, 0, "// @ts-nocheck" );

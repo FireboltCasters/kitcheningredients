@@ -16,6 +16,7 @@ export class ServerInfoHelper {
     static getProjectLogoAssetId(serverInfo: ServerInfo){
         return serverInfo?.project?.project_logo;
     }
+
     static getProjectLogoURL(serverInfo: ServerInfo){
         return ServerAPI.getAssetImageURL(ServerInfoHelper.getProjectLogoAssetId(serverInfo));
     }
@@ -23,6 +24,7 @@ export class ServerInfoHelper {
     static getProjectBackgroundAssetId(serverInfo: ServerInfo){
         return serverInfo?.project?.public_background;
     }
+
     static getProjectBackgroundURL(serverInfo: ServerInfo){
         return ServerAPI.getAssetImageURL(ServerInfoHelper.getProjectBackgroundAssetId(serverInfo));
     }

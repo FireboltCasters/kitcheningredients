@@ -4,7 +4,7 @@ import {Button, Icon, Input, Pressable, Text, TextArea, View} from "native-base"
 import {MyThemedBox} from "../../helper/MyThemedBox";
 import {ConfigHolder} from "../../ConfigHolder";
 import {SynchedVariable} from "../../storage/SynchedVariable";
-import {SettingsValue} from "./SettingsValue";
+import {SynchedValue} from "./SynchedValue";
 import {RequiredStorageKeys} from "../../storage/RequiredStorageKeys";
 import {ThemeChanger} from "../../theme/ThemeChanger";
 import ServerAPI from "../../ServerAPI";
@@ -50,7 +50,7 @@ export const DeveloperSettings = (props) => {
 			} else {
 				output.push(
 					<SynchedVariable storageKey={storageKey} key={storageKey}>
-						<SettingsValue />
+						<SynchedValue />
 					</SynchedVariable>
 				)
 			}

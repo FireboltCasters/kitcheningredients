@@ -7,7 +7,7 @@ import App from '../App'
 import ColorCodeHelper from "../theme/ColorCodeHelper";
 import * as SplashScreen from 'expo-splash-screen';
 
-export class CodePushWrapper extends React.Component {
+export class CodePushWrapper extends React.Component<any, any> {
     static isSyncingFinished(status) {
         return (
             status === codePush.SyncStatus.UP_TO_DATE ||
@@ -81,6 +81,8 @@ export class CodePushWrapper extends React.Component {
     }
 
     renderDownloadProgress() {
+        //TODO add props.children an pass receivedBytes, totalBytes to display custom progress
+
         return (
             <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
                     <TouchableOpacity

@@ -2,7 +2,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Button, Input, Text, View} from "native-base";
 import ServerAPI from "../../ServerAPI";
-import {SettingsValue} from "../settings/SettingsValue";
+import {SynchedValue} from "../settings/SynchedValue";
 import {SynchedVariable} from "../../storage/SynchedVariable";
 import {RequiredStorageKeys} from "../../storage/RequiredStorageKeys";
 import {useSynchedState} from "../../synchedstate/SynchedState";
@@ -20,9 +20,9 @@ export const Debug = (props) => {
 
 	async function downloadServerStatus(){
 		let directus = ServerAPI.getClient();
-		let startTime = performance.now()
+		let startTime = Date.now()
 		await directus.server.ping();
-		let endTime = performance.now();
+		let endTime = Date.now()
 		let msCalculated = endTime-startTime;
 		msCalculated = parseInt(msCalculated.toFixed(0));
 		setMs(msCalculated);
@@ -47,11 +47,11 @@ export const Debug = (props) => {
 			<Text>{date.toString()}</Text>
 			<View style={{width: "500px", margin: "40px"}}>
 				<SynchedVariable storageKey={RequiredStorageKeys.KEY_AUTH_REFRESH_TOKEN} key={RequiredStorageKeys.KEY_AUTH_REFRESH_TOKEN}>
-					<SettingsValue />
+					<SynchedValue />
 				</SynchedVariable>
 
 				<SynchedVariable storageKey={RequiredStorageKeys.KEY_AUTH_ACCESS_TOKEN} key={RequiredStorageKeys.KEY_AUTH_ACCESS_TOKEN}>
-					<SettingsValue />
+					<SynchedValue />
 				</SynchedVariable>
 			</View>
 

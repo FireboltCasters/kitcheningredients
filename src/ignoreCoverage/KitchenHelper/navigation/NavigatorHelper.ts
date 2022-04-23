@@ -59,7 +59,7 @@ export class NavigatorHelper {
     }
 
     //https://github.com/react-navigation/react-navigation/issues/6674
-    static getEmptyParams(): object {
+    private static getEmptyParams(): object {
         const nativeState = NavigatorHelper.getCurrentNavigation()?.getRootState();
         const webState = NavigatorHelper.getCurrentNavigation()?.dangerouslyGetState();
         let state = nativeState || webState;
@@ -87,12 +87,6 @@ export class NavigatorHelper {
             console.log(err);
         }
         return keys.reduce((acc, k) => ({ ...acc, [k]: undefined }), {});
-    }
-
-    static getNavigationStateRoutes(){
-        const state = NavigatorHelper.getCurrentNavigation()?.dangerouslyGetState();
-        let routes = state?.routes || [];
-        return routes;
     }
 
     static navigateWithoutParams(registeredComponent: FunctionComponent, resetHistory: boolean=false, newParams=null){

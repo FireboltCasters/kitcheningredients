@@ -26,5 +26,8 @@ export default class BreakPointValues{
 	static usesSmallDevice(){
 		return useBreakpointValue(BreakPointValues.getSmallDeviceValues())
 	}
+}
 
+export const usesSmallDevice = () => {
+  return BreakPointValues.usesSmallDevice();
 }

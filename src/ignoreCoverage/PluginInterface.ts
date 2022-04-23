@@ -5,6 +5,8 @@ export interface PluginInterface{
     getSynchedStateKeysClass();
     getStorageKeysClass();
     getAboutUsComponent();
+    getHomeComponent();
+    getSettingsComponent();
     getPrivacyPolicyComponent();
     getTermsAndConditionsComponent();
 }
