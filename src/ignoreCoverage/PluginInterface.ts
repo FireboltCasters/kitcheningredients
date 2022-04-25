@@ -7,4 +7,6 @@ export interface PluginInterface{
     getAboutUsComponent();
     getPrivacyPolicyComponent();
     getTermsAndConditionsComponent();
+    getHomeComponent();
+    getCustomProjectLogoComponent();
 }

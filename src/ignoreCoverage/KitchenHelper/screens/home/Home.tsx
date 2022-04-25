@@ -2,9 +2,14 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Text} from "native-base";
 import ServerAPI from "../../ServerAPI";
-
+import {ConfigHolder} from "../../ConfigHolder";
 
 export const Home = (props) => {
+
+  let customHomeComponent = ConfigHolder.plugin.getHomeComponent();
+  if(!!customHomeComponent){
+    return customHomeComponent;
+  }
 
 	const [ms, setMs] = useState(null);
 	const [info, setInfo] = useState(null);
@@ -14,9 +19,9 @@ export const Home = (props) => {
 	async function downloadServerStatus(){
 		console.log("Home DownloadServerStatus")
 		let directus = ServerAPI.getClient();
-		let startTime = performance.now()
+		let startTime = Date.now()
 		await directus.server.ping();
-		let endTime = performance.now();
+		let endTime = Date.now();
 		let msCalculated = endTime-startTime;
 		msCalculated = parseInt(msCalculated.toFixed(0));
 		setMs(msCalculated);
