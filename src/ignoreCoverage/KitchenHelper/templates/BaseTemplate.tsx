@@ -5,7 +5,7 @@ import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
 import ServerAPI from "../ServerAPI";
 import {Box, View} from "native-base";
 import {BreakPointLayout} from "./BreakPointLayout";
-import ShowMoreGradientPlaceholder from "../utils/ShowMoreGradientPlaceholder";
+import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
 import {SafeAreaView} from "react-native";
 

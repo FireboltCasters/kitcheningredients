@@ -3,9 +3,8 @@ import React from "react";
 import {Box, Icon, View} from "native-base";
 import {Ionicons} from "@expo/vector-icons";
 
-export default class ShowMoreGradientPlaceholder extends React.Component<any, any>{
+export const ShowMoreGradientPlaceholder = (props) => {
 
-	render() {
 		return (
 			<View style={{opacity: 0}}>
 					<Box style={{padding: 12}} >
@@ -23,7 +22,6 @@ export default class ShowMoreGradientPlaceholder extends React.Component<any, an
 						/>
 					</Box>
 			</View>
-		)
-	}
+    );
 
 }
