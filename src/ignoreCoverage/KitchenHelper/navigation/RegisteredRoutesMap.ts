@@ -10,7 +10,7 @@ export class RegisteredRoutesMap {
 
     private static initialRoutename = "";
 
-    private static homeComponent: FunctionComponent = Home;
+    static homeComponent: FunctionComponent = Home;
 
     static reset(){
         RegisteredRoutesMap.mapRouteToScreenItem = {};
@@ -26,6 +26,10 @@ export class RegisteredRoutesMap {
 
     static getHome(): FunctionComponent {
         return RegisteredRoutesMap.homeComponent;
+    }
+
+    static setHome(component: FunctionComponent) {
+      RegisteredRoutesMap.homeComponent = component;
     }
 
     static registerRoute(routeLink: RouteLink){
