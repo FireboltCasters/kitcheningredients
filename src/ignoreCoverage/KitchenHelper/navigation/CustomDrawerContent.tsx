@@ -5,7 +5,7 @@ import {Text, View} from "native-base";
 import {ProjectLogo} from "../project/ProjectLogo";
 import {NavigatorHelper} from "./NavigatorHelper";
 import {ProjectName} from "../project/ProjectName";
-import {MyMenuRegisterer} from "./MyMenuRegisterer";
+import {Menu} from "./Menu";
 import {MyThemedBox} from "../helper/MyThemedBox";
 import {ExpandableDrawerItem} from "./ExpandableDrawerItem";
 import {UserProfileAvatar} from "../project/UserProfileAvatar";
@@ -88,24 +88,24 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	}
 
 	function renderUnauthenticatedMenu(){
-		return renderMenusByRole(MyMenuRegisterer.ROLE_UNAUTHENTICATED)
+		return renderMenusByRole(Menu.ROLE_UNAUTHENTICATED)
 	}
 
 	function renderAuthenticatedMenu(){
-		return renderMenusByRole(MyMenuRegisterer.ROLE_AUTHENTICATED)
+		return renderMenusByRole(Menu.ROLE_AUTHENTICATED)
 	}
 
 	function renderCommonMenu(){
-		return renderMenusByRole(MyMenuRegisterer.ROLE_PUBLIC)
+		return renderMenusByRole(Menu.ROLE_PUBLIC)
 	}
 
 	function renderMenuByName(name){
-		let menus = MyMenuRegisterer.menusForRolesByName[name];
+		let menus = Menu.menusForRolesByName[name];
 		return renderMenus(menus);
 	}
 
 	function renderMenusByRole(role){
-		let menus = MyMenuRegisterer.menusForRolesByID[role];
+		let menus = Menu.menusForRolesByID[role];
 		return renderMenus(menus);
 	}
 

@@ -1,6 +1,7 @@
 import {FunctionComponent} from "react";
 import {StringHelper} from "../helper/StringHelper";
 import {Home} from "../screens/home/Home";
+import {RouteLink} from "./RouteLink";
 
 export class RegisteredRoutesMap {
 
@@ -31,7 +32,13 @@ export class RegisteredRoutesMap {
         return RegisteredRoutesMap.homeComponent;
     }
 
-    static registerRoute(component: FunctionComponent, template: FunctionComponent = null,title: string, route: string, params: any=null){
+    static registerRoute(routeLink: RouteLink){
+      let component = routeLink.component;
+      let template = routeLink.template;
+      let title = routeLink.title;
+      let route = routeLink.route;
+      let params = routeLink.params;
+
         let componentName = route
 
         // https://reactnavigation.org/docs/configuring-links/#marking-params-as-optional
