@@ -1,3 +1,9 @@
+import {CrossLottie} from "./ignoreCoverage/KitchenHelper/components/CrossLottie";
+export {CrossLottie}
+
+import ServerAPI from "./ignoreCoverage/KitchenHelper/ServerAPI";
+export {ServerAPI}
+
 export function multiply(a: number, b: number): Promise<number> {
   return Promise.resolve(a * b);
 }

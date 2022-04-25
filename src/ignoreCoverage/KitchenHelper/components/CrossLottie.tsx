@@ -5,7 +5,7 @@ import LottieView from "lottie-react-native";
 import Lottie from "lottie-react";
 import ServerAPI from "../ServerAPI";
 
-export const MyLottie = (props) => {
+export const CrossLottie = (props) => {
 
     const [loaded, setLoaded] = useState(false);
     const [source, setSource] = useState(props.source);
