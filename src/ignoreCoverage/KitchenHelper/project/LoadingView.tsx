@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {Skeleton, View} from "native-base";
+import {KitchenSkeleton} from "./KitchenSkeleton";
 
 export const LoadingView: FunctionComponent = (props) => {
 	const styles = {
@@ -15,8 +16,6 @@ export const LoadingView: FunctionComponent = (props) => {
 	}
 
 	return (
-		<View style={styles}>
-			<Skeleton height={"100%"} width={"100%"}/>
-		</View>
+		<KitchenSkeleton style={styles} />
 	);
 }

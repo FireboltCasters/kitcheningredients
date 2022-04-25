@@ -1,3 +1,6 @@
+import {KitchenSkeleton} from "./ignoreCoverage/KitchenHelper/project/KitchenSkeleton";
+export {KitchenSkeleton}
+
 import {RequiredStorageKeys} from "./ignoreCoverage/KitchenHelper/storage/RequiredStorageKeys";
 export {RequiredStorageKeys}
 

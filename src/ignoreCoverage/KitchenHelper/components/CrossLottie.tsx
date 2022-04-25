@@ -4,13 +4,21 @@ import { Platform, View, Animated } from "react-native";
 import LottieView from "lottie-react-native";
 import Lottie from "lottie-react";
 import ServerAPI from "../ServerAPI";
+import {KitchenSkeleton} from "kitcheningredients";
+import exampleLottie from "./../assets/exampleLottie.json";
 
 export const CrossLottie = (props) => {
 
+    let initialSource = props.source;
+    if(!!props.example){
+      initialSource = exampleLottie;
+    }
+
     const [loaded, setLoaded] = useState(false);
-    const [source, setSource] = useState(props.source);
+    const [source, setSource] = useState(initialSource);
     const [reloadnumber, setReloadnumber] = useState(0);
-    let url = props.url || "https://raw.githubusercontent.com/NilsBaumgartner1994/SWOSY-Resources/master/exampleLottie.json"
+
+    let url = props.url
 
     let autoPlay = true;
     if(props.autoPlay!==undefined){
@@ -18,15 +26,17 @@ export const CrossLottie = (props) => {
     }
 
     async function downloadInformations(){
+      if(!source && !!url){
         try{
-            let api = ServerAPI.getAxiosInstance();
-            let answer = await api.get(url);
-            let data = answer.data;
-            setSource(data);
-            setReloadnumber(1);
+          let api = ServerAPI.getAxiosInstance();
+          let answer = await api.get(url);
+          let data = answer.data;
+          setSource(data);
+          setReloadnumber(1);
         } catch (err){
 
         }
+      }
     }
 
     // corresponding componentDidMount
@@ -38,19 +48,23 @@ export const CrossLottie = (props) => {
         return null;
     }
 
-    let height = 300;
-    let width = 300;
+    let height = props.height || 300;
+    let width = props.width || 300;
 
     let content = null;
 
-    if(Platform.OS==="web"){
+    if(!!source){
+      if(Platform.OS==="web"){
         content = <Lottie animationData={source} loop={true} autoplay={autoPlay} />
-    } else {
+      } else {
         content = <LottieView
-            style={props.style}
-            autoPlay={autoPlay}
-            source={source}
+          style={props.style}
+          autoPlay={autoPlay}
+          source={source}
         />;
+      }
+    } else {
+      content = <KitchenSkeleton style={{height: height, width: width}} />
     }
 
     return (
