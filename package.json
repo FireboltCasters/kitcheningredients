@@ -1,6 +1,6 @@
 {
   "name": "kitcheningredients",
-  "version": "0.1.41",
+  "version": "0.1.42",
   "description": "A helper for the KitchenBase",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -28,7 +28,6 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "build": "npm run fixNodeModules && bob build",
-    "prepare": "npm run build",
     "release": "release-it",
     "releaseCI": "npm run fixNodeModules && release-it --npm.skipChecks",
     "example": "yarn --cwd example",
@@ -73,10 +72,10 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*",
-    "@directus/sdk": "^9.0.0"
+    "react-native": "*"
   },
   "dependencies": {
+    "@directus/sdk": "9.4.0",
     "@jsonforms/editor": "^2.0.2",
     "@react-native-async-storage/async-storage": "^1.15.7",
     "@react-native-community/masked-view": "0.1.10",
