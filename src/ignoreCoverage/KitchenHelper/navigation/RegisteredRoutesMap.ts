@@ -24,10 +24,6 @@ export class RegisteredRoutesMap {
         return RegisteredRoutesMap.initialRoutename;
     }
 
-    static setHome(component: FunctionComponent) {
-        RegisteredRoutesMap.homeComponent = component;
-    }
-
     static getHome(): FunctionComponent {
         return RegisteredRoutesMap.homeComponent;
     }

@@ -25,6 +25,10 @@ export class Menu {
       RegisteredRoutesMap.registerRoute(new RouteLink(component, template, title, route, params));
     }
 
+  static setHome(component: FunctionComponent) {
+    RegisteredRoutesMap.homeComponent = component;
+  }
+
     /**
      * Safe method to register a menu for a Role
      * @param role_id

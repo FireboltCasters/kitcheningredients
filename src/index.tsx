@@ -1,3 +1,6 @@
+import CustomFloaters from "./ignoreCoverage/KitchenHelper/templates/CustomFloaters";
+export {CustomFloaters}
+
 import {KitchenSkeleton} from "./ignoreCoverage/KitchenHelper/project/KitchenSkeleton";
 export {KitchenSkeleton}
 
