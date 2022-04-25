@@ -1,6 +1,6 @@
 {
   "name": "kitcheningredients",
-  "version": "0.1.41",
+  "version": "0.1.45",
   "description": "A helper for the KitchenBase",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -76,7 +76,7 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@directus/sdk": "^9.8.0",
+    "@directus/sdk": "^9.0.0",
     "@jsonforms/editor": "^2.0.2",
     "@react-native-async-storage/async-storage": "^1.15.7",
     "@react-native-community/masked-view": "0.1.10",
