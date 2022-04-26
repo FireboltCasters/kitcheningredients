@@ -6,6 +6,7 @@ import {DefaultStorage} from "./storage/DefaultStorage";
 export class ConfigHolder{
 
   static storage: DefaultStorage = null;
+  static displayThemeFloater: boolean = true;
   static instance: any = null;
   static plugin: PluginInterface = null;
   static nativebaseConfig = null;

@@ -32,53 +32,74 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 		)
 	}
 
-	function renderLoginOptions(){
+	async function handleContinue(){
+    await NavigatorHelper.navigate(RegisteredRoutesMap.getHome())
+    await ConfigHolder.instance.setHideDrawer(false);
+  }
+
+  function renderLoading(){
+    return(
+      <View style={{flex: 1}}>
+        <View style={{marginVertical: 20}}></View>
+        <Spinner />
+        <View style={{marginVertical: 20}}></View>
+      </View>
+    )
+  }
+
+  function renderRememberThisAccount(user){
+    let identifier = user.email || user.first_name;
+    return(
+      <View style={{flex: 1}}>
+        <View style={{marginVertical: 20}}></View>
+        <Text><Text bold={true} >{identifier}</Text> is currentrly authenticated. If you recognize this account, press continue.</Text>
+        <View style={{marginVertical: 20}}></View>
+        <Flex direction={"row"} justify={"space-between"}>
+          <SignOutButton />
+          <FormButton onPress={async () => {
+            await handleContinue();
+            //
+          }}>
+            {"Continue"}
+          </FormButton>
+        </Flex>
+      </View>
+    )
+  }
+
+  function renderLoginOptions(){
+    return(
+      <>
+        <EmailLogin />
+        <View style={{marginVertical: 20}} >
+          <Divider />
+        </View>
+        <AuthProvidersLoginOptions />
+      </>
+    )
+  }
+
+	function renderLoginInformations(){
 		let user = props.user;
 		if(!props.loaded){
-			return(
-				<View style={{flex: 1}}>
-					<View style={{marginVertical: 20}}></View>
-					<Spinner />
-					<View style={{marginVertical: 20}}></View>
-				</View>
-			)
+			return renderLoading();
 		}
 		if(!!user){
-			let identifier = user.email || user.first_name;
-			return(
-				<View style={{flex: 1}}>
-					<View style={{marginVertical: 20}}></View>
-					<Text><Text bold={true} >{identifier}</Text> is currentrly authenticated. If you recognize this account, press continue.</Text>
-					<View style={{marginVertical: 20}}></View>
-					<Flex direction={"row"} justify={"space-between"}>
-						<SignOutButton />
-						<FormButton onPress={async () => {
-							await NavigatorHelper.navigate(RegisteredRoutesMap.getHome())
-							await ConfigHolder.instance.setHideDrawer(false);
-							//
-						}}>
-							{"Continue"}
-						</FormButton>
-					</Flex>
-				</View>
-			)
+		  if(!!user.isGuest){
+		    //handleContinue()
+        return renderRememberThisAccount(user);
+		  } else {
+        return renderRememberThisAccount(user);
+      }
 		} else {
-			return(
-				<>
-					<EmailLogin />
-					<View style={{marginVertical: 20}} >
-						<Divider />
-					</View>
-					<AuthProvidersLoginOptions />
-				</>
-			)
+			return renderLoginOptions();
 		}
 	}
 
 	return (
 		<>
 			{renderSignIn()}
-			{renderLoginOptions()}
+			{renderLoginInformations()}
 		</>
 	)
 }
