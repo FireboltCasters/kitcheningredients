@@ -5,7 +5,7 @@ import {useBreakpointValue, useTheme, View} from "native-base";
 import {CustomDrawerContent} from "./CustomDrawerContent";
 import {ConfigHolder} from "../ConfigHolder";
 import {RouteRegisterer} from "./RouteRegisterer";
-import Layout from "../templates/Template";
+import Layout from "../templates/Layout";
 
 export const RootStack = (props) => {
 

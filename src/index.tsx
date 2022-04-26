@@ -1,4 +1,4 @@
-import Layout from "./ignoreCoverage/KitchenHelper/templates/Template";
+import Layout from "./ignoreCoverage/KitchenHelper/templates/Layout";
 export {Layout}
 
 import {NavigatorHelper} from "./ignoreCoverage/KitchenHelper/navigation/NavigatorHelper";
