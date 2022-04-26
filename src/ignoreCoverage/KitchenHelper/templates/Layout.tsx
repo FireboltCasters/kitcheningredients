@@ -7,14 +7,46 @@ export default class Layout {
 	static WIDTH_LG = 992-Layout.padding;
 	static WIDTH_XL = 1536-Layout.padding
 
+  private static getRawWidthValues(){
+    return {
+      "base": '100%',
+      "md": Layout.WIDTH_MD,
+      "lg": Layout.WIDTH_LG,
+      "xl": Layout.WIDTH_XL,
+    }
+  }
+
+  private static transformWithValuesToPxIfPossible(widthValues){
+    //transform "md": number,
+    let keys = Object.keys(widthValues);
+    for(let key of keys){
+      let value = widthValues[key];
+      if(!(value+"").endsWith("%")){
+        widthValues[key] = value+"px"
+        //to 	  //transform "md": number+"px",
+      }
+    }
+    return widthValues;
+  }
+
 	static getWidthValues(){
-		return {
-			"base": '100%',
-			"md": Layout.WIDTH_MD+'px',
-			"lg": Layout.WIDTH_LG+'px',
-			"xl": Layout.WIDTH_XL+'px',
-		}
+	  let widthValues = Layout.getRawWidthValues();
+	  return Layout.transformWithValuesToPxIfPossible(widthValues)
 	}
+
+
+	static useBaseTemplateContentWidth(){
+    let baseTemplateWidthValues = Layout.getRawWidthValues();
+    let keys = Object.keys(baseTemplateWidthValues);
+    for(let key of keys){
+      let value = baseTemplateWidthValues[key];
+      if(!(value+"").endsWith("%")){
+        baseTemplateWidthValues[key] = value-(Layout.padding*2) //remove padding *2 because of left and right
+      }
+    }
+
+    return Layout.transformWithValuesToPxIfPossible(baseTemplateWidthValues)
+  }
 
 	static getSmallDeviceValues(){
 		return {
