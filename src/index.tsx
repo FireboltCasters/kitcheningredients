@@ -1,3 +1,6 @@
+import Template from "./ignoreCoverage/KitchenHelper/templates/Template";
+export {Template}
+
 import {NavigatorHelper} from "./ignoreCoverage/KitchenHelper/navigation/NavigatorHelper";
 export {NavigatorHelper}
 

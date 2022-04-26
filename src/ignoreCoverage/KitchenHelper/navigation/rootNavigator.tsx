@@ -5,11 +5,11 @@ import {useBreakpointValue, useTheme, View} from "native-base";
 import {CustomDrawerContent} from "./CustomDrawerContent";
 import {ConfigHolder} from "../ConfigHolder";
 import {RouteRegisterer} from "./RouteRegisterer";
-import BreakPointValues from "../templates/BreakPointValues";
+import Template from "../templates/Template";
 
 export const RootStack = (props) => {
 
-	let isSmallDevice = BreakPointValues.usesSmallDevice();
+	let isSmallDevice = Template.usesSmallDevice();
 
 	const theme = useTheme();
 
