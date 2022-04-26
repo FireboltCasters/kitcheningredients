@@ -1,3 +1,6 @@
+import {NavigatorHelper} from "./ignoreCoverage/KitchenHelper/navigation/NavigatorHelper";
+export {NavigatorHelper}
+
 import CustomFloaters from "./ignoreCoverage/KitchenHelper/templates/CustomFloaters";
 export {CustomFloaters}
 
