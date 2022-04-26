@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, {useEffect, useState} from "react";
-import {Layout} from "./Layout";
+import {BaseLayout} from "./BaseLayout";
 import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
 import ServerAPI from "../ServerAPI";
 import {Box, View} from "native-base";
@@ -43,7 +43,7 @@ export const BaseTemplate = ({
 	return(
 		<SafeAreaView style={{height: "100%", width: "100%"}}>
 		<View flex={1} flexDirection={"row"}>
-		<Layout title={title} serverInfo={serverInfo} >
+		<BaseLayout title={title} serverInfo={serverInfo} >
 			<ScrollViewWithGradient hideGradient={true} style={{width: "100%", height: "100%"}} >
 				<BreakPointLayout >
 					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
@@ -52,7 +52,7 @@ export const BaseTemplate = ({
 					</Box>
 				</BreakPointLayout>
 			</ScrollViewWithGradient>
-		</Layout>
+		</BaseLayout>
 		<CookieInformation />
 		</View>
 		</SafeAreaView>

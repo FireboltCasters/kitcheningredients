@@ -1,5 +1,5 @@
-import Template from "./ignoreCoverage/KitchenHelper/templates/Template";
-export {Template}
+import Layout from "./ignoreCoverage/KitchenHelper/templates/Template";
+export {Layout}
 
 import {NavigatorHelper} from "./ignoreCoverage/KitchenHelper/navigation/NavigatorHelper";
 export {NavigatorHelper}

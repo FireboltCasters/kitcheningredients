@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {FunctionComponent, useContext} from 'react';
 import {Text, Box, Button, Heading, HStack, Icon, useBreakpointValue, useColorMode, View,} from 'native-base';
-import Template from "./Template";
+import Layout from "./Template";
 
 interface AppState {
 
@@ -18,12 +18,12 @@ export const BreakPointLayout = ({
 	...props
 }: any) => {
 
-	let widthValues = !!props.breakPointWidthValues ? props.breakPointWidthValues : Template.getWidthValues();
+	let widthValues = !!props.breakPointWidthValues ? props.breakPointWidthValues : Layout.getWidthValues();
 	const boxWidth = useBreakpointValue(widthValues);
 
 	return (
 			<Box
-				style={{padding: Template.padding, flex: 1, margin: 0 ,alignItems: "flex-start"}}
+				style={{padding: Layout.padding, flex: 1, margin: 0 ,alignItems: "flex-start"}}
 				{...props}
 				flex={1}
 				px={4}
