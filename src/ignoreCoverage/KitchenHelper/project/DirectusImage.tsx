@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, {FunctionComponent, useState} from 'react';
-import {Image, Pressable, View} from "native-base";
+import {Image, View} from "native-base";
 import ServerAPI from "../ServerAPI";
 import {LoadingView} from "./LoadingView";
 import {TouchableOpacity} from "react-native";
@@ -43,7 +43,10 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 		}
 
 		content = (<>
-			<Image source={source} alt={props.alt} style={props.style} ignoreFallback={true}
+			<Image source={source} alt={props.alt} style={props.style}
+             ignoreFallback={props.ignoreFallback}
+             fallbackSource={props.fallbackSource}
+           fallbackElement={props.fallbackElement}
 				   onLoadEnd={() => {
 					   setLoading(false)
 				   }}
