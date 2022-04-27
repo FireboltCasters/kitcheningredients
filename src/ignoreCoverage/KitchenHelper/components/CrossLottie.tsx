@@ -14,7 +14,8 @@ export const CrossLottie = (props) => {
       initialSource = exampleLottie;
     }
 
-    const [loaded, setLoaded] = useState(false);
+    const [width, setWidth] = useState(props.width)
+    const [height, setHeight] = useState(props.height)
     const [source, setSource] = useState(initialSource);
     const [reloadnumber, setReloadnumber] = useState(0);
 
@@ -48,9 +49,6 @@ export const CrossLottie = (props) => {
         return null;
     }
 
-    let height = props.height || 300;
-    let width = props.width || 300;
-
     let content = null;
 
     if(!!source){
@@ -67,11 +65,21 @@ export const CrossLottie = (props) => {
       content = <KitchenSkeleton style={{height: height, width: width}} />
     }
 
-    return (
-        <View style={{height: height, width: width}}>
+    let flex = props.flex;
+
+      return(
+        <View onLayout={(event) => {
+          if(!!flex){
+            const {x, y, width, height} = event.nativeEvent.layout;
+            setHeight(height);
+            setWidth(width)
+          }
+        }}>
+          <View style={{height: height, width: width}}>
             <View style={{position: "absolute", height: "100%", width: "100%"}}>
-                {content}
+              {content}
             </View>
+          </View>
         </View>
-    )
+      )
 }
