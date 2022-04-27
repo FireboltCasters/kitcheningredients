@@ -62,7 +62,11 @@ export const CrossLottie = (props) => {
         />;
       }
     } else {
-      content = <KitchenSkeleton style={{height: height, width: width}} />
+      if(!!props.customLoading){
+        content = props.customLoading;
+      } else {
+        content = <KitchenSkeleton style={{height: "100%", width: "100%"}} />
+      }
     }
 
     let flex = props.flex;
