@@ -20,10 +20,6 @@ export const BaseTemplate = ({
 								 _hStack,
 								 ...props}: any) => {
 
-  static function useBaseWidth(){
-    return Layout.
-  }
-
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [remoteServerInfo, setServerInfo] = useState(undefined)
 
@@ -63,3 +59,5 @@ export const BaseTemplate = ({
 		</SafeAreaView>
 	)
 }
+
+BaseTemplate.useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;
