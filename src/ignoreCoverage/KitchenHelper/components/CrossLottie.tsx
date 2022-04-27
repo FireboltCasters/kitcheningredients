@@ -14,8 +14,8 @@ export const CrossLottie = (props) => {
       initialSource = exampleLottie;
     }
 
-    const [width, setWidth] = useState(props.width)
-    const [height, setHeight] = useState(props.height)
+    const [width, setWidth] = useState(props.width || props?.style?.width)
+    const [height, setHeight] = useState(props.height || props?.style?.height)
     const [source, setSource] = useState(initialSource);
     const [reloadnumber, setReloadnumber] = useState(0);
 
@@ -66,9 +66,17 @@ export const CrossLottie = (props) => {
     }
 
     let flex = props.flex;
+    let outerStyle: any;
+    outerStyle = {
+      height: height, width: width
+    }
+    
+    if(!!flex){
+      outerStyle = {"flex": 1};
+    }
 
       return(
-        <View onLayout={(event) => {
+        <View style={outerStyle} onLayout={(event) => {
           if(!!flex){
             const {x, y, width, height} = event.nativeEvent.layout;
             setHeight(height);
