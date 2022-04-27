@@ -45,10 +45,6 @@ export const CrossLottie = (props) => {
         downloadInformations();
     }, [props])
 
-    if(!source){
-        return null;
-    }
-
     let content = null;
 
     if(!!source){
