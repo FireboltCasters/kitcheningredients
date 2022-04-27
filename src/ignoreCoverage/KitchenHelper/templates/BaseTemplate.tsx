@@ -8,6 +8,7 @@ import {BreakPointLayout} from "./BreakPointLayout";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
 import {SafeAreaView} from "react-native";
+import {Layout} from "./Layout";
 
 export const BaseTemplate = ({
 								 children,
@@ -18,6 +19,10 @@ export const BaseTemplate = ({
 								 _status,
 								 _hStack,
 								 ...props}: any) => {
+
+  static function useBaseWidth(){
+    return Layout.
+  }
 
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [remoteServerInfo, setServerInfo] = useState(undefined)

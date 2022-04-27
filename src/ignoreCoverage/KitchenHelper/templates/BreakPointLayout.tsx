@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {FunctionComponent, useContext} from 'react';
 import {Text, Box, Button, Heading, HStack, Icon, useBreakpointValue, useColorMode, View,} from 'native-base';
-import Layout from "./Layout";
+import {Layout} from "./Layout";
 
 export const BreakPointLayout = ({
 	children,

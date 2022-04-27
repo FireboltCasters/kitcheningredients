@@ -8,7 +8,7 @@ import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import ServerAPI from "../ServerAPI";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import {ConfigHolder} from "../ConfigHolder";
-import Layout from "./Layout";
+import {Layout} from "./Layout";
 
 const padding = 0;
 

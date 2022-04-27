@@ -1,6 +1,6 @@
 import {useBreakpointValue} from "native-base";
 
-export default class Layout {
+export class Layout {
 	static padding = 16;
 
 	static WIDTH_MD = 768-Layout.padding;
@@ -35,7 +35,7 @@ export default class Layout {
 	}
 
 
-	static useBaseTemplateContentWidth(){
+	static getBaseTemplateContentWidth(){
     let baseTemplateWidthValues = Layout.getRawWidthValues();
     let keys = Object.keys(baseTemplateWidthValues);
     for(let key of keys){
@@ -46,6 +46,10 @@ export default class Layout {
     }
 
     return Layout.transformWithValuesToPxIfPossible(baseTemplateWidthValues)
+  }
+
+  static useBaseTemplateContentWidth(){
+    return useBreakpointValue(Layout.getBaseTemplateContentWidth());
   }
 
 	static getSmallDeviceValues(){
