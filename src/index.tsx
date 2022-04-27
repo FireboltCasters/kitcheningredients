@@ -1,3 +1,6 @@
+import {DirectusImage} from "./ignoreCoverage/KitchenHelper/project/DirectusImage";
+export {DirectusImage}
+
 import {Layout} from "./ignoreCoverage/KitchenHelper/templates/Layout";
 export {Layout}
 

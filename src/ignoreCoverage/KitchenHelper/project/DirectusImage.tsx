@@ -9,6 +9,7 @@ import {ConfigHolder} from "../ConfigHolder";
 interface AppState {
 	assetId: string;
 	alt?: string;
+  url?: string;
 	style?: any;
 	showLoading?: boolean
 	isPublic?: boolean
@@ -20,24 +21,25 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 	// TODO: https://docs.directus.io/configuration/project-settings/#files-thumbnails
 	// add key, fit, width, etc. as parameters here also
 
-
-	//{height: "40px", width: "40px"}
-
 	let content = null;
 
-	if(!!props.assetId){
-		let imageURL = ServerAPI.getAssetImageURL(props.assetId);
-		let url = imageURL;
-		console.log(url);
-		if(!props.isPublic){
-			let token = ConfigHolder.storage.get_auth_access_token();
-			if(!!url && !!token){
-				if(!url.includes("?")){
-					url+="?";
-				}
-				url+="&access_token="+token;
-			}
-		}
+	if(!!props.assetId || !!props.url){
+    let url = props.url;
+
+    if(!!props.assetId){
+      let imageURL = ServerAPI.getAssetImageURL(props.assetId);
+      url = imageURL;
+      if(!props.isPublic){
+        let token = ConfigHolder.storage.get_auth_access_token();
+        if(!!url && !!token){
+          if(!url.includes("?")){
+            url+="?";
+          }
+          url+="&access_token="+token;
+        }
+      }
+    }
+
 		let source={
 			uri: url
 		}

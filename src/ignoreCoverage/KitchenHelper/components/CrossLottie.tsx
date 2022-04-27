@@ -70,7 +70,7 @@ export const CrossLottie = (props) => {
     outerStyle = {
       height: height, width: width
     }
-    
+
     if(!!flex){
       outerStyle = {"flex": 1};
     }
