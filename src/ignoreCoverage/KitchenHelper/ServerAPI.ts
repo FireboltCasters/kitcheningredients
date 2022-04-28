@@ -31,7 +31,11 @@ export default class ServerAPI{
 		let url = EnviromentHelper.getBackendURL();
 		let transport = ServerAPI.getTransport(url, storage, null);
 		let auth = ServerAPI.getAuth(url, storage, customErrorHandleCallback)
-		return new Directus(url, {transport: transport, storage: storage, auth: auth});
+    if(!!ConfigHolder.CustomDirectusTypes){
+      return new Directus<ConfigHolder.CustomDirectusTypes>(url, {transport: transport, storage: storage, auth: auth});
+    } else {
+      return new Directus(url, {transport: transport, storage: storage, auth: auth});
+    }
 	}
 
 	static areCredentialsSaved(){

@@ -16,5 +16,6 @@ export class ConfigHolder{
   static currentpackageJsonLock = null;
   static thirdpartyLicense = null;
   static AppConfig = null;
+  static CustomDirectusTypes: any = null;
 
 }
