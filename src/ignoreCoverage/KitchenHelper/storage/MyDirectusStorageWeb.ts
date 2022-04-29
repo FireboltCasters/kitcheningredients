@@ -4,7 +4,7 @@ import {DefaultStorage} from "./DefaultStorage";
 import {StorageImplementationInterface} from "./StorageImplementationInterface";
 import {WebStorageWrapper} from "./WebStorageWrapper";
 
-export class MyDirectusStorage  extends DefaultStorage/** extends Storage */{
+export class MyDirectusStorageWeb extends DefaultStorage/** extends Storage */{
 
     static async init(){
 

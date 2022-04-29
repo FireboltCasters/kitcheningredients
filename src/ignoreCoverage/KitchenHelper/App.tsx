@@ -6,7 +6,6 @@ import ColorCodeHelper from "./theme/ColorCodeHelper";
 import BaseThemeGenerator from "./theme";
 import {RootStack} from "./navigation/rootNavigator";
 import {ColorStatusBar} from "./components/ColorStatusBar";
-import {MyDirectusStorage} from "./storage/MyDirectusStorage";
 import ServerAPI from "./ServerAPI";
 import {RouteRegisterer} from "./navigation/RouteRegisterer";
 import {Linking} from "react-native";
@@ -17,6 +16,7 @@ import UserHelper from "./utils/UserHelper";
 import {StoreProvider} from "easy-peasy";
 import SynchedState from "./synchedstate/SynchedState";
 import {ConfigHolder} from "./ConfigHolder";
+import {DefaultStorage} from "./storage/DefaultStorage";
 
 export default class App extends React.Component<any, any>{
 
@@ -25,7 +25,7 @@ export default class App extends React.Component<any, any>{
 
 		ConfigHolder.instance = this;
 		if(!!ConfigHolder.storage){
-      ConfigHolder.storage = new MyDirectusStorage();
+      ConfigHolder.storage = new DefaultStorage();
     }
 
     RouteRegisterer.register();
