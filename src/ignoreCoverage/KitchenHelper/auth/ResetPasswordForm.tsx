@@ -48,7 +48,7 @@ export const ResetPasswordForm: FunctionComponent = (props) => {
 						size="lg" />
 				</View>
 			</FormControl>
-			<Flex direction={"row"} justify={"space-between"}>
+			<Flex flexDirection={"row"} justify={"space-between"}>
 				<FormButton loading={resetInitiated} disabled={resetInitiated} onPress={() => {resetPassword()}}>
 					{"Reset"}
 				</FormButton>

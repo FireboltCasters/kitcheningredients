@@ -71,7 +71,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
 					</View>
 				</ScrollViewWithGradient>
 				<Wrap
-					direction="row"
+					flexDirection="row"
 					justify="center"
 				>
 					<InternalLink destination={AboutUs} fontSize={"sm"}>{"About Us"}</InternalLink>
@@ -97,7 +97,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
 		<SafeAreaView style={{height: "100%", width: "100%"}}>
 		<Flex
 			style={{height: "100%", width: "100%"}}
-			direction="row"
+			flexDirection="row"
 		>
 			{renderLeftSide()}
 			{renderRightSide()}

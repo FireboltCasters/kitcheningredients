@@ -54,7 +54,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
         <View style={{marginVertical: 20}}></View>
         <Text><Text bold={true} >{identifier}</Text> is currentrly authenticated. If you recognize this account, press continue.</Text>
         <View style={{marginVertical: 20}}></View>
-        <Flex direction={"row"} justify={"space-between"}>
+        <Flex flexDirection={"row"} justify={"space-between"}>
           <SignOutButton />
           <FormButton onPress={async () => {
             await handleContinue();

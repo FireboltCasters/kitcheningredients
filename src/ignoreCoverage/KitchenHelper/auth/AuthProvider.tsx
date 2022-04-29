@@ -55,7 +55,7 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	let text = buttonText || "Log in with "+providerNameReadable;
 
 	let content = (
-		<Flex direction={"row"} _light={{backgroundColor: "rgb(240, 244, 249)"}} _dark={{backgroundColor: "darkgray"}} style={{borderRadius: 6, flex: 1, margin: 12}}>
+		<Flex flexDirection={"row"} _light={{backgroundColor: "rgb(240, 244, 249)"}} _dark={{backgroundColor: "darkgray"}} style={{borderRadius: 6, flex: 1, margin: 12}}>
 			<View style={{height: 60, width: 60, alignItems: "center", justifyContent: "center", backgroundColor: iconBackgroundColor, borderRadius: 6}}>
 				{renderIcon(icon, ssoIconStyle.color)}
 			</View>
