@@ -1,3 +1,6 @@
+import {MyDirectusStorageNative} from "./ignoreCoverage/KitchenHelper/storage/MyDirectusStorageNative";
+export {MyDirectusStorageNative}
+
 import {CrossLottieTest} from "./ignoreCoverage/KitchenHelper/components/CrossLottieTest";
 export {CrossLottieTest}
 
