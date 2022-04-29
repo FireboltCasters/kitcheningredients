@@ -8,7 +8,7 @@ SynchedState.registerSynchedStates(RequiredStorageKeys.THEME, ColorCodeHelper.VA
 
 export class DefaultStorage implements MyDirectusStorageInterface/** extends Storage */{
 
-    static async init(){
+    async init(){
 
     }
 

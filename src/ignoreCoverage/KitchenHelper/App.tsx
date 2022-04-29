@@ -145,7 +145,7 @@ export default class App extends React.Component<any, any>{
 	}
 
 	async loadSynchedVariables(){
-		await MyDirectusStorage.init(); //before ConfigHolder.storage.initContextStores();
+		await ConfigHolder.storage.init(); //before ConfigHolder.storage.initContextStores();
 		await ConfigHolder.storage.initContextStores(); //before SynchedState.initContextStores();
 		SynchedState.initSynchedKeys();
 		await SynchedState.initContextStores(); //after ConfigHolder.storage.initContextStores();

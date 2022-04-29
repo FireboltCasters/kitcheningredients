@@ -9,7 +9,7 @@ export class MyDirectusStorage extends DefaultStorage/** extends Storage */{
         super();
     }
 
-    static async init(){
+    async init(){
         const data = await SyncStorage.init();
     }
 

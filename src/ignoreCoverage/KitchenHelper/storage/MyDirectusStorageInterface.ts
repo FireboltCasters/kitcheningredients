@@ -3,6 +3,7 @@ export interface MyDirectusStorageInterface{
     set(key: string, value: string);
     getAllKeys(): string[];
     delete(key: string);
+    init();
     initContextStores();
     has_cookie_config(): boolean;
     has_credentials_saved(): boolean;

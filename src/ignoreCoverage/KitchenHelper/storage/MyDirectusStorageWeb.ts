@@ -6,7 +6,7 @@ import {WebStorageWrapper} from "./WebStorageWrapper";
 
 export class MyDirectusStorageWeb extends DefaultStorage/** extends Storage */{
 
-    static async init(){
+    async init(){
 
     }
 
