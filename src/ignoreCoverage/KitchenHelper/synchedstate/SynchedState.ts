@@ -30,6 +30,9 @@ export default class SynchedState {
     }
 
     static getRequiredStorageKeys(){
+        let requiredKeys = KeyExtractorHelper.getListOfStaticKeyValues(RequiredStorageKeys);
+        console.log("getRequiredStorageKeys");
+        console.log(requiredKeys);
         return KeyExtractorHelper.getListOfStaticKeyValues(RequiredStorageKeys);
     }
 
@@ -52,6 +55,8 @@ export default class SynchedState {
     }
 
     private static registerSynchedState(key: string, defaultValue?: string, beforeHook?, afterHook?, override: boolean = false){
+      console.log("registerSynchedState: key: "+key);
+
         let additionalModel = SynchedState.globalSynchedStoreModels[key];
         if(!!additionalModel && !override){
             return new Error("Additional variable for storage already exists for that key: "+key);
