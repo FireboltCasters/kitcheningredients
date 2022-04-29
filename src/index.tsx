@@ -20,9 +20,6 @@ import SynchedState, {useSynchedState} from "./ignoreCoverage/KitchenHelper/sync
 export {useSynchedState}
 export {SynchedState}
 
-import {CrossLottie} from "./ignoreCoverage/KitchenHelper/components/CrossLottie";
-export {CrossLottie}
-
 import ServerAPI from "./ignoreCoverage/KitchenHelper/ServerAPI";
 export {ServerAPI}
 
