@@ -7,10 +7,6 @@ import {RequiredSynchedStates} from "./RequiredSynchedStates";
 
 export function useSynchedState(storageKey): [value: string, setValue: (value) => {}] {
     const value = useStoreState((state) => {
-      console.log("useStoreState(): ");
-      console.log("storageKey: ",storageKey);
-      console.log("state");
-      console.log(state);
       return state[storageKey]?.value
     });
     const setValue = useStoreActions((actions) => actions[storageKey].setValue);
@@ -31,8 +27,6 @@ export default class SynchedState {
 
     static getRequiredStorageKeys(){
         let requiredKeys = KeyExtractorHelper.getListOfStaticKeyValues(RequiredStorageKeys);
-        console.log("getRequiredStorageKeys");
-        console.log(requiredKeys);
         return KeyExtractorHelper.getListOfStaticKeyValues(RequiredStorageKeys);
     }
 
@@ -55,16 +49,11 @@ export default class SynchedState {
     }
 
     private static registerSynchedState(key: string, defaultValue?: string, beforeHook?, afterHook?, override: boolean = false){
-        console.log("registerSynchedState: key: "+key);
-
         let additionalModel = SynchedState.globalSynchedStoreModels[key];
         if(!!additionalModel && !override){
             return new Error("Additional variable for storage already exists for that key: "+key);
         }
         SynchedState.globalSynchedStoreModels[key] = new SynchedVariableInterface(key, defaultValue, beforeHook, afterHook);
-        console.log("SynchedState.globalSynchedStoreModels");
-        console.log(SynchedState.globalSynchedStoreModels);
-
     }
 
     static registerSynchedStates(listOfKeys: string[] | string, defaultValue?: string, beforeHook?, afterHook?, override: boolean = false){
@@ -101,15 +90,10 @@ export default class SynchedState {
     static initContextStores(){
         let model = {};
 
-        console.log("initContextStores");
-
         let additionalKeys = Object.keys(SynchedState.globalSynchedStoreModels);
-        console.log("additionalKeys: ");
-        console.log(additionalKeys);
 
         for(let i=0; i<additionalKeys.length; i++){
             let key = additionalKeys[i];
-            console.log("key: "+key);
             let aditionalStoreModel: SynchedVariableInterface = SynchedState.globalSynchedStoreModels[key];
             let storageKey = aditionalStoreModel.key;
             model[storageKey] = {

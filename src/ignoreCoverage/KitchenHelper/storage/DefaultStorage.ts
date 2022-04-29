@@ -23,7 +23,6 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     async initContextStores(SynchedState){
-        console.log("initContextStores");
         let keys = SynchedState.getRequiredStorageKeys();
         this.initSynchedKeys(SynchedState, keys, true);
         let pluginStorageKeys = SynchedState.getPluginStorageKeys()
@@ -31,8 +30,6 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     initSynchedKeys(SynchedState, keys, override){
-      console.log("initSynchedKeys");
-      console.log(keys);
         for(let i=0; i<keys.length; i++){
             let storageKey = keys[i];
             let value = this.get(storageKey);
