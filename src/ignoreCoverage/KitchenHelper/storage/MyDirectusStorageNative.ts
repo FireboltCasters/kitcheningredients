@@ -3,7 +3,7 @@ import SyncStorage from 'sync-storage';
 import {RequiredStorageKeys} from "./RequiredStorageKeys";
 import {DefaultStorage} from "./DefaultStorage";
 
-export class MyDirectusStorage extends DefaultStorage/** extends Storage */{
+export class MyDirectusStorageNative extends DefaultStorage/** extends Storage */{
 
     constructor() {
         super();
