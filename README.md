@@ -19,6 +19,7 @@
 <p align="center">
   <a href="https://github.com/FireboltCasters/kitcheningredients/actions/workflows/npmPublish.yml"><img src="https://github.com/FireboltCasters/kitcheningredients/actions/workflows/npmPublish.yml/badge.svg" alt="Npm publish" /></a>
   <a href="https://github.com/FireboltCasters/kitcheningredients/actions/workflows/linter.yml"><img src="https://github.com/FireboltCasters/kitcheningredients/actions/workflows/linter.yml/badge.svg" alt="Build status" /></a>
+<!--
   <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=alert_status" alt="Quality Gate" /></a>
   <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=bugs" alt="Bugs" /></a>
   <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=coverage" alt="Coverage" /></a>
@@ -29,6 +30,7 @@
   <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=security_rating" alt="Security Rating" /></a>
   <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=sqale_index" alt="Technical Debt" /></a>
   <a href="https://sonarcloud.io/dashboard?id=FireboltCasters_kitcheningredients"><img src="https://sonarcloud.io/api/project_badges/measure?project=FireboltCasters_kitcheningredients&metric=vulnerabilities" alt="Vulnerabilities" /></a>
+-->
 </p>
 
 ## About
