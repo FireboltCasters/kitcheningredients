@@ -98,10 +98,15 @@ export default class SynchedState {
     static initContextStores(){
         let model = {};
 
+        console.log("initContextStores");
+
         let additionalKeys = Object.keys(SynchedState.globalSynchedStoreModels);
+        console.log("additionalKeys: ");
+        console.log(additionalKeys);
 
         for(let i=0; i<additionalKeys.length; i++){
             let key = additionalKeys[i];
+            console.log("key: "+key);
             let aditionalStoreModel: SynchedVariableInterface = SynchedState.globalSynchedStoreModels[key];
             let storageKey = aditionalStoreModel.key;
             model[storageKey] = {
@@ -115,6 +120,7 @@ export default class SynchedState {
         const store = createStore(
             model
         );
+
         SynchedState.store = store;
     }
 }
