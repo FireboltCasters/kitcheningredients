@@ -17,6 +17,7 @@ import UserHelper from "./utils/UserHelper";
 import {StoreProvider} from "easy-peasy";
 import SynchedState from "./synchedstate/SynchedState";
 import {ConfigHolder} from "./ConfigHolder";
+import {RequiredStorageKeys} from "kitcheningredients";
 
 export default class App extends React.Component<any, any>{
 
@@ -145,8 +146,9 @@ export default class App extends React.Component<any, any>{
 	}
 
 	async loadSynchedVariables(){
+    SynchedState.registerSynchedStates(RequiredStorageKeys.THEME, ColorCodeHelper.VALUE_THEME_DEFAULT, null, null, false);
 		await ConfigHolder.storage.init(); //before ConfigHolder.storage.initContextStores();
-		await ConfigHolder.storage.initContextStores(); //before SynchedState.initContextStores();
+		await ConfigHolder.storage.initContextStores(SynchedState); //before SynchedState.initContextStores();
 		await SynchedState.initSynchedKeys();
 		await SynchedState.initContextStores(); //after ConfigHolder.storage.initContextStores();
 	}

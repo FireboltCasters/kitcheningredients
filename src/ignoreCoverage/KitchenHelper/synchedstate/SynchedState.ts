@@ -55,13 +55,16 @@ export default class SynchedState {
     }
 
     private static registerSynchedState(key: string, defaultValue?: string, beforeHook?, afterHook?, override: boolean = false){
-      console.log("registerSynchedState: key: "+key);
+        console.log("registerSynchedState: key: "+key);
 
         let additionalModel = SynchedState.globalSynchedStoreModels[key];
         if(!!additionalModel && !override){
             return new Error("Additional variable for storage already exists for that key: "+key);
         }
         SynchedState.globalSynchedStoreModels[key] = new SynchedVariableInterface(key, defaultValue, beforeHook, afterHook);
+        console.log("SynchedState.globalSynchedStoreModels");
+        console.log(SynchedState.globalSynchedStoreModels);
+
     }
 
     static registerSynchedStates(listOfKeys: string[] | string, defaultValue?: string, beforeHook?, afterHook?, override: boolean = false){

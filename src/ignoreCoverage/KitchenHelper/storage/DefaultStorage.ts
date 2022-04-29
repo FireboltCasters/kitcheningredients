@@ -1,10 +1,6 @@
 import {RequiredStorageKeys} from "./RequiredStorageKeys";
 import {MyDirectusStorageInterface} from "./MyDirectusStorageInterface";
 import {StorageImplementationInterface} from "./StorageImplementationInterface";
-import SynchedState from "../synchedstate/SynchedState";
-import ColorCodeHelper from "../theme/ColorCodeHelper";
-
-SynchedState.registerSynchedStates(RequiredStorageKeys.THEME, ColorCodeHelper.VALUE_THEME_DEFAULT, null, null, false);
 
 export class DefaultStorage implements MyDirectusStorageInterface/** extends Storage */{
 
@@ -26,15 +22,15 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
         return true;
     }
 
-    async initContextStores(){
+    async initContextStores(SynchedState){
         console.log("initContextStores");
         let keys = SynchedState.getRequiredStorageKeys();
-        this.initSynchedKeys(keys, true);
+        this.initSynchedKeys(SynchedState, keys, true);
         let pluginStorageKeys = SynchedState.getPluginStorageKeys()
-        this.initSynchedKeys(pluginStorageKeys, false);
+        this.initSynchedKeys(SynchedState, pluginStorageKeys, false);
     }
 
-    initSynchedKeys(keys, override){
+    initSynchedKeys(SynchedState, keys, override){
       console.log("initSynchedKeys");
       console.log(keys);
         for(let i=0; i<keys.length; i++){
