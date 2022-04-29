@@ -6,7 +6,13 @@ import {ConfigHolder} from "../ConfigHolder";
 import {RequiredSynchedStates} from "./RequiredSynchedStates";
 
 export function useSynchedState(storageKey): [value: string, setValue: (value) => {}] {
-    const value = useStoreState((state) => state[storageKey].value);
+    const value = useStoreState((state) => {
+      console.log("useStoreState(): ");
+      console.log("storageKey: ",storageKey);
+      console.log("state");
+      console.log(state);
+      return state[storageKey]?.value
+    });
     const setValue = useStoreActions((actions) => actions[storageKey].setValue);
     return [
         value,

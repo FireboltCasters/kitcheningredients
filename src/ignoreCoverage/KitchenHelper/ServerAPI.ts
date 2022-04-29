@@ -200,7 +200,7 @@ export default class ServerAPI{
 			ServerAPI.tempStore.serverInfo = serverInfo;
 			return serverInfo;
 		} catch (err){
-			console.log("ServerAPI.getServerInfo()");
+			console.log("Err at ServerAPI.getServerInfo()");
 			console.log(err);
 		}
 		return null;

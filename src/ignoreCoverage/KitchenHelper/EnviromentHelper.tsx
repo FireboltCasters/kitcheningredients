@@ -1,6 +1,6 @@
-export default class EnviromentHelper{
+import {ConfigHolder} from "./ConfigHolder";
 
-	static AppConfig = null;
+export default class EnviromentHelper{
 
 	static getDirectusAccessTokenName(){
 		return "directus_access_token";
@@ -19,7 +19,7 @@ export default class EnviromentHelper{
 	}
 
 	static getBackendURL(): string{
-		return EnviromentHelper.getCustomEnvVariables().BACKEND_URL || EnviromentHelper.AppConfig.default.extra.BACKEND_URL;
+		return EnviromentHelper.getCustomEnvVariables()?.BACKEND_URL || ConfigHolder?.AppConfig?.default?.extra?.BACKEND_URL;
 	}
 
 	static getAssetURL(file_id): any{
@@ -30,7 +30,7 @@ export default class EnviromentHelper{
 	}
 
 	static getBasePath(): string{
-		return EnviromentHelper.getCustomEnvVariables().BASE_PATH || EnviromentHelper.AppConfig.default.extra.BASE_PATH;
+		return EnviromentHelper.getCustomEnvVariables()?.BASE_PATH || ConfigHolder?.AppConfig?.default?.extra?.BASE_PATH;
 	}
 
 }

@@ -1,3 +1,6 @@
+import {CrossLottie} from "./ignoreCoverage/KitchenHelper/components/CrossLottie";
+export {CrossLottie}
+
 import {DirectusImage} from "./ignoreCoverage/KitchenHelper/project/DirectusImage";
 export {DirectusImage}
 
