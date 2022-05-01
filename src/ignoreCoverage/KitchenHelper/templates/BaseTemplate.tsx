@@ -5,10 +5,10 @@ import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
 import ServerAPI from "../ServerAPI";
 import {Box, View} from "native-base";
 import {BreakPointLayout} from "./BreakPointLayout";
-import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
 import {SafeAreaView} from "react-native";
 import {Layout} from "./Layout";
+import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 
 export const BaseTemplate = ({
 								 children,
@@ -20,6 +20,7 @@ export const BaseTemplate = ({
 								 _hStack,
 								 ...props}: any) => {
 
+  const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [remoteServerInfo, setServerInfo] = useState(undefined)
 
@@ -41,15 +42,23 @@ export const BaseTemplate = ({
 		}
 	}, [props.route.params])
 
+  function setDimensions(event){
+    const {width, height} = event.nativeEvent.layout;
+    // We can set the state to allow for reference through the state property, and will also change
+    setDimenstion({width: width, height: height});
+    setReloadnumber(reloadnumber+1);
+  }
+
+  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
+
 	return(
 		<SafeAreaView style={{height: "100%", width: "100%"}}>
 		<View flex={1} flexDirection={"row"}>
-		<BaseLayout title={title} serverInfo={serverInfo} >
+		<BaseLayout title={title} serverInfo={serverInfo} onLayout={setDimensions} >
 			<ScrollViewWithGradient hideGradient={true} style={{width: "100%", height: "100%"}} >
 				<BreakPointLayout >
 					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
-						{children}
-						<ShowMoreGradientPlaceholder />
+						{childrenWithProps}
 					</Box>
 				</BreakPointLayout>
 			</ScrollViewWithGradient>

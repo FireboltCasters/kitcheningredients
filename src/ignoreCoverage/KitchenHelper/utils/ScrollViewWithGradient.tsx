@@ -2,6 +2,7 @@
 import React, {FunctionComponent} from "react";
 import {ScrollView, ScrollViewProps} from 'react-native';
 import {ShowMoreGradient} from "./ShowMoreGradient";
+import {ShowMoreGradientPlaceholder} from "./ShowMoreGradientPlaceholder";
 
 interface AppState {
 	hideGradient?: boolean
@@ -10,6 +11,7 @@ export const ScrollViewWithGradient: FunctionComponent<AppState & ScrollViewProp
 
 	let hideGradient = props.hideGradient;
 	let renderedGradient = hideGradient ? null : <ShowMoreGradient />
+  let gradientPlaceHolder = hideGradient ? null: <ShowMoreGradientPlaceholder />;
 
 	return(
 		<>
@@ -19,6 +21,7 @@ export const ScrollViewWithGradient: FunctionComponent<AppState & ScrollViewProp
 				showsVerticalScrollIndicator={true}
 			>
 				{props.children}
+        {gradientPlaceHolder}
 			</ScrollView>
 			{renderedGradient}
 		</>

@@ -115,7 +115,7 @@ export const BaseLayout = ({
 						{/* <Text color={colorMode == 'dark' ? 'white' : 'gray.800'}>v3</Text> */}
 					</HStack>
 				</HStack>
-				<View style={{width: "100%", flex: 1, alignItems: "center"}}>
+				<View style={{width: "100%", flex: 1, alignItems: "center"}} onLayout={props.onLayout}>
 					{children}
 				</View>
 			</Box>
