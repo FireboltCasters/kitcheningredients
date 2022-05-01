@@ -13,7 +13,7 @@ export const ScrollViewWithGradient: FunctionComponent<AppState & ScrollViewProp
 	let renderedGradient = hideGradient ? null : <ShowMoreGradient />
 
 	return(
-		<View style={{width: "100%", height: "100%", alignItems: "center"}} onLayout={props.onLayout}>
+		<View style={{width: "100%", height: "100%"}} onLayout={props.onLayout}>
 			<ScrollView
 				style={props.style}
 				contentContainerStyle={{ width: '100%', alignItems: "center" }}
