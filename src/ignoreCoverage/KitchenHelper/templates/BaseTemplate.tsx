@@ -5,7 +5,7 @@ import {BreakPointLayout} from "./BreakPointLayout";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
-import {EmptyTemplate} from "kitcheningredients";
+import {EmptyTemplate} from "./EmptyTemplate";
 
 export const BaseTemplate = ({
 								 children,
