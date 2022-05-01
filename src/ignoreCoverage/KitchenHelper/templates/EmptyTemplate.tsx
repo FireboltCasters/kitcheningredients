@@ -11,7 +11,7 @@ import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 
-export const BaseNoScrollTemplate = ({
+export const EmptyTemplate = ({
 								 children,
 								 navigation,
 								 title,
@@ -63,12 +63,7 @@ export const BaseNoScrollTemplate = ({
 		<View flex={1} flexDirection={"row"}>
 		<BaseLayout title={title} serverInfo={serverInfo} >
 			<View style={{width: "100%", height: "100%"}} onLayout={setDimensions} >
-				<BreakPointLayout >
-					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
-						{childrenWithProps}
-            <ShowMoreGradientPlaceholder />
-					</Box>
-				</BreakPointLayout>
+          {childrenWithProps}
 			</View>
 		</BaseLayout>
 		<CookieInformation />
@@ -76,5 +71,3 @@ export const BaseNoScrollTemplate = ({
 		</SafeAreaView>
 	)
 }
-
-BaseNoScrollTemplate.useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;

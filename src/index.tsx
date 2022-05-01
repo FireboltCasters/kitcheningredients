@@ -30,8 +30,8 @@ export function multiply(a: number, b: number): Promise<number> {
   return Promise.resolve(a * b);
 }
 
-import {BaseNoScrollTemplate} from "./ignoreCoverage/KitchenHelper/templates/BaseNoScrollTemplate";
-export {BaseNoScrollTemplate}
+import {EmptyTemplate} from "./ignoreCoverage/KitchenHelper/templates/BaseEmptyTemplate";
+export {EmptyTemplate}
 
 import {BaseTemplate} from "./ignoreCoverage/KitchenHelper/templates/BaseTemplate";
 export {BaseTemplate}
