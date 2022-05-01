@@ -9,6 +9,7 @@ import {CookieInformation} from "../screens/legalRequirements/CookieInformation"
 import {SafeAreaView} from "react-native";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
+import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 
 export const BaseTemplate = ({
 								 children,
@@ -65,6 +66,7 @@ export const BaseTemplate = ({
 				<BreakPointLayout >
 					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
 						{childrenWithProps}
+            <ShowMoreGradientPlaceholder />
 					</Box>
 				</BreakPointLayout>
 			</ScrollViewWithGradient>
