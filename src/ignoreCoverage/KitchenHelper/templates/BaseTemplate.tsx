@@ -20,7 +20,9 @@ export const BaseTemplate = ({
 								 _hStack,
 								 ...props}: any) => {
 
-  const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
+  const contentWidth = Layout.useBaseTemplateContentWidth();
+
+  const [dimension, setDimenstion] = useState({width: contentWidth, height: undefined})
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [remoteServerInfo, setServerInfo] = useState(undefined)
 
@@ -45,7 +47,12 @@ export const BaseTemplate = ({
   function setDimensions(event){
     const {width, height} = event.nativeEvent.layout;
     // We can set the state to allow for reference through the state property, and will also change
-    setDimenstion({width: width, height: height});
+    let adjustedHeight = undefined;
+    if(!!height){
+      adjustedHeight = parseInt(height)-Layout.padding; // since we have a small padding we want to remove the height
+    }
+
+    setDimenstion({width: contentWidth, height: adjustedHeight});
   }
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});

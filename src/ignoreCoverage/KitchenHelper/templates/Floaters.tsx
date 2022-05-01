@@ -9,7 +9,7 @@ export const Floaters = () => {
 
   let themeFloaterButton = null;
   if(ConfigHolder.displayThemeFloater){
-    themeFloaterButton = <ThemeFloaterButton />;
+    themeFloaterButton = <ThemeFloaterButton key={"ThemeFloater"} />;
   }
 
 
