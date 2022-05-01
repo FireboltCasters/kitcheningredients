@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from "react";
+import React, {useState} from "react";
 import {Box} from "native-base";
 import {BreakPointLayout} from "./BreakPointLayout";
 import {Layout} from "./Layout";
@@ -18,7 +18,10 @@ export const BaseTemplate = ({
 								 _hStack,
 								 ...props}: any) => {
 
-  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: props.dimension});
+  const contentWidth = Layout.useBaseTemplateContentWidth();
+  const adaptedDimension = {width: contentWidth, height: props.dimension?.height}
+
+  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: adaptedDimension});
 
 	return(
 		<EmptyTemplate {...props}>

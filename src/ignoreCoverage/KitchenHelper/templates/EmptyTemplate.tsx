@@ -21,8 +21,6 @@ export const EmptyTemplate = ({
 								 _hStack,
 								 ...props}: any) => {
 
-  const contentWidth = Layout.useBaseTemplateContentWidth();
-
   const [dimension, setDimenstion] = useState({width: contentWidth, height: undefined})
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [remoteServerInfo, setServerInfo] = useState(undefined)
@@ -53,7 +51,7 @@ export const EmptyTemplate = ({
       adjustedHeight = parseInt(height)-Layout.padding; // since we have a small padding we want to remove the height
     }
 
-    setDimenstion({width: contentWidth, height: adjustedHeight});
+    setDimenstion({width: width, height: adjustedHeight});
   }
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
