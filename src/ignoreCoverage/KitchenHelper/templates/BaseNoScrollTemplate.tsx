@@ -11,7 +11,7 @@ import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 
-export const BaseNoScollTemplate = ({
+export const BaseNoScrollTemplate = ({
 								 children,
 								 navigation,
 								 title,
@@ -77,4 +77,4 @@ export const BaseNoScollTemplate = ({
 	)
 }
 
-BaseNoScollTemplate.useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;
+BaseNoScrollTemplate.useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;
