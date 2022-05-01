@@ -1,15 +1,12 @@
 // @ts-nocheck
 import React, {useEffect, useState} from "react";
 import {BaseLayout} from "./BaseLayout";
-import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
 import ServerAPI from "../ServerAPI";
-import {Box, View} from "native-base";
-import {BreakPointLayout} from "./BreakPointLayout";
+import {View} from "native-base";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
 import {SafeAreaView} from "react-native";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
-import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 
 export const EmptyTemplate = ({
 								 children,
@@ -21,7 +18,7 @@ export const EmptyTemplate = ({
 								 _hStack,
 								 ...props}: any) => {
 
-  const [dimension, setDimenstion] = useState({width: contentWidth, height: undefined})
+  const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [remoteServerInfo, setServerInfo] = useState(undefined)
 

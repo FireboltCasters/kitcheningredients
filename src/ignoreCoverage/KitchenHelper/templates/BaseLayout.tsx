@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import {Box, Button, Heading, HStack, Icon, useBreakpointValue, useColorMode, View,} from 'native-base';
+import {Box, Button, Heading, HStack, Icon, useColorMode, View,} from 'native-base';
 import {Floaters} from './Floaters';
 import {SafeAreaTop} from "./SafeAreaTop";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
