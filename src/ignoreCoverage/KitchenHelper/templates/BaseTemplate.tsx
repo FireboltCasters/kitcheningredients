@@ -46,7 +46,6 @@ export const BaseTemplate = ({
     const {width, height} = event.nativeEvent.layout;
     // We can set the state to allow for reference through the state property, and will also change
     setDimenstion({width: width, height: height});
-    setReloadnumber(reloadnumber+1);
   }
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
@@ -54,8 +53,8 @@ export const BaseTemplate = ({
 	return(
 		<SafeAreaView style={{height: "100%", width: "100%"}}>
 		<View flex={1} flexDirection={"row"}>
-		<BaseLayout title={title} serverInfo={serverInfo} onLayout={setDimensions} >
-			<ScrollViewWithGradient hideGradient={true} style={{width: "100%", height: "100%"}} >
+		<BaseLayout title={title} serverInfo={serverInfo} >
+			<ScrollViewWithGradient hideGradient={true} style={{width: "100%", height: "100%"}} onLayout={setDimensions} >
 				<BreakPointLayout >
 					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
 						{childrenWithProps}
