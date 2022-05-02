@@ -5,7 +5,7 @@ import {BreakPointLayout} from "./BreakPointLayout";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
-import {BaseNoScrollTemplate} from "./EmptyTemplate";
+import {BaseNoScrollTemplate} from "./BaseNoScrollTemplate";
 import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
 
 export const BaseTemplate = ({

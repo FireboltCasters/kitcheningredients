@@ -21,7 +21,6 @@ export const RootStack = (props) => {
 	const hideDrawer = ConfigHolder.instance.shouldHideDrawer()
 	if(!hideDrawer){
 		largeScreenDrawerType = "permanent";
-		//TODO need to hide on login screen
 	}
 
 	let drawerType = isSmallDevice ? 'front' : largeScreenDrawerType /** 'front' | 'back' | 'slide' | 'permanent' */
