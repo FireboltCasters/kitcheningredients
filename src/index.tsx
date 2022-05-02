@@ -1,5 +1,5 @@
-import {FullContentTemplate} from "./ignoreCoverage/KitchenHelper/templates/FullContentTemplate";
-export {FullContentTemplate}
+import {EmptyTemplate} from "./ignoreCoverage/KitchenHelper/templates/EmptyTemplate";
+export {EmptyTemplate}
 
 import {CrossLottie} from "./ignoreCoverage/KitchenHelper/components/CrossLottie";
 export {CrossLottie}
@@ -33,8 +33,8 @@ export function multiply(a: number, b: number): Promise<number> {
   return Promise.resolve(a * b);
 }
 
-import {EmptyTemplate} from "./ignoreCoverage/KitchenHelper/templates/EmptyTemplate";
-export {EmptyTemplate}
+import {BaseNoScrollTemplate} from "./ignoreCoverage/KitchenHelper/templates/BaseNoScrollTemplate";
+export {BaseNoScrollTemplate}
 
 import {BaseTemplate} from "./ignoreCoverage/KitchenHelper/templates/BaseTemplate";
 export {BaseTemplate}

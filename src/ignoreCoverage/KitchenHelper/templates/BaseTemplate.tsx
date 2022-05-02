@@ -5,7 +5,7 @@ import {BreakPointLayout} from "./BreakPointLayout";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
-import {EmptyTemplate} from "./EmptyTemplate";
+import {BaseNoScrollTemplate} from "./EmptyTemplate";
 import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
 
 export const BaseTemplate = ({
@@ -24,7 +24,7 @@ export const BaseTemplate = ({
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: adaptedDimension, ...props});
 
 	return(
-		<EmptyTemplate {...props}>
+		<BaseNoScrollTemplate {...props}>
       <ScrollViewWithGradient hideGradient={true} style={{width: "100%", height: "100%"}} >
 				<BreakPointLayout >
 					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
@@ -33,7 +33,7 @@ export const BaseTemplate = ({
 					</Box>
 				</BreakPointLayout>
       </ScrollViewWithGradient>
-		</EmptyTemplate>
+		</BaseNoScrollTemplate>
 	)
 }
 

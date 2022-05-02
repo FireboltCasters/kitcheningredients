@@ -1,12 +1,14 @@
 // @ts-nocheck
 import React, {useEffect, useState} from "react";
+import {BaseLayout} from "./BaseLayout";
 import ServerAPI from "../ServerAPI";
 import {View} from "native-base";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
+import {SafeAreaView} from "react-native";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 
-export const FullContentTemplate = ({
+export const BaseNoScrollTemplate = ({
 								 children,
 								 navigation,
 								 title,
@@ -49,14 +51,18 @@ export const FullContentTemplate = ({
     setDimenstion({width: width, height: adjustedHeight});
   }
 
-  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
+  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension, ...props});
 
 	return(
-		<View style={{height: "100%", width: "100%"}}>
-        <View style={{width: "100%", height: "100%"}} onLayout={setDimensions} >
-            {childrenWithProps}
-        </View>
-      <CookieInformation />
+		<SafeAreaView style={{height: "100%", width: "100%"}}>
+		<View flex={1} flexDirection={"row"}>
+		<BaseLayout title={title} serverInfo={serverInfo} >
+			<View style={{width: "100%", height: "100%"}} onLayout={setDimensions} >
+          {childrenWithProps}
+			</View>
+		</BaseLayout>
+		<CookieInformation />
 		</View>
+		</SafeAreaView>
 	)
 }
