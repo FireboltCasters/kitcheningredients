@@ -85,7 +85,7 @@ export const BaseLayout = ({
 				style={{paddingHorizontal: padding, margin: 0}}
 				{...props}
 				flex={1}
-				px={4}
+				px={0}
 				mx="auto"
 				pt={navigation ? '70px' : 0}
 				width={"100%"}
