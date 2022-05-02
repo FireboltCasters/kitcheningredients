@@ -1,5 +1,5 @@
-import {FullScreenTemplate} from "./ignoreCoverage/KitchenHelper/templates/FullScreenTemplate";
-export {FullScreenTemplate}
+import {FullContentTemplate} from "./ignoreCoverage/KitchenHelper/templates/FullContentTemplate";
+export {FullContentTemplate}
 
 import {CrossLottie} from "./ignoreCoverage/KitchenHelper/components/CrossLottie";
 export {CrossLottie}

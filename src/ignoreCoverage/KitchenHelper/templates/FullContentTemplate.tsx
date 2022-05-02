@@ -6,7 +6,7 @@ import {CookieInformation} from "../screens/legalRequirements/CookieInformation"
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 
-export const FullScreenTemplate = ({
+export const FullContentTemplate = ({
 								 children,
 								 navigation,
 								 title,
