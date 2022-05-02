@@ -41,12 +41,7 @@ export const EmptyTemplate = ({
   function setDimensions(event){
     const {width, height} = event.nativeEvent.layout;
     // We can set the state to allow for reference through the state property, and will also change
-    let adjustedHeight = undefined;
-    if(!!height){
-      adjustedHeight = parseInt(height)-Layout.padding; // since we have a small padding we want to remove the height
-    }
-
-    setDimenstion({width: width, height: adjustedHeight});
+    setDimenstion({width: width, height: height});
   }
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});

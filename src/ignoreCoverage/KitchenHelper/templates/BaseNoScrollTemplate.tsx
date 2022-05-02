@@ -51,7 +51,7 @@ export const BaseNoScrollTemplate = ({
     setDimenstion({width: width, height: adjustedHeight});
   }
 
-  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension, ...props});
+  const childrenWithProps = CloneChildrenWithProps.passProps(children, {serverInfo: serverInfo, dimension: dimension, ...props});
 
 	return(
 		<SafeAreaView style={{height: "100%", width: "100%"}}>
