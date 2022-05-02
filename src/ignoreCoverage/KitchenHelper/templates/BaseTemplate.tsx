@@ -24,7 +24,7 @@ export const BaseTemplate = ({
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: adaptedDimension, ...props});
 
 	return(
-		<BaseNoScrollTemplate {...props}>
+		<BaseNoScrollTemplate {...props} title={title}>
       <ScrollViewWithGradient hideGradient={true} style={{width: "100%", height: "100%"}} >
 				<BreakPointLayout >
 					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
