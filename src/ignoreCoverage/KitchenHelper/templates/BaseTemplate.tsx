@@ -21,7 +21,7 @@ export const BaseTemplate = ({
   const contentWidth = Layout.useBaseTemplateContentWidth();
   const adaptedDimension = {width: contentWidth, height: props.dimension?.height}
 
-  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: adaptedDimension});
+  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: adaptedDimension, ...props});
 
 	return(
 		<EmptyTemplate {...props}>
