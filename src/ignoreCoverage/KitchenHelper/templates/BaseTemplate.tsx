@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, {useState} from "react";
-import {Box} from "native-base";
+import {Box, View} from "native-base";
 import {BreakPointLayout} from "./BreakPointLayout";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
@@ -9,6 +9,7 @@ import {BaseNoScrollTemplate} from "./BaseNoScrollTemplate";
 import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
 
 export const BaseTemplate = ({
+                 ignoreDimension,
 								 children,
 								 navigation,
 								 title,
@@ -18,10 +19,7 @@ export const BaseTemplate = ({
 								 _hStack,
 								 ...props}: any) => {
 
-  const contentWidth = Layout.useBaseTemplateContentWidth();
-  const adaptedDimension = {width: contentWidth, height: props.dimension?.height}
-
-  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: adaptedDimension, ...props});
+  const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
 
 	return(
 		<BaseNoScrollTemplate {...props} title={title}>

@@ -18,7 +18,6 @@ export const BaseNoScrollTemplate = ({
 								 _hStack,
 								 ...props}: any) => {
 
-  const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [remoteServerInfo, setServerInfo] = useState(undefined)
 
@@ -40,24 +39,13 @@ export const BaseNoScrollTemplate = ({
 		}
 	}, [props.route.params])
 
-  function setDimensions(event){
-    const {width, height} = event.nativeEvent.layout;
-    // We can set the state to allow for reference through the state property, and will also change
-    let adjustedHeight = undefined;
-    if(!!height){
-      adjustedHeight = parseInt(height)-Layout.padding; // since we have a small padding we want to remove the height
-    }
-
-    setDimenstion({width: width, height: adjustedHeight});
-  }
-
-  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension, ...props});
+  const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
 
 	return(
 		<SafeAreaView style={{height: "100%", width: "100%"}}>
 		<View flex={1} flexDirection={"row"}>
 		<BaseLayout title={title} serverInfo={serverInfo} >
-			<View style={{width: "100%", height: "100%"}} onLayout={setDimensions} >
+			<View style={{width: "100%", height: "100%"}} >
           {childrenWithProps}
 			</View>
 		</BaseLayout>
