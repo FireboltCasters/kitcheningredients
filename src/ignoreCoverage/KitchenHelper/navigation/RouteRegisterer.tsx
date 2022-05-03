@@ -67,8 +67,6 @@ export class RouteRegisterer {
         RegisteredRoutesMap.reset();
         RegisteredRoutesMap.setInitialRouteName(RouteRegisterer.routeLogin);
 
-        RouteRegisterer.registerLegalRequirements();
-
         Menu.registerRoute(Login, LoginTemplate, "Login", RouteRegisterer.routeLogin);
         Menu.registerRoute(ResetPassword, LoginTemplate, "Reset Password", "reset-password");
         Menu.registerUnauthenticatedMenu(MenuItem.getMenuItemFromComponent(Login));
@@ -86,6 +84,8 @@ export class RouteRegisterer {
         if(!!ConfigHolder.plugin){
             ConfigHolder.plugin.registerRoutes();
         }
+
+        RouteRegisterer.registerLegalRequirements();
     }
 
     static getDrawer(){
