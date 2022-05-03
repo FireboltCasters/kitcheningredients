@@ -106,6 +106,8 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 
 	function renderMenusByRole(role){
 		let menus = Menu.menusForRolesByID[role];
+		console.log("renderMenusByRole");
+		console.log(menus);
 		return renderMenus(menus);
 	}
 

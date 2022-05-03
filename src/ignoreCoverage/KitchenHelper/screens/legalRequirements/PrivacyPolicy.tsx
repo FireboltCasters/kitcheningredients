@@ -3,7 +3,6 @@ import React, {useEffect} from "react";
 import {Text, View} from "native-base";
 import {ConfigHolder} from "../../ConfigHolder";
 
-import {RenderHTML} from "../../utils/RenderHTML";
 import TextGenerator from "../../helper/TextGenerator";
 
 export const PrivacyPolicy = (props) => {

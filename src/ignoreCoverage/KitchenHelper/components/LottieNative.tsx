@@ -3,7 +3,7 @@ import React, {PureComponent, useEffect, useState} from "react";
 import { Platform, View, Animated } from "react-native";
 import LottieView from "lottie-react-native";
 import ServerAPI from "../ServerAPI";
-import {KitchenSkeleton} from "kitcheningredients";
+import {KitchenSkeleton} from "./../project/KitchenSkeleton";
 import exampleLottie from "./../assets/exampleLottie.json";
 
 export const LottieNative = (props) => {

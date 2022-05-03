@@ -17,7 +17,7 @@ import UserHelper from "./utils/UserHelper";
 import {StoreProvider} from "easy-peasy";
 import SynchedState from "./synchedstate/SynchedState";
 import {ConfigHolder} from "./ConfigHolder";
-import {RequiredStorageKeys} from "kitcheningredients";
+import {RequiredStorageKeys} from "./storage/RequiredStorageKeys";
 
 export default class App extends React.Component<any, any>{
 
@@ -113,8 +113,9 @@ export default class App extends React.Component<any, any>{
       user.isGuest = UserHelper.isGuest(user);
     }
 		let role = await this.loadRole(user);
-		await this.setState({
-			reloadNumber: this.state.reloadNumber+1,
+
+		await ConfigHolder.instance.setState({
+			reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
 			loadedUser: true,
 			user: user,
 			role: role,
