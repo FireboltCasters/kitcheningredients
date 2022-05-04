@@ -7,19 +7,11 @@ export default class EnviromentHelper{
 	}
 
 	static getAppManifest(): any{
-		return process.env.APP_MANIFEST;
-	}
-
-	static getCustomEnvVariables(): any{
-		let appManifest = EnviromentHelper.getAppManifest();
-		if(appManifest){
-			return appManifest.extra;
-		}
-		return {};
+		return ConfigHolder?.AppConfig?.default?.extra;
 	}
 
 	static getBackendURL(): string{
-		return EnviromentHelper.getCustomEnvVariables()?.BACKEND_URL || ConfigHolder?.AppConfig?.default?.extra?.BACKEND_URL;
+		return EnviromentHelper.getAppManifest()?.BACKEND_URL;
 	}
 
 	static getAssetURL(file_id): any{
@@ -30,7 +22,7 @@ export default class EnviromentHelper{
 	}
 
 	static getBasePath(): string{
-		return EnviromentHelper.getCustomEnvVariables()?.BASE_PATH || ConfigHolder?.AppConfig?.default?.extra?.BASE_PATH;
+		return EnviromentHelper.getAppManifest()?.BASE_PATH;
 	}
 
 }
