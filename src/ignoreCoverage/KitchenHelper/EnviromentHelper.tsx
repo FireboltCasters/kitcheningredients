@@ -7,7 +7,7 @@ export default class EnviromentHelper{
 	}
 
 	static getAppManifest(): any{
-		return ConfigHolder?.AppConfig?.default?.extra;
+		return ConfigHolder?.AppConfig?.extra;
 	}
 
 	static getBackendURL(): string{
