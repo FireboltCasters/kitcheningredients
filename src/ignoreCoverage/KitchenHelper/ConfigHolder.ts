@@ -18,4 +18,8 @@ export class ConfigHolder{
   static AppConfig = null;
   static CustomDirectusTypes: any = null;
 
+  static showMailLogin: boolean = true;
+  static showExternalLogins: boolean = true;
+  static showGuestLogin: boolean = false;
+
 }

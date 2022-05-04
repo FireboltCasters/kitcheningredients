@@ -25,6 +25,6 @@ export const AuthProviderGuest: FunctionComponent<AppState> = ({serverInfo}) => 
 	}
 
 	return (
-		<AuthProvider serverInfo={serverInfo} provider={provider} buttonText={"Continue in as Guest"} callback={handleOpened} />
+		<AuthProvider serverInfo={serverInfo} provider={provider} buttonText={"Continue as Guest"} callback={handleOpened} />
 	)
 }

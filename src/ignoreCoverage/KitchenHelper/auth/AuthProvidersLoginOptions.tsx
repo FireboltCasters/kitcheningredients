@@ -4,11 +4,9 @@ import ServerAPI from "../ServerAPI";
 import {AuthProvider} from "./AuthProvider";
 import {View} from "native-base";
 import {AuthProviderGuest} from "./AuthProviderGuest";
+import {ConfigHolder} from "./../ConfigHolder";
 
 export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
-
-	const showExternalLogins = true;
-	const showGuestLogin = true;
 
 	const [firstFetch, setfirstFetch] = useState(true)
 	const [authProviders, setAuthProviders] = useState(undefined)
@@ -46,11 +44,11 @@ export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
 
 	function renderAuthProviders(){
 		let output = [];
-		if(showGuestLogin){
+		if(ConfigHolder.showGuestLogin){
 			output.push(renderAuthProviderGuest());
 		}
 
-		if(showExternalLogins){
+		if(ConfigHolder.showExternalLogins){
 			if(!!authProviders){
 				for(let provider of authProviders){
 					output.push(renderAuthProvider(provider))

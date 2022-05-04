@@ -68,9 +68,15 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
   }
 
   function renderLoginOptions(){
+
+	  let mailLogin = null;
+	  if(ConfigHolder.showMailLogin){
+      mailLogin = (<EmailLogin />)
+    }
+
     return(
       <>
-        <EmailLogin />
+        {mailLogin}
         <View style={{marginVertical: 20}} >
           <Divider />
         </View>
