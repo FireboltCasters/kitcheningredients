@@ -1,9 +1,10 @@
 // @ts-nocheck
 import React, {useEffect, useState} from "react";
-import {Icon, Text, TextArea, View} from "native-base";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {Text, TextArea, View} from "native-base";
+
 import {TouchableOpacity} from "react-native";
 import {MyAlertDialog} from "../helper/MyAlertDialog";
+import {Icon} from "./Icon";
 
 export const MoreInformationButton= (props) => {
 
@@ -29,7 +30,7 @@ export const MoreInformationButton= (props) => {
 				<TouchableOpacity onPress={() => {
 					setShowmore(true);
 				}} >
-					<Text><Icon as={MaterialCommunityIcons} name={props.icon || "dots-horizontal"}/></Text>
+					<Text><Icon  name={props.icon || "dots-horizontal"}/></Text>
 				</TouchableOpacity>
 				<MyAlertDialog size={"full"} accept={"OK"} title={"More Informations"} content={content} onClose={() => {setShowmore(false); return false;}} onAccept={() => {setShowmore(false); return false;}} isOpen={showmore} />
 			</View>

@@ -1,11 +1,12 @@
 // @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from 'react';
-import {Icon, View} from "native-base";
+import {View} from "native-base";
 import {UserItem} from "@directus/sdk";
 import ServerAPI from "../ServerAPI";
 import {DirectusImage} from "./DirectusImage";
 import {TouchableOpacity} from "react-native";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+
+import {Icon} from "../components/Icon";
 
 const titleBoxHeight = 64;
 
@@ -38,7 +39,7 @@ export const UserProfileAvatar: FunctionComponent<AppState> = (props) => {
 
 	let content = (
 		<Icon
-			as={MaterialCommunityIcons}
+
 			name={"account-circle"}
 			style={{}}
 		/>

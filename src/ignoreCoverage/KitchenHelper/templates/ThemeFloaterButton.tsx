@@ -1,8 +1,9 @@
 // @ts-nocheck
 import React from 'react';
-import {Box, Fab, Icon, useColorMode, View} from 'native-base';
+import {Box, Fab, useColorMode, View} from 'native-base';
 import {Ionicons} from '@expo/vector-icons';
 import {ThemeChanger} from "../theme/ThemeChanger";
+import {Icon} from "../components/Icon";
 
 export const ThemeFloaterButton = () => {
 	const { colorMode, toggleColorMode } = useColorMode();

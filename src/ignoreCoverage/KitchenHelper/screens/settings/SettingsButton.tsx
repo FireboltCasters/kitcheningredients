@@ -1,16 +1,16 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
-import {Button, Icon, Text} from "native-base";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {Button, Text} from "native-base";
 import {NavigatorHelper} from "../../navigation/NavigatorHelper";
 import {Settings} from "./Settings";
 import {TransparentTextButton} from "../../buttons/TransparentTextButton";
+import {Icon} from "../../components/Icon";
 
 export interface AppState {
 	onlyIcon?: boolean;
 	transparent?: boolean;
 }
-export const SettingsButton: FunctionComponent<AppState> = (props) => {
+export const SettingsButton: (props) => any[] = (props) => {
 
 	function handleOpen(){
 		NavigatorHelper.navigate(Settings);
@@ -19,7 +19,7 @@ export const SettingsButton: FunctionComponent<AppState> = (props) => {
 	function renderOnlyIcon(){
 		return (
 			<Button key={"SettingsIcon"} style={{backgroundColor: "transparent"}} onPress={handleOpen} >
-				<Icon as={MaterialCommunityIcons} name={"cog"}/>
+				<Icon name={"cog"}/>
 			</Button>
 		)
 	}

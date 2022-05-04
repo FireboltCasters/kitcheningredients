@@ -1,3 +1,6 @@
+import {Icon} from "./ignoreCoverage/KitchenHelper/components/Icon";
+export {Icon}
+
 import {EmptyTemplate} from "./ignoreCoverage/KitchenHelper/templates/EmptyTemplate";
 export {EmptyTemplate}
 

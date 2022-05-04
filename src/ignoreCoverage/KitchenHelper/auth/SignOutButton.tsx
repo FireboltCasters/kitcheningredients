@@ -1,9 +1,10 @@
 // @ts-nocheck
 import React, {useState} from 'react';
 import ServerAPI from "../ServerAPI";
-import {AlertDialog, Button, Divider, Icon, Text} from "native-base";
+import {AlertDialog, Button, Divider, Text} from "native-base";
 import {TransparentTextButton} from "../buttons/TransparentTextButton";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+
+import {Icon} from "../components/Icon";
 
 export interface AppState {
 	onlyIcon?: boolean;
@@ -60,7 +61,7 @@ export const SignOutButton: (props) => JSX.Element[] = (props) => {
 	function renderOnlyIcon(){
 		return (
 			<Button key={"LogoutIcon"} style={{backgroundColor: "transparent"}} onPress={openConfirmBox} >
-				<Icon as={MaterialCommunityIcons} name={"logout"}/>
+				<Icon  name={"logout"}/>
 			</Button>
 		)
 	}

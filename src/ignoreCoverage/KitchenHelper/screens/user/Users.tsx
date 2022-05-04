@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, {useEffect, useState} from "react";
-import {Icon, Pressable, Text, TextArea, View} from "native-base";
+import {Pressable, Text, TextArea, View} from "native-base";
 import {UserProfileAvatar} from "../../project/UserProfileAvatar";
 import ServerAPI from "../../ServerAPI";
 import {MyThemedBox} from "../../helper/MyThemedBox";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+
 import {MyAlertDialog} from "../../helper/MyAlertDialog";
 import {TouchableOpacity} from "react-native";
+import {Icon} from "../../components/Icon";
 
 export const Users = (props) => {
 
@@ -57,7 +58,7 @@ export const Users = (props) => {
 	}
 
 	function renderRowInformation(icon, content){
-		let renderedIcon = !!icon ? <Text><Icon as={MaterialCommunityIcons} name={icon} marginRight={15}/></Text> : null;
+		let renderedIcon = !!icon ? <Text><Icon  name={icon} marginRight={15}/></Text> : null;
 
 		return (
 			<View style={{alignItems: "center", flexDirection: "row", margin: 3}}>
@@ -97,7 +98,7 @@ export const Users = (props) => {
 				<TouchableOpacity onPress={() => {
 					setShowmore(true);
 				}} >
-					<Text><Icon as={MaterialCommunityIcons} name={"dots-horizontal"}/></Text>
+					<Text><Icon  name={"dots-horizontal"}/></Text>
 				</TouchableOpacity>
 				<MyAlertDialog accept={"OK"} title={"More Informations"} content={content} onClose={() => {setShowmore(false); return false;}} onAccept={() => {setShowmore(false); return false;}} isOpen={showmore} />
 			</View>

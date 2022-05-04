@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
-import {Flex, Icon, Link, Text, useColorMode, View,} from "native-base";
+import {Flex, Link, Text, useColorMode, View,} from "native-base";
 import {MaterialCommunityIcons} from "@expo/vector-icons"
 import EnviromentHelper from "../EnviromentHelper";
 import {StringHelper} from "../helper/StringHelper";
@@ -9,6 +9,7 @@ import {URL_Helper} from "../helper/URL_Helper";
 import {Provider} from "./Provider";
 import {TouchableOpacity} from "react-native";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";
+import {Icon} from "../components/Icon";
 
 interface AppState {
 	serverInfo: any;
@@ -31,7 +32,7 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	function renderIcon(icon, color){
 		return (
 			<Icon
-				as={MaterialCommunityIcons}
+
 				name={icon}
 				color={color}
 				style={{}}

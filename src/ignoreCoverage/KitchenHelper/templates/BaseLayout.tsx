@@ -1,14 +1,15 @@
 // @ts-nocheck
 import React from 'react';
-import {Box, Button, Heading, HStack, Icon, useColorMode, View,} from 'native-base';
+import {Box, Button, Heading, HStack, useColorMode, View,} from 'native-base';
 import {Floaters} from './Floaters';
 import {SafeAreaTop} from "./SafeAreaTop";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import ServerAPI from "../ServerAPI";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import {ConfigHolder} from "../ConfigHolder";
 import {Layout} from "./Layout";
+import {Icon} from "../components/Icon";
 
 const padding = 0;
 
@@ -46,7 +47,7 @@ export const BaseLayout = ({
 		let color = !!props.headingTextColor ? props.headingTextColor : defaultColor;
 		let burgerButton = 	(
 			<Button style={{backgroundColor: "transparent"}} onPress={NavigatorHelper.toggleDrawer} >
-				<Icon as={MaterialCommunityIcons} name={"menu"} color={color}/>
+				<Icon name={"menu"} color={color}/>
 			</Button>
 		)
 

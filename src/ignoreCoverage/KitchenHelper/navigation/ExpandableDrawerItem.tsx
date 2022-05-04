@@ -2,9 +2,10 @@
 import React, {FunctionComponent, useState} from 'react';
 import {DrawerContentScrollView} from "@react-navigation/drawer";
 import {TouchableOpacity} from "react-native";
-import {Icon, View} from "native-base";
+import  {View} from "native-base";
 import {MyThemedBox} from "../helper/MyThemedBox";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+
+import {Icon} from "../components/Icon";
 
 export interface AppState {
     onPress?: (nextExpanded?) => {}
@@ -17,12 +18,12 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
 
     function renderExpandIcon(){
         if(!props.hasChildren){
-            return <Icon as={MaterialCommunityIcons} name={"circle-small"}/>;
+            return <Icon  name={"circle-small"}/>;
         }
         if(expanded){
-            return <Icon as={MaterialCommunityIcons} name={"chevron-down"}/>
+            return <Icon  name={"chevron-down"}/>
         } else {
-            return <Icon as={MaterialCommunityIcons} name={"chevron-right"}/>
+            return <Icon  name={"chevron-right"}/>
         }
     }
 

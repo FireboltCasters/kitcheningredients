@@ -1,7 +1,8 @@
 // @ts-nocheck
 import React from "react";
-import {Box, Icon, View} from "native-base";
+import {Box, View} from "native-base";
 import {Ionicons} from "@expo/vector-icons";
+import {Icon} from "../components/Icon";
 
 export const ShowMoreGradientPlaceholder = (props) => {
 
