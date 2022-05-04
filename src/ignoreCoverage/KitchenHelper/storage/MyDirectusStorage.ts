@@ -1,46 +1,12 @@
 // @ts-nocheck
-import SyncStorage from 'sync-storage';
-import {RequiredStorageKeys} from "./RequiredStorageKeys";
-import {DefaultStorage} from "./DefaultStorage";
+import {Platform} from "react-native";
 
-export class MyDirectusStorage extends DefaultStorage/** extends Storage */{
+let MyDirectusStorage;
 
-    constructor() {
-        super();
-    }
-
-    async init(){
-        const data = await SyncStorage.init();
-    }
-
-    getStorageImplementation(){
-        return SyncStorage;
-    }
-
-    get_cookie_config(){
-        let sessionStorageConfig = null;
-        let localStorageConfig = SyncStorage.get(RequiredStorageKeys.KEY_COOKIE_CONFIG);
-
-        let usedCookieConfig = !!localStorageConfig ? localStorageConfig : sessionStorageConfig
-        if(!!usedCookieConfig){
-            try{
-                return JSON.parse(usedCookieConfig);
-            } catch (err){
-                console.log(err);
-            }
-        }
-        return null;
-    }
-
-    getAllKeys(){
-        return SyncStorage.getAllKeys()
-    }
-
-    has_cookie_config(): boolean{
-       return !!this.get_cookie_config();
-    }
-
-    set_cookie_config(config){
-        SyncStorage.set(RequiredStorageKeys.KEY_COOKIE_CONFIG, JSON.stringify(config));
-    }
+if(Platform.OS==="web"){
+  MyDirectusStorage = require("./MyDirectusStorageWeb").MyDirectusStorageWeb;
+} else {
+  MyDirectusStorage = require("./MyDirectusStorageNative").MyDirectusStorageNative;
 }
+
+export { MyDirectusStorage }

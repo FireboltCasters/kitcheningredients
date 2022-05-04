@@ -1,6 +1,9 @@
 import {EmptyTemplate} from "./ignoreCoverage/KitchenHelper/templates/EmptyTemplate";
 export {EmptyTemplate}
 
+import {MyDirectusStorage} from "./ignoreCoverage/KitchenHelper/storage/MyDirectusStorage";
+export {MyDirectusStorage}
+
 import {CrossLottie} from "./ignoreCoverage/KitchenHelper/components/CrossLottie";
 export {CrossLottie}
 
