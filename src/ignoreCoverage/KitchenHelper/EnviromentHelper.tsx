@@ -7,11 +7,15 @@ export default class EnviromentHelper{
 	}
 
 	static getAppManifest(): any{
-		return ConfigHolder?.AppConfig?.extra;
+		return ConfigHolder?.AppConfig;
 	}
 
+  static getAppManifestExtra(): any{
+    return EnviromentHelper.getAppManifest()?.extra;
+  }
+
 	static getBackendURL(): string{
-		return EnviromentHelper.getAppManifest()?.BACKEND_URL;
+		return EnviromentHelper.getAppManifestExtra()?.BACKEND_URL;
 	}
 
 	static getAssetURL(file_id): any{
@@ -22,7 +26,7 @@ export default class EnviromentHelper{
 	}
 
 	static getBasePath(): string{
-		return EnviromentHelper.getAppManifest()?.BASE_PATH;
+		return EnviromentHelper.getAppManifestExtra()?.BASE_PATH;
 	}
 
 }
