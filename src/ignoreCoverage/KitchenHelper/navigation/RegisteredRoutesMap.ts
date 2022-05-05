@@ -41,6 +41,7 @@ export class RegisteredRoutesMap {
 
         let componentName = route
 
+      // @ts-ignore
       component.name = route;
 
         // https://reactnavigation.org/docs/configuring-links/#marking-params-as-optional
