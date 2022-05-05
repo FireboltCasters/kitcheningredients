@@ -41,9 +41,6 @@ export class RegisteredRoutesMap {
 
         let componentName = route
 
-      // @ts-ignore
-      component.name = route;
-
         // https://reactnavigation.org/docs/configuring-links/#marking-params-as-optional
         if(!!params){
             route+=params;
@@ -67,9 +64,7 @@ export class RegisteredRoutesMap {
     }
 
     static getNameOfComponent(component: FunctionComponent){
-      let name = component.name;
-      name = component.displayName || name;
-      return name;
+      return component.displayName || component.name;
     }
 
     /**

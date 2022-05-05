@@ -9,6 +9,8 @@ import {RequiredStorageKeys} from "../../storage/RequiredStorageKeys";
 import {ThemeChanger} from "../../theme/ThemeChanger";
 import ServerAPI from "../../ServerAPI";
 import SynchedState from "../../synchedstate/SynchedState";
+import {keyof} from "ts-keyof";
+import {TermsAndConditions} from "../legalRequirements/TermsAndConditions";
 
 export const DeveloperSettings = (props) => {
 
@@ -86,3 +88,5 @@ export const DeveloperSettings = (props) => {
 		</>
 	)
 }
+
+DeveloperSettings.displayName = keyof({ DeveloperSettings });

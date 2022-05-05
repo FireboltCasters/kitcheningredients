@@ -6,6 +6,7 @@ import ServerAPI from "../ServerAPI";
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Platform} from "react-native";
 import {ConfigHolder} from "../ConfigHolder";
+import {keyof} from "ts-keyof";
 
 export const Login = (props) => {
 
@@ -104,3 +105,5 @@ export const Login = (props) => {
 
 	return <WebViewLogin loaded={finishedLoading} user={user} />;
 }
+
+Login.displayName = keyof({ Login });

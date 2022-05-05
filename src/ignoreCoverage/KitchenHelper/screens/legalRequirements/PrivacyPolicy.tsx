@@ -5,6 +5,8 @@ import {ConfigHolder} from "../../ConfigHolder";
 
 import {RenderHTML} from "../../utils/RenderHTML";
 import TextGenerator from "../../helper/TextGenerator";
+import {License} from "./License";
+import {keyof} from "ts-keyof";
 
 export const PrivacyPolicy = (props) => {
 
@@ -32,3 +34,5 @@ export const PrivacyPolicy = (props) => {
 			</View>
 	)
 }
+
+PrivacyPolicy.displayName = keyof({ PrivacyPolicy });

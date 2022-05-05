@@ -3,6 +3,8 @@ import React, {useEffect, useRef, useState} from "react";
 import {Text} from "native-base";
 import ServerAPI from "../../ServerAPI";
 import {ConfigHolder} from "../../ConfigHolder";
+import {Debug} from "../debug/Debug";
+import {keyof} from "ts-keyof";
 
 export const Home = (props) => {
 
@@ -53,3 +55,5 @@ export const Home = (props) => {
 		</>
 	)
 }
+
+Home.displayName = keyof({ Home });

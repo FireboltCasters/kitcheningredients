@@ -3,6 +3,7 @@ import React, {useEffect} from "react";
 import {Button, Text, View} from "native-base";
 import {NavigatorHelper} from "../../navigation/NavigatorHelper";
 import {DeveloperSettings} from "./DeveloperSettings";
+import {keyof} from "ts-keyof";
 
 export const Settings = (props) => {
 
@@ -28,3 +29,6 @@ export const Settings = (props) => {
 		</>
 	)
 }
+
+Settings.displayName = keyof({ Settings });
+

@@ -5,6 +5,8 @@ import TextGenerator from "../../helper/TextGenerator";
 import {ConfigHolder} from "../../ConfigHolder";
 import {RouteRegisterer} from "../../navigation/RouteRegisterer";
 import {RegisteredRoutesMap} from "../../navigation/RegisteredRoutesMap";
+import {keyof} from "ts-keyof";
+import {PrivacyPolicy} from "./PrivacyPolicy";
 
 export const TermsAndConditions = (props) => {
 
@@ -27,3 +29,5 @@ export const TermsAndConditions = (props) => {
 		</>
 	)
 }
+
+TermsAndConditions.displayName = keyof({ TermsAndConditions });

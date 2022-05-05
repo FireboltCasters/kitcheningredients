@@ -8,6 +8,8 @@ import {MyThemedBox} from "../../helper/MyThemedBox";
 import {MyAlertDialog} from "../../helper/MyAlertDialog";
 import {TouchableOpacity} from "react-native";
 import {Icon} from "../../components/Icon";
+import {keyof} from "ts-keyof";
+import {Settings} from "../settings/Settings";
 
 export const Users = (props) => {
 
@@ -125,3 +127,6 @@ export const Users = (props) => {
 		</>
 	)
 }
+
+Users.displayName = keyof({ Users });
+

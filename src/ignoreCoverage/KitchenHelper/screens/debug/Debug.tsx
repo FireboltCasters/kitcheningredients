@@ -6,6 +6,8 @@ import {SettingsValue} from "../settings/SettingsValue";
 import {SynchedVariable} from "../../storage/SynchedVariable";
 import {RequiredStorageKeys} from "../../storage/RequiredStorageKeys";
 import {useSynchedState} from "../../synchedstate/SynchedState";
+import {keyof} from "ts-keyof";
+import {Login} from "../../auth/Login";
 
 export const Debug = (props) => {
 
@@ -60,3 +62,5 @@ export const Debug = (props) => {
 		</>
 	)
 }
+
+Debug.displayName = keyof({ Debug });

@@ -2,6 +2,8 @@
 import React, {useEffect} from "react";
 import {PackagesWithLicenses} from "./PackagesWithLicenses";
 import {ConfigHolder} from "../../ConfigHolder";
+import {AboutUs} from "./AboutUs";
+import {keyof} from "ts-keyof";
 
 export const License = (props) => {
 
@@ -18,3 +20,5 @@ export const License = (props) => {
 		</>
 	)
 }
+
+License.displayName = keyof({ License });
