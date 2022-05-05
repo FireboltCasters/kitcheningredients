@@ -28,3 +28,5 @@ export const Settings = (props) => {
 		</>
 	)
 }
+
+Settings.componentName = "Settings"

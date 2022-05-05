@@ -23,10 +23,9 @@ export const TermsAndConditions = (props) => {
 
 	return(
 		<>
-      <Text>{JSON.stringify(RouteRegisterer.screens)}</Text>
-      <Text>{JSON.stringify(RegisteredRoutesMap.getRouteList())}</Text>
-      <Text>{JSON.stringify(RegisteredRoutesMap.getRouteLinkingConfig("myapp/app/", ["myapp:///"]))}</Text>
 			<Text>{TextGenerator.getVeryLongText()}</Text>
 		</>
 	)
 }
+
+TermsAndConditions.componentName = "componentName";

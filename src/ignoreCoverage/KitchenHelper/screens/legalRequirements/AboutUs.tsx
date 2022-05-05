@@ -25,3 +25,5 @@ export const AboutUs = (props) => {
 		</>
 	)
 }
+
+AboutUs.componentName = "AboutUs";

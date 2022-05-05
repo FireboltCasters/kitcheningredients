@@ -41,6 +41,8 @@ export class RegisteredRoutesMap {
 
         let componentName = route
 
+      component.name = route;
+
         // https://reactnavigation.org/docs/configuring-links/#marking-params-as-optional
         if(!!params){
             route+=params;
@@ -53,7 +55,7 @@ export class RegisteredRoutesMap {
             throw new Error("RegisteredRoutesMap.registerRoute: Found conflicting route which wants to be registered: "+errorMsg)
         }
 
-        RegisteredRoutesMap.mapFunctionComponentToRoute[component.name] = route;
+        RegisteredRoutesMap.mapFunctionComponentToRoute[RegisteredRoutesMap.getNameOfComponent(component)] = route;
         RegisteredRoutesMap.mapRouteToScreenItem[route] = {
             screenName: route,
             component: component,
@@ -63,12 +65,19 @@ export class RegisteredRoutesMap {
         }
     }
 
+    static getNameOfComponent(component: FunctionComponent){
+      let name = component.name;
+      name = component.displayName || name;
+      return name;
+    }
+
     /**
      * Converts a CamelCase word into
      * @param screenName
      */
     static getRouteByComponent(component: FunctionComponent){
-        return RegisteredRoutesMap.mapFunctionComponentToRoute[component.name];
+        let name = RegisteredRoutesMap.getNameOfComponent(component)
+        return RegisteredRoutesMap.mapFunctionComponentToRoute[name];
     }
 
     /**
