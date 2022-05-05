@@ -29,7 +29,7 @@ export class ServerInfoHelper {
 
     static getProjectVersion(): string {
         let manifest = EnviromentHelper.getAppManifest();
-        return !!manifest?.version ? manifest.version : "";
+        return manifest?.version || "";
     }
 
     static getSsoIconStyle(serverInfo: ServerInfo){

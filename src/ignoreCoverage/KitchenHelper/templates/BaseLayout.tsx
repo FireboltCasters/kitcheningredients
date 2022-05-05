@@ -56,17 +56,21 @@ export const BaseLayout = ({
 		}
 
 		return (
-			<Heading
-				color={color}
-				// fontSize={{
-				// 	lg: '3xl',
-				// }}
-				_web={{ py: 2 }}
-				isTruncated
-			>
-				{burgerButton}
-				{title ? title : ConfigHolder.config.title}
-			</Heading>
+		  <>
+        {burgerButton}
+        <Heading
+          color={color}
+          // fontSize={{
+          // 	lg: '3xl',
+          // }}
+          _web={{ py: 2 }}
+          isTruncated
+
+        >
+
+          {title ? title : ConfigHolder.config.title}
+        </Heading>
+      </>
 		)
 	}
 
