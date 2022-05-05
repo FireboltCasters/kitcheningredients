@@ -27,5 +27,3 @@ export const TermsAndConditions = (props) => {
 		</>
 	)
 }
-
-TermsAndConditions.componentName = "componentName";

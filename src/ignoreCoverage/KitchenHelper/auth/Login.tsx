@@ -104,5 +104,3 @@ export const Login = (props) => {
 
 	return <WebViewLogin loaded={finishedLoading} user={user} />;
 }
-
-Login.componentName = "Login"

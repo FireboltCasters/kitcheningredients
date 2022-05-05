@@ -60,5 +60,3 @@ export const Debug = (props) => {
 		</>
 	)
 }
-
-Debug.componentName = "Debug"

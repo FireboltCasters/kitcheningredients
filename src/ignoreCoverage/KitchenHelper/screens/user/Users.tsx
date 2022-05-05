@@ -125,5 +125,3 @@ export const Users = (props) => {
 		</>
 	)
 }
-
-Users.componentName = "Users";

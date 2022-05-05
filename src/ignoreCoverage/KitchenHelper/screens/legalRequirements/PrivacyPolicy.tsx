@@ -32,5 +32,3 @@ export const PrivacyPolicy = (props) => {
 			</View>
 	)
 }
-
-PrivacyPolicy.componentName = "componentName";

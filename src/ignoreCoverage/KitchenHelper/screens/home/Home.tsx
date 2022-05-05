@@ -53,5 +53,3 @@ export const Home = (props) => {
 		</>
 	)
 }
-
-Home.componentName = "Home"
