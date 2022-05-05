@@ -17,7 +17,7 @@ import UserHelper from "./utils/UserHelper";
 import {StoreProvider} from "easy-peasy";
 import SynchedState from "./synchedstate/SynchedState";
 import {ConfigHolder} from "./ConfigHolder";
-import {RequiredStorageKeys} from "kitcheningredients";
+import {RequiredStorageKeys} from "./storage/RequiredStorageKeys";
 
 export default class App extends React.Component<any, any>{
 

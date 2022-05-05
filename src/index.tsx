@@ -1,3 +1,9 @@
+import {RouteRegisterer} from "./ignoreCoverage/KitchenHelper/navigation/RouteRegisterer";
+export {RouteRegisterer}
+
+import {RegisteredRoutesMap} from "./ignoreCoverage/KitchenHelper/navigation/RegisteredRoutesMap";
+export {RegisteredRoutesMap}
+
 import {Icon} from "./ignoreCoverage/KitchenHelper/components/Icon";
 export {Icon}
 
