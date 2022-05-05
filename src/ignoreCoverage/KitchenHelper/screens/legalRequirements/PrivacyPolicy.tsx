@@ -35,4 +35,4 @@ export const PrivacyPolicy = (props) => {
 	)
 }
 
-PrivacyPolicy.displayName = keyof({ PrivacyPolicy });
+//PrivacyPolicy.displayName = keyof({ PrivacyPolicy });
