@@ -4,7 +4,7 @@ import {Flex, useBreakpointValue, View, Wrap} from "native-base";
 import ServerAPI from "../ServerAPI";
 import {Floaters} from "./Floaters";
 import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
-import {SafeAreaView, useWindowDimensions} from "react-native";
+import {Platform, SafeAreaView, StatusBar, useWindowDimensions} from "react-native";
 import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
 import {AboutUs} from "../screens/legalRequirements/AboutUs";
 import {License} from "../screens/legalRequirements/License";
@@ -12,6 +12,7 @@ import {TermsAndConditions} from "../screens/legalRequirements/TermsAndCondition
 import {ProjectBanner} from "../project/ProjectBanner";
 import {InternalLink} from "../navigation/InternalLink";
 import {ProjectBackground} from "../project/ProjectBackground";
+import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 
 const titleBoxHeight = 64;
 
@@ -69,6 +70,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
 						{renderSpaceBetweenLogoAndSignIn()}
 						{props.children}
 					</View>
+          <ShowMoreGradientPlaceholder />
 				</ScrollViewWithGradient>
 				<Wrap
 					flexDirection="row"
@@ -93,8 +95,10 @@ export const LoginTemplate: FunctionComponent = (props) => {
 		)
 	}
 
+  const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
+
 	return (
-		<SafeAreaView style={{height: "100%", width: "100%"}}>
+    <SafeAreaView style={{flex: 1, paddingTop: paddingTop}}>
 		<Flex
 			style={{height: "100%", width: "100%"}}
 			flexDirection="row"

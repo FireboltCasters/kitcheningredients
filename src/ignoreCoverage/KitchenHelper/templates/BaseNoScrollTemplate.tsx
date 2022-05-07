@@ -4,7 +4,7 @@ import {BaseLayout} from "./BaseLayout";
 import ServerAPI from "../ServerAPI";
 import {View} from "native-base";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
-import {SafeAreaView} from "react-native";
+import {Platform, SafeAreaView, StatusBar} from "react-native";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 
@@ -40,9 +40,10 @@ export const BaseNoScrollTemplate = ({
 	}, [props.route.params])
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
+  const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
 
 	return(
-		<SafeAreaView style={{height: "100%", width: "100%"}}>
+		<SafeAreaView style={{flex: 1, paddingTop: paddingTop}}>
 		<View flex={1} flexDirection={"row"}>
 		<BaseLayout title={title} serverInfo={serverInfo} >
 			<View style={{width: "100%", height: "100%"}} >
