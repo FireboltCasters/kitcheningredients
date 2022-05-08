@@ -26,7 +26,20 @@ export class Menu {
       RegisteredRoutesMap.registerRoute(new RouteLink(component, template, title, route, params));
     }
 
-    static registerRouteAndGetDefaultMenuItem(component: FunctionComponent, title?: string, template?: FunctionComponent = null, route?: string, params?: any=null){
+    //TODO allow MenuItem to be shown for specific roles?
+    //TODO create a shotcut for creating a menu item with children from registerRoutesAndGetDefaultMenuItems
+        // createMenuItem("Name", [componentA, componentB, component C]) ?
+          //What offers best for a tree structure?
+
+    static registerRoutesAndGetDefaultMenuItems(...components: [FunctionComponent]){
+      let menuItems = [];
+      for(let component of components){
+        menuItems.push(Menu.registerRouteAndGetDefaultMenuItem(component));
+      }
+      return menuItems;
+    }
+
+    static registerRouteAndGetDefaultMenuItem(component: FunctionComponent, title?: string, template?: FunctionComponent, route?: string, params?: any){
       title = !!title ? title : RegisteredRoutesMap.getNameOfComponent(component);
       template = !!template ? template : BaseTemplate;
       route = !!route ? route : title.toLowerCase();
