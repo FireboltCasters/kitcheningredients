@@ -1,5 +1,4 @@
 import {FunctionComponent} from "react";
-import {StringHelper} from "../helper/StringHelper";
 import {Home} from "../screens/home/Home";
 import {RouteLink} from "./RouteLink";
 
@@ -63,8 +62,9 @@ export class RegisteredRoutesMap {
         }
     }
 
-    static getNameOfComponent(component: FunctionComponent){
-      return component.displayName || component.name;
+    static getNameOfComponent(component: FunctionComponent): string{
+      let bestName = component.displayName || component.name;
+      return bestName+"";
     }
 
     /**
@@ -74,15 +74,6 @@ export class RegisteredRoutesMap {
     static getRouteByComponent(component: FunctionComponent){
         let name = RegisteredRoutesMap.getNameOfComponent(component)
         return RegisteredRoutesMap.mapFunctionComponentToRoute[name];
-    }
-
-    /**
-     * Converts a CamelCase word into words with spaces
-     * @param screenName
-     */
-    static getScreenNameByComponentName(componentName){
-        let screenName = ""+componentName; //ExampleName
-        return StringHelper.toCapitalizedWords(screenName);
     }
 
     static getRegisteredRoutes(){

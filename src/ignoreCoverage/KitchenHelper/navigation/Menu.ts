@@ -2,6 +2,7 @@ import {MenuItem} from "./MenuItem";
 import {FunctionComponent} from "react";
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {RouteLink} from "./RouteLink";
+import {BaseTemplate} from "../templates/BaseTemplate";
 
 export class Menu {
 
@@ -23,6 +24,21 @@ export class Menu {
 
     static registerRoute(component: FunctionComponent, template: FunctionComponent = null,title: string, route: string, params: any=null){
       RegisteredRoutesMap.registerRoute(new RouteLink(component, template, title, route, params));
+    }
+
+    static registerRouteAndGetDefaultMenuItem(component: FunctionComponent, title?: string, template?: FunctionComponent = null, route?: string, params?: any=null){
+      title = !!title ? title : RegisteredRoutesMap.getNameOfComponent(component);
+      template = !!template ? template : BaseTemplate;
+      route = !!route ? route : title.toLowerCase();
+      params = !!params ? params : null;
+      RegisteredRoutesMap.registerRoute(new RouteLink(component, template, title, route, params));
+      return Menu.getDefaultMenuItem(component, title, route);
+    }
+
+    static getDefaultMenuItem(component: FunctionComponent, title?: string, route?: string){
+      title = !!title ? title : RegisteredRoutesMap.getNameOfComponent(component);
+      route = !!route ? route : title.toLowerCase();
+      return new MenuItem(route, title, component)
     }
 
     static setHome(component: FunctionComponent) {
