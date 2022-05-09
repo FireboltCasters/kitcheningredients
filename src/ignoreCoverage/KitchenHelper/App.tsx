@@ -108,11 +108,16 @@ export default class App extends React.Component<any, any>{
 		await ConfigHolder.instance.setUser(UserHelper.getGuestUser());
 	}
 
-	async setUser(user, callback=() => {}){
+	async setUser(user, callback?){
     if(!!user){
       user.isGuest = UserHelper.isGuest(user);
     }
 		let role = await this.loadRole(user);
+
+    if(!callback && !!ConfigHolder.plugin.onLogin){
+      callback = () => ConfigHolder.plugin.onLogin(user, role);
+    }
+
 		await this.setState({
 			reloadNumber: this.state.reloadNumber+1,
 			loadedUser: true,

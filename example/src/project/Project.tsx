@@ -52,6 +52,10 @@ export default class Project implements PluginInterface{
 		}
 	}
 
+	onLogin(user, role){
+
+  }
+
 	getAboutUsComponent() {
 		//return component with informations
 	}
