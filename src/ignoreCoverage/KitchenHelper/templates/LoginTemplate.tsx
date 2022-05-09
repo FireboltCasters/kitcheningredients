@@ -13,6 +13,7 @@ import {ProjectBanner} from "../project/ProjectBanner";
 import {InternalLink} from "../navigation/InternalLink";
 import {ProjectBackground} from "../project/ProjectBackground";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
+import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 
 const titleBoxHeight = 64;
 
@@ -98,7 +99,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
   const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
 
 	return (
-    <SafeAreaView style={{flex: 1, paddingTop: paddingTop}}>
+    <KitchenSafeAreaView>
 		<Flex
 			style={{height: "100%", width: "100%"}}
 			flexDirection="row"
@@ -107,6 +108,6 @@ export const LoginTemplate: FunctionComponent = (props) => {
 			{renderRightSide()}
 			<Floaters />
 		</Flex>
-		</SafeAreaView>
+		</KitchenSafeAreaView>
 	)
 }

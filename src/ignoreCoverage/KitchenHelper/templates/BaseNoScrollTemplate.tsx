@@ -7,6 +7,7 @@ import {CookieInformation} from "../screens/legalRequirements/CookieInformation"
 import {Platform, SafeAreaView, StatusBar} from "react-native";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
+import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 
 export const BaseNoScrollTemplate = ({
 								 children,
@@ -40,18 +41,17 @@ export const BaseNoScrollTemplate = ({
 	}, [props.route.params])
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
-  const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
 
 	return(
-		<SafeAreaView style={{flex: 1, paddingTop: paddingTop}}>
-		<View flex={1} flexDirection={"row"}>
-		<BaseLayout title={title} serverInfo={serverInfo} >
-			<View style={{width: "100%", height: "100%"}} >
-          {childrenWithProps}
-			</View>
-		</BaseLayout>
-		<CookieInformation />
-		</View>
-		</SafeAreaView>
+		<KitchenSafeAreaView>
+      <View flex={1} flexDirection={"row"}>
+      <BaseLayout title={title} serverInfo={serverInfo} >
+        <View style={{width: "100%", height: "100%"}} >
+            {childrenWithProps}
+        </View>
+      </BaseLayout>
+      <CookieInformation />
+      </View>
+		</KitchenSafeAreaView>
 	)
 }

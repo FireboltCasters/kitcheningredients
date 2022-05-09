@@ -1,3 +1,6 @@
+import {KitchenSafeAreaView} from "./ignoreCoverage/KitchenHelper/components/KitchenSafeAreaView";
+export {KitchenSafeAreaView}
+
 import {RouteRegisterer} from "./ignoreCoverage/KitchenHelper/navigation/RouteRegisterer";
 export {RouteRegisterer}
 
