@@ -1,13 +1,13 @@
 // @ts-nocheck
 import React from 'react'
-import {Text, TouchableOpacity, View} from 'react-native'
 
 import codePush from 'react-native-code-push'
 import App from '../App'
 import ColorCodeHelper from "../theme/ColorCodeHelper";
 import * as SplashScreen from 'expo-splash-screen';
+import {UpdateScreen} from "./UpdateScreen";
 
-export class CodePushWrapper extends React.Component {
+export class CodePushWrapperNative extends React.Component {
     static isSyncingFinished(status) {
         return (
             status === codePush.SyncStatus.UP_TO_DATE ||
@@ -52,7 +52,7 @@ export class CodePushWrapper extends React.Component {
     }
 
     async setStatus(status) {
-        console.log(CodePushWrapper.getStatusMessage(status))
+        console.log(CodePushWrapperNative.getStatusMessage(status))
         await this.setState({
             status,
         })
@@ -80,49 +80,12 @@ export class CodePushWrapper extends React.Component {
         })
     }
 
-    renderDownloadProgress() {
-        return (
-            <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-                    <TouchableOpacity
-                        style={{
-                            backgroundColor: 'lightblue',
-                            borderRadius: 20,
-                            alignItems: 'center',
-                            margin: 20,
-                            padding: 20,
-                        }}
-                    >
-                        <Text
-                            style={{
-                                fontSize: 24,
-                                fontWeight: '600',
-                                color: 'black',
-                            }}
-                        >
-                            {'Status:\n'}
-                            {CodePushWrapper.getStatusMessage(this.state.status)}
-                        </Text>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: '600',
-                                color: 'black',
-                            }}
-                        >
-                            {'Download Progress:\n'}
-                            {`${this.state.receivedBytes} / ${this.state.totalBytes} Bytes`}
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-        )
-    }
-
     render() {
-        if (CodePushWrapper.isSyncingFinished(this.state.status) && !!this.state.initialColorMode) {
+        if (CodePushWrapperNative.isSyncingFinished(this.state.status) && !!this.state.initialColorMode) {
             return <App initialColorMode={this.state.initialColorMode} />
         } else {
             return <App initialColorMode={this.state.initialColorMode} >
-                {this.renderDownloadProgress()}
+                <UpdateScreen receivedBytes={this.state.receivedBytes} totalBytes={this.state.totalBytes} status={this.state.status} initialColorMode={this.state.initialColorMode} />
             </App>
         }
     }
