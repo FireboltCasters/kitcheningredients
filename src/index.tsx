@@ -1,9 +1,3 @@
-import {Home} from "./ignoreCoverage/KitchenHelper/screens/home/Home";
-export {Home}
-
-import {Settings} from "./ignoreCoverage/KitchenHelper/screens/settings/Settings";
-export {Settings}
-
 import {Device} from "./ignoreCoverage/KitchenHelper/helper/Device";
 export {Device}
 

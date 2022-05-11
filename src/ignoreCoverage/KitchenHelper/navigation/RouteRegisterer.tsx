@@ -1,5 +1,6 @@
 import {ResetPassword} from "../auth/ResetPassword";
 import {Home} from "../screens/home/Home";
+import {Debug} from "../screens/debug/Debug";
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {Login} from "../auth/Login";
 import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
@@ -71,6 +72,9 @@ export class RouteRegisterer {
         Menu.registerUnauthenticatedMenu(MenuItem.getMenuItemFromComponent(Login));
 
         Menu.registerRoute(Home, BaseTemplate, "Home", "home");
+
+        Menu.registerRoute(Debug, BaseTemplate, "Debug", "debug");
+        Menu.registerUnsafeMenuForRoleByName(Menu.ROLE_ADMINISTRATOR, MenuItem.getMenuItemFromComponent(Debug))
 
         Menu.registerRoute(Users, BaseTemplate, "Users", "users", "/:id?");
         Menu.registerRoute(Settings, BaseTemplate, "Settings", "settings");
