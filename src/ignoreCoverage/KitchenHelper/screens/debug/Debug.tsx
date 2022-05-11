@@ -5,6 +5,7 @@ import {keyof} from "ts-keyof";
 import {TouchableOpacity} from "react-native";
 import {NavigatorHelper} from "kitcheningredients";
 import {DeveloperSettings} from "../settings/DeveloperSettings";
+import {DebugDevice} from "./DebugDevice";
 
 export const Debug = (props) => {
 
@@ -30,6 +31,7 @@ export const Debug = (props) => {
 		<>
 			<Text>{"Debug Screen"}</Text>
       {renderOpenDeveloperSettings()}
+      <DebugDevice />
 		</>
 	)
 }
