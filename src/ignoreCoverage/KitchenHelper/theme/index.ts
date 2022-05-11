@@ -8,11 +8,11 @@ export default class BaseThemeGenerator{
 		return extendTheme({
 			sidebarWidth: sidebarWidth+"px",
 			breakpoints: {
-				'base': 0+320,
-				'sm': 480+320,
-				'md': 768+320,
-				'lg': 992+320,
-				'xl': 1536+320, // +280 from MenuWidth
+				'base': 0+sidebarWidth,
+				'sm': 480+sidebarWidth,
+				'md': 768+sidebarWidth,
+				'lg': 992+sidebarWidth,
+				'xl': 1280+sidebarWidth, // +280 from MenuWidth
 			},
 			components: {
 				Text: {
