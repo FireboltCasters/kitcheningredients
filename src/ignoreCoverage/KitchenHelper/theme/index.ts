@@ -12,7 +12,7 @@ export default class BaseThemeGenerator{
 				'sm': 480+320,
 				'md': 768+320,
 				'lg': 992+320,
-				'xl': 1536+320, // +280 from MenuWidth
+				'xl': 1280+320, // +280 from MenuWidth
 			},
 			components: {
 				Text: {
