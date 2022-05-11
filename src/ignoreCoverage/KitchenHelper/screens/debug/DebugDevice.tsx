@@ -15,7 +15,7 @@ export const DebugDevice = (props) => {
 	// corresponding componentDidMount
 	useEffect(() => {
     load();
-	}, [props.route.params])
+	}, [])
 
   function renderDeviceInformation(key){
 	  return <Text>{key+": "+deviceinformations[key]}</Text>

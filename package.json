@@ -74,7 +74,6 @@
   },
   "peerDependencies": {
     "@directus/sdk": "^9.0.0",
-    "react-native-device-info": "^8.7.1",
     "react": "*",
     "react-native": "*"
   },
@@ -112,7 +111,6 @@
     "react-dom": "16.13.1",
     "react-native": "*",
     "react-native-code-push": "^7.0.2",
-    "react-native-device-info": "^8.7.1",
     "react-native-gesture-handler": "~1.8.0",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
