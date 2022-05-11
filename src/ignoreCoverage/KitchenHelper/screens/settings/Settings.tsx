@@ -4,8 +4,15 @@ import {Button, Text, View} from "native-base";
 import {NavigatorHelper} from "../../navigation/NavigatorHelper";
 import {DeveloperSettings} from "./DeveloperSettings";
 import {keyof} from "ts-keyof";
+import {TouchableOpacity} from "react-native";
+import {ConfigHolder} from "../../ConfigHolder";
 
 export const Settings = (props) => {
+
+  let customComponent = ConfigHolder.plugin.getSettingsComponent();
+  if(!!customComponent){
+    return customComponent;
+  }
 
 	// corresponding componentDidMount
 	useEffect(() => {
@@ -14,10 +21,10 @@ export const Settings = (props) => {
 
 	function renderOpenDeveloperSettings(){
 		return(
-			<Button onPress={() => {
+			<TouchableOpacity onPress={() => {
 				NavigatorHelper.navigate(DeveloperSettings);
 			}}
-			><Text>{"Developer Settings"}</Text></Button>
+			><Text>{"Developer Settings"}</Text></TouchableOpacity>
 		)
 	}
 

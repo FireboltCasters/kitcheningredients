@@ -9,5 +9,6 @@ export interface PluginInterface{
     getPrivacyPolicyComponent();
     getTermsAndConditionsComponent();
     getHomeComponent();
+    getSettingsComponent();
     getCustomProjectLogoComponent();
 }
