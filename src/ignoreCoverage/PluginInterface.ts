@@ -2,6 +2,7 @@ export interface PluginInterface{
     initApp();
     registerRoutes();
     onLogout(error);
+    onLogin(user, role);
     getSynchedStateKeysClass();
     getStorageKeysClass();
     getAboutUsComponent();

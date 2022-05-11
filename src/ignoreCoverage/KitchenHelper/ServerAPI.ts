@@ -29,7 +29,7 @@ export default class ServerAPI{
 
 	static getDirectus(storage, customErrorHandleCallback=null){
 		let url = EnviromentHelper.getBackendURL();
-		let transport = ServerAPI.getTransport(url, storage, null);
+		let transport = ServerAPI.getTransport(url, storage);
 		let auth = ServerAPI.getAuth(url, storage, customErrorHandleCallback)
     if(!!ConfigHolder.CustomDirectusTypes){
       return new Directus<ConfigHolder.CustomDirectusTypes>(url, {transport: transport, storage: storage, auth: auth});
@@ -138,7 +138,7 @@ export default class ServerAPI{
 		}
 	}
 
-	private static getTransport(url, storage, customErrorHandleCallback=null){
+	private static getTransport(url, storage){
 		let myTransport = new TransportWrapper({
 			url: url,
 			beforeRequest: (config) => {
@@ -158,7 +158,6 @@ export default class ServerAPI{
 				};
 			}
 		});
-		myTransport.customErrorHandleCallback = customErrorHandleCallback;
 		return myTransport;
 	}
 

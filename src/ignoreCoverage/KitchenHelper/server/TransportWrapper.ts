@@ -1,6 +1,7 @@
 import {Transport, TransportMethods, TransportOptions, TransportResponse} from "@directus/sdk";
 import ServerAPI from "../ServerAPI";
 import {ConfigHolder} from "../ConfigHolder";
+import {err} from "react-native-svg/lib/typescript/xml";
 
 export default class TransportWrapper extends Transport{
 	customErrorHandleCallback = null;
@@ -26,13 +27,6 @@ export default class TransportWrapper extends Transport{
 			console.log("path: ",path);
 			console.log("status: ",status);
 			console.log("code: ",code);
-
-			if(!!this.customErrorHandleCallback){
-				await this.customErrorHandleCallback(error);
-			} else {
-
-			}
-
 			console.log(path);
 
 			//Happens when the refresh or access token is too old
@@ -43,10 +37,11 @@ export default class TransportWrapper extends Transport{
 				if(this.isRefreshSuccessfull(refreshAnswer)){
 					console.log("Okay lets try to resend the request")
 					try{
-						let answer = await this.request(method, path, data, options);
+						let answer = await super.request(method, path, data, options);
 						return answer;
 					} catch (err){
 						console.log("Resended request after refresh still unsuccessfull, rejecting");
+						console.log(err);
 						return Promise.reject(error);
 					}
 				} else {
@@ -66,12 +61,19 @@ export default class TransportWrapper extends Transport{
 	}
 
 	isTokenExpired(error, status, code){
+	  console.log("isTokenExpired?");
+    console.log("error.toString()")
+    console.log(error.toString())
+
 		if(error.toString()==="Token expired"){
 			return true;
 		}
 		if(status===403 && code==="INVALID_TOKEN"){
 			return true;
 		}
+    if(status===401 && code==="INVALID_TOKEN"){
+      return true;
+    }
 		return false;
 	}
 

@@ -36,6 +36,8 @@ export default class AuthTransportWrapper extends Transport{
 				error.request.responseURL.includes('tfa') === false
 				 */
 			) {
+			  console.log("Invalid Credentials");
+			  console.log(error);
 				await ServerAPI.handleLogout(error);
 				return Promise.reject(error);
 			}

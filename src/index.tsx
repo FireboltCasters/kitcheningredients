@@ -1,3 +1,6 @@
+import {Device} from "./ignoreCoverage/KitchenHelper/helper/Device";
+export {Device}
+
 import {KitchenSafeAreaView} from "./ignoreCoverage/KitchenHelper/components/KitchenSafeAreaView";
 export {KitchenSafeAreaView}
 

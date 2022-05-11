@@ -67,7 +67,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
 			<Flex style={{width: width, height: "100%"}}>
 				<ScrollViewWithGradient style={{flex: 1}}>
 					<View style={{paddingHorizontal: padding, paddingTop: padding, height: "100%", width: "100%"}}>
-						<ProjectBanner />
+						<ProjectBanner serverInfo={serverInfo} />
 						{renderSpaceBetweenLogoAndSignIn()}
 						{props.children}
 					</View>
