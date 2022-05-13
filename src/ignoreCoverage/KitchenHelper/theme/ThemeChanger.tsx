@@ -6,7 +6,10 @@ import {useSynchedState} from "../synchedstate/SynchedState";
 import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
 import {TouchableOpacity} from "react-native";
 
-export const ThemeChanger: FunctionComponent<any> = (props) => {
+interface AppState {
+  onPress: (callback, nextTheme) => {}
+}
+export const ThemeChanger: FunctionComponent<AppState> = (props) => {
 
 	let storageKey = RequiredStorageKeys.THEME;
 	const [value, setValue] = useSynchedState(storageKey);
@@ -18,11 +21,19 @@ export const ThemeChanger: FunctionComponent<any> = (props) => {
 
 	}, [colorMode])
 
+  function handleChange(nextTheme){
+    setValue(nextTheme)
+    toggleColorMode();
+  }
+
 	return(
 		<TouchableOpacity
 			onPress={() => {
-				setValue(nextTheme)
-				toggleColorMode();
+			  if(!!props.onPress){
+			    props.onPress(handleChange.bind(null, nextTheme), nextTheme)
+        } else {
+          handleChange(nextTheme);
+        }
 			}} >
 			{props.children}
 		</TouchableOpacity>
