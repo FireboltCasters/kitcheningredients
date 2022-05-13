@@ -7,6 +7,7 @@ import {Login} from "./auth/Login";
 import TransportWrapper from "./server/TransportWrapper";
 import AuthTransportWrapper from "./server/AuthTransportWrapper";
 import {ConfigHolder} from "./ConfigHolder";
+import UserHelper from "./utils/UserHelper";
 
 export default class ServerAPI{
 
@@ -83,11 +84,19 @@ export default class ServerAPI{
 		return directus;
 	}
 
+	private static getPublicRole(){
+	  return {"data":{"id":"null","name":"Public","icon":"public","description":null,"ip_access":null,"enforce_tfa":false,"admin_access":false,"app_access":true,"users":[]}}
+  }
+
 	static async getRole(user){
 		let role_id = user?.role;
 		if(!!role_id){
 			try{
 				let directus = ServerAPI.getClient();
+				if(role_id===UserHelper.USER_ROLE_GUEST){
+				  return ServerAPI.getPublicRole()
+        }
+
 				let role = await directus.roles.readOne(role_id);
 				return role;
 			} catch (err){

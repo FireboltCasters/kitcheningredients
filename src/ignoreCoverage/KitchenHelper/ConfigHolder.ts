@@ -21,5 +21,6 @@ export class ConfigHolder{
   static showMailLogin: boolean = true;
   static showExternalLogins: boolean = true;
   static showGuestLogin: boolean = false;
+  static autoLogin: boolean = false;
 
 }

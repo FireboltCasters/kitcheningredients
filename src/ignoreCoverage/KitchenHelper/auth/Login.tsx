@@ -7,6 +7,7 @@ import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Platform} from "react-native";
 import {ConfigHolder} from "../ConfigHolder";
 import {keyof} from "ts-keyof";
+import {RegisteredRoutesMap} from "kitcheningredients";
 
 export const Login = (props) => {
 
@@ -62,6 +63,11 @@ export const Login = (props) => {
 		return true;
 	}
 
+  async function handleContinue(){
+    await NavigatorHelper.navigate(RegisteredRoutesMap.getHome())
+    await ConfigHolder.instance.setHideDrawer(false);
+  }
+
 	async function fetchAccessToken(){
 		//console.log("fetchAccessToken");
 		if(!!directus_access_token){
@@ -91,6 +97,10 @@ export const Login = (props) => {
 			fetchAccessToken();
 		}
 
+		if(ConfigHolder.autoLogin && !!user){
+		  handleContinue();
+    }
+
 	}, [props.route.params, firstload])
 
 	let finishedLoading = loaded;
@@ -103,7 +113,7 @@ export const Login = (props) => {
 		return null;
 	}
 
-	return <WebViewLogin loaded={finishedLoading} user={user} />;
+	return <WebViewLogin loaded={finishedLoading} user={user} handleContinue={handleContinue} />;
 }
 
 Login.displayName = keyof({ Login });

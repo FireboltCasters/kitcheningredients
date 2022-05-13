@@ -13,7 +13,8 @@ import {ConfigHolder} from "../ConfigHolder";
 export interface WebViewLoginFormState {
 	user?: UserItem;
 	refresh: () => void,
-	loaded: boolean
+	loaded: boolean,
+  handleContinue: any
 }
 export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 
@@ -31,11 +32,6 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 			</View>
 		)
 	}
-
-	async function handleContinue(){
-    await NavigatorHelper.navigate(RegisteredRoutesMap.getHome())
-    await ConfigHolder.instance.setHideDrawer(false);
-  }
 
   function renderLoading(){
     return(
@@ -57,7 +53,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
         <Flex flexDirection={"row"} justify={"space-between"}>
           <SignOutButton />
           <FormButton onPress={async () => {
-            await handleContinue();
+            await props.handleContinue();
             //
           }}>
             {"Continue"}
@@ -92,7 +88,6 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 		}
 		if(!!user){
 		  if(!!user.isGuest){
-		    //handleContinue()
         return renderRememberThisAccount(user);
 		  } else {
         return renderRememberThisAccount(user);
