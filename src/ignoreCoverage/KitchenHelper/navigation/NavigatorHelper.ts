@@ -34,6 +34,10 @@ export class NavigatorHelper {
         return props.route.params || {};
     }
 
+    static goBack(){
+        NavigatorHelper.getCurrentNavigation()?.dispatch(CommonActions.goBack());
+    }
+
     static getCurrentNavigation(){
         // @ts-ignore
         return navigationRef?.current;

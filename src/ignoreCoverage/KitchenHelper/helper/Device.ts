@@ -1,11 +1,13 @@
 // @ts-nocheck
 import React from "react";
-import { Dimensions } from 'react-native';
+import {Dimensions, PixelRatio} from 'react-native';
 
 export interface DeviceInformation{
   display_width: any,
   display_height: any,
   display_scale: any,
+  display_pixelratio: any,
+  display_fontscale: any,
 }
 
 export class Device{
@@ -18,7 +20,9 @@ export class Device{
     let device = {
       display_width: windowWidth,
       display_height: windowHeight,
-      display_scale: windowScale
+      display_scale: windowScale,
+      display_pixelratio: PixelRatio.get(),
+      display_fontscale: PixelRatio.getFontScale()
     }
 
     return device;

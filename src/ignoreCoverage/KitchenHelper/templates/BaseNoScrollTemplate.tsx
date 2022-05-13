@@ -11,16 +11,14 @@ import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 
 export const BaseNoScrollTemplate = ({
 								 children,
-								 navigation,
 								 title,
-								 navigateTo,
-								 serverInfo,
+                  header,
 								 _status,
 								 _hStack,
 								 ...props}: any) => {
 
 	const [reloadnumber, setReloadnumber] = useState(0)
-	const [remoteServerInfo, setServerInfo] = useState(undefined)
+	const [serverInfo, setServerInfo] = useState(props.serverInfo)
 
 	async function loadServerInfo() {
 		try{
@@ -38,14 +36,14 @@ export const BaseNoScrollTemplate = ({
 		if(!serverInfo){
 			loadServerInfo();
 		}
-	}, [props.route.params])
+	}, [props?.route?.params])
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
 
 	return(
 		<KitchenSafeAreaView>
       <View flex={1} flexDirection={"row"}>
-      <BaseLayout title={title} serverInfo={serverInfo} >
+      <BaseLayout title={title} serverInfo={serverInfo} header={header} >
         <View style={{width: "100%", height: "100%"}} >
             {childrenWithProps}
         </View>

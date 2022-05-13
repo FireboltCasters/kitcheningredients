@@ -18,6 +18,7 @@ export const BaseLayout = ({
 						   children,
 						   navigation,
 						   title,
+               header,
 						   doclink,
 						   navigateTo,
 						   _status,
@@ -42,6 +43,10 @@ export const BaseLayout = ({
 	}
 
 	function renderHeading(){
+	  if(!!header){
+	    return header;
+    }
+
 		let defaultColor = ssoIconStyle.color || (colorMode == 'dark' ? 'white' : 'gray.800')
 
 		let color = !!props.headingTextColor ? props.headingTextColor : defaultColor;

@@ -9,12 +9,9 @@ import {BaseNoScrollTemplate} from "./BaseNoScrollTemplate";
 import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
 
 export const BaseTemplate = ({
-                 ignoreDimension,
 								 children,
-								 navigation,
 								 title,
-								 navigateTo,
-								 serverInfo,
+                  header,
 								 _status,
 								 _hStack,
 								 ...props}: any) => {
@@ -22,7 +19,7 @@ export const BaseTemplate = ({
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
 
 	return(
-		<BaseNoScrollTemplate {...props} title={title}>
+		<BaseNoScrollTemplate {...props} title={title} header={header}>
       <ScrollViewWithGradient hideGradient={true} style={{width: "100%", height: "100%"}} >
 				<BreakPointLayout >
 					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
