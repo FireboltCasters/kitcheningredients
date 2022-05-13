@@ -1,13 +1,11 @@
 // @ts-nocheck
 import React, {FunctionComponent, useEffect} from 'react';
-import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Divider, Flex, Spinner, Text, View} from "native-base";
 import {FormButton} from "../buttons/FormButton";
 import {UserItem} from "@directus/sdk";
 import {SignOutButton} from "./SignOutButton";
 import {EmailLogin} from "./EmailLogin";
 import {AuthProvidersLoginOptions} from "./AuthProvidersLoginOptions";
-import {RegisteredRoutesMap} from "../navigation/RegisteredRoutesMap";
 import {ConfigHolder} from "../ConfigHolder";
 
 export interface WebViewLoginFormState {
@@ -20,8 +18,10 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 
 	// corresponding componentDidMount
 	useEffect(() => {
-
-	}, [])
+    if(ConfigHolder.autoLogin && !!props.user){
+      props.handleContinue();
+    }
+	}, [props])
 
 	function renderSignIn(){
 		return(
