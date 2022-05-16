@@ -10,6 +10,8 @@ import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import {ConfigHolder} from "../ConfigHolder";
 import {Layout} from "./Layout";
 import {Icon} from "../components/Icon";
+import {DrawerButton} from "./DrawerButton";
+import {BackButton} from "./BackButton";
 
 const padding = 0;
 
@@ -18,6 +20,7 @@ export const BaseLayout = ({
 						   children,
 						   navigation,
 						   title,
+               showbackbutton,
                header,
 						   doclink,
 						   navigateTo,
@@ -50,19 +53,21 @@ export const BaseLayout = ({
 		let defaultColor = ssoIconStyle.color || (colorMode == 'dark' ? 'white' : 'gray.800')
 
 		let color = !!props.headingTextColor ? props.headingTextColor : defaultColor;
-		let burgerButton = 	(
-			<Button style={{backgroundColor: "transparent"}} onPress={NavigatorHelper.toggleDrawer} >
-				<Icon name={"menu"} color={color}/>
-			</Button>
-		)
+
+	  let drawerButton = <DrawerButton color={color} />
+		let leftButton = drawerButton
+
+    if(!!showbackbutton){
+        leftButton = <BackButton color={color} />
+    }
 
 		if(!isSmallDevice){
-			burgerButton = null;
+			leftButton = null;
 		}
 
 		return (
 		  <>
-        {burgerButton}
+        {leftButton}
         <Heading
           color={color}
           // fontSize={{

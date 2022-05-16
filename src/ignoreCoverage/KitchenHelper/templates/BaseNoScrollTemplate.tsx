@@ -17,6 +17,7 @@ export const BaseNoScrollTemplate = ({
 								 _hStack,
 								 ...props}: any) => {
 
+  const params = props?.route?.params;
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [serverInfo, setServerInfo] = useState(props.serverInfo)
 
@@ -36,14 +37,16 @@ export const BaseNoScrollTemplate = ({
 		if(!serverInfo){
 			loadServerInfo();
 		}
-	}, [props?.route?.params])
+	}, [params])
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
+
+	const showbackbutton = params?.showbackbutton;
 
 	return(
 		<KitchenSafeAreaView>
       <View flex={1} flexDirection={"row"}>
-      <BaseLayout title={title} serverInfo={serverInfo} header={header} >
+      <BaseLayout title={title} serverInfo={serverInfo} header={header} showbackbutton={showbackbutton} >
         <View style={{width: "100%", height: "100%"}} >
             {childrenWithProps}
         </View>
