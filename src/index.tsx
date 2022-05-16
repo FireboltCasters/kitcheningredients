@@ -1,3 +1,12 @@
+import {ThemedMarkdown} from "./ignoreCoverage/KitchenHelper/components/markdown/ThemedMarkdown";
+export {ThemedMarkdown}
+
+import {DirectusMarkdown} from "./ignoreCoverage/KitchenHelper/components/markdown/DirectusMarkdown";
+export {DirectusMarkdown}
+
+import {DirectusSingletonMarkdown} from "./ignoreCoverage/KitchenHelper/components/markdown/DirectusSingletonMarkdown";
+export {DirectusSingletonMarkdown}
+
 import {Device} from "./ignoreCoverage/KitchenHelper/helper/Device";
 export {Device}
 

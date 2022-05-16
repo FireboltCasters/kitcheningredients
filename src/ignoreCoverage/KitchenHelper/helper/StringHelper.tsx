@@ -1,4 +1,24 @@
+import {Text, View} from "native-base";
+import React from "react";
+
 export class StringHelper{
+
+  static renderZeroSpaceHeight(amount?: number){
+    if(amount===undefined){
+      amount=1;
+    }
+
+    let content = [];
+    for(let i=0; i<amount; i++){
+      content.push(<Text key={"zeroSpace_"+i}>{"\u200b"}</Text>);
+    }
+
+    return(
+      <View style={{flexDirection: "column"}}>
+        {content}
+      </View>
+    )
+  }
 
   /**
    * Converts CamelCase to kebab-case
@@ -18,5 +38,7 @@ export class StringHelper{
   static capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+
 
 }
