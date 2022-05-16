@@ -8,6 +8,7 @@ import {Platform, SafeAreaView, StatusBar} from "react-native";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
+import {NavigatorHelper} from "kitcheningredients";
 
 export const BaseNoScrollTemplate = ({
 								 children,
@@ -41,7 +42,10 @@ export const BaseNoScrollTemplate = ({
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
 
-	const showbackbutton = params?.showbackbutton;
+	let showbackbutton = params?.showbackbutton;
+	if(NavigatorHelper.getHistory()?.length<=1){
+	  showbackbutton = false;
+  }
 
 	return(
 		<KitchenSafeAreaView>

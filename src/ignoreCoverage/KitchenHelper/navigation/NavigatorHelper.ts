@@ -62,11 +62,21 @@ export class NavigatorHelper {
         }
     }
 
+    static getState(){
+      const nativeState = NavigatorHelper.getCurrentNavigation()?.getRootState();
+      const webState = NavigatorHelper.getCurrentNavigation()?.dangerouslyGetState();
+      let state = nativeState || webState;
+      return state;
+    }
+
+    static getHistory(){
+      let state = NavigatorHelper.getState();
+      return state.history || [];
+    }
+
     //https://github.com/react-navigation/react-navigation/issues/6674
     static getEmptyParams(): object {
-        const nativeState = NavigatorHelper.getCurrentNavigation()?.getRootState();
-        const webState = NavigatorHelper.getCurrentNavigation()?.dangerouslyGetState();
-        let state = nativeState || webState;
+        let state = NavigatorHelper.getState()
         let keys: string[] = [];
         try{
             /**

@@ -54,16 +54,19 @@ export const BaseLayout = ({
 
 		let color = !!props.headingTextColor ? props.headingTextColor : defaultColor;
 
-	  let drawerButton = <DrawerButton color={color} />
-		let leftButton = drawerButton
 
-    if(!!showbackbutton){
+    /**
+    if(!isSmallDevice){
+      leftButton = null;
+    }
+   */
+
+    let drawerButton = <DrawerButton color={color} />
+    let leftButton = drawerButton
+
+    if(!!showbackbutton){ //show alsways the back button even on small devices
         leftButton = <BackButton color={color} />
     }
-
-		if(!isSmallDevice){
-			leftButton = null;
-		}
 
 		return (
 		  <>
