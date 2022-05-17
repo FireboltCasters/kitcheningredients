@@ -97,10 +97,6 @@ export const Login = (props) => {
 			fetchAccessToken();
 		}
 
-		if(ConfigHolder.autoLogin && !!user){
-		  handleContinue();
-    }
-
 	}, [props.route.params, firstload])
 
 	let finishedLoading = loaded;
