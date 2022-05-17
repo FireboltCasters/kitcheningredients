@@ -80,7 +80,11 @@ export const Login = (props) => {
 			}
 		} else {
 			//console.log("No access token in url, finish loading")
-			setLoaded(true)
+      if(ConfigHolder.autoLogin && !!user){
+        handleContinue();
+      } else {
+        setLoaded(true)
+      }
 		}
 	}
 
@@ -96,10 +100,6 @@ export const Login = (props) => {
 		} else {
 			fetchAccessToken();
 		}
-
-		if(ConfigHolder.autoLogin && !!user){
-		  handleContinue();
-    }
 
 	}, [props.route.params, firstload])
 
