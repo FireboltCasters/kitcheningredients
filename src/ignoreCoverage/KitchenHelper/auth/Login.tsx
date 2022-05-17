@@ -109,6 +109,11 @@ export const Login = (props) => {
 		return null;
 	}
 
+  if(!!finishedLoading && ConfigHolder.autoLogin && !!props.user){
+    handleContinue();
+    return null;
+  }
+
 	return <WebViewLogin loaded={finishedLoading} user={user} handleContinue={handleContinue} />;
 }
 

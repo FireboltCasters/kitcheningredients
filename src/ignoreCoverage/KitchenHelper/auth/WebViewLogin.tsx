@@ -18,9 +18,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 
 	// corresponding componentDidMount
 	useEffect(() => {
-    if(!!props.loaded && ConfigHolder.autoLogin && !!props.user){
-      props.handleContinue();
-    }
+
 	}, [props])
 
 	function renderSignIn(){
