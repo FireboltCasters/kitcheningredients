@@ -71,7 +71,7 @@ export class NavigatorHelper {
 
     static getHistory(){
       let state = NavigatorHelper.getState();
-      return state.history || [];
+      return state?.history || [];
     }
 
     //https://github.com/react-navigation/react-navigation/issues/6674
