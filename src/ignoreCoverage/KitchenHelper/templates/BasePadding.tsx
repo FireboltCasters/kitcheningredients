@@ -8,11 +8,9 @@ export const BasePadding = ({
 	...props
 }: any) => {
 
-  const padding = 16;
-
 	return (
 			<Box
-				style={{padding: padding, flex: 1, margin: 0 ,alignItems: "flex-start"}}
+				style={{padding: Layout.padding, flex: 1, margin: 0 ,alignItems: "flex-start"}}
 				flex={1}
 				width={"100%"}
 			>

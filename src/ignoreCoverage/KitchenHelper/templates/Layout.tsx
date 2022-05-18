@@ -2,6 +2,8 @@ import {useBreakpointValue} from "native-base";
 
 export class Layout {
 
+  static padding = 16;
+
 	static WIDTH_MD = 768;
 	static WIDTH_LG = 992;
 	static WIDTH_XL = 1218;
@@ -40,7 +42,7 @@ export class Layout {
     for(let key of keys){
       let value = baseTemplateWidthValues[key];
       if(!(value+"").endsWith("%")){
-        baseTemplateWidthValues[key] = value-(Layout.padding*2) //remove padding *2 because of left and right
+        baseTemplateWidthValues[key] = value
       }
     }
 
