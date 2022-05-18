@@ -19,7 +19,7 @@ export const ProjectLogo: FunctionComponent<AppState> = (props) => {
 	let project_logo_asset_id = ServerInfoHelper.getProjectLogoAssetId(serverInfo);
 
 	let padding = props.menuBar? 0 : 4;
-	let borderRadius = props.menuBar? 0 : 6;
+	let borderRadius = props.menuBar? 0 : 10;
 	const heightAndWidth = titleBoxHeight+padding;
 
 	return(
