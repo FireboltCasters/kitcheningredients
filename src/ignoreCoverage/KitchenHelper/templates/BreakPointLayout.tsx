@@ -22,7 +22,7 @@ export const BreakPointLayout = ({
 				style={{padding: 0, flex: 1, margin: 0 ,alignItems: "flex-start"}}
 				{...props}
 				flex={1}
-				px={4}
+				px={0}
 				mx="auto"
 				pt={navigation ? '70px' : 0}
 				width={boxWidth}
