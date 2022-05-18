@@ -33,40 +33,49 @@ export default class TransportWrapper extends Transport{
 
 			//Happens when the refresh or access token is too old
 			if(this.isTokenExpired(error, status, code)){
-			  await refreshLock.acquireAsync(); //okay lets lock this, so not that we dont register multiple times
-        //TODO check if lock is free, otherwise wait until its free, and then skipt the refresh and simple resend the super.request
-
-
-				console.log("Token is expired, lets try to refresh it")
-				let directus = ServerAPI.getDirectus(ConfigHolder.storage, ServerAPI.handleLogoutError);
-				let refreshAnswer = await directus.auth.refresh();
-
+			  let refreshAnswer = await this.handleRefresh();
 
 				if(this.isRefreshSuccessfull(refreshAnswer)){
 					console.log("Okay lets try to resend the request")
 					try{
 						let answer = await super.request(method, path, data, options);
-            refreshLock.release(); //before handleLogout
 						return answer;
 					} catch (err){
 						console.log("Resent request after refresh still unsuccessfull, rejecting");
 						console.log(err);
-            refreshLock.release(); //before handleLogout
 						return Promise.reject(error);
 					}
 				} else {
-          refreshLock.release(); //before handleLogout
 					await ServerAPI.handleLogout(error); // after releasing lock!
 					return Promise.reject(error);
 				}
 			}
 
 			console.log("-------")
-			//console.log("No idea what error caused neither what to do");
-      refreshLock.release(); //before handleLogout
 			return Promise.reject(error);
 		}
 	}
+
+	async handleRefresh(){
+    await refreshLock.acquireAsync(); //okay lets lock this, so not that we dont register multiple times
+    //TODO check if lock is free, otherwise wait until its free, and then skip the refresh and simple resend the super.request
+
+    console.log("Token is expired, lets try to refresh it")
+    let directus = ServerAPI.getDirectus(ConfigHolder.storage, ServerAPI.handleLogoutError);
+    let refreshAnswer = await directus.auth.refresh();
+
+    this.releaseLock();
+    return refreshAnswer;
+  }
+
+	releaseLock(){
+	  try{
+      refreshLock.release(); //before handleLogout
+    } catch (err){
+	    console.log("releaseLock err");
+	    console.log(err);
+    }
+  }
 
 	isRefreshSuccessfull(answer){
 		return !!answer && !!answer["access_token"] && !!answer["refresh_token"] && !!answer["expires"]
