@@ -18,6 +18,7 @@ import {ConfigHolder} from "../ConfigHolder";
 import {createDrawerNavigator} from "@react-navigation/drawer";
 import {Settings} from "../screens/settings/Settings";
 import {DeveloperSettings} from "../screens/settings/DeveloperSettings";
+import {BaseNoPaddingTemplate} from "kitcheningredients";
 
 const Drawer = createDrawerNavigator();
 
@@ -77,13 +78,12 @@ export class RouteRegisterer {
         Menu.registerUnsafeMenuForRoleByName(Menu.ROLE_ADMINISTRATOR, MenuItem.getMenuItemFromComponent(Debug))
 
         Menu.registerRoute(Users, BaseTemplate, "Users", "users", "/:id?");
-        Menu.registerRoute(Settings, BaseTemplate, "Settings", "settings");
+        Menu.registerRoute(Settings, BaseNoPaddingTemplate, "Settings", "settings");
         Menu.registerRoute(DeveloperSettings, BaseTemplate, "Developer Settings", "settings/developer", "/:id?");
 
-
-        if(!!ConfigHolder.plugin){
-            ConfigHolder.plugin.registerRoutes();
-        }
+      if(!!ConfigHolder.plugin){
+        ConfigHolder.plugin.registerRoutes();
+      }
 
         RouteRegisterer.registerLegalRequirements();
     }

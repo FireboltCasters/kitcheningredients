@@ -22,8 +22,8 @@ export class Menu {
 
     };
 
-    static registerRoute(component: FunctionComponent, template: FunctionComponent = null,title: string, route: string, params: any=null){
-      RegisteredRoutesMap.registerRoute(new RouteLink(component, template, title, route, params));
+    static registerRoute(component: FunctionComponent, template: FunctionComponent = null,title: string, route: string, params: any=null, override?){
+      RegisteredRoutesMap.registerRoute(new RouteLink(component, template, title, route, params), override);
     }
 
     //TODO allow MenuItem to be shown for specific roles?
