@@ -7,12 +7,13 @@ import {Text, View} from "native-base";
 export class MenuItem{
     key: string;
     label: string;
-    content: FunctionComponent;
+    content: JSX.Element;
     command: any;
     items: [MenuItem];
-    expanded?: boolean
+    expanded?: boolean;
+    customIcon?: any;
 
-    constructor(key, label, destination=null, items=null, command=null, content=null, expanded=false) {
+    constructor(key, label, destination=null, items=null, command=null, content=null, expanded=false, customIcon?) {
         if(!items){
             items=[];
         }
@@ -23,6 +24,7 @@ export class MenuItem{
         this.content = content;
         this.command = command;
         this.expanded = expanded;
+        this.customIcon = customIcon;
 
         if(!command && !!destination){
             this.command = () => {NavigatorHelper.navigateWithoutParams(destination)};
@@ -33,9 +35,9 @@ export class MenuItem{
         return this.items;
     }
 
-    handleOnPress(){
+  handleOnPress(nextExpandState: boolean){
         if(!!this.command){
-            this.command();
+            this.command(nextExpandState);
         }
     }
 

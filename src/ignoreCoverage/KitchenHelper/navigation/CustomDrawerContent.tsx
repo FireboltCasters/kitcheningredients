@@ -43,37 +43,13 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 		return output;
 	}
 
-	function renderMenu(menu, level=0){
-		let menuChilds = menu.getChildItems();
-		let hasChildren = menuChilds.length>0;
-
-		let renderedChilds = [];
-		for(let childMenu of menuChilds){
-			renderedChilds.push(renderMenu(childMenu, level+1));
-		}
-
-		let content = menu.content;
-		if(!content){
-			content = (
-				<View >
-					<Text fontSize={"md"}>{menu.label}</Text>
-				</View>
-			)
-		}
-
+	function renderMenu(menu){
 		return (
 			<ExpandableDrawerItem
-				expanded={menu.expanded}
+        menu={menu}
 				key={"ExpandableDrawerItem"+menu.key}
-				hasChildren={hasChildren}
-				level={level}
-				label={() => {
-					return content
-				}}
-				onPress={(nextExpanded) => {menu.handleOnPress()}}
-			>
-				{renderedChilds}
-			</ExpandableDrawerItem>
+				level={0}
+			 />
 		)
 	}
 
