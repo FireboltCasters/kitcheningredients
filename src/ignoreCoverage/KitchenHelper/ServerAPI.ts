@@ -256,8 +256,4 @@ export default class ServerAPI{
 		}
 		return null;
 	}
-
-	static async refreshWithDirectusRefreshToken(){
-
-	}
 }
