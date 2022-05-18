@@ -1,7 +1,9 @@
 import {Transport, TransportMethods, TransportOptions, TransportResponse} from "@directus/sdk";
 import ServerAPI from "../ServerAPI";
 import {ConfigHolder} from "../ConfigHolder";
-import {err} from "react-native-svg/lib/typescript/xml";
+import AwaitLock from "await-lock";
+
+let refreshLock = new AwaitLock(); //we want to synchronize the refresh, cause maybe two refreshes collide
 
 export default class TransportWrapper extends Transport{
 	customErrorHandleCallback = null;
@@ -31,27 +33,37 @@ export default class TransportWrapper extends Transport{
 
 			//Happens when the refresh or access token is too old
 			if(this.isTokenExpired(error, status, code)){
+			  await refreshLock.acquireAsync(); //okay lets lock this, so not that we dont register multiple times
+        //TODO check if lock is free, otherwise wait until its free, and then skipt the refresh and simple resend the super.request
+
+
 				console.log("Token is expired, lets try to refresh it")
 				let directus = ServerAPI.getDirectus(ConfigHolder.storage, ServerAPI.handleLogoutError);
 				let refreshAnswer = await directus.auth.refresh();
+
+
 				if(this.isRefreshSuccessfull(refreshAnswer)){
 					console.log("Okay lets try to resend the request")
 					try{
 						let answer = await super.request(method, path, data, options);
+            refreshLock.release(); //before handleLogout
 						return answer;
 					} catch (err){
-						console.log("Resended request after refresh still unsuccessfull, rejecting");
+						console.log("Resent request after refresh still unsuccessfull, rejecting");
 						console.log(err);
+            refreshLock.release(); //before handleLogout
 						return Promise.reject(error);
 					}
 				} else {
-					await ServerAPI.handleLogout(error);
+          refreshLock.release(); //before handleLogout
+					await ServerAPI.handleLogout(error); // after releasing lock!
 					return Promise.reject(error);
 				}
 			}
 
 			console.log("-------")
 			//console.log("No idea what error caused neither what to do");
+      refreshLock.release(); //before handleLogout
 			return Promise.reject(error);
 		}
 	}
