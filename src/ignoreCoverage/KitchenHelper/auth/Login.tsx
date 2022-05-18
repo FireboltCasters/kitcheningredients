@@ -109,7 +109,7 @@ export const Login = (props) => {
 		return null;
 	}
 
-  if(!!finishedLoading && ConfigHolder.autoLogin && !!props.user){
+  if(finishedLoading && ConfigHolder.autoLogin && !!user){
     handleContinue();
     return null;
   }
