@@ -15,7 +15,6 @@ export interface AppState {
 export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
 
     let menu = props.menu;
-    let handleMenuPress = menu.handleOnPress;
 
     const [expanded, setExpanded] = useState(menu.expanded)
 
@@ -45,9 +44,7 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
         let nextExpandState = !expanded;
         menu.expanded = nextExpandState;
         setExpanded(nextExpandState);
-        if(!!handleMenuPress){
-            await handleMenuPress(nextExpandState);
-        }
+        await menu.handleOnPress(nextExpandState)
     }
 
     function renderSubMenuContent(){
@@ -63,7 +60,7 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
         return(
             <View style={{paddingLeft: 15}}>
                 <DrawerContentScrollView contentContainerStyle={{paddingTop: 0}}>
-                    {props.children}
+                    {renderedChilds}
                 </DrawerContentScrollView>
             </View>
         )
