@@ -18,7 +18,7 @@ export const ProjectBanner: FunctionComponent<AppState> = (props) => {
 		<View
 			style={{flexDirection: "row" ,height: titleBoxHeight}}
 		>
-			<ProjectLogo serverInfo={serverInfo} />
+			<ProjectLogo serverInfo={serverInfo} rounded={true} />
 			<ProjectName serverInfo={serverInfo} />
 		</View>
 	)

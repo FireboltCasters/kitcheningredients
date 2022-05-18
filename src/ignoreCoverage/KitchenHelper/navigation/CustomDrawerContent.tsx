@@ -128,7 +128,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 						key={"ProjectLogoItem"}
 						label={() => {
 							return (<View style={{flexDirection: "row"}} >
-								<ProjectLogo menuBar={true} />
+								<ProjectLogo rounded={true} />
 								<ProjectName themedColor={true} />
 							</View>)
 						}}

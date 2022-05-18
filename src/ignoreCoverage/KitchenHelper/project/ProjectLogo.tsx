@@ -10,7 +10,7 @@ let titleBoxHeight = 60;
 
 interface AppState {
 	serverInfo?: ServerInfo;
-	menuBar?: boolean
+	rounded?: boolean
 }
 export const ProjectLogo: FunctionComponent<AppState> = (props) => {
 
@@ -18,9 +18,8 @@ export const ProjectLogo: FunctionComponent<AppState> = (props) => {
 	let project_color = ServerInfoHelper.getProjectColor(serverInfo);
 	let project_logo_asset_id = ServerInfoHelper.getProjectLogoAssetId(serverInfo);
 
-	let padding = props.menuBar? 0 : 4;
-	let borderRadius = props.menuBar? 0 : 10;
-	const heightAndWidth = titleBoxHeight+padding;
+	let borderRadius = props.rounded? 10 : 0;
+	const heightAndWidth = titleBoxHeight;
 
 	return(
 		// @ts-ignore
