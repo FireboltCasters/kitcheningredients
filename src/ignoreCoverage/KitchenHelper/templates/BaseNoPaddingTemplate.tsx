@@ -32,4 +32,4 @@ export const BaseNoPaddingTemplate = ({
 	)
 }
 
-BaseTemplate.useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;
+BaseNoPaddingTemplate.useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;
