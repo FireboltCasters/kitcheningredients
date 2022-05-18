@@ -43,7 +43,7 @@ export const EmptyTemplate = ({
     // We can set the state to allow for reference through the state property, and will also change
     let adjustedHeight = undefined;
     if(!!height){
-      adjustedHeight = parseInt(height)-Layout.padding; // since we have a small padding we want to remove the height
+      adjustedHeight = parseInt(height); // since we have a small padding we want to remove the height
     }
 
     setDimenstion({width: width, height: adjustedHeight});

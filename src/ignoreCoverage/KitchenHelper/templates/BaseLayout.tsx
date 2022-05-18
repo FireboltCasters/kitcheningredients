@@ -13,9 +13,6 @@ import {Icon} from "../components/Icon";
 import {DrawerButton} from "./DrawerButton";
 import {BackButton} from "./BackButton";
 
-const padding = 0;
-
-
 export const BaseLayout = ({
 						   children,
 						   navigation,
@@ -100,7 +97,7 @@ export const BaseLayout = ({
 				{..._status}
 			/>
 			<Box
-				style={{paddingHorizontal: padding, margin: 0}}
+				style={{paddingHorizontal: 0, margin: 0}}
 				{...props}
 				flex={1}
 				px={0}

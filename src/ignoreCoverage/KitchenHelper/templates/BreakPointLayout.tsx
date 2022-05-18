@@ -19,7 +19,7 @@ export const BreakPointLayout = ({
 
 	return (
 			<Box
-				style={{padding: Layout.padding, flex: 1, margin: 0 ,alignItems: "flex-start"}}
+				style={{padding: 0, flex: 1, margin: 0 ,alignItems: "flex-start"}}
 				{...props}
 				flex={1}
 				px={4}

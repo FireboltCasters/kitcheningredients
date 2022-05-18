@@ -1,11 +1,10 @@
 import {useBreakpointValue} from "native-base";
 
 export class Layout {
-	static padding = 16;
 
-	static WIDTH_MD = 768-Layout.padding;
-	static WIDTH_LG = 992-Layout.padding;
-	static WIDTH_XL = 1220-Layout.padding
+	static WIDTH_MD = 768;
+	static WIDTH_LG = 992;
+	static WIDTH_XL = 1218;
 
   private static getRawWidthValues(){
     return {

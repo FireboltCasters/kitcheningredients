@@ -63,6 +63,12 @@ export function multiply(a: number, b: number): Promise<number> {
 import {BaseNoScrollTemplate} from "./ignoreCoverage/KitchenHelper/templates/BaseNoScrollTemplate";
 export {BaseNoScrollTemplate}
 
+import {BaseNoPaddingTemplate} from "./ignoreCoverage/KitchenHelper/templates/BaseNoPaddingTemplate";
+export {BaseNoPaddingTemplate}
+
+import {BasePadding} from "./ignoreCoverage/KitchenHelper/templates/BasePadding";
+export {BasePadding}
+
 import {BaseTemplate} from "./ignoreCoverage/KitchenHelper/templates/BaseTemplate";
 export {BaseTemplate}
 

@@ -7,10 +7,8 @@ import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 import {BaseNoScrollTemplate} from "./BaseNoScrollTemplate";
 import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
-import {BaseNoPaddingTemplate} from "./BaseNoPaddingTemplate";
-import {BasePadding} from "./BasePadding";
 
-export const BaseTemplate = ({
+export const BaseNoPaddingTemplate = ({
 								 children,
 								 title,
                   header,
@@ -21,11 +19,16 @@ export const BaseTemplate = ({
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
 
 	return(
-		<BaseNoPaddingTemplate {...props} title={title} header={header}>
-      <BasePadding>
-        {childrenWithProps}
-      </BasePadding>
-		</BaseNoPaddingTemplate>
+		<BaseNoScrollTemplate {...props} title={title} header={header}>
+      <ScrollViewWithGradient hideGradient={true} style={{width: "100%", height: "100%"}} >
+				<BreakPointLayout >
+					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
+						{childrenWithProps}
+            <ShowMoreGradientPlaceholder />
+					</Box>
+				</BreakPointLayout>
+      </ScrollViewWithGradient>
+		</BaseNoScrollTemplate>
 	)
 }
 
