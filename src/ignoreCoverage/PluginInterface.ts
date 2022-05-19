@@ -1,3 +1,5 @@
+import {UserItem} from "@directus/sdk";
+
 export abstract class PluginInterface{
     initApp(){
 
@@ -32,7 +34,8 @@ export abstract class PluginInterface{
     getSettingsComponent(){
       return null;
     }
-    getCustomProjectLogoComponent(){
+
+    renderCustomUserAvatar(user: UserItem): JSX.Element{
       return null;
     }
 }

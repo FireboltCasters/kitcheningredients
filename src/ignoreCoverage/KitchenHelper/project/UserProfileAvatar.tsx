@@ -7,6 +7,7 @@ import {DirectusImage} from "./DirectusImage";
 import {TouchableOpacity} from "react-native";
 
 import {Icon} from "../components/Icon";
+import {ConfigHolder} from "kitcheningredients";
 
 const titleBoxHeight = 64;
 
@@ -39,7 +40,6 @@ export const UserProfileAvatar: FunctionComponent<AppState> = (props) => {
 
 	let content = (
 		<Icon
-
 			name={"account-circle"}
 			style={{}}
 		/>
@@ -48,6 +48,11 @@ export const UserProfileAvatar: FunctionComponent<AppState> = (props) => {
 	if(!!avatarAssetId){
 		content = <DirectusImage reloadnumber={reloadnumber+""} showLoading={true} assetId={avatarAssetId} style={{height: "100%", width: "100%"}} />;
 	}
+
+	let customUserAvatar = ConfigHolder.plugin.renderCustomUserAvatar(props.user);
+	if(!!customUserAvatar){
+	  content = customUserAvatar;
+  }
 
 	let dimension = props.heightAndWidth || titleBoxHeight;
 

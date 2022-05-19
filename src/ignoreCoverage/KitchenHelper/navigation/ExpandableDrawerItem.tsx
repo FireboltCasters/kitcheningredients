@@ -80,7 +80,7 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
     }
 
     let boxShadeLevel = props.level;
-    if(expanded){
+    if(expanded && hasChildren){
       boxShadeLevel+=1;
     }
 
