@@ -85,11 +85,10 @@ export default class ServerAPI{
 	}
 
 	private static getPublicRole(){
-	  return {"id":"null","name":UserHelper.USER_ROLE_GUEST,"icon":"public","description":null,"ip_access":null,"enforce_tfa":false,"admin_access":false,"app_access":true,"users":[]}
+	  return {"id":UserHelper.USER_ROLE_GUEST,"name":UserHelper.USER_ROLE_GUEST,"icon":"public","description":null,"ip_access":null,"enforce_tfa":false,"admin_access":false,"app_access":true,"users":[]}
   }
 
-	static async loadRole(user){
-		let role_id = user?.role;
+	static async loadRole(role_id){
 		if(!!role_id){
 			try{
 				let directus = ServerAPI.getClient();
@@ -105,11 +104,18 @@ export default class ServerAPI{
 		}
 	}
 
-  static async loadPermissions(role){
+  static async loadPermissions(role_id){
       try{
         let directus = ServerAPI.getClient();
-        let permissions = await directus.permissions.readByQuery({});
-        return permissions;
+
+        let query_role_id = role_id;
+        if(role_id===UserHelper.USER_ROLE_GUEST){
+          query_role_id = null;
+        }
+        let permissions = await directus.permissions.readByQuery({filter: {role: {
+              _eq: query_role_id
+        }}});
+        return permissions?.data;
       } catch (err){
         console.log("Error at get Server Info: ",err);
       }
