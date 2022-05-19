@@ -142,6 +142,10 @@ export default class App extends React.Component<any, any>{
 		return ConfigHolder.instance.state.user;
 	}
 
+  getPermissions(){
+    return ConfigHolder.instance.state?.permissions;
+  }
+
 	async loadUser(){
 		try{
 			if(ServerAPI.areCredentialsSaved()){
