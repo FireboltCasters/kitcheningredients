@@ -88,7 +88,7 @@ export default class ServerAPI{
 	  return {"data":{"id":"null","name":"Public","icon":"public","description":null,"ip_access":null,"enforce_tfa":false,"admin_access":false,"app_access":true,"users":[]}}
   }
 
-	static async getRole(user){
+	static async loadRole(user){
 		let role_id = user?.role;
 		if(!!role_id){
 			try{
@@ -104,6 +104,16 @@ export default class ServerAPI{
 			}
 		}
 	}
+
+  static async loadPermissions(){
+      try{
+        let directus = ServerAPI.getClient();
+        let permissions = await directus.permissions.readByQuery({});
+        return permissions;
+      } catch (err){
+        console.log("Error at get Server Info: ",err);
+      }
+  }
 
 	static async loginWithAccessDirectusAccessToken(directus_access_token){
 		let data = await ServerAPI.refreshWithDirectusAccessToken(directus_access_token);

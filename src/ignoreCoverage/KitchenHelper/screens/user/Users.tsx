@@ -28,7 +28,7 @@ export const Users = (props) => {
 			console.log("Users remoteUser: ", remoteUser);
 			setUser(remoteUser);
 
-			let remoteRole = await ServerAPI.getRole(remoteUser);
+			let remoteRole = await ServerAPI.loadRole(remoteUser);
 			setRole(remoteRole);
 		} catch (err){
 			console.log(err);

@@ -2,12 +2,13 @@
 
 import type {PluginInterface} from "../PluginInterface";
 import {DefaultStorage} from "./storage/DefaultStorage";
+import App from "./App";
 
 export class ConfigHolder{
 
   static storage: DefaultStorage = null;
   static displayThemeFloater: boolean = true;
-  static instance: any = null;
+  static instance: App = null;
   static plugin: PluginInterface = null;
   static nativebaseConfig = null;
   static styleConfig = null;

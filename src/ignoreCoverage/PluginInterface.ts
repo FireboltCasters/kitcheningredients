@@ -10,7 +10,7 @@ export abstract class PluginInterface{
     onLogout(error){
 
     }
-    onLogin(user, role){
+    onLogin(user, role, permissions){
 
     }
     getSynchedStateKeysClass(){
