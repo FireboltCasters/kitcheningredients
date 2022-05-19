@@ -1,4 +1,5 @@
 import {UserItem} from "@directus/sdk";
+import { ColorMode } from 'native-base';
 
 export abstract class PluginInterface{
     initApp(){
@@ -39,7 +40,7 @@ export abstract class PluginInterface{
       return null;
     }
 
-    getOverwriteTheme(): string {
+    getOverwriteTheme(): ColorMode {
       return null;
     }
 }
