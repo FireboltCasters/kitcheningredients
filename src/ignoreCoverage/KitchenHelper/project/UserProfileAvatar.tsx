@@ -49,7 +49,7 @@ export const UserProfileAvatar: FunctionComponent<AppState> = (props) => {
 		content = <DirectusImage reloadnumber={reloadnumber+""} showLoading={true} assetId={avatarAssetId} style={{height: "100%", width: "100%"}} />;
 	}
 
-	let customUserAvatar = ConfigHolder.plugin.renderCustomUserAvatar(props.user);
+	let customUserAvatar = ConfigHolder.plugin?.renderCustomUserAvatar(props.user);
 	if(!!customUserAvatar){
 	  content = customUserAvatar;
   }

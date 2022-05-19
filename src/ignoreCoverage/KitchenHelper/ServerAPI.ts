@@ -50,13 +50,11 @@ export default class ServerAPI{
 
 	static async handleLogout(error=null){
 		console.log("handleLogout")
-		if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.onLogout){
-			ConfigHolder.plugin.onLogout(error);
-		}
-
 		try{
-			let directus = ServerAPI.getDirectus(ConfigHolder.storage, ServerAPI.handleLogoutError);
+			let directus = ServerAPI.getDirectus(ConfigHolder.storage);
+      console.log("call await directus.auth.logout();")
 			let response = await directus.auth.logout();
+      console.log("logout: ", response);
 			await ServerAPI.handleLogoutError(); // we better make sure to reset variables in storage
 		} catch (err){
 			console.log("Error at: handleLogout");
@@ -64,9 +62,13 @@ export default class ServerAPI{
 			await ServerAPI.handleLogoutError(); // we better make sure to reset variables in storage
 		}
 		console.log("navigate to login")
+    await ConfigHolder.instance.setUser(null);
 		NavigatorHelper.navigate(Login, null, false);
 		await ConfigHolder.instance.setRedirectToLogin(true);
-		await ConfigHolder.instance.setUser(null);
+
+    if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.onLogout){
+      await ConfigHolder.plugin.onLogout(error);
+    }
 	}
 
 	static getClient(): Directus<any>{
@@ -89,10 +91,9 @@ export default class ServerAPI{
   }
 
 	static async loadRole(role_id){
-		if(!!role_id){
 			try{
 				let directus = ServerAPI.getClient();
-				if(role_id===UserHelper.USER_ROLE_GUEST){
+				if(!role_id || role_id===UserHelper.USER_ROLE_GUEST){
 				  return ServerAPI.getPublicRole()
         }
 
@@ -101,7 +102,6 @@ export default class ServerAPI{
 			} catch (err){
 				console.log("Error at get Server Info: ",err);
 			}
-		}
 	}
 
   static async loadPermissions(role_id){
@@ -112,10 +112,20 @@ export default class ServerAPI{
         if(role_id===UserHelper.USER_ROLE_GUEST){
           query_role_id = null;
         }
-        let permissions = await directus.permissions.readByQuery({filter: {role: {
+
+        let filter = {filter: {role: {
               _eq: query_role_id
-        }}});
-        return permissions?.data;
+            }}};
+
+        if(!directus.permissions.readByQuery){ //TODO only added for legacy support
+          // @ts-ignore
+          let permissions = await directus.permissions.readMany(filter);
+          return permissions?.data;
+        } else {
+          let permissions = await directus.permissions.readByQuery(filter);
+          return permissions?.data;
+        }
+
       } catch (err){
         console.log("Error at get Server Info: ",err);
       }
