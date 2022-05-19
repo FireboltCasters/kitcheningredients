@@ -3,6 +3,7 @@ import {ColorMode} from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Appearance} from "react-native";
 import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
+import {ConfigHolder} from "../ConfigHolder";
 
 //TODO dont save it directly into storage, use synched storage variable
 export default class ColorCodeHelper {
@@ -43,6 +44,9 @@ export default class ColorCodeHelper {
 	static getManager(): StorageManager{
 		return {
 			get: async () => {
+        if (!!ConfigHolder.plugin?.getOverwriteTheme()) {
+          return ConfigHolder.plugin?.getOverwriteTheme();
+        }
 				return await ColorCodeHelper.getColorModeFromStorage();
 			},
 			set: async (value: ColorMode) => {

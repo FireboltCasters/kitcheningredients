@@ -38,4 +38,8 @@ export abstract class PluginInterface{
     renderCustomUserAvatar(user: UserItem): JSX.Element{
       return null;
     }
+
+    getOverwriteTheme(): string {
+      return null;
+    }
 }
