@@ -85,7 +85,7 @@ export default class ServerAPI{
 	}
 
 	private static getPublicRole(){
-	  return {"data":{"id":"null","name":"Public","icon":"public","description":null,"ip_access":null,"enforce_tfa":false,"admin_access":false,"app_access":true,"users":[]}}
+	  return {"id":"null","name":UserHelper.USER_ROLE_GUEST,"icon":"public","description":null,"ip_access":null,"enforce_tfa":false,"admin_access":false,"app_access":true,"users":[]}
   }
 
 	static async loadRole(user){
@@ -105,7 +105,7 @@ export default class ServerAPI{
 		}
 	}
 
-  static async loadPermissions(){
+  static async loadPermissions(role){
       try{
         let directus = ServerAPI.getClient();
         let permissions = await directus.permissions.readByQuery({});

@@ -79,8 +79,8 @@ export default class App extends React.Component<any, any>{
 		return await ServerAPI.loadRole(user);
 	}
 
-  async loadPermissions(){
-    return await ServerAPI.loadPermissions();
+  async loadPermissions(role){
+    return await ServerAPI.loadPermissions(role);
   }
 
 	shouldRedirectToLogin(){
@@ -119,7 +119,7 @@ export default class App extends React.Component<any, any>{
       user.isGuest = UserHelper.isGuest(user);
     }
 		let role = await this.loadRole(user);
-    let permissions = await this.loadPermissions();
+    let permissions = await this.loadPermissions(role);
 
     if(!callback && !!ConfigHolder.plugin.onLogin){
       callback = () => ConfigHolder.plugin.onLogin(user, role, permissions);
@@ -139,7 +139,7 @@ export default class App extends React.Component<any, any>{
 	}
 
 	getUser(){
-		return ConfigHolder.instance.state.user;
+		return ConfigHolder.instance.state?.user;
 	}
 
   getPermissions(){
