@@ -6,6 +6,7 @@ import {MyThemedBox} from "../../helper/MyThemedBox";
 import {TextWithIcon} from "../../components/TextWithIcon";
 import {MoreInformationButton} from "../../components/MoreInformationButton";
 import {ConfigHolder} from "../../ConfigHolder";
+import {MenuItem} from "kitcheningredients";
 
 export const PackagesWithLicenses = (props) => {
 
@@ -107,13 +108,18 @@ export const PackagesWithLicenses = (props) => {
 	}
 
 	function renderPackage(dependencyKey, upperVersion, currentVersion, thirdpartyDependency){
+	  let label = () => {return renderPackageLabel(dependencyKey, upperVersion, currentVersion, thirdpartyDependency)};
+	  let content = () => {return renderPackageInformations(dependencyKey, upperVersion, currentVersion, thirdpartyDependency)};
+	  let key = dependencyKey;
+
+	  let menuItem = new MenuItem(key, label, null, null, null, content, false);
+
 		return (
 			<View style={{paddingBottom: 10, width: "100%"}}>
 				<ExpandableDrawerItem
+          key={key}
 					level={2}
-					hasChildren={true}
-					label={() => {return renderPackageLabel(dependencyKey, upperVersion, currentVersion, thirdpartyDependency)}}>
-					{renderPackageInformations(dependencyKey, upperVersion, currentVersion, thirdpartyDependency)}
+          menu={menuItem}>
 				</ExpandableDrawerItem>
 			</View>
 		);
