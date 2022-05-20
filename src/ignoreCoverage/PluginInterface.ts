@@ -1,4 +1,5 @@
 import {UserItem} from "@directus/sdk";
+import { ColorMode } from 'native-base';
 
 export abstract class PluginInterface{
     initApp(){
@@ -36,6 +37,10 @@ export abstract class PluginInterface{
     }
 
     renderCustomUserAvatar(user: UserItem): JSX.Element{
+      return null;
+    }
+
+    getOverwriteTheme(): ColorMode {
       return null;
     }
 }
