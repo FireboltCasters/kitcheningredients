@@ -39,34 +39,31 @@ export const PackagesWithLicenses = (props) => {
 		return output;
 	}
 
-	function renderRowInformation(icon, label, content){
+	function getSubMenuRow(icon, label, content){
 		if(!content){
 			return null;
 		}
 
-		return(
-			<TextWithIcon icon={icon} >
-				<Text><Text bold={true}>{label+": "}</Text>{content}</Text>
-			</TextWithIcon>
-		)
+		let content = <Text><Text bold={true}>{label+": "}</Text>{content}</Text>;
+		return new MenuItem(label, label, null, null, null, content, false, icon);
 	}
 
-	function renderRowInformationLink(icon, url){
+	function getSubMenuWithLink(icon, url){
 		if(!url){
 			return null;
 		}
 
-		return(
-			<TextWithIcon icon={icon} >
-				<Link href={url} >
-					<Text>{url}</Text>
-				</Link>
-			</TextWithIcon>
-		)
+    let content = (
+      <Text>
+        <Link href={url} >
+        <Text>{url}</Text>
+        </Link>
+      </Text>
+    );
+    return new MenuItem(url, url, null, null, null, content, false, icon);
 	}
 
-	function renderDownloadedInformations(dependencyKey, upperVersion, currentVersion, thirdpartyDependency){
-
+	function getPackageChildrenMenu(dependencyKey, upperVersion, currentVersion, thirdpartyDependency){
 		let url = thirdpartyDependency?.url;
 		let repositoryUrl = thirdpartyDependency?.repository;
 
@@ -75,36 +72,21 @@ export const PackagesWithLicenses = (props) => {
 		let publisher = thirdpartyDependency?.publisher
 		let email = thirdpartyDependency?.email
 
-		return(
-			<View>
-				{renderRowInformationLink("web", url)}
-				{renderRowInformation("license", "License", license)}
-				{renderRowInformation("account-circle", "Publisher", publisher)}
-				{renderRowInformation("email", "Email", email)}
-				{renderRowInformationLink("github", repositoryUrl)}
-				<MoreInformationButton key={dependencyKey} content={thirdpartyDependency} />
-			</View>
-		)
-	}
-
-	function renderPackageInformations(dependencyKey, upperVersion, currentVersion, thirdpartyDependency){
-		return (
-			<View>
-				<MyThemedBox _shadeLevel={3}>
-					<View style={{padding: 4}}>
-						{renderDownloadedInformations(dependencyKey, upperVersion, currentVersion, thirdpartyDependency)}
-					</View>
-				</MyThemedBox>
-			</View>
-		)
+    return [
+      getSubMenuWithLink("web", url),
+      getSubMenuRow("license", "License", license),
+      getSubMenuRow("account-circle", "Publisher", publisher),
+      getSubMenuRow("email", "Email", email),
+      getSubMenuWithLink("github", repositoryUrl),
+    ]
 	}
 
 	function renderPackage(dependencyKey, upperVersion, currentVersion, thirdpartyDependency){
 	  let label = dependencyKey;
-	  let content = renderPackageInformations(dependencyKey, upperVersion, currentVersion, thirdpartyDependency);
 	  let key = dependencyKey;
 
-	  let menuItem = new MenuItem(key, label, null, null, null, content, false);
+	  let menuItem = new MenuItem(key, label, null, null, null, null, false);
+	  menuItem.addChildMenuItems(getPackageChildrenMenu(dependencyKey, upperVersion, currentVersion, thirdpartyDependency))
 
 		return (
 			<View style={{paddingBottom: 10, width: "100%"}}>
