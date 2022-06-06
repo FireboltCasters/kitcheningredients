@@ -2,13 +2,15 @@
 import React, {FunctionComponent, useEffect, useState} from "react";
 import {AlertDialog, Button, Center, Divider, Text, View} from "native-base";
 import {BreakPointLayout} from "../templates/BreakPointLayout";
+import {Icon} from "./../components/Icon";
+import {TouchableOpacity} from "react-native";
 
 interface AppState {
 	isOpen: boolean;
 	onClose: () => {};
 	onAccept: () => {};
-	title: string;
-	content: string;
+	title: any;
+	content: any;
 	accept: string;
 }
 export const MyAlertDialog : FunctionComponent<AppState> = (props) => {
@@ -22,7 +24,7 @@ export const MyAlertDialog : FunctionComponent<AppState> = (props) => {
 
 	const onClose = async () => {
 		let allowAction = true;
-		if(props.onClose){
+		if(!!props.onClose){
 			allowAction = await props.onClose()
 		}
 		if(allowAction){
@@ -32,13 +34,23 @@ export const MyAlertDialog : FunctionComponent<AppState> = (props) => {
 
 	const onAccept = async () => {
 		let allowAction = true;
-		if(props.onAccept){
+		if(!!props.onAccept){
 			allowAction = await props.onAccept()
 		}
 		if(allowAction){
 			setIsOpen(false)
 		}
 	}
+
+	let titleComponent = props.title;
+	if(typeof props.title ==="string"){
+    titleComponent = (<Text>{props.title}</Text>);
+  }
+
+  let contentComponent = props.content;
+  if(typeof props.content ==="string"){
+    contentComponent = (<Text>{props.content}</Text>);
+  }
 
 	const cancelRef = React.useRef(null)
 	return (
@@ -48,17 +60,33 @@ export const MyAlertDialog : FunctionComponent<AppState> = (props) => {
 				onClose={onClose}
 				size={props.size}
 			>
-				<BreakPointLayout>
 						<AlertDialog.Content>
 							<AlertDialog.CloseButton />
-							<AlertDialog.Header>{props.title}</AlertDialog.Header>
+              <View style={{flexDirection: "row"}}>
+                <View style={{flex: 1}}>
+                  {titleComponent}
+                </View>
+                <View>
+                  <TouchableOpacity onPress={onClose}>
+                    <Icon name={"close"} />
+                  </TouchableOpacity>
+                </View>
+              </View>
 							<AlertDialog.Body>
-								<Text> </Text>
-								<Divider />
-								<Text> </Text>
-								<Text>{props.content}</Text>
+                {contentComponent}
 							</AlertDialog.Body>
 							<AlertDialog.Footer>
+                <View style={{flex:1,
+                  flexDirection: 'row-reverse',
+                  flexWrap: 'wrap'}}>
+                  <Button onPress={onClose} ref={cancelRef}>
+                    Cancel
+                  </Button>
+                  <Button style={{margin: 10, backgroundColor: "#EF4444"}} onPress={onClose}>
+                    Delete
+                  </Button>
+                </View>
+
 								<Button.Group space={2}>
 									<Button onPress={onAccept}>
 										{props.accept}
@@ -66,7 +94,6 @@ export const MyAlertDialog : FunctionComponent<AppState> = (props) => {
 								</Button.Group>
 							</AlertDialog.Footer>
 						</AlertDialog.Content>
-				</BreakPointLayout>
 			</AlertDialog>
 	)
 }

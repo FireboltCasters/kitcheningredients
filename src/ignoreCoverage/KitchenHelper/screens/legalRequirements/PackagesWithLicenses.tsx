@@ -39,14 +39,6 @@ export const PackagesWithLicenses = (props) => {
 		return output;
 	}
 
-	function renderPackageLabel(dependencyKey, upperVersion, currentVersion, thirdpartyDependencyn){
-		return (
-			<View>
-				<Text>{dependencyKey}</Text>
-			</View>
-		)
-	}
-
 	function renderRowInformation(icon, label, content){
 		if(!content){
 			return null;
@@ -108,8 +100,8 @@ export const PackagesWithLicenses = (props) => {
 	}
 
 	function renderPackage(dependencyKey, upperVersion, currentVersion, thirdpartyDependency){
-	  let label = () => {return renderPackageLabel(dependencyKey, upperVersion, currentVersion, thirdpartyDependency)};
-	  let content = () => {return renderPackageInformations(dependencyKey, upperVersion, currentVersion, thirdpartyDependency)};
+	  let label = dependencyKey;
+	  let content = renderPackageInformations(dependencyKey, upperVersion, currentVersion, thirdpartyDependency);
 	  let key = dependencyKey;
 
 	  let menuItem = new MenuItem(key, label, null, null, null, content, false);
