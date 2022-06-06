@@ -39,12 +39,12 @@ export const PackagesWithLicenses = (props) => {
 		return output;
 	}
 
-	function getSubMenuRow(icon, label, content){
-		if(!content){
+	function getSubMenuRow(icon, label, text){
+		if(!text){
 			return null;
 		}
 
-		let content = <Text><Text bold={true}>{label+": "}</Text>{content}</Text>;
+		let content = <Text><Text bold={true}>{label+": "}</Text>{text}</Text>;
 		return new MenuItem(label, label, null, null, null, content, false, icon);
 	}
 
