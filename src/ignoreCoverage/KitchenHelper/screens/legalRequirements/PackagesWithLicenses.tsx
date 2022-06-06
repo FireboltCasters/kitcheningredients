@@ -40,26 +40,32 @@ export const PackagesWithLicenses = (props) => {
 	}
 
 	function getSubMenuRow(icon, label, text){
-		if(!text){
-			return null;
+    let content = <Text></Text>;
+
+		if(!!text){
+      content = <Text><Text bold={true}>{label+": "}</Text>{text}</Text>;
 		}
 
-		let content = <Text><Text bold={true}>{label+": "}</Text>{text}</Text>;
 		return new MenuItem(label, label, null, null, null, content, false, icon);
 	}
 
 	function getSubMenuWithLink(icon, url){
-		if(!url){
-			return null;
-		}
-
     let content = (
       <Text>
-        <Link href={url} >
-        <Text>{url}</Text>
-        </Link>
       </Text>
     );
+
+		if(!!url){
+      content = (
+        <Text>
+          <Link href={url} >
+            <Text>{url}</Text>
+          </Link>
+        </Text>
+      );
+		}
+
+
     return new MenuItem(url, url, null, null, null, content, false, icon);
 	}
 
