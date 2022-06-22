@@ -18,7 +18,7 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
 
     const [expanded, setExpanded] = useState(menu.expanded)
 
-    let menuChilds = menu.getChildItems();
+    let menuChilds = menu?.getChildItems();
     let hasChildren = menuChilds.length>0;
 
     function renderExpandIcon(){

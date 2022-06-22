@@ -2,9 +2,6 @@
 import React, {useEffect, useState} from "react";
 import {Link, Skeleton, Text, View} from "native-base";
 import {ExpandableDrawerItem} from "../../navigation/ExpandableDrawerItem";
-import {MyThemedBox} from "../../helper/MyThemedBox";
-import {TextWithIcon} from "../../components/TextWithIcon";
-import {MoreInformationButton} from "../../components/MoreInformationButton";
 import {ConfigHolder} from "../../ConfigHolder";
 import {MenuItem} from "kitcheningredients";
 

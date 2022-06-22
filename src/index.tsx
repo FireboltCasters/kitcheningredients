@@ -1,3 +1,6 @@
+import {MyThemedBox} from "./ignoreCoverage/KitchenHelper/helper/MyThemedBox";
+export {MyThemedBox}
+
 import {ThemedMarkdown} from "./ignoreCoverage/KitchenHelper/components/markdown/ThemedMarkdown";
 export {ThemedMarkdown}
 

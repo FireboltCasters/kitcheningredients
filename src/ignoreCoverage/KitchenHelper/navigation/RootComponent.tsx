@@ -36,6 +36,7 @@ export const Root = (props) => {
 
 	return (
 		<NavigationContainer
+      independent={props?.independent}
 			ref={navigationRef}
 			onReady={() => {
 				isReadyRef.current = true;
