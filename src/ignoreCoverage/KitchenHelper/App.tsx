@@ -206,7 +206,7 @@ export default class App extends React.Component<any, any>{
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>
 				<NativeBaseProvider reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
-					<Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} indepentend={this.props?.independent}>{content}</Root>
+					<Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin}>{content}</Root>
 					<ColorStatusBar />
 				</NativeBaseProvider>
 			</StoreProvider>
