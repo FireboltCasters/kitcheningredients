@@ -23,6 +23,7 @@ export default class App extends React.Component<any, any>{
 
 	constructor(props) {
 		super(props);
+		console.log(props);
 
 		ConfigHolder.instance = this;
 		if(!!ConfigHolder.storage){
@@ -198,6 +199,9 @@ export default class App extends React.Component<any, any>{
 		if(this.state.reloadNumber===0 || !this.state.loadedUser){
 			return null;
 		}
+
+		console.log("App:");
+		console.log(this.props);
 
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>

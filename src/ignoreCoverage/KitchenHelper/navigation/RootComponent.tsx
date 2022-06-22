@@ -34,6 +34,9 @@ export const Root = (props) => {
 	let prefixes = ["myapp:///"];
 	const linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
 
+  console.log("Root: ");
+  console.log(props);
+
 	return (
 		<NavigationContainer
       independent={props?.independent}

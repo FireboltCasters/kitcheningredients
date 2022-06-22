@@ -89,7 +89,13 @@ export const PackagesWithLicenses = (props) => {
 	  let key = dependencyKey;
 
 	  let menuItem = new MenuItem(key, label, null, null, null, null, false);
-	  menuItem.addChildMenuItems(getPackageChildrenMenu(dependencyKey, upperVersion, currentVersion, thirdpartyDependency))
+	  let subMenus = getPackageChildrenMenu(dependencyKey, upperVersion, currentVersion, thirdpartyDependency);
+	  for(let subMenu of subMenus){
+      menuItem.addChildMenuItems(subMenu)
+    }
+
+    console.log("renderPackage: "+dependencyKey);
+    console.log(menuItem)
 
 		return (
 			<View style={{paddingBottom: 10, width: "100%"}}>
