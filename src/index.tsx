@@ -1,3 +1,6 @@
+import {AuthProviderCustom} from "./ignoreCoverage/KitchenHelper/auth/AuthProviderCustom";
+export {AuthProviderCustom}
+
 import {MyThemedBox} from "./ignoreCoverage/KitchenHelper/helper/MyThemedBox";
 export {MyThemedBox}
 

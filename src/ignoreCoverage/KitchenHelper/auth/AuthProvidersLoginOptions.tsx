@@ -44,6 +44,16 @@ export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
 
 	function renderAuthProviders(){
 		let output = [];
+
+    if(!!ConfigHolder.plugin.renderCustomAuthProviders){
+      let customProviders = ConfigHolder.plugin.renderCustomAuthProviders(serverInfo);
+      if(!!customProviders){
+        for(let customProvider of customProviders){
+          output.push(customProvider);
+        }
+      }
+    }
+
 		if(ConfigHolder.showGuestLogin){
 			output.push(renderAuthProviderGuest());
 		}

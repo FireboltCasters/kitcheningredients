@@ -30,9 +30,12 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	}
 
 	function renderIcon(icon, color){
+	  if(typeof icon!=="string"){
+	    return icon(color);
+    }
+
 		return (
 			<Icon
-
 				name={icon}
 				color={color}
 				style={{}}

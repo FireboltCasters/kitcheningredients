@@ -32,7 +32,16 @@ export abstract class PluginInterface{
     getHomeComponent(){
       return null;
     }
+
     getSettingsComponent(){
+      return null;
+    }
+
+    getRootComponent(){
+      return null;
+    }
+
+    renderCustomAuthProviders(): []{
       return null;
     }
 

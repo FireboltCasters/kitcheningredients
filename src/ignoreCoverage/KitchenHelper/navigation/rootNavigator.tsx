@@ -33,6 +33,11 @@ export const RootStack = (props) => {
 
 	let screens = ConfigHolder.instance.shouldRedirectToLogin() ? RouteRegisterer.loginScreens : RouteRegisterer.screens;
 
+  let pluginRootComponent = null;
+  if(!!ConfigHolder.plugin.getRootComponent){
+    pluginRootComponent = ConfigHolder.plugin.getRootComponent();
+  }
+
 	//TODO maybe add Drawer instead of custom implementation: https://reactnavigation.org/docs/5.x/drawer-navigator
 	return(
 		<View flex={1} flexDirection={"row"}>
@@ -53,6 +58,7 @@ export const RootStack = (props) => {
 						}}>
 						{screens}
 					</Drawer.Navigator>
+          {pluginRootComponent}
 			</View>
 		</View>
 	)
