@@ -92,6 +92,12 @@ export default class App extends React.Component<any, any>{
 		return ConfigHolder.instance.state.hideDrawer;
 	}
 
+	async reload(){
+    await ConfigHolder.instance.setState({
+      reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
+    });
+  }
+
 	async setHideDrawer(visible){
 		if(ConfigHolder.instance.state.hideDrawer!==visible){
 			await ConfigHolder.instance.setState({

@@ -70,6 +70,17 @@ export class Menu {
         Menu.menusForRolesByID[role_id].push(menuItem);
     }
 
+    static unregisterMenuForRoleId(role_id, menuItem){
+      let menusForRole = Menu.menusForRolesByID[role_id] || [];
+      let newMenusForRole = [];
+      for(let menu of menusForRole){
+        if(menu?.key!==menuItem?.key){
+          newMenusForRole.push(menu);
+        }
+      }
+      Menu.menusForRolesByID[role_id] = newMenusForRole;
+    }
+
     /**
      * @deprecated There can be multiple roles with same name. Consider using the correct role_id to be safe
      * @see registerMenuForRoleId
