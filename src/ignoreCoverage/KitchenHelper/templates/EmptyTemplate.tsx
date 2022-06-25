@@ -36,7 +36,7 @@ export const EmptyTemplate = ({
 		if(!serverInfo){
 			loadServerInfo();
 		}
-	}, [props.route.params])
+	}, [props?.route?.params])
 
   function setDimensions(event){
     const {width, height} = event.nativeEvent.layout;

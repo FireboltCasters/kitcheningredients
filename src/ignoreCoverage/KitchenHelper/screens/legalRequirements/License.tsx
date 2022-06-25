@@ -12,7 +12,7 @@ export const License = (props) => {
 	// corresponding componentDidMount
 	useEffect(() => {
 
-	}, [props.route.params])
+	}, [props?.route?.params])
 
 	return(
 		<>

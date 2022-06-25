@@ -17,7 +17,7 @@ export const DeveloperSettings = (props) => {
 	// corresponding componentDidMount
 	useEffect(() => {
 
-	}, [props.route.params])
+	}, [props?.route?.params])
 
 	function renderStorage(){
 		let output = [];

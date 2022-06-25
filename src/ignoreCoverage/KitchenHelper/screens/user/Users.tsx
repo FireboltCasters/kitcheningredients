@@ -44,7 +44,7 @@ export const Users = (props) => {
 			setFirstload(false);
 			loadData();
 		}
-	}, [props.route.params])
+	}, [props?.route?.params])
 
 	function renderUserImage(){
 		console.log("Render User Image");

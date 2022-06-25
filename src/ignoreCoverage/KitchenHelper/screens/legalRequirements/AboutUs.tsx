@@ -13,7 +13,7 @@ export const AboutUs = (props) => {
 	// corresponding componentDidMount
 	useEffect(() => {
 		//console.log("About Us useEffect");
-	}, [props.route.params])
+	}, [props?.route?.params])
 
 	let component = ConfigHolder.plugin.getAboutUsComponent();
 

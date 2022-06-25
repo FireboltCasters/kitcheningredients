@@ -5,7 +5,7 @@ import {ResetPasswordForm} from "./ResetPasswordForm";
 
 export const ResetPassword: FunctionComponent = (props) => {
 
-	const params = props.route.params;
+	const params = props?.route?.params;
 	let token = params?.token;
 
 	let content = <RequestResetPasswordForm navigation={props.navigation} />;

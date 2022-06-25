@@ -15,7 +15,7 @@ export const TermsAndConditions = (props) => {
 	// corresponding componentDidMount
 	useEffect(() => {
 
-	}, [props.route.params])
+	}, [props?.route?.params])
 
 	let component = ConfigHolder.plugin.getTermsAndConditionsComponent();
 

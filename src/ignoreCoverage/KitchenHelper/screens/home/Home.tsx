@@ -44,7 +44,7 @@ export const Home = (props) => {
 		return () => {
 			clearInterval(timer.current);
 		};
-	}, [props.route.params])
+	}, [props?.route?.params])
 
 	return(
 		<>

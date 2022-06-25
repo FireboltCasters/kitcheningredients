@@ -31,7 +31,7 @@ export class NavigatorHelper {
     }
 
     static getRouteParams(props){
-        return props.route.params || {};
+        return props?.route?.params || {};
     }
 
     static goBack(){

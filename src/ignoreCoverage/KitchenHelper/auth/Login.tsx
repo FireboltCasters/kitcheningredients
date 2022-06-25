@@ -97,7 +97,7 @@ export const Login = (props) => {
 			fetchAccessToken();
 		}
 
-	}, [props.route.params, firstload])
+	}, [props?.route?.params, firstload])
 
 	let finishedLoading = loaded;
 

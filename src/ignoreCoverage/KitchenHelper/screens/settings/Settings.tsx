@@ -17,7 +17,7 @@ export const Settings = (props) => {
 	// corresponding componentDidMount
 	useEffect(() => {
 
-	}, [props.route.params])
+	}, [props?.route?.params])
 
 	function renderOpenDeveloperSettings(){
 		return(
