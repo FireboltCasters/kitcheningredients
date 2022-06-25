@@ -41,7 +41,7 @@ export abstract class PluginInterface{
       return null;
     }
 
-    renderCustomAuthProviders(): []{
+    renderCustomAuthProviders(serverInfo): []{
       return null;
     }
 

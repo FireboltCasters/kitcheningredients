@@ -15,7 +15,7 @@ interface AppState {
   onPress: any,
 }
 
-export const AuthProviderCustom: FunctionComponent<AppState> = ({serverInfo}) => {
+export const AuthProviderCustom: FunctionComponent<AppState> = (props) => {
 
 	let provider: Provider = {
 		name: props.name,
@@ -23,6 +23,6 @@ export const AuthProviderCustom: FunctionComponent<AppState> = ({serverInfo}) =>
 	};
 
 	return (
-		<AuthProvider serverInfo={serverInfo} provider={provider} buttonText={"Continue as Guest"} callback={props.onPress} />
+		<AuthProvider serverInfo={props?.serverInfo} provider={provider} buttonText={"Continue as Guest"} callback={props.onPress} />
 	)
 }
