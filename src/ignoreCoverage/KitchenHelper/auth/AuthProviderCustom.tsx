@@ -23,6 +23,6 @@ export const AuthProviderCustom: FunctionComponent<AppState> = (props) => {
 	};
 
 	return (
-		<AuthProvider serverInfo={props?.serverInfo} provider={provider} buttonText={"Continue as Guest"} callback={props.onPress} />
+		<AuthProvider serverInfo={props?.serverInfo} provider={provider} buttonText={props.buttonText} callback={props.onPress} />
 	)
 }
