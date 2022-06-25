@@ -10,6 +10,7 @@ import * as SplashScreen from 'expo-splash-screen';
 export class CodePushWrapper extends React.Component {
     static isSyncingFinished(status) {
         return (
+          status === codePush.SyncStatus.CHECKING_FOR_UPDATE ||
             status === codePush.SyncStatus.UP_TO_DATE ||
             status === codePush.SyncStatus.UPDATE_INSTALLED
         )
