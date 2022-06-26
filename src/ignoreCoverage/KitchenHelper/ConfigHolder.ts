@@ -20,6 +20,7 @@ export class ConfigHolder{
   static CustomDirectusTypes: any = null;
 
   static showMailLogin: boolean = true;
+  static showMailRegister: boolean = false;
   static showExternalLogins: boolean = true;
   static showGuestLogin: boolean = false;
   static autoLogin: boolean = false;

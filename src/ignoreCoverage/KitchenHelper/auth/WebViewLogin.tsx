@@ -21,7 +21,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 
 	}, [props])
 
-	function renderSignIn(){
+	function renderSignInText(){
 		return(
 			<View>
 				<Text fontSize="4xl" fontWeight={800}>
@@ -97,7 +97,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 
 	return (
 		<>
-			{renderSignIn()}
+			{renderSignInText()}
 			{renderLoginInformations()}
 		</>
 	)

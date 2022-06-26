@@ -8,6 +8,8 @@ import {Button, Flex, FormControl, Input, View} from "native-base";
 import {InternalLink} from "../navigation/InternalLink";
 import {ResetPassword} from "./ResetPassword";
 import {FormButton} from "../buttons/FormButton";
+import {ConfigHolder} from "kitcheningredients";
+import {Register} from "./Register";
 
 const showResetPassword = false;
 const showEmailLogin = true;
@@ -15,6 +17,20 @@ const showEmailLogin = true;
 export interface WebViewLoginFormState {
 
 }
+export const handleLoginWithCredentials = async (email, password) => {
+  let directus = ServerAPI.getPublicClient();
+  let response = await directus.auth.login({
+    email: email, //'admin@example.com',
+    password: password //'d1r3ctu5',
+  });
+  let token = response?.refresh_token;
+  if(!!token){
+    NavigatorHelper.navigate(Login, {[EnviromentHelper.getDirectusAccessTokenName()]: token} )
+    return true;
+  }
+  return false;
+}
+
 export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 
 	const markerRef = React.createRef();
@@ -27,13 +43,7 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 	async function handleLoginWithEmail(){
 		await setLoginInitiated(true);
 		try{
-			let directus = ServerAPI.getPublicClient();
-			let response = await directus.auth.login({
-				email: email, //'admin@example.com',
-				password: password //'d1r3ctu5',
-			});
-			let token = response.refresh_token;
-			NavigatorHelper.navigate(Login, {[EnviromentHelper.getDirectusAccessTokenName()]: token} )
+      await handleLoginWithCredentials(email, password)
 		} catch (err){
 			console.log(err);
 			setLoginInitiated(false);
@@ -69,6 +79,17 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 		return null;
 	}
 
+	function renderRegisterButton(){
+    if(ConfigHolder.showMailRegister){
+      return(
+        <FormButton loading={loginInitiated} disabled={loginInitiated} onPress={() => {NavigatorHelper.navigateWithoutParams(Register)}}>
+          {"Register"}
+        </FormButton>
+      )
+    }
+    return null;
+  }
+
 	function renderEmailLogin(){
 		if(showEmailLogin){
 			return(
@@ -101,8 +122,11 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 						<FormButton loading={loginInitiated} disabled={loginInitiated} onPress={() => {handleLoginWithEmail()}}>
 							{"Sign In"}
 						</FormButton>
-						{renderResetPasswordButton()}
+            {renderRegisterButton()}
 					</Flex>
+          <Flex flexDirection={"row"} justify={"space-between"} >
+            {renderResetPasswordButton()}
+          </Flex>
 				</>
 			)
 		}

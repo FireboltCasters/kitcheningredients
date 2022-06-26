@@ -19,6 +19,7 @@ import {createDrawerNavigator} from "@react-navigation/drawer";
 import {Settings} from "../screens/settings/Settings";
 import {DeveloperSettings} from "../screens/settings/DeveloperSettings";
 import {BaseNoPaddingTemplate} from "kitcheningredients";
+import {Register} from "../auth/Register";
 
 const Drawer = createDrawerNavigator();
 
@@ -70,6 +71,7 @@ export class RouteRegisterer {
 
         Menu.registerRoute(Login, LoginTemplate, "Login", RouteRegisterer.routeLogin);
         Menu.registerRoute(ResetPassword, LoginTemplate, "Reset Password", "reset-password");
+        Menu.registerRoute(Register, LoginTemplate, "Register", "register");
         Menu.registerUnauthenticatedMenu(MenuItem.getMenuItemFromComponent(Login));
 
         Menu.registerRoute(Home, BaseTemplate, "Home", "home");
