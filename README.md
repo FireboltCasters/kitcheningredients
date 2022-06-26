@@ -139,6 +139,21 @@ export const Tutorial = (props) => {
 }
 ```
 
+# Auth
+
+## Mail Register
+
+In order to allow users self registration follow these steps:
+
+1. In directus allow the group `Public` to create `Directus_users` (atleast `email` and `password`)
+2. Enable in your frontend app the button (in the index.js / index.web.js)
+```ts
+ConfigHolder.showMailLogin = true; //has to be enabled
+ConfigHolder.showMailRegister = true;
+```
+
+
+
 ### Created with
 
 Builder Bob: https://github.com/callstack/react-native-builder-bob

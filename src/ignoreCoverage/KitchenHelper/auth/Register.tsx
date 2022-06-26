@@ -33,7 +33,7 @@ export const Register = (props) => {
 			ConfigHolder.instance.setHideDrawer(true);
 		}
 
-	}, [props?.route?.params, firstload])
+	}, [props?.route?.params])
 
 	if(hideDrawer){
 		return null;
