@@ -73,6 +73,7 @@ export const Register = (props) => {
       <FormControl isRequired>
         <View style={{marginVertical: 10}}>
           <Input
+            isDisabled={registerInitiated}
             onChange={(event) => { // @ts-ignore
               setEmail(event.target.value)}}
             type="email"
@@ -84,7 +85,7 @@ export const Register = (props) => {
       <FormControl isRequired>
         <View style={{marginVertical: 10}} >
           <Input
-            isDisabled={loginInitiated}
+            isDisabled={registerInitiated}
             nativeID={"password"}
             type={"password"}
             onChange={(event) => { // @ts-ignore
@@ -95,7 +96,7 @@ export const Register = (props) => {
       <FormControl isRequired>
         <View style={{marginVertical: 10}} >
           <Input
-            isDisabled={loginInitiated}
+            isDisabled={registerInitiated}
             nativeID={"password"}
             type={"password"}
             onChange={(event) => { // @ts-ignore
