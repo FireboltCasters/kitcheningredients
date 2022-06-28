@@ -145,8 +145,9 @@ export const Tutorial = (props) => {
 
 In order to allow users self registration follow these steps:
 
-1. In directus allow the group `Public` to create `Directus_users` (atleast `email` and `password`)
-2. Enable in your frontend app the button (in the index.js / index.web.js)
+1. Directus => Settings => Roles & Permissions => Role `Public` allow to create `Directus_users` (expand at bottom) atleast `email` and `password`
+2. [Optional] Set desired default role (<YOUR_DEFAULT_ROLE_ID>): Directus => Settings => Roles & Permissions => Role `Public` => create `Directus_users`  => Field Presets => ```{"role": "<YOUR_DEFAULT_ROLE_ID>"}```
+3. Enable in your frontend app the button (in the index.js / index.web.js)
 ```ts
 ConfigHolder.showMailLogin = true; //has to be enabled
 ConfigHolder.showMailRegister = true;

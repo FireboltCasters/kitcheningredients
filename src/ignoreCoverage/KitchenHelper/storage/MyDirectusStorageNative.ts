@@ -5,7 +5,7 @@ import {DefaultStorage} from "./DefaultStorage";
 
 export class MyDirectusStorageNative extends DefaultStorage/** extends Storage */{
 
-    constructor() {
+    constructor(askForCookies?) {
         super();
     }
 
