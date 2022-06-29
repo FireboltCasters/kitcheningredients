@@ -1,11 +1,14 @@
 // @ts-nocheck
-import React, {useState} from "react";
+import React, {FunctionComponent, useState} from "react";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
-import {BaseNoPaddingTemplate} from "./BaseNoPaddingTemplate";
+import {BaseNoPaddingTemplate, BaseNoPaddingTemplateProps} from "./BaseNoPaddingTemplate";
 import {BasePadding} from "./BasePadding";
 
-export const BaseTemplate = ({
+export interface BaseTemplateProps extends BaseNoPaddingTemplateProps{
+
+}
+export const BaseTemplate: FunctionComponent<BaseTemplateProps> = ({
 								 children,
 								 title,
                   header,

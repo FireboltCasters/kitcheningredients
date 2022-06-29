@@ -1,10 +1,14 @@
 // @ts-nocheck
-import React from "react";
+import React, {FunctionComponent} from "react";
 import {Text, View} from "native-base";
 
 import {Icon} from "./Icon";
 
-export const TextWithIcon = (props) => {
+export interface AppState{
+  icon: string,
+  content: string
+}
+export const TextWithIcon: FunctionComponent<AppState> = (props) => {
 
 	function renderRowInformation(icon, content){
 		let renderedIcon = !!icon ? <Text><Icon  name={icon} marginRight={15}/></Text> : null;

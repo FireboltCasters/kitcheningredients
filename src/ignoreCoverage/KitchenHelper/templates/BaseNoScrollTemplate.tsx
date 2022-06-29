@@ -1,16 +1,20 @@
 // @ts-nocheck
-import React, {useEffect, useState} from "react";
+import React, {FunctionComponent, useEffect, useState} from "react";
 import {BaseLayout} from "./BaseLayout";
 import ServerAPI from "../ServerAPI";
 import {View} from "native-base";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
-import {Platform, SafeAreaView, StatusBar} from "react-native";
-import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 import {NavigatorHelper} from "kitcheningredients";
 
-export const BaseNoScrollTemplate = ({
+
+export interface BaseNoScrollTemplateProps{
+  title?: string,
+  header?: JSX.Element,
+  serverInfo?: any
+}
+export const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps>= ({
 								 children,
 								 title,
                   header,
