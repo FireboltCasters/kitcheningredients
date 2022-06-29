@@ -1,6 +1,6 @@
 {
   "name": "kitcheningredients",
-  "version": "0.1.172",
+  "version": "0.1.173",
   "description": "A helper for the KitchenBase",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
