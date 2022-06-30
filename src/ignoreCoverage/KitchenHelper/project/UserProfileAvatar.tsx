@@ -7,7 +7,7 @@ import {DirectusImage} from "./DirectusImage";
 import {TouchableOpacity} from "react-native";
 
 import {Icon} from "../components/Icon";
-import {ConfigHolder} from "kitcheningredients";
+import {ConfigHolder} from "./../ConfigHolder";
 
 const titleBoxHeight = 64;
 

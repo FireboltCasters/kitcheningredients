@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {useEffect, useRef, useState} from "react";
 import {Button, Input, Text, View} from "native-base";
-import {Device, NavigatorHelper} from "kitcheningredients";
+import {Device} from "./../../helper/Device";
 import {DeviceInformation} from "../../helper/Device";
 
 export const DebugDevice = (props) => {

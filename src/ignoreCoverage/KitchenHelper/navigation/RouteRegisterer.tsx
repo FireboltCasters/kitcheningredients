@@ -18,7 +18,7 @@ import {ConfigHolder} from "../ConfigHolder";
 import {createDrawerNavigator} from "@react-navigation/drawer";
 import {Settings} from "../screens/settings/Settings";
 import {DeveloperSettings} from "../screens/settings/DeveloperSettings";
-import {BaseNoPaddingTemplate} from "kitcheningredients";
+import {BaseNoPaddingTemplate} from "./../templates/BaseNoPaddingTemplate";
 import {Register} from "../auth/Register";
 
 const Drawer = createDrawerNavigator();

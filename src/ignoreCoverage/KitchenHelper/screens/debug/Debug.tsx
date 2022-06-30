@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {Button, Input, Text, View} from "native-base";
 import {keyof} from "ts-keyof";
 import {TouchableOpacity} from "react-native";
-import {NavigatorHelper} from "kitcheningredients";
+import {NavigatorHelper} from "./../../navigation/NavigatorHelper";
 import {DeveloperSettings} from "../settings/DeveloperSettings";
 import {DebugDevice} from "./DebugDevice";
 

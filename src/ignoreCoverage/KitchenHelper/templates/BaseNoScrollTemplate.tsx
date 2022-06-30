@@ -6,7 +6,7 @@ import {View} from "native-base";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
-import {NavigatorHelper} from "kitcheningredients";
+import {NavigatorHelper} from "./../navigation/NavigatorHelper";
 
 
 export interface BaseNoScrollTemplateProps{

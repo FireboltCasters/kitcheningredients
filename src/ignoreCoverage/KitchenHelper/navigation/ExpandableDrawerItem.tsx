@@ -6,7 +6,7 @@ import {Text, View} from "native-base";
 import {MyThemedBox} from "../helper/MyThemedBox";
 
 import {Icon} from "../components/Icon";
-import {MenuItem} from "kitcheningredients";
+import {MenuItem} from "./../navigation/MenuItem";
 
 export interface AppState {
     menu: MenuItem,

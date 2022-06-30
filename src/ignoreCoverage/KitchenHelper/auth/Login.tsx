@@ -7,7 +7,7 @@ import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Platform} from "react-native";
 import {ConfigHolder} from "../ConfigHolder";
 import {keyof} from "ts-keyof";
-import {RegisteredRoutesMap} from "kitcheningredients";
+import {RegisteredRoutesMap} from "./../navigation/RegisteredRoutesMap";
 
 export const Login = (props) => {
 
