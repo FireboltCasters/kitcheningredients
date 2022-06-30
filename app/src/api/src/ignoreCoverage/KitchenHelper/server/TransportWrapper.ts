@@ -33,7 +33,7 @@ export default class TransportWrapper extends Transport{
 			//Happens when the refresh or access token is too old
 			if(this.isTokenExpired(error, status, code)){
 			  console.log("- Token is expired")
-        let allowRefresh = false;
+        let allowRefresh = true;
 
 			  let refreshAnswer = await this.handleRefresh();
 				if(this.isRefreshSuccessfull(refreshAnswer) && allowRefresh){
