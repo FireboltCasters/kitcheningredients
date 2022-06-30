@@ -4,7 +4,7 @@ import {View, Text} from "native-base";
 import {KitchenSkeleton} from "./../../project/KitchenSkeleton";
 import {StringHelper} from "../../helper/StringHelper";
 
-export const MarkdownSkeleton: FunctionComponent = (props) => {
+export const MarkdownSkeleton = (props) => {
 
     function renderTextRow(rows: number){
         return (

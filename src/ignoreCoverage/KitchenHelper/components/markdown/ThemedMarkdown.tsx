@@ -45,7 +45,9 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
 		},
 	}
 
-	return(
+
+  return(
+    // @ts-ignore
 		<Markdown
 			style={style}
 		>

@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import type {PluginInterface} from "../PluginInterface";
+import type {PluginInterface} from "./PluginInterface";
 import {DefaultStorage} from "./storage/DefaultStorage";
 import App from "./App";
 

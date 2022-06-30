@@ -90,6 +90,7 @@ export class RouteRegisterer {
         RouteRegisterer.registerLegalRequirements();
     }
 
+    // @ts-ignore
     static getDrawer(){
         return Drawer;
     }

@@ -10,10 +10,12 @@ export class StringHelper{
 
     let content = [];
     for(let i=0; i<amount; i++){
+      // @ts-ignore
       content.push(<Text key={"zeroSpace_"+i}>{"\u200b"}</Text>);
     }
 
     return(
+      // @ts-ignore
       <View style={{flexDirection: "column"}}>
         {content}
       </View>

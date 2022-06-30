@@ -81,7 +81,7 @@ export {BaseTemplate}
 import {MenuItem} from "./ignoreCoverage/KitchenHelper/navigation/MenuItem";
 export {MenuItem}
 
-import {PluginInterface} from "./ignoreCoverage/PluginInterface";
+import {PluginInterface} from "./ignoreCoverage/KitchenHelper/PluginInterface";
 export {PluginInterface}
 
 import {Menu} from "./ignoreCoverage/KitchenHelper/navigation/Menu";

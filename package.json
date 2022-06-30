@@ -28,7 +28,6 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "build": "npm run fixNodeModules && bob build",
-    "prepare": "npm run build",
     "release": "release-it",
     "releaseCI": "npm run fixNodeModules && release-it --npm.skipChecks",
     "example": "yarn --cwd example",
