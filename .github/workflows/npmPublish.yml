@@ -15,10 +15,10 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
-      - run: git config --global user.name 'Firebolt Caster'
-      - run: git config --global user.email 'nilsbaumgartner@live.de'
-      - run: git stash
-      - run: npm run releaseCI
+      - run: cd ./app/src/api/ && npm ci
+      - run: cd ./app/src/api/ && git config --global user.name 'Firebolt Caster'
+      - run: cd ./app/src/api/ && git config --global user.email 'nilsbaumgartner@live.de'
+      - run: cd ./app/src/api/ && git stash
+      - run: cd ./app/src/api/ && npm run releaseCI
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

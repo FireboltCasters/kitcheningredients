@@ -8,6 +8,7 @@
 		"codepush_android": "FireboltCasters/RocketMealsDemo-Android"
 	},
 	"scripts": {
+    "deleteDevNodeModules": "rm -rf src/api/node_modules && rm -rf src/api/lib",
 		"start": "react-native start",
 		"preandroid": "npm run prebuild",
 		"android": "npm run prebuild && react-native run-android",
@@ -31,7 +32,7 @@
 		"predeploy:web:local": "npm run build:web",
 		"deploy:web:local": "npm run serve:web:local",
 		"serve:web:local": "npx serve web-build --cors --single",
-		"prebuild": "npm run licenseSummary && bash ./fix-for-web.sh",
+		"prebuild": "npm run licenseSummary && bash ./fix-for-web.sh && npm run deleteDevNodeModules",
 		"licenseSummary": "npx license-checker --production --json --summary --direct --out thirdpartyLicense.json",
 		"codepushkeys:ios": "appcenter codepush deployment list --app ${npm_package_config_codepush_ios} -k && echo 'Keys above for iOS ! Paste these in config.json'",
 		"codepushgittoken:ios": "appcenter tokens create -d \"${npm_package_config_codepush_ios}\" && echo 'Add the API Token to your Git Secrets as: CODEPUSH_TOKEN_IOS'",

@@ -5,7 +5,7 @@
 
 import { registerRootComponent } from 'expo';
 //import App from './src/KitchenHelper/App'
-import {App, ConfigHolder, MyDirectusStorage} from 'kitcheningredients'
+import {App, ConfigHolder, MyDirectusStorage} from './src/api/src/index'
 import Project from "./src/project/Project";
 import nativebaseConfig from "./nativebase.config";
 import styleConfig from "./styleConfig.json";

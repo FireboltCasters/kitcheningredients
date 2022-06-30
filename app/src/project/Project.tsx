@@ -2,7 +2,7 @@ import React from "react";
 
 import {
   PluginInterface,
-} from "kitcheningredients";
+} from "./../api/src/index";
 
 import {SynchedStateKeys} from "./helper/SynchedStateKeys";
 import {StorageKeys} from "./helper/StorageKeys";
