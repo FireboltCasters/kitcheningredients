@@ -28,8 +28,8 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "build": "npm run fixNodeModules && bob build",
-    "release": "release-it",
-    "releaseCI": "npm run fixNodeModules && release-it --npm.skipChecks",
+    "release": "npm run build && release-it",
+    "releaseCI": "npm run build && npm run fixNodeModules && release-it --npm.skipChecks",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
