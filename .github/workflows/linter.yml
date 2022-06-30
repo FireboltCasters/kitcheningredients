@@ -20,7 +20,7 @@ jobs:
           node-version: 12
 
       - name: Install Node.js dependencies
-        run: npm ci
+        run: cd ./app/src/api/ && npm ci
 
      # - name: Test
      #   run: npm run test
