@@ -18,7 +18,7 @@ export const Home = (props) => {
 	const timer = useRef(null); // we can save timer in useRef and pass it to child
 
 	async function downloadServerStatus(){
-		console.log("Home DownloadServerStatus")
+		console.log(Date.now()+" : Home DownloadServerStatus")
 		let directus = ServerAPI.getClient();
 		let startTime = Date.now()
 		await directus.server.ping();
@@ -38,7 +38,7 @@ export const Home = (props) => {
 	// corresponding componentDidMount
 	useEffect(() => {
 		downloadServerStatus()
-		timer.current = setInterval(() => {downloadServerStatus()}, 1000);
+		timer.current = setInterval(() => {downloadServerStatus()}, 10000);
 		// this will clear Interval
 		// clear on component unmount
 		return () => {
