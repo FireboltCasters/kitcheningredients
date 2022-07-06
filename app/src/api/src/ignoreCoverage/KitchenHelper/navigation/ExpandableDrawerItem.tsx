@@ -40,11 +40,24 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
         }
     }
 
-    async function handleOnPress(){
+    async function handleOnPressIcon(){
         let nextExpandState = !expanded;
         menu.expanded = nextExpandState;
         setExpanded(nextExpandState);
-        await menu.handleOnPress(nextExpandState)
+        if(!hasChildren){
+          await menu.handleOnPress(nextExpandState);
+        }
+    }
+
+    async function handleOnPressContent(){
+      if(hasChildren && !expanded){
+        let nextExpandState = !expanded;
+        menu.expanded = nextExpandState;
+        setExpanded(nextExpandState);
+        await menu.handleOnPress(nextExpandState);
+      } else {
+        await menu.handleOnPress(expanded);
+      }
     }
 
     function renderSubMenuContent(){
@@ -87,12 +100,16 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
     return(
         <View style={{width: "100%"}}>
             <MyThemedBox _shadeLevel={boxShadeLevel} style={{width: "100%"}} >
-                <TouchableOpacity onPress={handleOnPress} style={{padding: 8}}>
+                <View style={{padding: 8}}>
                     <View style={{flexDirection: "row", alignItems: "center"}}>
+                      <TouchableOpacity onPress={handleOnPressIcon} >
                         {renderExpandIcon()}
+                      </TouchableOpacity>
+                      <TouchableOpacity onPress={handleOnPressContent} >
                         {renderContent()}
+                      </TouchableOpacity>
                     </View>
-                </TouchableOpacity>
+                </View>
                 {renderSubMenuContent()}
             </MyThemedBox>
         </View>
