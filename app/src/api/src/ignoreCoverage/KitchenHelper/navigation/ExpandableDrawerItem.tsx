@@ -102,7 +102,7 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
             <MyThemedBox _shadeLevel={boxShadeLevel} style={{width: "100%"}} >
                 <View style={{padding: 8}}>
                     <View style={{flexDirection: "row", alignItems: "center", width: "100%"}}>
-                      <TouchableOpacity onPress={handleOnPressIcon} style={{flex: 1}} >
+                      <TouchableOpacity onPress={handleOnPressIcon} >
                         {renderExpandIcon()}
                       </TouchableOpacity>
                       <TouchableOpacity onPress={handleOnPressContent} style={{width: "100%", flex: 1}} >
