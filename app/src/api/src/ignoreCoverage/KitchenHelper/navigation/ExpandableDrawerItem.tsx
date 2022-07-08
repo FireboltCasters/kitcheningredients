@@ -84,7 +84,7 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
       let content = menu.content;
       if(!content){
         content = (
-          <View>
+          <View style={{width: "100%"}}>
             <Text fontSize={"md"}>{menu.label}</Text>
           </View>
         )
@@ -101,11 +101,11 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
         <View style={{width: "100%"}}>
             <MyThemedBox _shadeLevel={boxShadeLevel} style={{width: "100%"}} >
                 <View style={{padding: 8}}>
-                    <View style={{flexDirection: "row", alignItems: "center"}}>
-                      <TouchableOpacity onPress={handleOnPressIcon} >
+                    <View style={{flexDirection: "row", alignItems: "center", width: "100%"}}>
+                      <TouchableOpacity onPress={handleOnPressIcon} style={{flex: 1}} >
                         {renderExpandIcon()}
                       </TouchableOpacity>
-                      <TouchableOpacity onPress={handleOnPressContent} >
+                      <TouchableOpacity onPress={handleOnPressContent} style={{width: "100%", flex: 1}} >
                         {renderContent()}
                       </TouchableOpacity>
                     </View>
