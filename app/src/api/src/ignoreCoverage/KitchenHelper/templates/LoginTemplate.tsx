@@ -97,17 +97,23 @@ export const LoginTemplate: FunctionComponent = (props) => {
 	}
 
   const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
+  const keyboardVerticalOffset = paddingTop;
 
 	return (
     <KitchenSafeAreaView>
-		<Flex
-			style={{height: "100%", width: "100%"}}
-			flexDirection="row"
-		>
-			{renderLeftSide()}
-			{renderRightSide()}
-			<Floaters />
-		</Flex>
+      <KeyboardAvoidingView
+        keyboardVerticalOffset = {keyboardVerticalOffset} // adjust the value here if you need more padding
+        style={{height: "100%", width: "100%"}}
+        behavior={Platform.OS === "ios" ? "padding" : "height"} >
+        <Flex
+          style={{height: "100%", width: "100%"}}
+          flexDirection="row"
+        >
+          {renderLeftSide()}
+          {renderRightSide()}
+          <Floaters />
+        </Flex>
+      </KeyboardAvoidingView>
 		</KitchenSafeAreaView>
 	)
 }

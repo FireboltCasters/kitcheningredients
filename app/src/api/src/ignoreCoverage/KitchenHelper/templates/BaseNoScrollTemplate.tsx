@@ -2,11 +2,12 @@
 import React, {FunctionComponent, useEffect, useState} from "react";
 import {BaseLayout} from "./BaseLayout";
 import ServerAPI from "../ServerAPI";
-import {View} from "native-base";
+import {View, KeyboardAvoidingView} from "native-base";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 import {NavigatorHelper} from "./../navigation/NavigatorHelper";
+import {Platform, StatusBar} from "react-native";
 
 
 export interface BaseNoScrollTemplateProps{
@@ -51,16 +52,24 @@ export const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps>=
 	  showbackbutton = false;
   }
 
+  const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
+  const keyboardVerticalOffset = paddingTop;
+
 	return(
 		<KitchenSafeAreaView>
-      <View flex={1} flexDirection={"row"}>
-      <BaseLayout title={title} serverInfo={serverInfo} header={header} showbackbutton={showbackbutton} >
-        <View style={{width: "100%", height: "100%"}} >
-            {childrenWithProps}
+      <KeyboardAvoidingView
+        keyboardVerticalOffset = {keyboardVerticalOffset} // adjust the value here if you need more padding
+        style = {{height: "100%", width: "100%"}}
+        behavior={Platform.OS === "ios" ? "padding" : "height"} >
+        <View flex={1} flexDirection={"row"}>
+          <BaseLayout title={title} serverInfo={serverInfo} header={header} showbackbutton={showbackbutton} >
+            <View style={{width: "100%", height: "100%"}} >
+              {childrenWithProps}
+            </View>
+          </BaseLayout>
+          <CookieInformation />
         </View>
-      </BaseLayout>
-      <CookieInformation />
-      </View>
+      </KeyboardAvoidingView>
 		</KitchenSafeAreaView>
 	)
 }
