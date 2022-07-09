@@ -28,6 +28,8 @@ export const LoginTemplate: FunctionComponent = (props) => {
 	};
 	 */
 
+  const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
+  const keyboardVerticalOffset = paddingTop;
 	const isSmallDevice = useBreakpointValue({
 		base: true,
 		md: false,
@@ -65,6 +67,10 @@ export const LoginTemplate: FunctionComponent = (props) => {
 
 		return(
 			<Flex style={{width: width, height: "100%"}}>
+        <KeyboardAvoidingView
+          keyboardVerticalOffset = {keyboardVerticalOffset} // adjust the value here if you need more padding
+          style={{flex: 1, width: "100%"}}
+          behavior={Platform.OS === "ios" ? "padding" : "height"} >
 				<ScrollViewWithGradient style={{flex: 1}}>
 					<View style={{paddingHorizontal: padding, paddingTop: padding, height: "100%", width: "100%"}}>
 						<ProjectBanner serverInfo={serverInfo} />
@@ -73,6 +79,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
 					</View>
           <ShowMoreGradientPlaceholder />
 				</ScrollViewWithGradient>
+        </KeyboardAvoidingView>
 				<Wrap
 					flexDirection="row"
 					justify="center"
@@ -96,15 +103,8 @@ export const LoginTemplate: FunctionComponent = (props) => {
 		)
 	}
 
-  const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
-  const keyboardVerticalOffset = paddingTop;
-
 	return (
     <KitchenSafeAreaView>
-      <KeyboardAvoidingView
-        keyboardVerticalOffset = {keyboardVerticalOffset} // adjust the value here if you need more padding
-        style={{height: "100%", width: "100%"}}
-        behavior={Platform.OS === "ios" ? "padding" : "height"} >
         <Flex
           style={{height: "100%", width: "100%"}}
           flexDirection="row"
@@ -113,7 +113,6 @@ export const LoginTemplate: FunctionComponent = (props) => {
           {renderRightSide()}
           <Floaters />
         </Flex>
-      </KeyboardAvoidingView>
 		</KitchenSafeAreaView>
 	)
 }

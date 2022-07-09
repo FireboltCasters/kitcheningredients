@@ -17,8 +17,6 @@ import currentpackageJson from "./package.json";
 import currentpackageJsonLock from "./package-lock.json";
 import thirdpartyLicense from "./thirdpartyLicense.json"
 import AppConfig from "./app.config"
-import {CodePushWrapper} from "./src/project/codepush/CodePushWrapper";
-import {CodePushDebugger} from "./src/project/codepush/CodePushDebugger";
 
 ConfigHolder.storage = new MyDirectusStorage();
 ConfigHolder.plugin = new Project()
@@ -38,49 +36,7 @@ ConfigHolder.showGuestLogin = true;
 ConfigHolder.autoLogin = true;
 
 async function main() {
-    let isIOS = Platform.OS === "ios";
-    console.log("Platform: " + Platform.OS);
-
-    const codepushConfig = config.codepush || {};
-    const codepushActive = codepushConfig.active || false;
-    const deploymentType = codepushConfig.deploymentType || null;
-    const deploymentKeys = codepushConfig.keys || {};
-    let deploymentKeysForOS = isIOS ? deploymentKeys["ios"] : deploymentKeys["android"];
-    if (!deploymentKeysForOS) {
-        deploymentKeysForOS = {};
-    }
-    let deploymentKey = null;
-    if (!!deploymentType) {
-        deploymentKey = deploymentKeysForOS[deploymentType];
-    }
-
-    console.log("codepushActive: " + codepushActive);
-    console.log("deploymentType: " + deploymentType);
-    console.log("deploymentKey: " + deploymentKey);
-
-    if (!!codepushActive && !!deploymentType && !!deploymentKey) { //if codepush is used
-        const FREQUENCY = codePush.CheckFrequency.ON_APP_RESUME
-        const codePushOptions = {
-            deploymentKey: deploymentKey,
-            checkFrequency: FREQUENCY,
-            installMode: codePush.InstallMode.ON_NEXT_RESUME, // codePush.InstallMode.IMMEDIATE, //
-        }
-
-        // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-        // It also ensures that whether you load the app in the Expo client or in a native build,
-        // the environment is set up appropriately
-        SplashScreen.preventAutoHideAsync();
-
-        registerRootComponent(codePush(codePushOptions)(CodePushWrapper));
-
-        // For CodePush Debugging
-        //registerRootComponent(CodePushDebugger);
-    } else {
-        // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-        // It also ensures that whether you load the app in the Expo client or in a native build,
-        // the environment is set up appropriately
-        registerRootComponent(App);
-    }
+  registerRootComponent(App);
 }
 
 main();

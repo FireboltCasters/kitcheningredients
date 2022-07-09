@@ -188,12 +188,12 @@ export default class Project implements PluginInterface {
 }
 ```
 
-- `BaseTemplate`: Includes `BaseNoPaddingTemplate` and adds a `BasePadding`
+- `BaseTemplate`: Includes `BaseNoPaddingTemplate` and adds a `BasePadding`. Includes KeyboardAvoidingView which works inside Scrollviews.
   - Usecase: You want to show text or a standard component
   - `BasePadding`: Not a template but adds the base padding
-- `BaseNoPaddingTemplate`: Includes `BaseNoPaddingTemplate` and a Scrollview with breakpoint layout for different screen sizes
+- `BaseNoPaddingTemplate`: Includes `BaseNoPaddingTemplate` and a Scrollview with breakpoint layout for different screen sizes. Includes KeyboardAvoidingView which works inside Scrollviews.
   - Usecase: You want to scroll and use your own padding added but dont want to rerender for every screen change
-- `BaseNoScrollTemplate`: Full width and height with basic title and drawer button without scrolling
+- `BaseNoScrollTemplate`: Full width and height with basic title and drawer button without scrolling. Includes KeyboardAvoidingView which works inside Scrollviews.
   - Usecase: You want to implement a different scroll direction but want the drawer and title
 - `EmptyTemplate`: Nothing but the props: `height` and `width` to all children
   - Usecase: You want to show a fullscreen map and dont want the drawer or title
