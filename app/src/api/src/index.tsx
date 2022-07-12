@@ -40,6 +40,9 @@ export {CrossLottie}
 import {DirectusImage} from "./ignoreCoverage/KitchenHelper/project/DirectusImage";
 export {DirectusImage}
 
+import {getDirectusImageUrl} from "./ignoreCoverage/KitchenHelper/project/DirectusImage";
+export {getDirectusImageUrl}
+
 import {Layout} from "./ignoreCoverage/KitchenHelper/templates/Layout";
 export {Layout}
 

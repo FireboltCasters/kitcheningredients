@@ -15,6 +15,27 @@ interface AppState {
 	isPublic?: boolean
 	onPress?: () => {}
 }
+export const getDirectusImageUrl = (props: AppState) => {
+  if(!!props.assetId || !!props.url) {
+    let url = props.url;
+
+    if (!!props.assetId) {
+      let imageURL = ServerAPI.getAssetImageURL(props.assetId);
+      url = imageURL;
+      if (!props.isPublic) {
+        let token = ConfigHolder.storage.get_auth_access_token();
+        if (!!url && !!token) {
+          if (!url.includes("?")) {
+            url += "?";
+          }
+          url += "&access_token=" + token;
+        }
+      }
+    }
+    return url;
+  }
+  return null;
+}
 export const DirectusImage: FunctionComponent<AppState> = (props) => {
 
 	const [loading, setLoading] = useState(true);
@@ -24,22 +45,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 	let content = null;
 
 	if(!!props.assetId || !!props.url){
-    let url = props.url;
-
-    if(!!props.assetId){
-      let imageURL = ServerAPI.getAssetImageURL(props.assetId);
-      url = imageURL;
-      if(!props.isPublic){
-        let token = ConfigHolder.storage.get_auth_access_token();
-        if(!!url && !!token){
-          if(!url.includes("?")){
-            url+="?";
-          }
-          url+="&access_token="+token;
-        }
-      }
-    }
-
+    let url = getDirectusImageUrl(props);
 		let source={
 			uri: url
 		}
