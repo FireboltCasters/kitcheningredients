@@ -137,7 +137,6 @@ export default class Project implements PluginInterface {
 }
 ```
 
-
 A route with paramters can be registered like this:
 
 ```tsx
