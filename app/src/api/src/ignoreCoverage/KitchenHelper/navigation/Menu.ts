@@ -103,6 +103,10 @@ export class Menu {
         Menu.registerMenuForRoleId(Menu.ROLE_UNAUTHENTICATED, menuItem);
     }
 
+    static registerAdminMenu(menuItem: MenuItem){
+      Menu.registerMenuForRoleId(Menu.ROLE_ADMINISTRATOR, menuItem);
+    }
+
     static registerAuthenticatedMenu(menuItem: MenuItem){
         Menu.registerMenuForRoleId(Menu.ROLE_AUTHENTICATED, menuItem);
     }

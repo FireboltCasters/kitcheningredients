@@ -32,6 +32,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 
 
 		if(!!user){
+      output.push(renderAdminMenu())
 			output.push(renderAuthenticatedMenu())
 			output.push(renderUserRoleIdMenu(user));
 			output.push(renderUserRoleNameMenu());
@@ -66,6 +67,10 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	function renderUnauthenticatedMenu(){
 		return renderMenusByRole(Menu.ROLE_UNAUTHENTICATED)
 	}
+
+  function renderAdminMenu(){
+    return renderMenusByRole(Menu.ROLE_ADMINISTRATOR)
+  }
 
 	function renderAuthenticatedMenu(){
 		return renderMenusByRole(Menu.ROLE_AUTHENTICATED)

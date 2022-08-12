@@ -137,6 +137,20 @@ export default class Project implements PluginInterface {
 }
 ```
 
+
+A route with paramters can be registered like this:
+
+```tsx
+Menu.registerRoute(MealOfferList, EmptyTemplate, "Mealsoffers", "mealoffers", "/:canteenid/:date");
+```
+
+After that you can access your route params like this:
+
+```tsx
+let params = props?.route?.params;
+```
+
+
 Role specific menus can be also registered:
 
 ```tsx
