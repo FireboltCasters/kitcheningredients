@@ -18,6 +18,8 @@ export class Menu {
         [Menu.ROLE_AUTHENTICATED]: [],
     };
 
+    static requiredMenus = [];
+
     static menusForRolesByName = {
 
     };
@@ -97,6 +99,10 @@ export class Menu {
 
     static registerCommonMenu(menuItem: MenuItem){
         Menu.registerMenuForRoleId(Menu.ROLE_PUBLIC, menuItem);
+    }
+
+    static registerRequiredMenu(menuItem: MenuItem){
+        Menu.requiredMenus.push(menuItem);
     }
 
     static registerUnauthenticatedMenu(menuItem: MenuItem){

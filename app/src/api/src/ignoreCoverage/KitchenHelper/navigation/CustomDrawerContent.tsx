@@ -40,6 +40,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 			output.push(renderUnauthenticatedMenu())
 		}
 		output.push(renderCommonMenu())
+    output.push(renderRequiredMenus());
 
 		return output;
 	}
@@ -89,6 +90,11 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 		let menus = Menu.menusForRolesByID[role];
 		return renderMenus(menus);
 	}
+
+  function renderRequiredMenus(){
+    let menus = Menu.requiredMenus
+    return renderMenus(menus);
+  }
 
 	function renderMenus(menus){
 		if(!menus) {

@@ -62,7 +62,7 @@ export class RouteRegisterer {
 
         let legalRequirements = new MenuItem("LegalRequirements", "Legal Requirements", null);
         legalRequirements.addChildsFromFunctionComponents(AboutUs, License, PrivacyPolicy, TermsAndConditions);
-        Menu.registerCommonMenu(legalRequirements);
+        Menu.registerRequiredMenu(legalRequirements);
     }
 
     static register(){
