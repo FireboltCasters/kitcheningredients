@@ -1,3 +1,6 @@
+import {ScrollViewWithGradient} from "./ignoreCoverage/KitchenHelper/utils/ScrollViewWithGradient";
+export {ScrollViewWithGradient};
+
 import {AuthProviderCustom} from "./ignoreCoverage/KitchenHelper/auth/AuthProviderCustom";
 export {AuthProviderCustom}
 

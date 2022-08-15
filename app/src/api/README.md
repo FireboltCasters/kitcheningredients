@@ -380,6 +380,25 @@ return (<KitchenSkeleton flex={1} />)
 ```
 </details>
 
+
+<details>
+<summary>ScrollViewWithGradient</summary>
+
+You can use the Scrollview wrapper to show a gradient on the bottom, which indicates more content.
+
+```tsx
+import {ScrollViewWithGradient} from "kitcheningredients";
+return (
+    <ScrollViewWithGradient>
+      <Text>{"Lorem Ipsum long text or content"}</Text>
+    </ScrollViewWithGradient>
+);
+```
+
+- hideGradient?: boolean
+  - Shows or hides the gradient
+</details>
+
 TODO: ThemedMarkdown
 TODO: DirectusMarkdown
 TODO: DirectusSingletonMarkdown
