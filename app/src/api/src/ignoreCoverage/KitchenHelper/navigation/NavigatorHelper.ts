@@ -154,17 +154,17 @@ export class NavigatorHelper {
         }
     }
 
-    static handleNavigationQueue(){
-        let queueCopy = JSON.parse(JSON.stringify(NavigatorHelper.navigationQueue));
-        while(queueCopy.length>0){
-            let nextNavigation = NavigatorHelper.navigationQueue.shift(); //get item from copy
-            if(!!nextNavigation){
-                console.log(nextNavigation);
-                NavigatorHelper.navigationQueue.shift(); // remove first item from real list
-                NavigatorHelper.navigateToRouteName(nextNavigation.routeName, nextNavigation.props, nextNavigation.resetHistory);
-            }
-        }
-    }
+    static handleNavigationQueue(){ 
+       let queueCopy = JSON.parse(JSON.stringify(NavigatorHelper.navigationQueue)); 
+       while(queueCopy.length>0){ 
+           let nextNavigation = NavigatorHelper.navigationQueue.shift(); //get item from copy 
+           if(!!nextNavigation){ 
+               console.log(nextNavigation); 
+               NavigatorHelper.navigationQueue.shift(); // remove first item from real list 
+               NavigatorHelper.navigateToRouteName(nextNavigation.routeName, nextNavigation.props, nextNavigation.resetHistory); 
+           } 
+       } 
+   } 
 
     /**
      * https://reactnavigation.org/docs/5.x/navigating-without-navigation-prop/#handling-initialization
