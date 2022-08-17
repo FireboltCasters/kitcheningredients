@@ -51,7 +51,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 		}
 
 		content = (<>
-			<Image source={source} alt={props.alt} style={props.style}
+			<Image source={source} alt={props?.alt || "Image"} style={props.style}
              ignoreFallback={props.ignoreFallback}
              fallbackSource={props.fallbackSource}
            fallbackElement={props.fallbackElement}
