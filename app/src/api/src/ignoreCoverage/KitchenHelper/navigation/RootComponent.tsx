@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Box, useColorModeValue, useToken, View} from 'native-base';
 import EnviromentHelper from "../EnviromentHelper";
 import {RouteRegisterer} from "./RouteRegisterer";
-import {navigationRef, isReadyRef} from "./NavigatorHelper";
+import {navigationRef, isReadyRef, NavigatorHelper} from "./NavigatorHelper";
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {ConfigHolder} from "../ConfigHolder";
 
@@ -42,6 +42,7 @@ export const Root = (props) => {
 			ref={navigationRef}
 			onReady={() => {
 				isReadyRef.current = true;
+        NavigatorHelper.handleNavigationQueue();
 			}}
 			// @ts-ignore //this is correct
 			linking={linking}
