@@ -3,7 +3,6 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Box, useColorModeValue, useToken, View} from 'native-base';
 import EnviromentHelper from "../EnviromentHelper";
-import {RouteRegisterer} from "./RouteRegisterer";
 import {navigationRef, isReadyRef, NavigatorHelper} from "./NavigatorHelper";
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {ConfigHolder} from "../ConfigHolder";
@@ -32,7 +31,11 @@ export const Root = (props) => {
 	}
 
 	let prefixes = ["myapp:///"];
-	const linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
+	let linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
+  let independent = props.independent;
+  if(independent){
+    linking=undefined;
+  }
 
 	return (
 		<NavigationContainer
