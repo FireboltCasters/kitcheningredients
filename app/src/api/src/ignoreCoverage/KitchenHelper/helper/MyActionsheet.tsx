@@ -9,7 +9,9 @@ export interface MyAlertProps {
     onAccept?: any,
     cancelLabel?: string,
     onCancel?: any,
-    renderCustomContent?: any
+    renderCustomContent?: any,
+    options?: any,
+    onOptionSelect?: any,
 }
 
 export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) => {
@@ -30,22 +32,22 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
     function renderAccept(){
         let acceptLabel = props.acceptLabel || "Accept";
         const onPress = props.onAccept;
-        return renderOption(acceptLabel, onPress,  <Icon name={"check"} />);
+        return renderOption("accept", acceptLabel, onPress, <Icon name={"check"} />);
     }
 
     function renderCancel(){
         let acceptLabel = props.cancelLabel || "Cancel";
         const onPress = props.onCancel;
-        return renderOption(acceptLabel, onPress, <Icon name={"close"} />);
+        return renderOption("cancel", acceptLabel, onPress, <Icon name={"close"} />);
     }
 
-    function renderOption(label, onPress, renderedIcon?){
+    function renderOption(key, label, onPress, renderedIcon?){
         return(
             <Actionsheet.Item
                 startIcon={renderedIcon}
                 onPress={() => {
                     if(onPress){
-                        onPress();
+                        onPress(key);
                     }
                     handleClose();
                 }} style={{backgroundColor: "transparent"}}>
@@ -54,9 +56,38 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
         )
     }
 
+    function renderOptions(){
+      let output = [];
+      let keys = Object.keys(props.options);
+      let onPress = props?.onOptionSelect || ((key) => {});
+
+      for(let key of keys){
+          const option = props.options[key];
+          if(!!option && typeof option === "object") {
+            let icon = option?.icon;
+            let label = option?.label;
+            let renderedIcon = null;
+            if(!!icon){
+              if(typeof icon === "string"){
+                renderedIcon = <Icon name={icon} />;
+              } else {
+                renderedIcon = icon;
+              }
+            }
+            output.push(renderOption(key, label, onPress, option?.renderedIcon));
+          } else {
+            let label = option;
+            output.push(renderOption(key, label, onPress, null));
+          }
+      }
+      return output;
+    }
+
     function renderContent(){
         if(props?.renderCustomContent){
             return props.renderCustomContent(handleClose);
+        } else if(props?.options) {
+            return renderOptions();
         } else {
             return <>
                 {renderAccept()}
@@ -93,11 +124,11 @@ export class MyActionsheet {
             }
         }
 
-        const show = (params: MyAlertProps) => {
+        const show = (params: MyAlertProps, options) => {
             toastIdRef.current = toast.show({
                 duration: null,
                 render: () => {
-                    return <MyActionsheetComponent {...params} onClose={onClose}/>;
+                    return <MyActionsheetComponent {...params} options={options} onClose={onClose}/>;
                 }
             });
         }
