@@ -1,14 +1,15 @@
+// @ts-nocheck
 import {useToast, View, Text, Actionsheet, Divider, useDisclose} from "native-base";
 import React, {FunctionComponent, useMemo, useState} from "react";
 import {Icon} from "kitcheningredients";
 
 export interface MyAlertProps {
-    title,
-    acceptLabel,
-    onAccept,
-    cancelLabel,
-    onCancel,
-    renderCustomContent
+    title?: string,
+    acceptLabel?: string,
+    onAccept?: any,
+    cancelLabel?: string,
+    onCancel?: any,
+    renderCustomContent?: any
 }
 
 export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) => {
