@@ -6,7 +6,6 @@ import ColorCodeHelper from "./theme/ColorCodeHelper";
 import BaseThemeGenerator from "./theme";
 import {RootStack} from "./navigation/rootNavigator";
 import {ColorStatusBar} from "./components/ColorStatusBar";
-//import {MyDirectusStorage} from "./storage/MyDirectusStorage";
 import ServerAPI from "./ServerAPI";
 import {RouteRegisterer} from "./navigation/RouteRegisterer";
 import {Linking} from "react-native";
@@ -25,9 +24,8 @@ export default class App extends React.Component<any, any>{
 		super(props);
 		console.log(props);
 
-		ConfigHolder.instance = this;
-		if(!!ConfigHolder.storage){
- //     ConfigHolder.storage = new MyDirectusStorage();
+		if(!props?.ignoreInstance){
+      ConfigHolder.instance = this;
     }
 
     RouteRegisterer.register();
@@ -212,7 +210,7 @@ export default class App extends React.Component<any, any>{
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>
 				<NativeBaseProvider reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
-					<Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin}>{content}</Root>
+					<Root independent={this?.props?.independent} key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin}>{content}</Root>
 					<ColorStatusBar />
 				</NativeBaseProvider>
 			</StoreProvider>

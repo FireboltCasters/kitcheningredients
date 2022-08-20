@@ -399,6 +399,36 @@ return (
   - Shows or hides the gradient
 </details>
 
+
+<details>
+<summary>MyActionsheet</summary>
+
+If you want to show a actionsheet you can use the MyActionsheet. It pops up on top of the screen.
+
+```tsx
+import {MyActionsheet} from "kitcheningredients";
+const actionsheet = MyActionsheet.useActionsheet();
+const params = {
+  title: "Test",
+  onAccept: () => {console.log("Accept")},
+  ...
+};
+actionsheet.show(params);
+```
+
+- title: string
+- acceptLabel?: string
+  - default: "Accept"
+- cancelLabel?: string
+  - default: "Cancel"
+- onAccept?: () => {}
+  - A function which will be called on accept
+- onCancel?: () => {}
+  - A function which will be called on cancel
+- renderCustomContent?: () => {}
+  - A function which will be called to render the custom content
+</details>
+
 TODO: ThemedMarkdown
 TODO: DirectusMarkdown
 TODO: DirectusSingletonMarkdown
