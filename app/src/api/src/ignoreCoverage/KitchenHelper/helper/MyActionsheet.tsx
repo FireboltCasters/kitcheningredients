@@ -43,16 +43,19 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
 
     function renderOption(key, label, onPress, renderedIcon?){
         return(
+          <>
             <Actionsheet.Item
-                startIcon={renderedIcon}
-                onPress={() => {
-                    if(onPress){
-                        onPress(key);
-                    }
-                    handleClose();
-                }} style={{backgroundColor: "transparent"}}>
-                <Text>{label}</Text>
+              startIcon={renderedIcon}
+              onPress={() => {
+                if(onPress){
+                  onPress(key);
+                }
+                handleClose();
+              }} style={{backgroundColor: "transparent"}}>
+              <Text>{label}</Text>
             </Actionsheet.Item>
+            <Divider />
+          </>
         )
     }
 
@@ -91,7 +94,6 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
         } else {
             return <>
                 {renderAccept()}
-                <Divider />
                 {renderCancel()}
             </>
         }
