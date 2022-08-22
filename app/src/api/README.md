@@ -297,6 +297,68 @@ ConfigHolder.showMailRegister = true;
 
 
 
+## Synched States
+
+Sometimes there is a need to synchronize states between different screens. This can be done by using the following functions.
+You will first need to register a state (see `State Registration` below). Then you can use the synchronized states (see `Sync State usage`).
+
+<details>
+<summary>State Registration</summary>
+
+First you have to register the state you want to synchronize. You have the following options:
+- Permanent: Save the state in the local storage
+- Temporal: Save the state in the session storage
+
+In the Project.tsx file return the following classes you created:
+```tsx
+...
+	getSynchedStateKeysClass(){
+		return SynchedStateKeys;
+	}
+
+	getStorageKeysClass(){
+		return StorageKeys;
+	}
+...
+```
+
+An example of the above one class is shown below:
+```tsx
+export class SynchedStateKeys {
+    static exampleSynchedText = "SynchedStorage.exampleSynchedText"
+}
+```
+
+Congrats, you are now able to use synched states accross your app.
+</details>
+
+
+<details>
+<summary>Sync State usage</summary>
+
+In the Synched state only strings will be saved. If that is the case you can use `useSynchedState` otherwise you can use `useSynchedJSONState`.
+
+- useSynchedState
+```tsx
+import {useSynchedState} from "kitcheningredients";
+
+export const MyFunctionComponent = (props) => {
+  const [myState, setMyState] = useSynchedState(SynchedStateKeys.exampleSynchedText);
+}
+```
+
+- useSynchedJSONState
+Beware that the state will be saved as JSON.stringify and therefore you cannot have circular references.
+```tsx
+import {useSynchedJSONState} from "kitcheningredients";
+
+export const MyFunctionComponent = (props) => {
+  const [myJSONState, setMyJSONState] = useSynchedState(SynchedStateKeys.exampleSynchedJSON);
+}
+```
+</details>
+
+
 ## Components
 
 

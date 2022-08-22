@@ -64,9 +64,10 @@ export {KitchenSkeleton}
 import {RequiredStorageKeys} from "./ignoreCoverage/KitchenHelper/storage/RequiredStorageKeys";
 export {RequiredStorageKeys}
 
-import SynchedState, {useSynchedState} from "./ignoreCoverage/KitchenHelper/synchedstate/SynchedState";
+import SynchedState, {useSynchedState, useSynchedJSONState} from "./ignoreCoverage/KitchenHelper/synchedstate/SynchedState";
 export {useSynchedState}
 export {SynchedState}
+export {useSynchedJSONState}
 
 import ServerAPI from "./ignoreCoverage/KitchenHelper/ServerAPI";
 export {ServerAPI}

@@ -16,6 +16,16 @@ export function useSynchedState(storageKey): [value: string, setValue: (value) =
     ]
 }
 
+export function useSynchedJSONState(storageKey): [value: any, setValue: (value) => {}] {
+  const [jsonStateAsString, setJsonStateAsString] = useSynchedState(storageKey);
+  const parsedJSON = JSON.parse(jsonStateAsString || "null");
+  const setValue = (dict) => setJsonStateAsString(JSON.stringify(dict))
+  return [
+    parsedJSON,
+    setValue
+  ]
+}
+
 export default class SynchedState {
 
     private static store;
