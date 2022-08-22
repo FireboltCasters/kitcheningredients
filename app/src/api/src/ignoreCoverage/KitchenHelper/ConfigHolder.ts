@@ -25,4 +25,6 @@ export class ConfigHolder{
   static showGuestLogin: boolean = false;
   static autoLogin: boolean = false;
 
+  static prefixes: string[] = [];
+
 }

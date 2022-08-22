@@ -31,6 +31,9 @@ export const Root = (props) => {
 	}
 
 	let prefixes = ["myapp:///"];
+	if(!!ConfigHolder.prefixes && ConfigHolder.prefixes.length> 0){
+	      prefixes = ConfigHolder.prefixes;
+  }
 	let linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
   let independent = props.independent;
   if(independent){
