@@ -5,6 +5,7 @@ import {Icon} from "kitcheningredients";
 
 export interface MyAlertProps {
     title?: string,
+    renderDescription?: any,
     acceptLabel?: string,
     onAccept?: any,
     cancelLabel?: string,
@@ -99,6 +100,14 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
         }
     }
 
+    function renderDescription(){
+      if(props?.renderDescription){
+        return props.renderDescription();
+      } else {
+        return null;
+      }
+    }
+
     return(
         <Actionsheet isOpen={isOpen} onClose={handleClose} _backdrop={{
             opacity: 0.75,
@@ -107,6 +116,7 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
                 <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                     <Text>{props?.title}</Text>
                 </View>
+                {renderDescription()}
                 {renderContent()}
             </Actionsheet.Content>
         </Actionsheet>
