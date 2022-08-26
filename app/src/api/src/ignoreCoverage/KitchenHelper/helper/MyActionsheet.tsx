@@ -1,5 +1,5 @@
 // @ts-nocheck
-import {useToast, View, Text, Actionsheet, Divider, useDisclose} from "native-base";
+import {useToast, View, Text, Actionsheet, Divider, useDisclose, ScrollView} from "native-base";
 import React, {FunctionComponent, useMemo, useState} from "react";
 import {Icon} from "kitcheningredients";
 
@@ -90,13 +90,22 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
     function renderContent(){
         if(props?.renderCustomContent){
             return props.renderCustomContent(handleClose);
-        } else if(props?.options) {
-            return renderOptions();
         } else {
-            return <>
-                {renderAccept()}
-                {renderCancel()}
+          let output = null;
+          if(props?.options) {
+            output = renderOptions();
+          } else {
+            output = <>
+              {renderAccept()}
+              {renderCancel()}
             </>
+          }
+
+          return (
+            <ScrollView style={{width: "100%"}}>
+              {output}
+            </ScrollView>
+          )
         }
     }
 
