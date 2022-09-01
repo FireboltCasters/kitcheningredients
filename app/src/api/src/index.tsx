@@ -1,3 +1,6 @@
+import {WebpackConfigCreator} from "./ignoreCoverage/KitchenHelper/WebpackConfigCreator";
+export {WebpackConfigCreator}
+
 import {MyActionsheet} from "./ignoreCoverage/KitchenHelper/helper/MyActionsheet";
 export {MyActionsheet};
 

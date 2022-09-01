@@ -1802,6 +1802,23 @@
     "semver" "7.3.2"
     "tempy" "0.3.0"
 
+"@expo/image-utils@0.3.22":
+  "integrity" "sha512-uzq+RERAtkWypOFOLssFnXXqEqKjNj9eXN7e97d/EXUAojNcLDoXc0sL+F5B1I4qtlsnhX01kcpoIBBZD8wZNQ=="
+  "resolved" "https://registry.npmjs.org/@expo/image-utils/-/image-utils-0.3.22.tgz"
+  "version" "0.3.22"
+  dependencies:
+    "@expo/spawn-async" "1.5.0"
+    "chalk" "^4.0.0"
+    "fs-extra" "9.0.0"
+    "getenv" "^1.0.0"
+    "jimp-compact" "0.16.1"
+    "mime" "^2.4.4"
+    "node-fetch" "^2.6.0"
+    "parse-png" "^2.1.0"
+    "resolve-from" "^5.0.0"
+    "semver" "7.3.2"
+    "tempy" "0.3.0"
+
 "@expo/json-file@8.2.30":
   "integrity" "sha512-vrgGyPEXBoFI5NY70IegusCSoSVIFV3T3ry4tjJg1MFQKTUlR7E0r+8g8XR6qC705rc2PawaZQjqXMAVtV6s2A=="
   "resolved" "https://registry.npmjs.org/@expo/json-file/-/json-file-8.2.30.tgz"
@@ -1959,6 +1976,41 @@
     "lodash.omit" "^4.5.0"
     "lodash.pick" "^4.4.0"
     "lodash.template" "^4.5.0"
+
+"@expo/webpack-config@^0.17.2":
+  "integrity" "sha512-cgcWyVXUEH5wj4InAPCIDHAGgpkQhpzWseCj4xVjdL3paBKRMWVjPUqmdHh/exap3U0kHGr/XS+e7ZWLcgHkUw=="
+  "resolved" "https://registry.npmjs.org/@expo/webpack-config/-/webpack-config-0.17.2.tgz"
+  "version" "0.17.2"
+  dependencies:
+    "@babel/core" "7.9.0"
+    "babel-loader" "8.1.0"
+    "chalk" "^4.0.0"
+    "clean-webpack-plugin" "^3.0.0"
+    "copy-webpack-plugin" "~6.0.3"
+    "css-loader" "~3.6.0"
+    "expo-pwa" "0.0.123"
+    "file-loader" "~6.0.0"
+    "find-yarn-workspace-root" "~2.0.0"
+    "getenv" "^1.0.0"
+    "html-loader" "~1.1.0"
+    "html-webpack-plugin" "~4.3.0"
+    "image-size" "^1.0.0"
+    "is-wsl" "^2.0.0"
+    "loader-utils" "^2.0.0"
+    "mini-css-extract-plugin" "^0.5.0"
+    "node-html-parser" "^1.2.12"
+    "optimize-css-assets-webpack-plugin" "^5.0.3"
+    "pnp-webpack-plugin" "^1.5.0"
+    "postcss-safe-parser" "^4.0.2"
+    "react-dev-utils" "~11.0.1"
+    "schema-utils" "^3.1.1"
+    "semver" "~7.3.2"
+    "style-loader" "~1.2.1"
+    "terser-webpack-plugin" "^3.0.6"
+    "url-loader" "~4.1.0"
+    "webpack" "4.43.0"
+    "webpack-dev-server" "3.11.0"
+    "webpack-manifest-plugin" "~2.2.0"
 
 "@expo/webpack-config@0.16.7":
   "integrity" "sha512-/dph1dMDcxb7BJwUERD5LQLSjo16KWhephcjarH4T3dqRAFIR/RihFLI/suPM7dg4g7gFN9/qXYNpsZ75fvaxw=="
@@ -9680,6 +9732,16 @@
     "commander" "2.20.0"
     "update-check" "1.5.3"
 
+"expo-pwa@0.0.123":
+  "integrity" "sha512-zLueqATI+bvvjAfPHErrQ/jnsAN1/Jy46/K0TjdVvvCPoouVym6+1LhIEUUDAHTNJBOb9BIav9WxlrFb5/h3KA=="
+  "resolved" "https://registry.npmjs.org/expo-pwa/-/expo-pwa-0.0.123.tgz"
+  "version" "0.0.123"
+  dependencies:
+    "@expo/image-utils" "0.3.22"
+    "chalk" "^4.0.0"
+    "commander" "2.20.0"
+    "update-check" "1.5.3"
+
 "expo-secure-store@~9.3.0":
   "integrity" "sha512-dNhKcoUUn+1kmEfFVxSU7h+YsqODqlExZQJcQgxgeiuCeeDvJWkE10t3jjrO6aNfrdM5i/X2l3oh401EDslWsQ=="
   "resolved" "https://registry.npmjs.org/expo-secure-store/-/expo-secure-store-9.3.0.tgz"
@@ -9714,7 +9776,7 @@
     "fbemitter" "^2.1.1"
     "uuid" "^3.4.0"
 
-"expo@~40.0.0":
+"expo@*", "expo@~40.0.0":
   "integrity" "sha512-9NrhimvP44I1aDjGHMU4F0izCyfFTTYAQ6xZpWpuc+ZWRZqg8Zv62zNRlzBn+Ydaf1heSucnlJJ3Sp2gMdOEnQ=="
   "resolved" "https://registry.npmjs.org/expo/-/expo-40.0.1.tgz"
   "version" "40.0.1"
@@ -20010,12 +20072,7 @@
   "resolved" "https://registry.npmjs.org/source-map-url/-/source-map-url-0.4.1.tgz"
   "version" "0.4.1"
 
-"source-map@^0.5.0":
-  "integrity" "sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w= sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ=="
-  "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz"
-  "version" "0.5.7"
-
-"source-map@^0.5.6":
+"source-map@^0.5.0", "source-map@^0.5.6":
   "integrity" "sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w= sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ=="
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz"
   "version" "0.5.7"

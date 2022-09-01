@@ -8,7 +8,7 @@
 		"codepush_android": "FireboltCasters/RocketMealsDemo-Android"
 	},
 	"scripts": {
-    "deleteDevNodeModules": "rm -rf src/api/node_modules && rm -rf src/api/lib",
+		"deleteDevNodeModules": "rm -rf src/api/node_modules && rm -rf src/api/lib",
 		"start": "react-native start",
 		"preandroid": "npm run prebuild",
 		"android": "npm run prebuild && react-native run-android",
@@ -60,6 +60,7 @@
 		"@dicebear/personas": "^4.10.2",
 		"@dicebear/pixel-art": "^4.10.2",
 		"@dicebear/pixel-art-neutral": "^4.10.2",
+		"@expo/webpack-config": "^0.17.2",
 		"@react-native-async-storage/async-storage": "^1.17.3",
 		"@react-native-community/masked-view": "0.1.10",
 		"@react-navigation/drawer": "^5.0.0",

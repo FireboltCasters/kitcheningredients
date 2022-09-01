@@ -1227,7 +1227,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@expo/vector-icons",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@expo/vector-icons/LICENSE"
   },
-  "@expo/webpack-config@0.16.7": {
+  "@expo/webpack-config@0.17.2": {
     "licenses": "MIT",
     "repository": "https://github.com/expo/expo-cli",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@expo/webpack-config",
@@ -5558,7 +5558,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-permissions",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-permissions/README.md"
   },
-  "expo-pwa@0.0.102": {
+  "expo-pwa@0.0.123": {
     "licenses": "MIT",
     "repository": "https://github.com/expo/expo-cli",
     "publisher": "Expo",
