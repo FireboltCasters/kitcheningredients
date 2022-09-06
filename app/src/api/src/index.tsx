@@ -7,8 +7,8 @@ export {ScrollViewWithGradient};
 import {AuthProviderCustom} from "./ignoreCoverage/KitchenHelper/auth/AuthProviderCustom";
 export {AuthProviderCustom}
 
-import {MyThemedBox} from "./ignoreCoverage/KitchenHelper/helper/MyThemedBox";
-export {MyThemedBox}
+import {MyThemedBox, useThemedShade} from "./ignoreCoverage/KitchenHelper/helper/MyThemedBox";
+export {MyThemedBox, useThemedShade}
 
 import {ThemedMarkdown} from "./ignoreCoverage/KitchenHelper/components/markdown/ThemedMarkdown";
 export {ThemedMarkdown}

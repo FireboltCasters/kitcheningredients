@@ -3,6 +3,22 @@ import React, {FunctionComponent} from 'react';
 import {Box, useColorModeValue} from "native-base";
 import {IBoxProps} from "native-base/lib/typescript/components/primitives/Box/types";
 
+export function useThemedShade(level){
+  const maxLevel = 9;
+  const minLevel = 0;
+  level = Math.min(maxLevel, Math.max(minLevel, level))
+
+  function getShadeByLevel(level){
+    if(level===0) return 50;
+    return level*100;
+  }
+
+  let themeLevel = useColorModeValue(level, maxLevel-level)
+  let _myThemeShade = getShadeByLevel(themeLevel);
+  let bgColor = useColorModeValue('coolGray.'+_myThemeShade, 'blueGray.'+_myThemeShade);
+  return bgColor;
+}
+
 export interface AppState {
 	_shadeLevel?: number
 	activeOnHover?: boolean
