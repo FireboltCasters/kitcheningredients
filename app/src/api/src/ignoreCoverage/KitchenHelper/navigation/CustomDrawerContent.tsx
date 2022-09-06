@@ -105,7 +105,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 		for(let menu of menus){
       unsortedMenus.push(menu)
 		}
-		let sortedMenus = unsortedOutput.sort((a: MenuItem, b: MenuItem) => {
+		let sortedMenus = unsortedMenus.sort((a: MenuItem, b: MenuItem) => {
         return a.position - b.position;
     });
 
