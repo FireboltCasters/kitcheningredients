@@ -152,6 +152,7 @@ export class MyActionsheet {
                     return <MyActionsheetComponent {...params} options={options} onClose={onClose}/>;
                 }
             });
+            return toastIdRef.current;
         }
 
         return {
