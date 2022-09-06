@@ -76,12 +76,12 @@ export class RouteRegisterer {
 
         Menu.registerRoute(Home, BaseTemplate, "Home", "home");
 
-        Menu.registerRoute(Debug, BaseTemplate, "Debug", "debug");
-        Menu.registerUnsafeMenuForRoleByName(Menu.ROLE_ADMINISTRATOR, MenuItem.getMenuItemFromComponent(Debug))
+        //Menu.registerRoute(Debug, BaseTemplate, "Debug", "debug");
+        //Menu.registerUnsafeMenuForRoleByName(Menu.ROLE_ADMINISTRATOR, MenuItem.getMenuItemFromComponent(Debug))
 
         Menu.registerRoute(Users, BaseTemplate, "Users", "users", "/:id?");
         Menu.registerRoute(Settings, BaseNoPaddingTemplate, "Settings", "settings");
-        Menu.registerRoute(DeveloperSettings, BaseTemplate, "Developer Settings", "settings/developer", "/:id?");
+        //Menu.registerRoute(DeveloperSettings, BaseTemplate, "Developer Settings", "settings/developer", "/:id?");
 
       if(!!ConfigHolder.plugin){
         ConfigHolder.plugin.registerRoutes();

@@ -12,8 +12,9 @@ export class MenuItem{
     items: [MenuItem];
     expanded?: boolean;
     customIcon?: any;
+    position?: number;
 
-    constructor(key, label, destination=null, items=null, command=null, content=null, expanded=false, customIcon?) {
+    constructor(key, label, destination=null, items=null, command=null, content=null, expanded=false, customIcon?, position=0) {
         if(!items){
             items=[];
         }
@@ -25,6 +26,7 @@ export class MenuItem{
         this.command = command;
         this.expanded = expanded;
         this.customIcon = customIcon;
+        this.position = position;
 
         if(!command && !!destination){
             this.command = () => {NavigatorHelper.navigateWithoutParams(destination)};

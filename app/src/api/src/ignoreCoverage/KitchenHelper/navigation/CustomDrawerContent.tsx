@@ -15,6 +15,7 @@ import {SafeAreaView} from "react-native";
 import {SettingsButton} from "../screens/settings/SettingsButton";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {ConfigHolder} from "../ConfigHolder";
+import {MenuItem} from "kitcheningredients";
 
 export const CustomDrawerContent: FunctionComponent = (props) => {
 
@@ -100,10 +101,19 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 		if(!menus) {
 			menus = [];
 		}
-		let output = [];
+		let unsortedMenus = [];
 		for(let menu of menus){
-			output.push(renderMenu(menu))
+      unsortedMenus.push(menu)
 		}
+		let sortedMenus = unsortedOutput.sort((a: MenuItem, b: MenuItem) => {
+        return a.position - b.position;
+    });
+
+    let output = [];
+    for(let menu of sortedMenus){
+      output.push(renderMenu(menu))
+    }
+
 		return output
 	}
 
