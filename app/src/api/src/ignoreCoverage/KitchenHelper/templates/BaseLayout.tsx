@@ -12,6 +12,7 @@ import {Layout} from "./Layout";
 import {Icon} from "../components/Icon";
 import {DrawerButton} from "./DrawerButton";
 import {BackButton} from "./BackButton";
+import {useCustomHeaderTextColor} from "./useHeaderTextColor";
 
 export const BaseLayout = ({
 						   children,
@@ -34,8 +35,6 @@ export const BaseLayout = ({
 	 '2xl': 1536+320,
 	 */
 
-	const { colorMode, toggleColorMode } = useColorMode();
-
 	const serverInfo = props.serverInfo || ServerAPI.tempStore.serverInfo;
 	let ssoIconStyle = {};
 	if(!!serverInfo){
@@ -47,9 +46,7 @@ export const BaseLayout = ({
 	    return header;
     }
 
-		let defaultColor = ssoIconStyle.color || (colorMode == 'dark' ? 'white' : 'gray.800')
-
-		let color = !!props.headingTextColor ? props.headingTextColor : defaultColor;
+		let color = useCustomHeaderTextColor(props);
 
 
     /**
@@ -58,11 +55,11 @@ export const BaseLayout = ({
     }
    */
 
-    let drawerButton = <DrawerButton color={color} />
+    let drawerButton = <DrawerButton />
     let leftButton = drawerButton
 
     if(!!showbackbutton){ //show alsways the back button even on small devices
-        leftButton = <BackButton color={color} />
+        leftButton = <BackButton />
     }
 
 		return (

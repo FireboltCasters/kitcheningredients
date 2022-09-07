@@ -1,3 +1,12 @@
+import {useCustomHeaderTextColor} from "./ignoreCoverage/KitchenHelper/templates/useHeaderTextColor";
+export {useCustomHeaderTextColor}
+
+import {BackButton} from "./ignoreCoverage/KitchenHelper/templates/BackButton";
+export {BackButton}
+
+import {DrawerButton} from "./ignoreCoverage/KitchenHelper/templates/DrawerButton";
+export {DrawerButton}
+
 import {MyActionsheet} from "./ignoreCoverage/KitchenHelper/helper/MyActionsheet";
 export {MyActionsheet};
 
