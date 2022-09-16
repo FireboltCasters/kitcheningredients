@@ -11,6 +11,8 @@ import UserHelper from "./utils/UserHelper";
 
 export default class ServerAPI{
 
+  static dev = false;
+
 	static directus = null;
 	static tempStore = {
 		serverInfo: undefined
@@ -90,6 +92,12 @@ export default class ServerAPI{
 	  return {"id":UserHelper.USER_ROLE_GUEST,"name":UserHelper.USER_ROLE_GUEST,"icon":"public","description":null,"ip_access":null,"enforce_tfa":false,"admin_access":false,"app_access":true,"users":[]}
   }
 
+  static async delayInDev(ms: number) {
+	  if(ServerAPI.dev){
+      return new Promise( resolve => setTimeout(resolve, ms) );
+    }
+  }
+
 	static async loadRole(role_id){
 			try{
 				let directus = ServerAPI.getClient();
@@ -97,6 +105,7 @@ export default class ServerAPI{
 				  return ServerAPI.getPublicRole()
         }
 
+				await ServerAPI.delayInDev(1000);
 				let role = await directus.roles.readOne(role_id);
 				return role;
 			} catch (err){
@@ -117,6 +126,7 @@ export default class ServerAPI{
               _eq: query_role_id
             }}};
 
+        await ServerAPI.delayInDev(1000);
         if(!directus.permissions.readByQuery){ //TODO only added for legacy support
           // @ts-ignore
           let permissions = await directus.permissions.readMany(filter);
@@ -132,6 +142,7 @@ export default class ServerAPI{
   }
 
 	static async loginWithAccessDirectusAccessToken(directus_access_token){
+    await ServerAPI.delayInDev(1000);
 		let data = await ServerAPI.refreshWithDirectusAccessToken(directus_access_token);
 		console.log(data);
 		let storage = ConfigHolder.storage;
@@ -230,6 +241,7 @@ export default class ServerAPI{
 		try{
 			let directus = ServerAPI.getPublicClient();
 			//TODO we could add caching here
+      await ServerAPI.delayInDev(1000);
 			let serverInfo = await directus.server.info();
 			ServerAPI.tempStore.serverInfo = serverInfo;
 			return serverInfo;
@@ -248,6 +260,7 @@ export default class ServerAPI{
 		let getProvidersURL = ServerAPI.getAPIUrl()+"/auth";
 		try{
 			let api = ServerAPI.getAxiosInstance();
+      await ServerAPI.delayInDev(1000);
 			let answer = await api.get(getProvidersURL);
 			let providers = answer?.data?.data;
 			return providers
@@ -273,6 +286,7 @@ export default class ServerAPI{
 		let url = EnviromentHelper.getBackendURL()+'/auth/refresh';
 		const api = ServerAPI.getAxiosInstance();
 		try{
+      await ServerAPI.delayInDev(1000);
 			let response = await api.post(url, {"refresh_token": ""+directus_access_token}, {});
 			return response.data.data;
 		} catch (err){

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import {NativeBaseProvider} from 'native-base';
+import {Box, NativeBaseProvider, View, Text} from 'native-base';
 import {Root} from './navigation/RootComponent';
 import ColorCodeHelper from "./theme/ColorCodeHelper";
 import BaseThemeGenerator from "./theme";
@@ -17,6 +17,8 @@ import {StoreProvider} from "easy-peasy";
 import SynchedState from "./synchedstate/SynchedState";
 import {ConfigHolder} from "./ConfigHolder";
 import {RequiredStorageKeys} from "./storage/RequiredStorageKeys";
+import {ShowMoreGradientPlaceholder} from "./utils/ShowMoreGradientPlaceholder";
+import {ViewWithBackgroundColor} from "./templates/ViewWithBackgroundColor";
 
 export default class App extends React.Component<any, any>{
 
@@ -28,8 +30,6 @@ export default class App extends React.Component<any, any>{
       ConfigHolder.instance = this;
     }
 
-    RouteRegisterer.register();
-    RouteRegisterer.loadDrawerScreens();
 		this.subscribe(( url ) => {
 			let baseurl = ExpoLinking.createURL("");
 			let screenURL = url.substr(baseurl.length);
@@ -129,7 +129,10 @@ export default class App extends React.Component<any, any>{
     let permissions = await this.loadPermissions(role_id);
 
     if(!callback && !!ConfigHolder.plugin.onLogin){
-      callback = () => ConfigHolder.plugin.onLogin(user, role, permissions);
+      await ConfigHolder.plugin.onLogin(user, role, permissions);
+      await RouteRegisterer.register(user, role, permissions);
+      await RouteRegisterer.loadDrawerScreens();
+      callback = () => {};
     }
 
 		await this.setState({
@@ -180,7 +183,7 @@ export default class App extends React.Component<any, any>{
 	async componentDidMount() {
 		await this.loadSynchedVariables();
 		if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.initApp){
-			ConfigHolder.plugin.initApp();
+			await ConfigHolder.plugin.initApp();
 		}
 		await this.loadServerInfo();
 		let user = await ConfigHolder.instance.loadUser();
@@ -193,25 +196,34 @@ export default class App extends React.Component<any, any>{
 	}
 
 	render() {
-
-		const theme = this.getBaseTheme();
-		let content = <RootStack hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
-		if(!!this.props.children){
-			content = this.props.children;
-		}
+		let root = null;
 
 		if(this.state.reloadNumber===0 || !this.state.loadedUser){
-			return null;
-		}
+		  let loadingContent = <Text>{"Loading"}</Text>
+		  if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getLoadingComponent){
+        loadingContent = ConfigHolder.plugin.getLoadingComponent();
+      }
+      root = <ViewWithBackgroundColor>{loadingContent}</ViewWithBackgroundColor>
+		} else {
+      let content = <RootStack hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
+      if(!!this.props.children){
+        content = this.props.children;
+      }
 
-		console.log("App:");
-		console.log(this.props);
+		  root = (
+		    <>
+          <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin}>{content}</Root>
+          <ColorStatusBar />
+        </>
+      )
+    }
+
+    const theme = this.getBaseTheme();
 
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>
 				<NativeBaseProvider reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
-					<Root independent={this?.props?.independent} key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin}>{content}</Root>
-					<ColorStatusBar />
+          {root}
 				</NativeBaseProvider>
 			</StoreProvider>
 		);

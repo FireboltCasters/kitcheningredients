@@ -1,19 +1,15 @@
 // @ts-nocheck
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {Box, useColorModeValue, useToken, View} from 'native-base';
 import EnviromentHelper from "../EnviromentHelper";
 import {navigationRef, isReadyRef, NavigatorHelper} from "./NavigatorHelper";
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {ConfigHolder} from "../ConfigHolder";
+import {ViewWithBackgroundColor} from "../templates/ViewWithBackgroundColor";
+import {useBackgroundColor} from "../templates/useBackgroundColor";
 
 export const Root = (props) => {
-	const [lightBg, darkBg] = useToken(
-		'colors',
-		[ConfigHolder.styleConfig.backgroundColor.light, ConfigHolder.styleConfig.backgroundColor.dark],
-		'blueGray.900',
-	);
-	const bgColor = useColorModeValue(lightBg, darkBg);
+	const bgColor = useBackgroundColor()
 
 	React.useEffect(() => {
 		return () => {
@@ -35,14 +31,10 @@ export const Root = (props) => {
 	      prefixes = ConfigHolder.prefixes;
   }
 	let linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
-  let independent = props.independent;
-  if(independent){
-    linking=undefined;
-  }
+
 
 	return (
 		<NavigationContainer
-      independent={props.independent}
 			ref={navigationRef}
 			onReady={() => {
 				isReadyRef.current = true;
@@ -55,10 +47,9 @@ export const Root = (props) => {
 				colors: { background: bgColor },
 			}}
 		>
-			<View style={{flex: 1, width: "100%", backgroundColor: bgColor}}
-			>
-				{props.children}
-			</View>
+      <ViewWithBackgroundColor>
+        {props.children}
+      </ViewWithBackgroundColor>
 		</NavigationContainer>
 	);
 };

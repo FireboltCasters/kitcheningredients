@@ -65,7 +65,7 @@ export class RouteRegisterer {
         Menu.registerRequiredMenu(legalRequirements);
     }
 
-    static register(){
+    static async register(user, role, permissions){
         RegisteredRoutesMap.reset();
         RegisteredRoutesMap.setInitialRouteName(RouteRegisterer.routeLogin);
 
@@ -83,11 +83,11 @@ export class RouteRegisterer {
         Menu.registerRoute(Settings, BaseNoPaddingTemplate, "Settings", "settings");
         //Menu.registerRoute(DeveloperSettings, BaseTemplate, "Developer Settings", "settings/developer", "/:id?");
 
-      if(!!ConfigHolder.plugin){
-        ConfigHolder.plugin.registerRoutes();
-      }
-
         RouteRegisterer.registerLegalRequirements();
+
+        if(!!ConfigHolder.plugin){
+          await ConfigHolder.plugin.registerRoutes(user, role, permissions);
+        }
     }
 
     // @ts-ignore
@@ -95,7 +95,7 @@ export class RouteRegisterer {
         return Drawer;
     }
 
-    static loadDrawerScreens(){
+    static async loadDrawerScreens(){
         RouteRegisterer.screens = RouteRegisterer.getDrawerScreens();
         RouteRegisterer.loginScreens = RouteRegisterer.getOnlyLoginDrawerScreens()
     }

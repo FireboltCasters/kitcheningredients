@@ -5,9 +5,10 @@ export abstract class PluginInterface{
     initApp(){
 
     }
-    registerRoutes(){
-
+    async registerRoutes(user: UserItem | null, role: any | undefined, permissions: any | undefined){
+      return null;
     }
+
     onLogout(error){
 
     }
@@ -20,6 +21,11 @@ export abstract class PluginInterface{
     getStorageKeysClass(){
       return null;
     }
+
+    getLoadingComponent(){
+      return null;
+    }
+
     getAboutUsComponent(){
       return null;
     }

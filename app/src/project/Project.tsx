@@ -6,6 +6,11 @@ import {
 
 import {SynchedStateKeys} from "./helper/SynchedStateKeys";
 import {StorageKeys} from "./helper/StorageKeys";
+import {ExampleScreen} from "./ExampleScreen";
+import {Menu} from "./../api/src/ignoreCoverage/KitchenHelper/navigation/Menu";
+import {MenuItem} from "./../api/src/ignoreCoverage/KitchenHelper/navigation/MenuItem";
+import {EmptyTemplate} from "./../api/src/ignoreCoverage/KitchenHelper/templates/EmptyTemplate";
+import {MyRoot} from "./MyRoot";
 
 export default class Project extends PluginInterface{
 
@@ -21,8 +26,11 @@ export default class Project extends PluginInterface{
 		return StorageKeys;
 	}
 
-	registerRoutes(){
-
+  async registerRoutes(user, role, permissions){
+	  	  console.log("registerRoutes");
+	  	  console.log(user);
+	  Menu.registerRoute(ExampleScreen, EmptyTemplate, "Example", "example");
+    Menu.registerCommonMenu(new MenuItem("Example", "Example"+user?.role, ExampleScreen))
 	}
 
 	async initApp() {
@@ -57,8 +65,12 @@ export default class Project extends PluginInterface{
     return null
 	}
 
+  getLoadingComponent(){
+	  return <MyRoot />;
+  }
+
 	getRootComponent(){
-		return null
+		//return <MyRoot />
 	}
 
 	renderCustomAuthProviders(serverInfo): []{

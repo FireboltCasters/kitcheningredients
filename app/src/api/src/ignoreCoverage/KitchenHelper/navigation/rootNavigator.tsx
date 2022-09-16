@@ -24,7 +24,6 @@ export const RootStack = (props) => {
 	}
 
 	let drawerType = isSmallDevice ? 'front' : largeScreenDrawerType /** 'front' | 'back' | 'slide' | 'permanent' */
-	let drawerStyleWidth =  isSmallDevice ? "100%" : theme.sidebarWidth;
 
 	let drawerBorderColor = RouteRegisterer.getDrawerBorderColor();
 	let drawerStyle = !!drawerBorderColor ? {borderColor: drawerBorderColor} : undefined;

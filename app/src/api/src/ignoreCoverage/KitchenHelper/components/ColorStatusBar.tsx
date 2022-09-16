@@ -1,5 +1,4 @@
 import {StatusBar} from 'expo-status-bar';
-// @ts-nocheck
 import React from 'react';
 import {useColorMode} from 'native-base';
 
