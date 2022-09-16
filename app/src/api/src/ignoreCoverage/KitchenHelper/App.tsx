@@ -205,7 +205,7 @@ export default class App extends React.Component<any, any>{
       }
       root = <ViewWithBackgroundColor>{loadingContent}</ViewWithBackgroundColor>
 		} else {
-      let content = <RootStack hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
+      let content = <RootStack reloadNumber={this.state.reloadNumber} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
       if(!!this.props.children){
         content = this.props.children;
       }

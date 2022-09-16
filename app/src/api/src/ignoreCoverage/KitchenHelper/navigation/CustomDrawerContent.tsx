@@ -28,9 +28,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	let user = ConfigHolder.instance.getUser()
 
 	function renderDrawerItems(){
-		let routes = props?.state?.routes || [];
 		let output = [];
-
 
 		if(!!user){
       output.push(renderAdminMenu())

@@ -11,18 +11,22 @@ export class Menu {
     static ROLE_AUTHENTICATED = "Authenticated";
     static ROLE_ADMINISTRATOR = "Administrator";
 
-    static menusForRolesByID = {
+    static menusForRolesByID = {};
+    static requiredMenus = [];
+    static menusForRolesByName = {};
+
+    static reset(){
+      Menu.menusForRolesByID = {
         [Menu.ROLE_ADMINISTRATOR]: [],
         [Menu.ROLE_PUBLIC]: [],
         [Menu.ROLE_UNAUTHENTICATED]: [],
         [Menu.ROLE_AUTHENTICATED]: [],
-    };
+      };
+      Menu.requiredMenus = [];
+      Menu.menusForRolesByName = {};
+    }
 
-    static requiredMenus = [];
-
-    static menusForRolesByName = {
-
-    };
+    static start = Menu.reset()
 
     static registerRoute(component: FunctionComponent, template: FunctionComponent = null,title: string, route: string, params: any=null, override?){
       RegisteredRoutesMap.registerRoute(new RouteLink(component, template, title, route, params), override);

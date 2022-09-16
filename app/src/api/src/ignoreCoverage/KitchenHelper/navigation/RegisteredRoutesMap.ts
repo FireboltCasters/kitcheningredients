@@ -1,6 +1,7 @@
 import {FunctionComponent} from "react";
 import {Home} from "../screens/home/Home";
 import {RouteLink} from "./RouteLink";
+import {Menu} from "./Menu";
 
 export class RegisteredRoutesMap {
 
@@ -13,6 +14,7 @@ export class RegisteredRoutesMap {
 
     static reset(){
         RegisteredRoutesMap.mapRouteToScreenItem = {};
+        Menu.reset();
     }
 
     static setInitialRouteName(initialRoutename: string){
