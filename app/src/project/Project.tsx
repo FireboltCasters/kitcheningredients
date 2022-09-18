@@ -11,6 +11,7 @@ import {Menu} from "./../api/src/ignoreCoverage/KitchenHelper/navigation/Menu";
 import {MenuItem} from "./../api/src/ignoreCoverage/KitchenHelper/navigation/MenuItem";
 import {EmptyTemplate} from "./../api/src/ignoreCoverage/KitchenHelper/templates/EmptyTemplate";
 import {MyRoot} from "./MyRoot";
+import {MyLoading} from "./MyLoading";
 
 export default class Project extends PluginInterface{
 
@@ -66,11 +67,14 @@ export default class Project extends PluginInterface{
 	}
 
   getLoadingComponent(){
-	  return <MyRoot />;
+	  return <MyLoading />;
+  }
+
+  getSynchComponent(): any {
+    return <MyRoot />
   }
 
 	getRootComponent(){
-		//return <MyRoot />
 	}
 
 	renderCustomAuthProviders(serverInfo): []{

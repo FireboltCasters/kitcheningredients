@@ -73,6 +73,13 @@ export class Menu {
         if(!Menu.menusForRolesByID[role_id]){
             Menu.menusForRolesByID[role_id] = []
         }
+        let menusForRole = Menu.menusForRolesByID[role_id];
+        for(let i = 0; i < menusForRole.length; i++){
+            if(menusForRole[i].key === menuItem.key){
+                menusForRole[i] = menuItem;
+                return;
+            }
+        }
         Menu.menusForRolesByID[role_id].push(menuItem);
     }
 

@@ -65,6 +65,7 @@ export default class ServerAPI{
 		}
 		console.log("navigate to login")
     await ConfigHolder.instance.setUser(null);
+		await ConfigHolder.instance.setSynchFinished(false);
 		NavigatorHelper.navigate(Login, null, false);
 		await ConfigHolder.instance.setRedirectToLogin(true);
 
@@ -238,6 +239,7 @@ export default class ServerAPI{
 	}
 
 	static async getServerInfo(): Promise<ServerInfo>{
+	  console.log("getServerInfo");
 		try{
 			let directus = ServerAPI.getPublicClient();
 			//TODO we could add caching here
@@ -248,6 +250,9 @@ export default class ServerAPI{
 		} catch (err){
 			console.log("Err at ServerAPI.getServerInfo()");
 			console.log(err);
+			if(!!err && !!err.parent && !!err.parent.message === "Network Error"){
+			  console.log("Offline");
+      }
 		}
 		return null;
 	}

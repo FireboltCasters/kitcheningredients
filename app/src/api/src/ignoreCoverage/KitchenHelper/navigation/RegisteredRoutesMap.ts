@@ -39,6 +39,9 @@ export class RegisteredRoutesMap {
       let title = routeLink.title;
       let route = routeLink.route;
       let params = routeLink.params;
+      if(override===undefined){
+        override = true;
+      }
 
         let componentName = route
 
@@ -51,6 +54,7 @@ export class RegisteredRoutesMap {
         if(!!otherRegisteredRoute && !override){
             let otherComonentName = otherRegisteredRoute.screenName;
             let errorMsg = "The route: "+route+" resolved to both '"+componentName+"' and '"+otherComonentName+"'. Patterns must be unique and cannot resolve to more than one screen.";
+            console.error(errorMsg);
             throw new Error("RegisteredRoutesMap.registerRoute: Found conflicting route which wants to be registered: "+errorMsg)
         }
 

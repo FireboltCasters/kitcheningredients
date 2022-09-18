@@ -40,8 +40,10 @@ export default class App extends React.Component<any, any>{
 			NavigatorHelper.navigateToRouteName(route, params);
 		})
 		this.state = {
+		  synchFinished: false,
 			user: undefined,
       role: undefined,
+      offline: undefined,
       permissions: undefined,
 			loadedUser: false,
 			redirectToLogin: false,
@@ -68,7 +70,7 @@ export default class App extends React.Component<any, any>{
 
 	async loadServerInfo(){
 		try{
-			let serverInfoRemote = await ServerAPI.getServerInfo();
+			return await ServerAPI.getServerInfo();
 		} catch (err){
 			console.log("Error at get Server Info: ",err);
 		}
@@ -119,6 +121,12 @@ export default class App extends React.Component<any, any>{
 		await ConfigHolder.instance.setUser(UserHelper.getGuestUser());
 	}
 
+	async setSynchFinished(synchFinished){
+    await this.setState({
+      synchFinished: synchFinished,
+    })
+  }
+
 	async setUser(user, callback?){
     if(!!user){
       user.isGuest = UserHelper.isGuest(user);
@@ -131,7 +139,6 @@ export default class App extends React.Component<any, any>{
     if(!callback && !!ConfigHolder.plugin.onLogin){
       await ConfigHolder.plugin.onLogin(user, role, permissions);
       await RouteRegisterer.register(user, role, permissions);
-      await RouteRegisterer.loadDrawerScreens();
       callback = () => {};
     }
 
@@ -185,9 +192,10 @@ export default class App extends React.Component<any, any>{
 		if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.initApp){
 			await ConfigHolder.plugin.initApp();
 		}
-		await this.loadServerInfo();
-		let user = await ConfigHolder.instance.loadUser();
-		await this.setUser(user);
+		let serverStatus = await this.loadServerInfo();
+    await ConfigHolder.instance.setState({offline: !serverStatus});
+    let user = await ConfigHolder.instance.loadUser();
+    await this.setUser(user);
 	}
 
 	getBaseTheme(){
@@ -198,13 +206,21 @@ export default class App extends React.Component<any, any>{
 	render() {
 		let root = null;
 
-		if(this.state.reloadNumber===0 || !this.state.loadedUser){
-		  let loadingContent = <Text>{"Loading"}</Text>
+		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined){
+		  let loadingContent = <Text>{}</Text>
 		  if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getLoadingComponent){
         loadingContent = ConfigHolder.plugin.getLoadingComponent();
       }
       root = <ViewWithBackgroundColor>{loadingContent}</ViewWithBackgroundColor>
-		} else {
+		} else if(!this.state.synchFinished) {
+      let synchContent = <Text>{}</Text>
+      if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getSynchComponent){
+        synchContent = ConfigHolder.plugin.getSynchComponent();
+      } else {
+        ConfigHolder.instance.setSynchFinished(true)
+      }
+      root = <ViewWithBackgroundColor>{synchContent}</ViewWithBackgroundColor>
+    } else {
       let content = <RootStack reloadNumber={this.state.reloadNumber} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
       if(!!this.props.children){
         content = this.props.children;

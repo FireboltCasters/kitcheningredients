@@ -15,10 +15,10 @@ import {SafeAreaView} from "react-native";
 import {SettingsButton} from "../screens/settings/SettingsButton";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {ConfigHolder} from "../ConfigHolder";
-import {MenuItem} from "kitcheningredients";
+import {MenuItem, useSynchedState} from "kitcheningredients";
+import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
 
 export const CustomDrawerContent: FunctionComponent = (props) => {
-
 	let history = props?.state?.history || [];
 	let currentRoute = history.slice(-1)[0]; // get last element
 	//console.log("currentRoute: ", currentRoute);

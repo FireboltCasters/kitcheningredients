@@ -1,13 +1,16 @@
 // @ts-nocheck
 import React from 'react';
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
-import {useBreakpointValue, useTheme, View} from "native-base";
+import {useBreakpointValue, useTheme, View, Text} from "native-base";
 import {CustomDrawerContent} from "./CustomDrawerContent";
 import {ConfigHolder} from "../ConfigHolder";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {Layout} from "../templates/Layout";
+import {useSynchedState} from "kitcheningredients";
+import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
 
 export const RootStack = (props) => {
+  const [test, setTest] = useSynchedState(RequiredSynchedStates.menuReloadNumber)
 
 	let isSmallDevice = Layout.usesSmallDevice();
 
@@ -30,6 +33,7 @@ export const RootStack = (props) => {
 
 	let Drawer = RouteRegisterer.getDrawer();
 
+  RouteRegisterer.loadDrawerScreens();
 	let screens = ConfigHolder.instance.shouldRedirectToLogin() ? RouteRegisterer.loginScreens : RouteRegisterer.screens;
 
   let pluginRootComponent = null;
@@ -39,7 +43,7 @@ export const RootStack = (props) => {
 
 	//TODO maybe add Drawer instead of custom implementation: https://reactnavigation.org/docs/5.x/drawer-navigator
 	return(
-		<View flex={1} flexDirection={"row"}>
+		<View flex={1} flexDirection={"row"} >
 			<View flex={1}>
 					<Drawer.Navigator
 						drawerStyle={drawerStyle}

@@ -66,6 +66,7 @@ export const Login = (props) => {
   async function handleContinue(){
     await NavigatorHelper.navigate(RegisteredRoutesMap.getHome())
     await ConfigHolder.instance.setHideDrawer(false);
+    await ConfigHolder.instance.setSynchFinished(false);
   }
 
 	async function fetchAccessToken(){
