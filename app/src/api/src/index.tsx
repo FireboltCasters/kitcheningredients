@@ -1,3 +1,6 @@
+import {RequiredSynchedStates} from "./ignoreCoverage/KitchenHelper/synchedstate/RequiredSynchedStates";
+export {RequiredSynchedStates}
+
 import {useCustomHeaderTextColor} from "./ignoreCoverage/KitchenHelper/templates/useHeaderTextColor";
 export {useCustomHeaderTextColor}
 
