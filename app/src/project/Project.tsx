@@ -70,7 +70,7 @@ export default class Project extends PluginInterface{
 	  return <MyLoading />;
   }
 
-  getSynchComponent(): any {
+  getSyncComponent(): any {
     return <MyRoot />
   }
 

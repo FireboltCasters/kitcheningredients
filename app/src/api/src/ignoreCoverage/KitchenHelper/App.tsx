@@ -40,7 +40,7 @@ export default class App extends React.Component<any, any>{
 			NavigatorHelper.navigateToRouteName(route, params);
 		})
 		this.state = {
-		  synchFinished: false,
+		  syncFinished: false,
 			user: undefined,
       role: undefined,
       offline: undefined,
@@ -208,7 +208,7 @@ export default class App extends React.Component<any, any>{
 	}
 
 	getLoadingScreen(){
-    let loadingContent = <Text>{}</Text>
+    let loadingContent = null;
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getLoadingComponent){
       loadingContent = ConfigHolder.plugin.getLoadingComponent();
     }
@@ -216,10 +216,12 @@ export default class App extends React.Component<any, any>{
   }
 
   getSynchScreen(){
-    let syncContent = <Text>{}</Text>
+    let syncContent = null;
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getSyncComponent){
       syncContent = ConfigHolder.plugin.getSyncComponent();
-    } else {
+    }
+
+    if(!syncContent) {
       ConfigHolder.instance.setSyncFinished(true)
     }
     return <ViewWithBackgroundColor>{syncContent}</ViewWithBackgroundColor>
@@ -243,11 +245,11 @@ export default class App extends React.Component<any, any>{
 		let root = null;
 
 		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined){
-      root = this.getLoadingScreen();
+		  root = this.getLoadingScreen();
 		} else if(!this.state.syncFinished) {
-      root = this.getSynchScreen();
+		  root = this.getSynchScreen();
     } else {
-      root = this.getNormalContent();
+		  root = this.getNormalContent();
     }
 
     const theme = this.getBaseTheme();
