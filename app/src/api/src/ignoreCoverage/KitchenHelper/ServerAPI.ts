@@ -65,7 +65,7 @@ export default class ServerAPI{
 		}
 		console.log("navigate to login")
     await ConfigHolder.instance.setUser(null);
-		await ConfigHolder.instance.setSynchFinished(false);
+		await ConfigHolder.instance.setSyncFinished(false);
 		NavigatorHelper.navigate(Login, null, false);
 		await ConfigHolder.instance.setRedirectToLogin(true);
 

@@ -26,6 +26,10 @@ export abstract class PluginInterface{
       return null;
     }
 
+    getSyncComponent(){
+        return null;
+    }
+
     getAboutUsComponent(){
       return null;
     }

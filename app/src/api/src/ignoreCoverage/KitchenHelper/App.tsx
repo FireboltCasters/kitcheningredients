@@ -121,10 +121,14 @@ export default class App extends React.Component<any, any>{
 		await ConfigHolder.instance.setUser(UserHelper.getGuestUser());
 	}
 
-	async setSynchFinished(synchFinished){
+	async setSyncFinished(syncFinished){
     await this.setState({
-      synchFinished: synchFinished,
+      syncFinished: syncFinished,
     })
+  }
+
+  isOffline(){
+	   return ConfigHolder.instance.state?.offline;
   }
 
 	async setUser(user, callback?){
@@ -203,42 +207,54 @@ export default class App extends React.Component<any, any>{
 		return BaseThemeGenerator.getBaseTheme(initialColorMode);
 	}
 
+	getLoadingScreen(){
+    let loadingContent = <Text>{}</Text>
+    if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getLoadingComponent){
+      loadingContent = ConfigHolder.plugin.getLoadingComponent();
+    }
+    return <ViewWithBackgroundColor>{loadingContent}</ViewWithBackgroundColor>
+  }
+
+  getSynchScreen(){
+    let syncContent = <Text>{}</Text>
+    if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getSyncComponent){
+      syncContent = ConfigHolder.plugin.getSyncComponent();
+    } else {
+      ConfigHolder.instance.setSyncFinished(true)
+    }
+    return <ViewWithBackgroundColor>{syncContent}</ViewWithBackgroundColor>
+  }
+
+  getNormalContent(){
+    let content = <RootStack reloadNumber={this.state.reloadNumber} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
+    if(!!this.props.children){
+      content = this.props.children;
+    }
+
+    return (
+      <>
+        <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin}>{content}</Root>
+        <ColorStatusBar />
+      </>
+    )
+  }
+
 	render() {
 		let root = null;
 
 		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined){
-		  let loadingContent = <Text>{}</Text>
-		  if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getLoadingComponent){
-        loadingContent = ConfigHolder.plugin.getLoadingComponent();
-      }
-      root = <ViewWithBackgroundColor>{loadingContent}</ViewWithBackgroundColor>
-		} else if(!this.state.synchFinished) {
-      let synchContent = <Text>{}</Text>
-      if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getSynchComponent){
-        synchContent = ConfigHolder.plugin.getSynchComponent();
-      } else {
-        ConfigHolder.instance.setSynchFinished(true)
-      }
-      root = <ViewWithBackgroundColor>{synchContent}</ViewWithBackgroundColor>
+      root = this.getLoadingScreen();
+		} else if(!this.state.syncFinished) {
+      root = this.getSynchScreen();
     } else {
-      let content = <RootStack reloadNumber={this.state.reloadNumber} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
-      if(!!this.props.children){
-        content = this.props.children;
-      }
-
-		  root = (
-		    <>
-          <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin}>{content}</Root>
-          <ColorStatusBar />
-        </>
-      )
+      root = this.getNormalContent();
     }
 
     const theme = this.getBaseTheme();
 
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>
-				<NativeBaseProvider reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
+				<NativeBaseProvider reloadNumber={this.state.syncFinished+this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
           {root}
 				</NativeBaseProvider>
 			</StoreProvider>
