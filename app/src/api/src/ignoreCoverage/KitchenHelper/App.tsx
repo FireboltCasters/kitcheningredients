@@ -228,14 +228,14 @@ export default class App extends React.Component<any, any>{
   }
 
   getNormalContent(){
-    let content = <RootStack reloadNumber={this.state.reloadNumber} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
+    let content = <RootStack reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+!this.state.syncFinished} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
     if(!!this.props.children){
       content = this.props.children;
     }
 
     return (
       <>
-        <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin}>{content}</Root>
+        <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+!this.state.syncFinished}>{content}</Root>
         <ColorStatusBar />
       </>
     )

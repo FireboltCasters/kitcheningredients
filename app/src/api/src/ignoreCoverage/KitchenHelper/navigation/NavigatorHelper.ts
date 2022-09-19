@@ -18,6 +18,10 @@ export class NavigatorHelper {
 
     static navigationQueue: NavigationQueueItem[] = [];
 
+    static setSetNavigationHistoryFunction(func){
+      NavigatorHelper.setNavigationHistory = func;
+    }
+
     static toggleDrawer(){
         NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.toggleDrawer());
     }
@@ -118,8 +122,8 @@ export class NavigatorHelper {
         emptyProps = {...emptyProps, ...newParams};
         NavigatorHelper.navigate(registeredComponent, emptyProps, resetHistory);
     }
-
-    static navigate(registeredComponent: FunctionComponent, props=null, resetHistory: boolean = false){
+    
+    static async navigate(registeredComponent: FunctionComponent, props=null, resetHistory: boolean = false){
         let routeName = RegisteredRoutesMap.getRouteByComponent(registeredComponent);
         NavigatorHelper.navigateToRouteName(routeName, props, resetHistory)
     }
@@ -137,7 +141,7 @@ export class NavigatorHelper {
         );
     }
 
-    static navigateToRouteName(routeName: string, props= {}, resetHistory: boolean = false){
+    static async navigateToRouteName(routeName: string, props= {}, resetHistory: boolean = false){
         // Perform navigation if the app has mounted
         if (NavigatorHelper.isNavigationLoaded()) {
             if(resetHistory){
@@ -145,6 +149,9 @@ export class NavigatorHelper {
             } else {
                 // @ts-ignore
                 NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.jumpTo(routeName, {...props}));
+                if(NavigatorHelper.setNavigationHistory){
+                    NavigatorHelper.setNavigationHistory(NavigatorHelper.getHistory());
+                }
             }
         } else {
             let queueItem = new NavigationQueueItem(routeName, props, resetHistory);
@@ -154,17 +161,17 @@ export class NavigatorHelper {
         }
     }
 
-    static handleNavigationQueue(){ 
-       let queueCopy = JSON.parse(JSON.stringify(NavigatorHelper.navigationQueue)); 
-       while(queueCopy.length>0){ 
-           let nextNavigation = queueCopy.shift(); //get item from copy 
-           if(!!nextNavigation){ 
-               console.log(nextNavigation); 
-               NavigatorHelper.navigationQueue.shift(); // remove first item from real list 
-               NavigatorHelper.navigateToRouteName(nextNavigation.routeName, nextNavigation.props, nextNavigation.resetHistory); 
-           } 
-       } 
-   } 
+    static handleNavigationQueue(){
+       let queueCopy = JSON.parse(JSON.stringify(NavigatorHelper.navigationQueue));
+       while(queueCopy.length>0){
+           let nextNavigation = queueCopy.shift(); //get item from copy
+           if(!!nextNavigation){
+               console.log(nextNavigation);
+               NavigatorHelper.navigationQueue.shift(); // remove first item from real list
+               NavigatorHelper.navigateToRouteName(nextNavigation.routeName, nextNavigation.props, nextNavigation.resetHistory);
+           }
+       }
+   }
 
     /**
      * https://reactnavigation.org/docs/5.x/navigating-without-navigation-prop/#handling-initialization

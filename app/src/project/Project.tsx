@@ -10,8 +10,9 @@ import {ExampleScreen} from "./ExampleScreen";
 import {Menu} from "./../api/src/ignoreCoverage/KitchenHelper/navigation/Menu";
 import {MenuItem} from "./../api/src/ignoreCoverage/KitchenHelper/navigation/MenuItem";
 import {EmptyTemplate} from "./../api/src/ignoreCoverage/KitchenHelper/templates/EmptyTemplate";
-import {MyRoot} from "./MyRoot";
+import {MySync} from "./MySync";
 import {MyLoading} from "./MyLoading";
+import {MyRoot} from "./MyRoot";
 
 export default class Project extends PluginInterface{
 
@@ -71,10 +72,11 @@ export default class Project extends PluginInterface{
   }
 
   getSyncComponent(): any {
-    return <MyRoot />
+    return <MySync />
   }
 
 	getRootComponent(){
+	  return <MyRoot />
 	}
 
 	renderCustomAuthProviders(serverInfo): []{

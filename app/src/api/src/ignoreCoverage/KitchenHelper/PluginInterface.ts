@@ -47,7 +47,7 @@ export abstract class PluginInterface{
       return null;
     }
 
-    getRootComponent(){
+    getRootComponent(props){
       return null;
     }
 

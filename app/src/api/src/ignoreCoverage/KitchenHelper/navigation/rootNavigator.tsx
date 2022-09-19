@@ -6,11 +6,15 @@ import {CustomDrawerContent} from "./CustomDrawerContent";
 import {ConfigHolder} from "../ConfigHolder";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {Layout} from "../templates/Layout";
-import {useSynchedState} from "kitcheningredients";
 import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
+import {useSynchedState} from "../synchedstate/SynchedState";
+import {useSynchedJSONState} from "../synchedstate/SynchedState";
+import {NavigatorHelper} from "../../../../src";
 
 export const RootStack = (props) => {
   const [test, setTest] = useSynchedState(RequiredSynchedStates.menuReloadNumber)
+  const [navigationHistory, setNavigationHistory] = useSynchedJSONState(RequiredSynchedStates.navigationHistory)
+  NavigatorHelper.setSetNavigationHistoryFunction(setNavigationHistory);
 
 	let isSmallDevice = Layout.usesSmallDevice();
 
@@ -38,7 +42,7 @@ export const RootStack = (props) => {
 
   let pluginRootComponent = null;
   if(!!ConfigHolder.plugin.getRootComponent){
-    pluginRootComponent = ConfigHolder.plugin.getRootComponent();
+    pluginRootComponent = ConfigHolder.plugin.getRootComponent(props);
   }
 
 	//TODO maybe add Drawer instead of custom implementation: https://reactnavigation.org/docs/5.x/drawer-navigator
