@@ -6,6 +6,8 @@ import {RouteRegisterer} from "./RouteRegisterer";
 import {Home} from "../screens/home/Home";
 import {NavigationQueueItem} from "./NavigationQueueItem";
 import {ConfigHolder} from "../ConfigHolder";
+import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
+import {useSynchedJSONState} from "../synchedstate/SynchedState";
 
 // todo Update to newest ReactNavigation
 // https://reactnavigation.org/docs/navigating-without-navigation-prop/
@@ -20,6 +22,10 @@ export class NavigatorHelper {
 
     static setSetNavigationHistoryFunction(func){
       NavigatorHelper.setNavigationHistory = func;
+    }
+
+    static useNavigationHistory(){
+      return useSynchedJSONState(RequiredSynchedStates.navigationHistory)
     }
 
     static toggleDrawer(){
@@ -122,7 +128,7 @@ export class NavigatorHelper {
         emptyProps = {...emptyProps, ...newParams};
         NavigatorHelper.navigate(registeredComponent, emptyProps, resetHistory);
     }
-    
+
     static async navigate(registeredComponent: FunctionComponent, props=null, resetHistory: boolean = false){
         let routeName = RegisteredRoutesMap.getRouteByComponent(registeredComponent);
         NavigatorHelper.navigateToRouteName(routeName, props, resetHistory)
