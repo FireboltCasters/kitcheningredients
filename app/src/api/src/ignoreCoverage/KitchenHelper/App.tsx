@@ -24,7 +24,6 @@ export default class App extends React.Component<any, any>{
 
 	constructor(props) {
 		super(props);
-		console.log(props);
 
 		if(!props?.ignoreInstance){
       ConfigHolder.instance = this;
@@ -149,6 +148,7 @@ export default class App extends React.Component<any, any>{
 		await this.setState({
 			reloadNumber: this.state.reloadNumber+1,
 			loadedUser: true,
+      syncFinished: false,
 			user: user,
 			role: role,
       permissions: permissions,
@@ -228,14 +228,14 @@ export default class App extends React.Component<any, any>{
   }
 
   getNormalContent(){
-    let content = <RootStack reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+!this.state.syncFinished} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
+    let content = <RootStack reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+this.state.syncFinished} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
     if(!!this.props.children){
       content = this.props.children;
     }
 
     return (
       <>
-        <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+!this.state.syncFinished}>{content}</Root>
+        <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+this.state.syncFinished}>{content}</Root>
         <ColorStatusBar />
       </>
     )

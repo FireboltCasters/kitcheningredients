@@ -11,12 +11,12 @@ export const MySync: FunctionComponent = (props) => {
   const user = ConfigHolder.instance.getUser()
   console.log(user)
 
-  function load(){
+  async function load(){
     if(!!user){
       Menu.registerRoute(HiddenScreen, EmptyTemplate, "HiddenScreen", "hidden", null, true);
       Menu.registerCommonMenu(new MenuItem("HiddenScreen", "HiddenScreen", HiddenScreen))
     }
-    ConfigHolder.instance.setSyncFinished(true)
+    await ConfigHolder.instance.setSyncFinished(true)
   }
 
   useEffect(() => {
