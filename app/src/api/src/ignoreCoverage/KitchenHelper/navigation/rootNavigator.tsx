@@ -9,7 +9,7 @@ import {Layout} from "../templates/Layout";
 import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
 import {useSynchedState} from "../synchedstate/SynchedState";
 import {useSynchedJSONState} from "../synchedstate/SynchedState";
-import {NavigatorHelper} from "../../../../src";
+import {NavigatorHelper} from "../navigation/NavigatorHelper";
 
 export const RootStack = (props) => {
   const [test, setTest] = useSynchedState(RequiredSynchedStates.menuReloadNumber)
