@@ -245,10 +245,13 @@ export default class App extends React.Component<any, any>{
 		let root = null;
 
 		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined){
+		  console.log("Loading screen");
 		  root = this.getLoadingScreen();
 		} else if(!this.state.syncFinished) {
+      console.log("Sync screen");
 		  root = this.getSynchScreen();
     } else {
+      console.log("Normal screen");
 		  root = this.getNormalContent();
     }
 
@@ -257,7 +260,9 @@ export default class App extends React.Component<any, any>{
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>
 				<NativeBaseProvider reloadNumber={this.state.syncFinished+this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
+          <ViewWithBackgroundColor>
           {root}
+          </ViewWithBackgroundColor>
 				</NativeBaseProvider>
 			</StoreProvider>
 		);
