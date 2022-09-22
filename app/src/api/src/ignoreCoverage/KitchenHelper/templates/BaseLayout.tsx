@@ -13,6 +13,7 @@ import {Icon} from "../components/Icon";
 import {DrawerButton} from "./DrawerButton";
 import {BackButton} from "./BackButton";
 import {useCustomHeaderTextColor} from "./useHeaderTextColor";
+import {useProjectColor} from "./useProjectColor";
 
 export const BaseLayout = ({
 						   children,
@@ -28,18 +29,7 @@ export const BaseLayout = ({
 					   }: any) => {
 
 	let isSmallDevice = Layout.usesSmallDevice();
-
-	/**
-	 'lg': 992+320,
-	 'xl': 1280+320, // +280 from MenuWidth
-	 '2xl': 1536+320,
-	 */
-
-	const serverInfo = props.serverInfo || ServerAPI.tempStore.serverInfo;
-	let ssoIconStyle = {};
-	if(!!serverInfo){
-		ssoIconStyle = ServerInfoHelper.getSsoIconStyle(serverInfo);
-	}
+	const ssoIconColor = useProjectColor();
 
 	function renderHeading(){
 	  if(!!header){
@@ -84,7 +74,7 @@ export const BaseLayout = ({
 
 	let headingBackgroundColor = props.headingBackgroundColor;
 	if(!headingBackgroundColor){
-		headingBackgroundColor = ssoIconStyle.background || "transparent";
+		headingBackgroundColor = ssoIconColor;
 	}
 
 	let backgroundStyle = !props.headingBackgroundStyle ? {backgroundColor: headingBackgroundColor} : undefined;

@@ -1,3 +1,6 @@
+import {useProjectColor} from "./ignoreCoverage/KitchenHelper/templates/useProjectColor";
+export {useProjectColor}
+
 import {RequiredSynchedStates} from "./ignoreCoverage/KitchenHelper/synchedstate/RequiredSynchedStates";
 export {RequiredSynchedStates}
 
