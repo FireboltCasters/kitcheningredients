@@ -4,11 +4,13 @@ import ServerAPI from "../ServerAPI";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 
 export function useProjectColor(props?) {
-  const serverInfo = props.serverInfo || ServerAPI.tempStore.serverInfo;
+  const serverInfo = props?.serverInfo || ServerAPI.tempStore.serverInfo;
   let ssoBackgroundColor = undefined;
   if(!!serverInfo){
     const ssoIconStyle = ServerInfoHelper.getSsoIconStyle(serverInfo);
     ssoBackgroundColor = ssoIconStyle?.background;
   }
-  return ssoBackgroundColor || "transparent";
+
+  let output = ssoBackgroundColor || "transparent"
+  return output;
 }
