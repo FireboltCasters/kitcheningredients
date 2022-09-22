@@ -12,6 +12,6 @@ export function useCustomHeaderTextColor(props?) {
     ssoIconStyle = ServerInfoHelper.getSsoIconStyle(serverInfo);
   }
   let defaultColor = ssoIconStyle.color || (colorMode == 'dark' ? 'white' : 'gray.800')
-  let color = !!props.headingTextColor ? props.headingTextColor : defaultColor;
+  let color = !!props?.headingTextColor ? props?.headingTextColor : defaultColor;
   return color;
 }
