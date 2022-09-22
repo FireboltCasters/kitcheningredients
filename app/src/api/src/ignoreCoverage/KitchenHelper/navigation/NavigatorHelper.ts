@@ -45,7 +45,11 @@ export class NavigatorHelper {
     }
 
     static goBack(){
+      if(NavigatorHelper.getHistory()===null){
+        NavigatorHelper.navigateHome();
+      } else {
         NavigatorHelper.getCurrentNavigation()?.dispatch(CommonActions.goBack());
+      }
     }
 
     static getCurrentNavigation(){
