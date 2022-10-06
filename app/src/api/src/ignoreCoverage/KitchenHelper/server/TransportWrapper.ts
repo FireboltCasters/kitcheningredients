@@ -115,17 +115,14 @@ export default class TransportWrapper extends Transport{
       //console.log("get_auth_access_token: "+ConfigHolder.storage.get_auth_access_token());
       // ServerAPI.loginWithAccessDirectusAccessToken
       let refresh_token = await ConfigHolder.storage.get_auth_refresh_token();
+      let access_token = await ConfigHolder.storage.get_auth_access_token();
+
       console.log("using refresh_token: "+refresh_token);
-      let refreshAnswer = await ServerAPI.loginWithRefreshToken(refresh_token);
+      //let refreshAnswer = await ServerAPI.loginWithRefreshToken(refresh_token);
+      let refreshAnswer = await directus.auth.refresh();
       console.log("refreshAnswer: ");
       console.log(JSON.stringify(refreshAnswer, null, 2));
 
-      let access_token = await ConfigHolder.storage.get_auth_access_token();
-      console.log("using access_token: "+access_token);
-      let refreshAnswerWithAccesstoken = await ServerAPI.loginWithRefreshToken(access_token);
-      console.log("refreshAnswerWithAccesstoken: ");
-      console.log(JSON.stringify(refreshAnswerWithAccesstoken, null, 2));
-      //let refreshAnswer = await directus.auth.refresh(); //somehow buggy on ios, so we do it manually
       return refreshAnswer;
     } catch (err){
       console.log("Error at refresh")

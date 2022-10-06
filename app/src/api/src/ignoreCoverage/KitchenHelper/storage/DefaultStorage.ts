@@ -80,6 +80,8 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     has_credentials_saved(){
+        console.log("has_credentials_saved check");
+        console.log("get_auth_access_token: "+!!this.get_auth_access_token());
         if(!!this.get_auth_refresh_token()){
             return true;
         }
@@ -123,15 +125,11 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
      * Expires
      */
     set_auth_expires(time: number){
-        console.log("set_auth_expires");
-        console.log("timeRaw: ", time);
         let expiresIn = null;
         if(!!time){
             let timeNumber = parseInt(""+time);
             expiresIn = new Date(Date.now() + timeNumber);
             expiresIn = expiresIn.toISOString()
-            console.log("expiresAt: "+expiresIn);
-            console.log("in seconds: "+timeNumber/1000);
         }
         this.setValueOrDeleteIfNull(RequiredStorageKeys.KEY_AUTH_EXPIRES_DATE, expiresIn+"")
         this.setValueOrDeleteIfNull(RequiredStorageKeys.KEY_AUTH_EXPIRES, time+"")

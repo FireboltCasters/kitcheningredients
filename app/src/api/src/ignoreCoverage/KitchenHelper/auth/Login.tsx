@@ -9,6 +9,8 @@ import {ConfigHolder} from "../ConfigHolder";
 import {keyof} from "ts-keyof";
 import {RegisteredRoutesMap} from "./../navigation/RegisteredRoutesMap";
 
+let lastAccessToken = null;
+
 export const Login = (props) => {
 
 	let hideDrawer = false;
@@ -26,17 +28,18 @@ export const Login = (props) => {
 
 	const user = ConfigHolder.instance.getUser();
 
-	const [loaded, setLoaded] = useState(false);
-	const [firstload, setFirstload] = useState(true);
-
 	const params = NavigatorHelper.getRouteParams(props);
 	let directus_access_token = params[EnviromentHelper.getDirectusAccessTokenName()];
 
 	async function fetchAccessTokenInUrl(){
+	  console.log("Login: fetchAccessTokenInUrl");
 		try{
 			let data = await ServerAPI.loginWithAccessDirectusAccessToken(directus_access_token);
 			let directus = ServerAPI.getClient();
+			console.log("Login: getMe");
 			let me = await ServerAPI.getMe(directus);
+			console.log("Login: getMe done");
+			console.log("Login: set user");
 			await ConfigHolder.instance.setUser(me);
 			return true;
 		} catch (err){
@@ -51,18 +54,6 @@ export const Login = (props) => {
 		return false;
 	}
 
-	function rerenderWithoutParams(){
-		//console.log("App has found user, so we want to route without directus token");
-		// https://reactnavigation.org/docs/navigating-without-navigation-prop/#handling-initialization
-		//since the navigation isn't ready at the first rendering, we need to retrigger useEffect to render it then
-		if(firstload){
-			setFirstload(false);
-		} else {
-			NavigatorHelper.navigateWithoutParams(Login);
-		}
-		return true;
-	}
-
   async function handleContinue(){
     await NavigatorHelper.navigate(RegisteredRoutesMap.getHome())
     await ConfigHolder.instance.setHideDrawer(false);
@@ -71,47 +62,51 @@ export const Login = (props) => {
 	async function fetchAccessToken(){
 		//console.log("fetchAccessToken");
 		if(!!directus_access_token){
-			if(!!user){
-				rerenderWithoutParams();
-				return;
-			} else {
-				//console.log("Token in URL found");
-				let successWithUrlToken = await fetchAccessTokenInUrl();
-			}
+		  if(lastAccessToken === directus_access_token){
+		    console.log("Login: fetchAccessToken: same token");
+        return;
+      } else {
+        lastAccessToken = directus_access_token;
+		    console.log("Login: fetchAccessToken: new token");
+		   if(!user){
+		     console.log("Login: fetchAccessToken: no user");
+         let successWithUrlToken = await fetchAccessTokenInUrl();
+       }
+      }
 		} else {
 			//console.log("No access token in url, finish loading")
-			setLoaded(true)
 		}
 	}
 
 	// corresponding componentDidMount
 	useEffect(() => {
-		//console.log("Login useEffect")
 		if(ConfigHolder.instance.shouldRedirectToLogin()){
 			ConfigHolder.instance.setRedirectToLogin(false);
+			return;
 		}
 
 		if(hideDrawer){
 			ConfigHolder.instance.setHideDrawer(true);
+			return;
 		} else {
-			fetchAccessToken();
+		  fetchAccessToken();
+			return;
 		}
 
-	}, [props?.route?.params, firstload])
-
-	let finishedLoading = loaded;
-
-	if(!!directus_access_token){
-		finishedLoading = false;
-	}
+	}, [props?.route?.params])
 
 	if(hideDrawer){
 		return null;
 	}
 
-  if(finishedLoading && ConfigHolder.autoLogin && !!user){
+  if(!!user){
     handleContinue();
     return null;
+  }
+
+  let finishedLoading = true;
+  if(!!directus_access_token){
+    finishedLoading = false;
   }
 
 	return <WebViewLogin loaded={finishedLoading} user={user} handleContinue={handleContinue} />;

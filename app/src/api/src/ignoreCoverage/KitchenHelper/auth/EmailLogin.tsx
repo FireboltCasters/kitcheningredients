@@ -10,6 +10,7 @@ import {ResetPassword} from "./ResetPassword";
 import {FormButton} from "../buttons/FormButton";
 import {ConfigHolder} from "./../ConfigHolder";
 import {Register} from "./Register";
+import {Icon} from "../components/Icon";
 
 const showResetPassword = false;
 const showEmailLogin = true;
@@ -37,7 +38,9 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [loginInitiated, setLoginInitiated] = useState(false)
-	const [email, setEmail] = useState("")
+  const [loginIncorrect, setLogginIncorrect] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
 	async function handleLoginWithEmail(){
@@ -47,6 +50,8 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 		} catch (err){
 			console.log(err);
 			setLoginInitiated(false);
+      setLogginIncorrect(true);
+      setPassword("");
 		} finally {
 		}
 	}
@@ -91,6 +96,14 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
   }
 
 	function renderEmailLogin(){
+    const toggleShowPasswordIcon = showPassword ? "eye" : "eye-off";
+    let rightElement = (
+      <Button roundedLeft="0" onPress={() => {setShowPassword(!showPassword)}}>
+        <Icon name={toggleShowPasswordIcon} size="sm" />
+      </Button>
+    )
+
+
 		if(showEmailLogin){
 			return(
 				<>
@@ -107,15 +120,20 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 								placeholder="Email" size="lg" />
 						</View>
 					</FormControl>
-					<FormControl isRequired>
+					<FormControl isInvalid={loginIncorrect}  isRequired>
 						<View style={{marginVertical: 10}} >
 							<Input
 								isDisabled={loginInitiated}
+                value={password}
 								nativeID={"password"}
-								type={"password"}
+                type={showPassword ? "text" : "password"}
+                InputRightElement={rightElement}
 								onChange={(event) => { // @ts-ignore
 									setPassword(event.nativeEvent.text)
 								}} placeholder="Password" size="lg" />
+              <FormControl.ErrorMessage>
+                Incorrect email or password
+              </FormControl.ErrorMessage>
 						</View>
 					</FormControl>
 					<Flex flexDirection={"row"} justify={"space-between"} >

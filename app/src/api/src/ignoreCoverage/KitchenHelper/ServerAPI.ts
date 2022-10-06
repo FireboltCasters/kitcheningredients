@@ -75,6 +75,7 @@ export default class ServerAPI{
 	}
 
 	static getClient(): Directus<any>{
+	  console.log("getClient");
 		if(ServerAPI.directus){
 			return ServerAPI.directus;
 		}
@@ -143,17 +144,18 @@ export default class ServerAPI{
   }
 
   static async loginWithAccessDirectusAccessToken(directus_access_token){
+	  console.log("loginWithAccessDirectusAccessToken: ", directus_access_token);
     return await ServerAPI.loginWithRefreshToken(directus_access_token);
   }
 
 	static async loginWithRefreshToken(refresh_token_to_use){
+    let storage = ConfigHolder.storage;
 	  console.log("ServerAPI loginWithRefreshToken")
     console.log("refresh_token_to_use: ", refresh_token_to_use)
     await ServerAPI.delayInDev(1000);
 		let data = await ServerAPI.refreshWithRefreshToken(refresh_token_to_use);
 		console.log("data: ")
 		console.log(JSON.stringify(data, null, 2));
-		let storage = ConfigHolder.storage;
 		let access_token = data?.access_token;
 		let refresh_token = data?.refresh_token;
 		let expires = data?.expires || ""+0;
@@ -296,6 +298,7 @@ export default class ServerAPI{
 	}
 
 	private static async refreshWithRefreshToken(refresh_token: string){
+	  console.log("refreshWithRefreshToken: ", refresh_token);
 		let url = EnviromentHelper.getBackendURL()+'/auth/refresh';
 		const api = ServerAPI.getAxiosInstance();
 		try{

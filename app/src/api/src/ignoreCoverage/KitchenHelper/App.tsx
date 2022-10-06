@@ -168,8 +168,10 @@ export default class App extends React.Component<any, any>{
   }
 
 	async loadUser(){
+	  console.log("Load User");
 		try{
 			if(ServerAPI.areCredentialsSaved()){
+			  console.log("Load User: Credentials saved");
 				let directus = ServerAPI.getClient();
 				let user = await ServerAPI.getMe(directus);
 				return user;
@@ -184,6 +186,7 @@ export default class App extends React.Component<any, any>{
 	}
 
 	async loadSynchedVariables(){
+	  console.log("Loading Synched Variables");
     SynchedState.registerSynchedStates(RequiredStorageKeys.THEME, ColorCodeHelper.VALUE_THEME_DEFAULT, null, null, false);
 		await ConfigHolder.storage.init(); //before ConfigHolder.storage.initContextStores();
 		await ConfigHolder.storage.initContextStores(SynchedState); //before SynchedState.initContextStores();
@@ -192,15 +195,24 @@ export default class App extends React.Component<any, any>{
 	}
 
 	async componentDidMount() {
-		await this.loadSynchedVariables();
-		if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.initApp){
-			await ConfigHolder.plugin.initApp();
-		}
-		let serverStatus = await this.loadServerInfo();
-    await ConfigHolder.instance.setState({offline: !serverStatus});
-    let user = await ConfigHolder.instance.loadUser();
-    await this.setUser(user);
+	  console.log("App Component Did Mount");
+		await ConfigHolder.instance.initialize();
 	}
+
+	async initialize(){
+	  console.log("App: Initialize");
+    await this.loadSynchedVariables();
+    if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.initApp){
+      await ConfigHolder.plugin.initApp();
+    }
+    console.log("App: Load Server Info");
+    let serverStatus = await this.loadServerInfo();
+    await ConfigHolder.instance.setState({offline: !serverStatus});
+    console.log("App: Load User");
+    let user = await ConfigHolder.instance.loadUser();
+    console.log("App: Set User");
+    await this.setUser(user);
+  }
 
 	getBaseTheme(){
 		let initialColorMode = this.props.initialColorMode || ColorCodeHelper.VALUE_THEME_LIGHT;
