@@ -308,6 +308,12 @@ export default class ServerAPI{
 			console.log(err.toString())
       console.log(JSON.stringify(err));
 			console.log(Object.keys(err));
+			// "config", "request", "response", "isAxiosError", "toJSON"
+      console.log(err?.message);
+      console.log(err?.response);
+      console.log(err?.response?.data);
+      console.log(err?.requests);
+      console.log(err.toJSON());
 		}
 		return null;
 	}
