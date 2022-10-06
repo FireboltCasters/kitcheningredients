@@ -89,8 +89,8 @@ export default class TransportWrapper extends Transport{
 	  if(!expiresDateISOString){
 	    return false;
     }
-    let now: Date = new Date();
-	  let expiresDate: Date = new Date(expiresDateISOString);
+    let now: any = new Date();
+	  let expiresDate: any = new Date(expiresDateISOString);
     let secondsTillExpiration = expiresDate-now || 0;
     console.log("secondsTillExpiration: "+secondsTillExpiration);
     if(secondsTillExpiration>0){
