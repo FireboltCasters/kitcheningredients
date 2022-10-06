@@ -159,7 +159,9 @@ export default class ServerAPI{
 		let expires = data?.expires || ""+0;
 		//https://github.com/directus/directus/blob/main/api/src/services/authentication.ts
 		//let expiresIn = new Date(Date.now() + ms(expires as string));
-		//console.log("expiresIn: ",expiresIn);
+    console.log("access_token: ", access_token)
+    console.log("refresh_token: ", refresh_token)
+    console.log("expires: ", expires)
 		await storage.set_auth_expires(expires);
 		await storage.set_refresh_token(refresh_token);
 		await storage.set_access_token(access_token);
@@ -298,12 +300,14 @@ export default class ServerAPI{
 		const api = ServerAPI.getAxiosInstance();
 		try{
       await ServerAPI.delayInDev(1000);
-			let response = await api.post(url, {"refresh_token": ""+refresh_token}, {});
-			return response.data.data;
+			let response = await api.post(url, {"refresh_token": ""+refresh_token, mode: "json"}, {});
+			return response?.data?.data;
 		} catch (err){
 			console.log("refreshWithDirectusToken error");
 			console.log(err);
 			console.log(err.toString())
+      console.log(JSON.stringify(err));
+			console.log(Object.keys(err));
 		}
 		return null;
 	}
