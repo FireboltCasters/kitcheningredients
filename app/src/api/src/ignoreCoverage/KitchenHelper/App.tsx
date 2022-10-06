@@ -168,10 +168,8 @@ export default class App extends React.Component<any, any>{
   }
 
 	async loadUser(){
-	  console.log("Load User");
 		try{
 			if(ServerAPI.areCredentialsSaved()){
-			  console.log("Load User: Credentials saved");
 				let directus = ServerAPI.getClient();
 				let user = await ServerAPI.getMe(directus);
 				return user;
@@ -186,8 +184,7 @@ export default class App extends React.Component<any, any>{
 	}
 
 	async loadSynchedVariables(){
-	  console.log("Loading Synched Variables");
-    SynchedState.registerSynchedStates(RequiredStorageKeys.THEME, ColorCodeHelper.VALUE_THEME_DEFAULT, null, null, false);
+	  SynchedState.registerSynchedStates(RequiredStorageKeys.THEME, ColorCodeHelper.VALUE_THEME_DEFAULT, null, null, false);
 		await ConfigHolder.storage.init(); //before ConfigHolder.storage.initContextStores();
 		await ConfigHolder.storage.initContextStores(SynchedState); //before SynchedState.initContextStores();
 		await SynchedState.initSynchedKeys();
@@ -195,22 +192,17 @@ export default class App extends React.Component<any, any>{
 	}
 
 	async componentDidMount() {
-	  console.log("App Component Did Mount");
-		await ConfigHolder.instance.initialize();
+	  await ConfigHolder.instance.initialize();
 	}
 
 	async initialize(){
-	  console.log("App: Initialize");
-    await this.loadSynchedVariables();
+	  await this.loadSynchedVariables();
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.initApp){
       await ConfigHolder.plugin.initApp();
     }
-    console.log("App: Load Server Info");
     let serverStatus = await this.loadServerInfo();
     await ConfigHolder.instance.setState({offline: !serverStatus});
-    console.log("App: Load User");
     let user = await ConfigHolder.instance.loadUser();
-    console.log("App: Set User");
     await this.setUser(user);
   }
 
@@ -257,13 +249,13 @@ export default class App extends React.Component<any, any>{
 		let root = null;
 
 		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined){
-		  console.log("Loading screen");
+		  //console.log("Loading screen");
 		  root = this.getLoadingScreen();
 		} else if(!this.state.syncFinished) {
-      console.log("Sync screen");
+      //console.log("Sync screen");
 		  root = this.getSynchScreen();
     } else {
-      console.log("Normal screen");
+      //console.log("Normal screen");
 		  root = this.getNormalContent();
     }
 

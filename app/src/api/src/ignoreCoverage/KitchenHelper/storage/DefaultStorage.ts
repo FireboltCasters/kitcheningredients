@@ -80,8 +80,6 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     has_credentials_saved(){
-        console.log("has_credentials_saved check");
-        console.log("get_auth_access_token: "+!!this.get_auth_access_token());
         if(!!this.get_auth_refresh_token()){
             return true;
         }

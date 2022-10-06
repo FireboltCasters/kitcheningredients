@@ -32,14 +32,10 @@ export const Login = (props) => {
 	let directus_access_token = params[EnviromentHelper.getDirectusAccessTokenName()];
 
 	async function fetchAccessTokenInUrl(){
-	  console.log("Login: fetchAccessTokenInUrl");
-		try{
+	  try{
 			let data = await ServerAPI.loginWithAccessDirectusAccessToken(directus_access_token);
 			let directus = ServerAPI.getClient();
-			console.log("Login: getMe");
 			let me = await ServerAPI.getMe(directus);
-			console.log("Login: getMe done");
-			console.log("Login: set user");
 			await ConfigHolder.instance.setUser(me);
 			return true;
 		} catch (err){
@@ -63,14 +59,11 @@ export const Login = (props) => {
 		//console.log("fetchAccessToken");
 		if(!!directus_access_token){
 		  if(lastAccessToken === directus_access_token){
-		    console.log("Login: fetchAccessToken: same token");
-        return;
+		    return;
       } else {
         lastAccessToken = directus_access_token;
-		    console.log("Login: fetchAccessToken: new token");
-		   if(!user){
-		     console.log("Login: fetchAccessToken: no user");
-         let successWithUrlToken = await fetchAccessTokenInUrl();
+		    if(!user){
+		     let successWithUrlToken = await fetchAccessTokenInUrl();
        }
       }
 		} else {
