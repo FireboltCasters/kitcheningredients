@@ -124,14 +124,14 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
      */
     set_auth_expires(time: number){
         console.log("set_auth_expires");
-        console.log("time: ", time);
+        console.log("timeRaw: ", time);
         let expiresIn = null;
         if(!!time){
             let timeNumber = parseInt(""+time);
             expiresIn = new Date(Date.now() + timeNumber);
             expiresIn = expiresIn.toISOString()
-            console.log("expiresIn");
-            console.log(expiresIn);
+            console.log("expiresAt: "+expiresIn);
+            console.log("in seconds: "+timeNumber/1000);
         }
         this.setValueOrDeleteIfNull(RequiredStorageKeys.KEY_AUTH_EXPIRES_DATE, expiresIn+"")
         this.setValueOrDeleteIfNull(RequiredStorageKeys.KEY_AUTH_EXPIRES, time+"")
@@ -139,6 +139,11 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     set auth_expires(time){ //DO not change
         this.set_auth_expires(time);
     }
+
+    get_auth_expires_date(){
+      return this.getStorageImplementation().get(RequiredStorageKeys.KEY_AUTH_EXPIRES_DATE);
+    }
+
     get_auth_expires(){
         return Number(this.getStorageImplementation().get(RequiredStorageKeys.KEY_AUTH_EXPIRES));
     }

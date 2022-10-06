@@ -142,21 +142,24 @@ export default class ServerAPI{
       }
   }
 
-	static async loginWithAccessDirectusAccessToken(directus_access_token){
+  static async loginWithAccessDirectusAccessToken(directus_access_token){
+    return await ServerAPI.loginWithRefreshToken(directus_access_token);
+  }
+
+	static async loginWithRefreshToken(directus_access_token){
     await ServerAPI.delayInDev(1000);
-		let data = await ServerAPI.refreshWithDirectusAccessToken(directus_access_token);
+		let data = await ServerAPI.refreshWithRefreshToken(directus_access_token);
 		console.log(data);
 		let storage = ConfigHolder.storage;
 		let access_token = data.access_token;
 		let refresh_token = data.refresh_token;
 		let expires = data.expires || ""+0;
-		console.log("expires: ", expires);
 		//https://github.com/directus/directus/blob/main/api/src/services/authentication.ts
 		//let expiresIn = new Date(Date.now() + ms(expires as string));
 		//console.log("expiresIn: ",expiresIn);
-		storage.set_auth_expires(expires);
-		storage.set_refresh_token(refresh_token);
-		storage.set_access_token(access_token);
+		await storage.set_auth_expires(expires);
+		await storage.set_refresh_token(refresh_token);
+		await storage.set_access_token(access_token);
 		return data;
 	}
 
@@ -287,12 +290,12 @@ export default class ServerAPI{
 		return !!token;
 	}
 
-	private static async refreshWithDirectusAccessToken(directus_access_token: string){
+	private static async refreshWithRefreshToken(refresh_token: string){
 		let url = EnviromentHelper.getBackendURL()+'/auth/refresh';
 		const api = ServerAPI.getAxiosInstance();
 		try{
       await ServerAPI.delayInDev(1000);
-			let response = await api.post(url, {"refresh_token": ""+directus_access_token}, {});
+			let response = await api.post(url, {"refresh_token": ""+refresh_token}, {});
 			return response.data.data;
 		} catch (err){
 			console.log("refreshWithDirectusToken error");

@@ -33,10 +33,10 @@ export default class TransportWrapper extends Transport{
 			//Happens when the refresh or access token is too old
 			if(this.isTokenExpired(error, status, code)){
 			  console.log("- Token is expired")
-        let allowRefresh = true;
 
-			  let refreshAnswer = await this.handleRefresh();
-				if(this.isRefreshSuccessfull(refreshAnswer) && allowRefresh){
+        let shouldRetryRequest = await this.shouldRetryRequest();
+
+				if(shouldRetryRequest){
 					console.log("Okay lets try to resend the request")
 					try{
 						let answer = await super.request(method, path, data, options);
@@ -48,7 +48,7 @@ export default class TransportWrapper extends Transport{
 						return Promise.reject(error);
 					}
 				} else {
-				  console.log("Refresh not successfull, handle logout");
+				  console.log("Refresh not successfull or was not tried, handle logout");
 					await ServerAPI.handleLogout(error); // after releasing lock!
 					return Promise.reject(error);
 				}
@@ -59,21 +59,62 @@ export default class TransportWrapper extends Transport{
 		}
 	}
 
-	async handleRefresh(){
-	  console.log("Try to aquire lock")
+	async shouldRetryRequest(){
+    let retryRequest = false;
+
     await refreshLock.acquireAsync(); //okay lets lock this, so not that we dont register multiple times
     //TODO check if lock is free, otherwise wait until its free, and then skip the refresh and simple resend the super.request
-
     try{
-      console.log("Token is expired, lets try to refresh it")
-      let directus = ServerAPI.getDirectus(ConfigHolder.storage, ServerAPI.handleLogoutError);
-      let refreshAnswer = await directus.auth.refresh();
-      return refreshAnswer;
+      //Okay we have the lock, so only one refresh can happen at the same time
+      let wasAlreadyRefreshed = await this.wasAlreadyRefreshed();
+      if(wasAlreadyRefreshed){
+        console.log("Token was already refreshed, so we dont need to refresh it again")
+        retryRequest = true;
+      } else {
+        let refreshAnswer = await this.handleRefresh();
+        retryRequest = this.isRefreshSuccessfull(refreshAnswer);
+      }
     } catch (err){
       console.log("Error at refresh")
+      console.log(err);
     } finally {
       console.log("Release lock");
       this.releaseLock();
+    }
+    return retryRequest;
+  }
+
+	async wasAlreadyRefreshed(){
+	  let expiresDateISOString = await ConfigHolder.storage.get_auth_expires_date();
+	  if(!expiresDateISOString){
+	    return false;
+    }
+    let now: Date = new Date();
+	  let expiresDate: Date = new Date(expiresDateISOString);
+    let secondsTillExpiration = expiresDate-now || 0;
+    console.log("secondsTillExpiration: "+secondsTillExpiration);
+    if(secondsTillExpiration>0){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+	async handleRefresh(){
+    try{
+      console.log("Token is expired, lets try to refresh it")
+      let directus = ServerAPI.getDirectus(ConfigHolder.storage, ServerAPI.handleLogoutError);
+      //console.log("get_auth_refresh_token: "+ConfigHolder.storage.get_auth_refresh_token());
+      //console.log("get_auth_access_token: "+ConfigHolder.storage.get_auth_access_token());
+      // ServerAPI.loginWithAccessDirectusAccessToken
+      let refresh_token = await ConfigHolder.storage.get_auth_refresh_token();
+
+      let refreshAnswer = await ServerAPI.loginWithRefreshToken(refresh_token);
+      //let refreshAnswer = await directus.auth.refresh(); //somehow buggy on ios, so we do it manually
+      return refreshAnswer;
+    } catch (err){
+      console.log("Error at refresh")
+      console.log(err);
     }
   }
 

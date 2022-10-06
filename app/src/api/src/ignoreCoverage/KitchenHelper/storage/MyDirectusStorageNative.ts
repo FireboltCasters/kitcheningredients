@@ -10,7 +10,7 @@ export class MyDirectusStorageNative extends DefaultStorage/** extends Storage *
     }
 
     async init(){
-        const data = await SyncStorage.init();
+      const data = await SyncStorage.init();
     }
 
     getStorageImplementation(){
