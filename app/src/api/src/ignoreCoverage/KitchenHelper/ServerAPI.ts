@@ -146,14 +146,17 @@ export default class ServerAPI{
     return await ServerAPI.loginWithRefreshToken(directus_access_token);
   }
 
-	static async loginWithRefreshToken(directus_access_token){
+	static async loginWithRefreshToken(refresh_token_to_use){
+	  console.log("ServerAPI loginWithRefreshToken")
+    console.log("refresh_token_to_use: ", refresh_token_to_use)
     await ServerAPI.delayInDev(1000);
-		let data = await ServerAPI.refreshWithRefreshToken(directus_access_token);
-		console.log(data);
+		let data = await ServerAPI.refreshWithRefreshToken(refresh_token_to_use);
+		console.log("data: ")
+		console.log(JSON.stringify(data, null, 2));
 		let storage = ConfigHolder.storage;
-		let access_token = data.access_token;
-		let refresh_token = data.refresh_token;
-		let expires = data.expires || ""+0;
+		let access_token = data?.access_token;
+		let refresh_token = data?.refresh_token;
+		let expires = data?.expires || ""+0;
 		//https://github.com/directus/directus/blob/main/api/src/services/authentication.ts
 		//let expiresIn = new Date(Date.now() + ms(expires as string));
 		//console.log("expiresIn: ",expiresIn);

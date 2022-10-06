@@ -35,6 +35,7 @@ export default class TransportWrapper extends Transport{
 			  console.log("- Token is expired")
 
         let shouldRetryRequest = await this.shouldRetryRequest();
+			  console.log("- shouldRetryRequest: "+shouldRetryRequest);
 
 				if(shouldRetryRequest){
 					console.log("Okay lets try to resend the request")
@@ -60,9 +61,11 @@ export default class TransportWrapper extends Transport{
 	}
 
 	async shouldRetryRequest(){
+	  console.log("shouldRetryRequest?");
     let retryRequest = false;
 
     await refreshLock.acquireAsync(); //okay lets lock this, so not that we dont register multiple times
+    console.log("refreshLock acquired");
     //TODO check if lock is free, otherwise wait until its free, and then skip the refresh and simple resend the super.request
     try{
       //Okay we have the lock, so only one refresh can happen at the same time
@@ -71,8 +74,12 @@ export default class TransportWrapper extends Transport{
         console.log("Token was already refreshed, so we dont need to refresh it again")
         retryRequest = true;
       } else {
+        console.log("Token was not refreshed yet, so we need to refresh it")
         let refreshAnswer = await this.handleRefresh();
+        console.log("refreshAnswer: ");
+        console.log(JSON.stringify(refreshAnswer, null, 2));
         retryRequest = this.isRefreshSuccessfull(refreshAnswer);
+        console.log("retryRequest after refresh: "+retryRequest);
       }
     } catch (err){
       console.log("Error at refresh")
@@ -108,7 +115,7 @@ export default class TransportWrapper extends Transport{
       //console.log("get_auth_access_token: "+ConfigHolder.storage.get_auth_access_token());
       // ServerAPI.loginWithAccessDirectusAccessToken
       let refresh_token = await ConfigHolder.storage.get_auth_refresh_token();
-
+      console.log("using refresh_token: "+refresh_token);
       let refreshAnswer = await ServerAPI.loginWithRefreshToken(refresh_token);
       //let refreshAnswer = await directus.auth.refresh(); //somehow buggy on ios, so we do it manually
       return refreshAnswer;
