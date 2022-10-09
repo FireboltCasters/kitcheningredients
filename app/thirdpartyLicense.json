@@ -1250,6 +1250,14 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@expo/xcpretty",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@expo/xcpretty/README.md"
   },
+  "@fingerprintjs/fingerprintjs@3.3.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/fingerprintjs/fingerprintjs",
+    "publisher": "FingerprintJS, Inc",
+    "url": "https://fingerprint.com",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@fingerprintjs/fingerprintjs",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@fingerprintjs/fingerprintjs/LICENSE"
+  },
   "@formatjs/ecma402-abstract@1.11.4": {
     "licenses": "MIT",
     "repository": "https://github.com/formatjs/formatjs",

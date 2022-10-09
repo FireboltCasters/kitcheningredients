@@ -34,8 +34,11 @@ export {DirectusMarkdown}
 import {DirectusSingletonMarkdown} from "./ignoreCoverage/KitchenHelper/components/markdown/DirectusSingletonMarkdown";
 export {DirectusSingletonMarkdown}
 
-import {Device} from "./ignoreCoverage/KitchenHelper/helper/Device";
-export {Device}
+import {DeviceHelper} from "./ignoreCoverage/KitchenHelper/helper/DeviceHelper";
+export {DeviceHelper}
+
+import {PlatformHelper} from "./ignoreCoverage/KitchenHelper/helper/PlatformHelper";
+export {PlatformHelper}
 
 import {KitchenSafeAreaView} from "./ignoreCoverage/KitchenHelper/components/KitchenSafeAreaView";
 export {KitchenSafeAreaView}

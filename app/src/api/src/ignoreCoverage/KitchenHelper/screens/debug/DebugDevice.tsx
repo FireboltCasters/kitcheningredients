@@ -1,15 +1,15 @@
 // @ts-nocheck
 import React, {useEffect, useRef, useState} from "react";
 import {Button, Input, Text, View} from "native-base";
-import {Device} from "./../../helper/Device";
-import {DeviceInformation} from "../../helper/Device";
+import {DeviceHelper} from "./../../helper/DeviceHelper";
+import {DeviceInformation} from "../../helper/DeviceHelper";
 
 export const DebugDevice = (props) => {
 
   const [deviceinformations, setDeviceinformations] = useState<DeviceInformation | {}>({});
 
 	async function load(){
-    setDeviceinformations(await Device.getInformations());
+    setDeviceinformations(await DeviceHelper.getInformations());
 	}
 
 	// corresponding componentDidMount

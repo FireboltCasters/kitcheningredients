@@ -75,7 +75,6 @@ export default class ServerAPI{
 	}
 
 	static getClient(): Directus<any>{
-	  console.log("getClient");
 		if(ServerAPI.directus){
 			return ServerAPI.directus;
 		}
