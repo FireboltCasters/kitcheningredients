@@ -94,9 +94,6 @@ export const PackagesWithLicenses = (props) => {
       menuItem.addChildMenuItems(subMenu)
     }
 
-    console.log("renderPackage: "+dependencyKey);
-    console.log(menuItem)
-
 		return (
 			<View style={{paddingBottom: 10, width: "100%"}}>
 				<ExpandableDrawerItem

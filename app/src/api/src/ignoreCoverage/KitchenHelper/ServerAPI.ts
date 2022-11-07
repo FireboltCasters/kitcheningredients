@@ -150,8 +150,6 @@ export default class ServerAPI{
     let storage = ConfigHolder.storage;
     await ServerAPI.delayInDev(1000);
 		let data = await ServerAPI.refreshWithRefreshToken(refresh_token_to_use);
-		console.log("data: ")
-		console.log(JSON.stringify(data, null, 2));
 		let access_token = data?.access_token;
 		let refresh_token = data?.refresh_token;
 		let expires = data?.expires || ""+0;

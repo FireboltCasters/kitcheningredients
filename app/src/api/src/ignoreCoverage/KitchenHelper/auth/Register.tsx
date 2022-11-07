@@ -45,7 +45,6 @@ export const Register = (props) => {
 
       if(password===passwordConfirm){
         try{
-          console.log("Send register request");
           let directus = ServerAPI.getPublicClient();
 
           let answer = await directus.users.createOne({

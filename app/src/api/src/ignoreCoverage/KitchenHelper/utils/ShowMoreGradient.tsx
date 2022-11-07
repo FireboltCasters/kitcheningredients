@@ -15,7 +15,7 @@ export const ShowMoreGradient = (props) => {
 	const gradColors = [bgColor+'00', bgColor+'FF'];
 
 	return (
-		<View style={[{width: "100%", position: "absolute", bottom: 0, height: "auto"}]}>
+		<View pointerEvents="none" style={[{width: "100%", position: "absolute", bottom: 0, height: "auto"}]}>
 			<ShowMoreGradientPlaceholder />
 			<View style={{position: "absolute", height: "100%", width: "100%", bottom: 0}}>
 				<LinearGradient

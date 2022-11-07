@@ -22,10 +22,8 @@ export const Users = (props) => {
 
 	async function loadData(){
 		try{
-			console.log("Load User");
 			let directus = ServerAPI.getClient();
 			let remoteUser = await directus.users.readOne(user_id);
-			console.log("Users remoteUser: ", remoteUser);
 			setUser(remoteUser);
 
 			let remoteRole = await ServerAPI.loadRole(remoteUser?.role);
@@ -37,18 +35,13 @@ export const Users = (props) => {
 
 	// corresponding componentDidMount
 	useEffect(() => {
-		console.log("UseEffect Users");
-		console.log("firstload: ", firstload);
 		if(firstload){
-			console.log("Load Users");
 			setFirstload(false);
 			loadData();
 		}
 	}, [props?.route?.params])
 
 	function renderUserImage(){
-		console.log("Render User Image");
-		console.log(user);
 
 		return(
 			<MyThemedBox _shadeLevel={2} style={{marginRight: 20, justifyContent: "center", alignItems: "center", height: 142, width: 142, borderRadius: 152, overflow: "hidden"}}>

@@ -176,7 +176,6 @@ export class NavigatorHelper {
        while(queueCopy.length>0){
            let nextNavigation = queueCopy.shift(); //get item from copy
            if(!!nextNavigation){
-               console.log(nextNavigation);
                NavigatorHelper.navigationQueue.shift(); // remove first item from real list
                NavigatorHelper.navigateToRouteName(nextNavigation.routeName, nextNavigation.props, nextNavigation.resetHistory);
            }

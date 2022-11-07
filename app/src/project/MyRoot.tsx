@@ -9,7 +9,6 @@ export const MyRoot: FunctionComponent = (props) => {
 
   return (
     <View>
-      <Text>{"History: "+JSON.stringify(navigationHistory)}</Text>
     </View>
   );
 }
