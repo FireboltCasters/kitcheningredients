@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {Flex, Link, Text, useColorMode, View,} from "native-base";
-import {MaterialCommunityIcons} from "@expo/vector-icons"
+import {MaterialIcons} from "@expo/vector-icons"
 import EnviromentHelper from "../EnviromentHelper";
 import {StringHelper} from "../helper/StringHelper";
 import ServerAPI from "../ServerAPI";
@@ -34,9 +34,16 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	    return icon(color);
     }
 
+	  let family = MaterialIcons;
+
+	  if(icon==="incognito-circle"){
+	    family = null;
+    }
+
 		return (
 			<Icon
 				name={icon}
+        as={family}
 				color={color}
 				style={{}}
 			/>
@@ -47,14 +54,24 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	let providerName = provider?.name || "";
 	let icon = provider?.icon;
 
+	if(!!icon && icon!=="incognito-circle"){
+	  // replace all _ with - for icon names
+    icon = icon.replace(/_/g, "-");
+    console.log("icon", icon);
+  }
+
 	const { colorMode, toggleColorMode } = useColorMode();
 
 	let ssoIconStyle = ServerInfoHelper.getSsoIconStyle(serverInfo);
+
 	let iconBackgroundColor = ssoIconStyle?.background;
 	let iconColor = ssoIconStyle?.color || (colorMode == 'dark' ? 'white' : 'gray.800')
 
 	let url = getUrlToProvider(providerName);
 	let providerNameReadable = StringHelper.capitalizeFirstLetter(providerName);
+	if(!!provider?.label){
+	      providerNameReadable = provider?.label;
+  }
 
 	let text = buttonText || "Log in with "+providerNameReadable;
 
