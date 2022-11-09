@@ -126,7 +126,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/config-conventional": "^11.0.0",
-		"@directus/sdk": "^9.0.0",
+		"@directus/sdk": "^10.1.5",
 		"@react-native-community/eslint-config": "^2.0.0",
 		"@release-it/conventional-changelog": "^2.0.0",
 		"@types/jest": "^26.0.0",

@@ -1042,19 +1042,13 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@dicebear/pixel-art",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@dicebear/pixel-art/LICENSE"
   },
-  "@directus/sdk@9.12.2": {
+  "@directus/sdk@10.1.5": {
     "licenses": "MIT",
-    "repository": "https://github.com/directus/directus",
+    "repository": "https://github.com/directus/sdk",
     "publisher": "Rijk van Zanten",
     "email": "rijkvanzanten@me.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@directus/sdk",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@directus/sdk/license"
-  },
-  "@directus/shared@9.12.2": {
-    "licenses": "GPL-3.0*",
-    "publisher": "Nicola Krumschmidt",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@directus/shared",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@directus/shared/license"
   },
   "@egjs/hammerjs@2.0.17": {
     "licenses": "MIT",
@@ -1348,62 +1342,6 @@
     "repository": "https://github.com/adobe/react-spectrum",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@internationalized/number",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@internationalized/number/LICENSE"
-  },
-  "@intlify/core-base@9.1.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/intlify/vue-i18n-next",
-    "publisher": "kazuya kawaguchi",
-    "email": "kawakazu80@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/core-base",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/core-base/LICENSE"
-  },
-  "@intlify/devtools-if@9.1.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/intlify/vue-i18n-next",
-    "publisher": "kazuya kawaguchi",
-    "email": "kawakazu80@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/devtools-if",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/devtools-if/LICENSE"
-  },
-  "@intlify/message-compiler@9.1.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/intlify/vue-i18n-next",
-    "publisher": "kazuya kawaguchi",
-    "email": "kawakazu80@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/message-compiler",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/message-compiler/LICENSE"
-  },
-  "@intlify/message-resolver@9.1.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/intlify/vue-i18n-next",
-    "publisher": "kazuya kawaguchi",
-    "email": "kawakazu80@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/message-resolver",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/message-resolver/LICENSE"
-  },
-  "@intlify/runtime@9.1.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/intlify/vue-i18n-next",
-    "publisher": "kazuya kawaguchi",
-    "email": "kawakazu80@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/runtime",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/runtime/LICENSE"
-  },
-  "@intlify/shared@9.1.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/intlify/vue-i18n-next",
-    "publisher": "kazuya kawaguchi",
-    "email": "kawakazu80@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/shared",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/shared/LICENSE"
-  },
-  "@intlify/vue-devtools@9.1.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/intlify/vue-i18n-next",
-    "publisher": "kazuya kawaguchi",
-    "email": "kawakazu80@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/vue-devtools",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@intlify/vue-devtools/LICENSE"
   },
   "@jest/types@26.6.2": {
     "licenses": "MIT",
@@ -2332,47 +2270,17 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/axios",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/axios/README.md"
   },
-  "@types/body-parser@1.19.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/body-parser",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/body-parser/LICENSE"
-  },
   "@types/cacheable-request@6.0.2": {
     "licenses": "MIT",
     "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/cacheable-request",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/cacheable-request/LICENSE"
   },
-  "@types/connect@3.4.35": {
-    "licenses": "MIT",
-    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/connect",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/connect/LICENSE"
-  },
   "@types/cookie@0.3.3": {
     "licenses": "MIT",
     "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/cookie",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/cookie/LICENSE"
-  },
-  "@types/express-serve-static-core@4.17.29": {
-    "licenses": "MIT",
-    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/express-serve-static-core",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/express-serve-static-core/LICENSE"
-  },
-  "@types/express@4.17.13": {
-    "licenses": "MIT",
-    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/express",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/express/LICENSE"
-  },
-  "@types/geojson@7946.0.8": {
-    "licenses": "MIT",
-    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/geojson",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/geojson/LICENSE"
   },
   "@types/graceful-fs@4.1.5": {
     "licenses": "MIT",
@@ -2446,12 +2354,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/lodash",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/lodash/LICENSE"
   },
-  "@types/mime@1.3.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/mime",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/mime/LICENSE"
-  },
   "@types/node@11.15.54": {
     "licenses": "MIT",
     "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
@@ -2464,11 +2366,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/parse-json",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/parse-json/LICENSE"
   },
-  "@types/pino@7.0.5": {
-    "licenses": "MIT",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/pino",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/pino/LICENSE"
-  },
   "@types/prop-types@15.7.5": {
     "licenses": "MIT",
     "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
@@ -2480,18 +2377,6 @@
     "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/q",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/q/LICENSE"
-  },
-  "@types/qs@6.9.7": {
-    "licenses": "MIT",
-    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/qs",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/qs/LICENSE"
-  },
-  "@types/range-parser@1.2.4": {
-    "licenses": "MIT",
-    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/range-parser",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/range-parser/LICENSE"
   },
   "@types/react-dom@16.9.15": {
     "licenses": "MIT",
@@ -2528,12 +2413,6 @@
     "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/scheduler",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/scheduler/LICENSE"
-  },
-  "@types/serve-static@1.13.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/serve-static",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/serve-static/LICENSE"
   },
   "@types/source-list-map@0.1.2": {
     "licenses": "MIT",
@@ -2590,82 +2469,6 @@
     "publisher": "650 Industries, Inc.",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@unimodules/react-native-adapter",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@unimodules/react-native-adapter/README.md"
-  },
-  "@vue/compiler-core@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/compiler-core",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/compiler-core/LICENSE"
-  },
-  "@vue/compiler-dom@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/compiler-dom",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/compiler-dom/LICENSE"
-  },
-  "@vue/compiler-sfc@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/compiler-sfc",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/compiler-sfc/LICENSE"
-  },
-  "@vue/compiler-ssr@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/compiler-ssr",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/compiler-ssr/LICENSE"
-  },
-  "@vue/devtools-api@6.1.4": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/vue-devtools",
-    "publisher": "Guillaume Chau",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/devtools-api"
-  },
-  "@vue/reactivity-transform@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/reactivity-transform",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/reactivity-transform/README.md"
-  },
-  "@vue/reactivity@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/reactivity",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/reactivity/LICENSE"
-  },
-  "@vue/runtime-core@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/runtime-core",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/runtime-core/LICENSE"
-  },
-  "@vue/runtime-dom@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/runtime-dom",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/runtime-dom/LICENSE"
-  },
-  "@vue/server-renderer@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/server-renderer",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/server-renderer/LICENSE"
-  },
-  "@vue/shared@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/shared",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@vue/shared/LICENSE"
   },
   "@webassemblyjs/ast@1.9.0": {
     "licenses": "MIT",
@@ -3297,14 +3100,6 @@
     "email": "iam@alexindigo.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/asynckit",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/asynckit/LICENSE"
-  },
-  "atomic-sleep@1.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/davidmarkclements/atomic-sleep",
-    "publisher": "David Mark Clements",
-    "url": "@davidmarkclem",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/atomic-sleep",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/atomic-sleep/LICENSE"
   },
   "available-typed-arrays@1.0.5": {
     "licenses": "MIT",
@@ -4154,13 +3949,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/color",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/color/LICENSE"
   },
-  "colorette@2.0.16": {
-    "licenses": "MIT",
-    "repository": "https://github.com/jorgebucaran/colorette",
-    "publisher": "Jorge Bucaran",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/colorette",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/colorette/LICENSE.md"
-  },
   "colors@1.4.0": {
     "licenses": "MIT",
     "repository": "https://github.com/Marak/colors.js",
@@ -4710,12 +4498,6 @@
     "url": "http://n8.io/",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/data-uri-to-buffer",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/data-uri-to-buffer/README.md"
-  },
-  "date-fns@2.24.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/date-fns/date-fns",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/date-fns",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/date-fns/LICENSE.md"
   },
   "dateformat@3.0.3": {
     "licenses": "MIT",
@@ -5342,14 +5124,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/eslint-scope",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/eslint-scope/LICENSE"
   },
-  "esm@3.2.25": {
-    "licenses": "MIT",
-    "repository": "https://github.com/standard-things/esm",
-    "publisher": "John-David Dalton",
-    "email": "john.david.dalton@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/esm",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/esm/LICENSE"
-  },
   "esprima@4.0.1": {
     "licenses": "BSD-2-Clause",
     "repository": "https://github.com/jquery/esprima",
@@ -5369,13 +5143,6 @@
     "repository": "https://github.com/estools/estraverse",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/estraverse",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/estraverse/LICENSE.BSD"
-  },
-  "estree-walker@2.0.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/Rich-Harris/estree-walker",
-    "publisher": "Rich Harris",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/estree-walker",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/estree-walker/LICENSE"
   },
   "esutils@2.0.3": {
     "licenses": "BSD-2-Clause",
@@ -5698,14 +5465,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fast-levenshtein",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fast-levenshtein/LICENSE.md"
   },
-  "fast-redact@3.1.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/davidmarkclements/fast-redact",
-    "publisher": "David Mark Clements",
-    "email": "david.clements@nearform.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fast-redact",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fast-redact/LICENSE"
-  },
   "fast-safe-stringify@2.1.1": {
     "licenses": "MIT",
     "repository": "https://github.com/davidmarkclements/fast-safe-stringify",
@@ -5998,14 +5757,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fs-constants",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fs-constants/LICENSE"
   },
-  "fs-extra@10.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/jprichardson/node-fs-extra",
-    "publisher": "JP Richardson",
-    "email": "jprichardson@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fs-extra",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fs-extra/LICENSE"
-  },
   "fs-minipass@2.1.0": {
     "licenses": "ISC",
     "repository": "https://github.com/npm/fs-minipass",
@@ -6079,13 +5830,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/gensync",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/gensync/LICENSE"
   },
-  "geojson@0.5.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/caseycesari/geojson.js",
-    "publisher": "Casey Cesari",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/geojson",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/geojson/LICENSE"
-  },
   "get-caller-file@2.0.5": {
     "licenses": "ISC",
     "repository": "https://github.com/stefanpenner/get-caller-file",
@@ -6100,13 +5844,6 @@
     "email": "ljharb@gmail.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/get-intrinsic",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/get-intrinsic/LICENSE"
-  },
-  "get-package-type@0.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/cfware/get-package-type",
-    "publisher": "Corey Farrell",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/get-package-type",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/get-package-type/LICENSE"
   },
   "get-port@3.2.0": {
     "licenses": "MIT",
@@ -6158,13 +5895,6 @@
     "email": "dev@tavan.de",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/getenv",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/getenv/LICENSE.md"
-  },
-  "getopts@2.3.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/jorgebucaran/getopts",
-    "publisher": "Jorge Bucaran",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/getopts",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/getopts/LICENSE.md"
   },
   "getpass@0.1.7": {
     "licenses": "MIT",
@@ -6853,15 +6583,6 @@
     "email": "ljharb@gmail.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/internal-slot",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/internal-slot/LICENSE"
-  },
-  "interpret@2.2.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/gulpjs/interpret",
-    "publisher": "Gulp Team",
-    "email": "team@gulpjs.com",
-    "url": "http://gulpjs.com/",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/interpret",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/interpret/LICENSE"
   },
   "intl-messageformat@9.13.0": {
     "licenses": "BSD-3-Clause",
@@ -7569,14 +7290,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/json5",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/json5/LICENSE.md"
   },
-  "jsonfile@6.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/jprichardson/node-jsonfile",
-    "publisher": "JP Richardson",
-    "email": "jprichardson@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/jsonfile",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/jsonfile/LICENSE"
-  },
   "jsonify@0.0.0": {
     "licenses": "Public Domain",
     "repository": "https://github.com/substack/jsonify",
@@ -7660,23 +7373,6 @@
     "url": "lukeed.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/kleur",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/kleur/license"
-  },
-  "knex-schema-inspector@2.0.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/knex/knex-schema-inspector",
-    "publisher": "Rijk van Zanten",
-    "email": "rijkvanzanten@me.com",
-    "url": "https://github.com/rijkvanzanten",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/knex-schema-inspector",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/knex-schema-inspector/LICENSE"
-  },
-  "knex@2.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/knex/knex",
-    "publisher": "Tim Griesser",
-    "url": "https://github.com/tgriesser",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/knex",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/knex/LICENSE"
   },
   "last-call-webpack-plugin@3.0.0": {
     "licenses": "MIT",
@@ -7800,15 +7496,6 @@
     "email": "john.david.dalton@gmail.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/lodash.defaultsdeep",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/lodash.defaultsdeep/LICENSE"
-  },
-  "lodash.flatten@4.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/lodash/lodash",
-    "publisher": "John-David Dalton",
-    "email": "john.david.dalton@gmail.com",
-    "url": "http://allyoucanleet.com/",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/lodash.flatten",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/lodash.flatten/LICENSE"
   },
   "lodash.frompairs@4.0.1": {
     "licenses": "MIT",
@@ -8073,13 +7760,6 @@
     "email": "i@izs.me",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/lru-cache",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/lru-cache/LICENSE"
-  },
-  "magic-string@0.25.9": {
-    "licenses": "MIT",
-    "repository": "https://github.com/rich-harris/magic-string",
-    "publisher": "Rich Harris",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/magic-string",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/magic-string/LICENSE"
   },
   "make-dir@3.1.0": {
     "licenses": "MIT",
@@ -8976,14 +8656,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/omit-deep",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/omit-deep/LICENSE"
   },
-  "on-exit-leak-free@2.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/mcollina/on-exit-or-gc",
-    "publisher": "Matteo Collina",
-    "email": "hello@matteocollina.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/on-exit-leak-free",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/on-exit-leak-free/LICENSE"
-  },
   "on-finished@2.3.0": {
     "licenses": "MIT",
     "repository": "https://github.com/jshttp/on-finished",
@@ -9455,15 +9127,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/performance-now",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/performance-now/license.txt"
   },
-  "pg-connection-string@2.5.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/brianc/node-postgres",
-    "publisher": "Blaine Bublitz",
-    "email": "blaine@iceddev.com",
-    "url": "http://iceddev.com/",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pg-connection-string",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pg-connection-string/LICENSE"
-  },
   "phin@2.9.3": {
     "licenses": "MIT",
     "repository": "https://github.com/ethanent/phin",
@@ -9494,30 +9157,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pify",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pify/license"
-  },
-  "pino-abstract-transport@1.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/pinojs/pino-abstract-transport",
-    "publisher": "Matteo Collina",
-    "email": "hello@matteocollina.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pino-abstract-transport",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pino-abstract-transport/LICENSE"
-  },
-  "pino-std-serializers@5.6.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/pinojs/pino-std-serializers",
-    "publisher": "James Sumners",
-    "email": "james.sumners@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pino-std-serializers",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pino-std-serializers/LICENSE"
-  },
-  "pino@8.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/pinojs/pino",
-    "publisher": "Matteo Collina",
-    "email": "hello@matteocollina.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pino",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/pino/LICENSE"
   },
   "pirates@4.0.5": {
     "licenses": "MIT",
@@ -9876,14 +9515,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/postcss-value-parser",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/postcss-value-parser/LICENSE"
   },
-  "postcss@8.4.14": {
-    "licenses": "MIT",
-    "repository": "https://github.com/postcss/postcss",
-    "publisher": "Andrey Sitnik",
-    "email": "andrey@sitnik.ru",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/postcss",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/postcss/LICENSE"
-  },
   "pouchdb-collections@1.0.1": {
     "licenses": "UNKNOWN",
     "repository": "https://github.com/nolanlawson/pouchdb-collections",
@@ -9952,13 +9583,6 @@
     "repository": "https://github.com/calvinmetcalf/process-nextick-args",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/process-nextick-args",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/process-nextick-args/license.md"
-  },
-  "process-warning@2.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/fastify/process-warning",
-    "publisher": "Tomas Della Vedova",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/process-warning",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/process-warning/LICENSE"
   },
   "process@0.11.10": {
     "licenses": "MIT",
@@ -10175,13 +9799,6 @@
     "email": "jesse.tane@gmail.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/queue",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/queue/LICENSE"
-  },
-  "quick-format-unescaped@4.0.4": {
-    "licenses": "MIT",
-    "repository": "https://github.com/davidmarkclements/quick-format",
-    "publisher": "David Mark Clements",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/quick-format-unescaped",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/quick-format-unescaped/LICENSE"
   },
   "quick-lru@5.1.1": {
     "licenses": "MIT",
@@ -10498,23 +10115,6 @@
     "url": "thlorenz.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/readdirp",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/readdirp/LICENSE"
-  },
-  "real-require@0.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/pinojs/real-require",
-    "publisher": "Paolo Insogna",
-    "email": "shogun@cowtech.it",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/real-require",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/real-require/LICENSE"
-  },
-  "rechoir@0.8.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/gulpjs/rechoir",
-    "publisher": "Gulp Team",
-    "email": "team@gulpjs.com",
-    "url": "http://gulpjs.com/",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/rechoir",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/rechoir/LICENSE"
   },
   "recursive-fs@2.1.0": {
     "licenses": "MIT",
@@ -10922,13 +10522,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/safe-json-stringify",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/safe-json-stringify/README.md"
   },
-  "safe-stable-stringify@2.3.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/BridgeAR/safe-stable-stringify",
-    "publisher": "Ruben Bridgewater",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/safe-stable-stringify",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/safe-stable-stringify/LICENSE"
-  },
   "safer-buffer@2.1.2": {
     "licenses": "MIT",
     "repository": "https://github.com/ChALkeR/safer-buffer",
@@ -11274,28 +10867,12 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/socks",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/socks/LICENSE"
   },
-  "sonic-boom@3.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/pinojs/sonic-boom",
-    "publisher": "Matteo Collina",
-    "email": "hello@matteocollina.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/sonic-boom",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/sonic-boom/LICENSE"
-  },
   "source-list-map@2.0.1": {
     "licenses": "MIT",
     "repository": "https://github.com/webpack/source-list-map",
     "publisher": "Tobias Koppers @sokra",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/source-list-map",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/source-list-map/LICENSE"
-  },
-  "source-map-js@1.0.2": {
-    "licenses": "BSD-3-Clause",
-    "repository": "https://github.com/7rulnik/source-map-js",
-    "publisher": "Valentin 7rulnik Semirulnik",
-    "email": "v7rulnik@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/source-map-js",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/source-map-js/LICENSE"
   },
   "source-map-support@0.5.21": {
     "licenses": "MIT",
@@ -11310,13 +10887,6 @@
     "email": "nfitzgerald@mozilla.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/source-map",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/source-map/LICENSE"
-  },
-  "sourcemap-codec@1.4.8": {
-    "licenses": "MIT",
-    "repository": "https://github.com/Rich-Harris/sourcemap-codec",
-    "publisher": "Rich Harris",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/sourcemap-codec",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/sourcemap-codec/LICENSE"
   },
   "spdx-correct@3.1.1": {
     "licenses": "Apache-2.0",
@@ -11375,14 +10945,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/split-on-first",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/split-on-first/license"
-  },
-  "split2@3.2.2": {
-    "licenses": "ISC",
-    "repository": "https://github.com/mcollina/split2",
-    "publisher": "Matteo Collina",
-    "email": "hello@matteocollina.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/split2",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/split2/LICENSE"
   },
   "split@1.0.1": {
     "licenses": "MIT",
@@ -11745,15 +11307,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/tar",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/tar/LICENSE"
   },
-  "tarn@3.0.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vincit/tarn.js",
-    "publisher": "Sami Koskimäki",
-    "email": "sami.koskimaki@vincit.com",
-    "url": "https://github.com/koskimas",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/tarn",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/tarn/LICENSE"
-  },
   "temp-dir@2.0.0": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/temp-dir",
@@ -11832,14 +11385,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/thenify",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/thenify/LICENSE"
   },
-  "thread-stream@1.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/mcollina/thread-stream",
-    "publisher": "Matteo Collina",
-    "email": "hello@matteocollina.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/thread-stream",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/thread-stream/LICENSE"
-  },
   "throat@5.0.0": {
     "licenses": "MIT",
     "repository": "https://github.com/ForbesLindesay/throat",
@@ -11872,15 +11417,6 @@
     "email": "mathiasbuus@gmail.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/thunky",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/thunky/LICENSE"
-  },
-  "tildify@2.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/tildify",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/tildify",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/tildify/license"
   },
   "time-stamp@1.1.0": {
     "licenses": "MIT",
@@ -12603,27 +12139,6 @@
     "url": "https://patriksimek.cz",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/vm2",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/vm2/LICENSE.md"
-  },
-  "vue-i18n@9.1.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/intlify/vue-i18n-next",
-    "publisher": "kazuya kawaguchi",
-    "email": "kawakazu80@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/vue-i18n",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/vue-i18n/LICENSE"
-  },
-  "vue-router@4.0.16": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/router",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/vue-router",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/vue-router/LICENSE"
-  },
-  "vue@3.2.37": {
-    "licenses": "MIT",
-    "repository": "https://github.com/vuejs/core",
-    "publisher": "Evan You",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/vue",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/vue/LICENSE"
   },
   "walker@1.0.8": {
     "licenses": "Apache-2.0",
