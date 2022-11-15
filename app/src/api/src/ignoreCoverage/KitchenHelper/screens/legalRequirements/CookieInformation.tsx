@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from "react";
 import {AlertDialog, Button, Center, Divider, Text} from "native-base";
 import {Platform} from "react-native";
-import {ConfigHolder} from "../../ConfigHolder";
+import {ConfigHolder} from "../../api/ConfigHolder";
 
 export const CookieInformation = (props) => {
 

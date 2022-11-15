@@ -3,7 +3,7 @@ import React from "react";
 import {useColorModeValue, useToken, View} from "native-base";
 import {LinearGradient} from "expo-linear-gradient";
 import {ShowMoreGradientPlaceholder} from "./ShowMoreGradientPlaceholder";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 
 export const ShowMoreGradient = (props) => {
 	const [lightBg, darkBg] = useToken(

@@ -85,6 +85,7 @@
 		"expo-status-bar": "~1.0.3",
 		"expo-updates": "~0.4.0",
 		"favicons": "^6.2.0",
+		"fs-extra": "^10.1.0",
 		"js-cookie": "^3.0.1",
 		"kitcheningredients": "^0.1.101",
 		"lorem-ipsum": "^2.0.4",

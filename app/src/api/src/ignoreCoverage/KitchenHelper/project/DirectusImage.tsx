@@ -4,7 +4,7 @@ import {Image, View} from "native-base";
 import ServerAPI from "../ServerAPI";
 import {LoadingView} from "./LoadingView";
 import {TouchableOpacity} from "react-native";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 
 interface AppState {
 	assetId: string;

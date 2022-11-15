@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from "react";
 import {Button, Input, Pressable, Text, TextArea, View} from "native-base";
 import {MyThemedBox} from "../../helper/MyThemedBox";
-import {ConfigHolder} from "../../ConfigHolder";
+import {ConfigHolder} from "../../api/ConfigHolder";
 import {SynchedVariable} from "../../storage/SynchedVariable";
 import {SettingsValue} from "./SettingsValue";
 import {RequiredStorageKeys} from "../../storage/RequiredStorageKeys";

@@ -8,7 +8,7 @@ import {Button, Flex, FormControl, Input, View} from "native-base";
 import {InternalLink} from "../navigation/InternalLink";
 import {ResetPassword} from "./ResetPassword";
 import {FormButton} from "../buttons/FormButton";
-import {ConfigHolder} from "./../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import {Register} from "./Register";
 import {Icon} from "../components/Icon";
 

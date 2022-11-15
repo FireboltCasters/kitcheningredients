@@ -2,7 +2,7 @@
 import React from 'react';
 import CustomFloaters from "./CustomFloaters";
 import {ThemeFloaterButton} from "./ThemeFloaterButton";
-import {ConfigHolder} from "./../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 
 //TODO: https://docs.nativebase.io/stagger
 export const Floaters = () => {

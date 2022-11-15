@@ -5,7 +5,7 @@ import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {Home} from "../screens/home/Home";
 import {NavigationQueueItem} from "./NavigationQueueItem";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
 import {useSynchedJSONState} from "../synchedstate/SynchedState";
 

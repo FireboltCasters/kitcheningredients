@@ -1,93 +1,93 @@
-import React from "react";
+import React from 'react';
 
 import {
   PluginInterface,
-} from "./../api/src/index";
+} from './../api/src/index';
 
-import {SynchedStateKeys} from "./helper/SynchedStateKeys";
-import {StorageKeys} from "./helper/StorageKeys";
-import {MySync} from "./MySync";
-import {MyLoading} from "./MyLoading";
-import {MyRoot} from "./MyRoot";
+import { SynchedStateKeys } from './helper/SynchedStateKeys';
+import { StorageKeys } from './helper/StorageKeys';
+import { MySync } from './MySync';
+import { MyLoading } from './MyLoading';
+import { MyRoot } from './MyRoot';
 
-export default class Project extends PluginInterface{
+export default class Project extends PluginInterface {
 
-	constructor() {
-		super();
-	}
+  constructor() {
+    super();
+  }
 
-	getSynchedStateKeysClass(){
-		return SynchedStateKeys;
-	}
+  async initApp() {
+    console.log('Project init');
+  }
 
-	getStorageKeysClass(){
-		return StorageKeys;
-	}
+  getSynchedStateKeysClass() {
+    return SynchedStateKeys;
+  }
 
-  async registerRoutes(user, role, permissions){
-	  /**
-	  	  console.log("registerRoutes");
-	  	  console.log(user);
-	  Menu.registerRoute(ExampleScreen, EmptyTemplate, "Example", "example");
-    Menu.registerCommonMenu(new MenuItem("Example", "Example"+user?.role, ExampleScreen))
+  getStorageKeysClass() {
+    return StorageKeys;
+  }
+
+  async registerRoutes(user, role, permissions) {
+    /**
+     console.log("registerRoutes");
+     console.log(user);
+     Menu.registerRoute(ExampleScreen, EmptyTemplate, "Example", "example");
+     Menu.registerCommonMenu(new MenuItem("Example", "Example"+user?.role, ExampleScreen))
      */
-	}
+  }
 
-	async initApp() {
-		console.log("Project init")
-	}
+  async onLogin(user, role) {
 
-	async onLogin(user, role){
+  }
 
-	}
+  async onLogout(error) {
+    if (!error) {
+      //normal logout
+    } else {
+      //logout on error
+    }
+  }
 
-	async onLogout(error){
-		if(!error){
-			//normal logout
-		} else {
-			//logout on error
-		}
-	}
+  getAboutUsComponent() {
+    return null;
+  }
 
-	getAboutUsComponent() {
-    return null
-	}
+  getPrivacyPolicyComponent() {
+    return null;
+  }
 
-	getPrivacyPolicyComponent() {
-    return null
-	}
+  getTermsAndConditionsComponent() {
+    return null;
+  }
 
-	getTermsAndConditionsComponent() {
-    return null
-	}
+  getHomeComponent(): any {
+    return null;
+  }
 
-	getHomeComponent(): any {
-    return null
-	}
-
-  getLoadingComponent(){
-	  return <MyLoading />;
+  getLoadingComponent() {
+    return <MyLoading />;
   }
 
   getSyncComponent(): any {
-    return <MySync />
+    return <MySync />;
   }
 
-	getRootComponent(){
-	  return <MyRoot />
-	}
+  getRootComponent() {
+    return <MyRoot />;
+  }
 
-	renderCustomAuthProviders(serverInfo): []{
-		//@ts-ignore
-		return null;
-	}
+  renderCustomAuthProviders(serverInfo): [] {
+    //@ts-ignore
+    return null;
+  }
 
-	getSettingsComponent(): any {
-		//return null // we have overwritten it
-	}
+  getSettingsComponent(): any {
+    //return null // we have overwritten it
+  }
 
-	getCustomProjectLogoComponent(): any {
+  getCustomProjectLogoComponent(): any {
 
-	}
+  }
 
 }

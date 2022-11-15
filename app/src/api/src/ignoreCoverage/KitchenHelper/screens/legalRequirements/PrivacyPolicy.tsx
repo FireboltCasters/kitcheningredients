@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {useEffect} from "react";
 import {Text, View} from "native-base";
-import {ConfigHolder} from "../../ConfigHolder";
+import {ConfigHolder} from "../../api/ConfigHolder";
 
 import {RenderHTML} from "../../utils/RenderHTML";
 import TextGenerator from "../../helper/TextGenerator";

@@ -5,7 +5,7 @@ import EnviromentHelper from "../EnviromentHelper";
 import ServerAPI from "../ServerAPI";
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Platform} from "react-native";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import {keyof} from "ts-keyof";
 import {RegisteredRoutesMap} from "./../navigation/RegisteredRoutesMap";
 

@@ -4,7 +4,7 @@ import ServerAPI from "../ServerAPI";
 import {AuthProvider} from "./AuthProvider";
 import {View} from "native-base";
 import {AuthProviderGuest} from "./AuthProviderGuest";
-import {ConfigHolder} from "./../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 
 export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
 

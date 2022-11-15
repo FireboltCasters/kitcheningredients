@@ -3,7 +3,7 @@ import {Text, View} from "native-base";
 import {FunctionComponent} from "react";
 import {EmptyTemplate, Menu, MenuItem, useSynchedState} from "../api/src";
 import {HiddenScreen} from "./HiddenScreen";
-import {ConfigHolder} from "../api/src/ignoreCoverage/KitchenHelper/ConfigHolder";
+import {ConfigHolder} from "../api/src/ignoreCoverage/KitchenHelper/api/ConfigHolder";
 
 export const MySync: FunctionComponent = (props) => {
   console.log("MySynch");

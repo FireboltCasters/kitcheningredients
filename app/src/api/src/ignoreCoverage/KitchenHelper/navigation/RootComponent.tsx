@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import EnviromentHelper from "../EnviromentHelper";
 import {navigationRef, isReadyRef, NavigatorHelper} from "./NavigatorHelper";
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import {ViewWithBackgroundColor} from "../templates/ViewWithBackgroundColor";
 import {useBackgroundColor} from "../templates/useBackgroundColor";
 

@@ -7,7 +7,7 @@ import {SafeAreaTop} from "./SafeAreaTop";
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import ServerAPI from "../ServerAPI";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import {Layout} from "./Layout";
 import {Icon} from "../components/Icon";
 import {DrawerButton} from "./DrawerButton";

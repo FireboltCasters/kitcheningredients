@@ -2,7 +2,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Text} from "native-base";
 import ServerAPI from "../../ServerAPI";
-import {ConfigHolder} from "../../ConfigHolder";
+import {ConfigHolder} from "../../api/ConfigHolder";
 import {keyof} from "ts-keyof";
 
 export const Home = (props) => {

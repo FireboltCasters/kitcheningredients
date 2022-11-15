@@ -14,7 +14,7 @@ import {Users} from "../screens/user/Users";
 import {SafeAreaView} from "react-native";
 import {SettingsButton} from "../screens/settings/SettingsButton";
 import {RouteRegisterer} from "./RouteRegisterer";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import {MenuItem, useSynchedState} from "kitcheningredients";
 import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
 

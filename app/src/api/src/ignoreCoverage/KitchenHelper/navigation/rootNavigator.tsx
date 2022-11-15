@@ -3,7 +3,7 @@ import React from 'react';
 import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {useBreakpointValue, useTheme, View, Text} from "native-base";
 import {CustomDrawerContent} from "./CustomDrawerContent";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {Layout} from "../templates/Layout";
 import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";

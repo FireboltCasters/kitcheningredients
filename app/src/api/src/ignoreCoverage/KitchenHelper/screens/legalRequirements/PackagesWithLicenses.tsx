@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from "react";
 import {Link, Skeleton, Text, View} from "native-base";
 import {ExpandableDrawerItem} from "../../navigation/ExpandableDrawerItem";
-import {ConfigHolder} from "../../ConfigHolder";
+import {ConfigHolder} from "../../api/ConfigHolder";
 import {MenuItem} from "./../../navigation/MenuItem";
 
 export const PackagesWithLicenses = (props) => {

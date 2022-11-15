@@ -6,7 +6,7 @@ import {NavigatorHelper} from "./navigation/NavigatorHelper";
 import {Login} from "./auth/Login";
 import TransportWrapper from "./server/TransportWrapper";
 import AuthTransportWrapper from "./server/AuthTransportWrapper";
-import {ConfigHolder} from "./ConfigHolder";
+import {ConfigHolder} from "./api/ConfigHolder";
 import UserHelper from "./utils/UserHelper";
 
 export default class ServerAPI{
