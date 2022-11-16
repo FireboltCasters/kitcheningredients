@@ -1,7 +1,10 @@
 import React, {FunctionComponent, useEffect, useState} from "react";
-import {useColorMode, useTheme} from "native-base";
-import Markdown from "react-native-markdown-display";
+import {useColorMode, useTheme, Text} from "native-base";
+import MarkdownIt from "markdown-it";
+import RenderHtml from 'react-native-render-html';
 import {MarkdownSkeleton} from "./MarkdownSkeleton";
+import {PlatformHelper} from "../../helper/PlatformHelper";
+import {useWindowDimensions} from "react-native";
 
 interface AppState {
 	darkmode?: boolean,
@@ -43,15 +46,29 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
 			color: textColor,
 			backgroundColor: 'transparent',
 		},
+    "font-size": "large",
+    "font-family": "Roboto",
+    "color": "yellow",
 	}
 
+  const {width} = useWindowDimensions();
 
-  return(
-    // @ts-ignore
-		<Markdown
-			style={style}
-		>
-			{props.children}
-		</Markdown>
-	)
+  let md = new MarkdownIt();
+  let result = md.render(props.children);
+
+  let html = {
+    html: `
+                <div style="color: ${textColor}; font-size: ${fontSize}">
+                    ${result}
+                </div>
+            `
+  };
+
+
+  return <RenderHtml
+      defaultTextProps={{selectable: true}}
+      defaultViewProps={{style: {justifyContent: "flex-start"}}}
+      source={html}
+      contentWidth={width}
+    />
 }
