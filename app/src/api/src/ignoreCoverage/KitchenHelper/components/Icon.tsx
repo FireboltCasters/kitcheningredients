@@ -11,6 +11,11 @@ export const Icon: FunctionComponent<InterfaceIconProps> = ({as, ...props}) => {
     defaultAs = as;
   }
 
+  let defaultSize = "lg";
+  if(!!size){
+    defaultSize = size;
+  }
+
 
 	return (
     <NativeBaseIcon as={defaultAs} {...props} />
