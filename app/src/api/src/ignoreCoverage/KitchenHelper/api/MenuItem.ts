@@ -1,5 +1,7 @@
 import React from 'react';
-import { NavigatorHelper, RegisteredRoutesMap } from 'kitcheningredients';
+import { NavigatorHelper } from '../navigation/NavigatorHelper';
+import {RegisteredRoutesMap} from "../navigation/RegisteredRoutesMap";
+
 
 export interface MenuItemConfig {
   key: string;

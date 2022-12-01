@@ -35,7 +35,7 @@ export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
 	}
 
 	function renderAuthProvider(provider: any){
-		return <AuthProvider key={"externalProvider"+provider?.name} provider={provider} serverInfo={serverInfo} />;
+		return <AuthProvider key={"externalProvider"+provider?.name} provider={provider} serverInfo={serverInfo} fromDirectus={true} />;
 	}
 
 	function renderAuthProviderGuest(){

@@ -1,5 +1,5 @@
 import { UserItem, RoleItem, Directus } from '@directus/sdk';
-import { ConfigHolder } from 'kitcheningredients';
+import { ConfigHolder } from './ConfigHolder';
 import ConnectionStatus from './ConnectionStatus';
 
 export default class App {
