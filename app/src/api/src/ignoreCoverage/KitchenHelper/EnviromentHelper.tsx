@@ -1,4 +1,4 @@
-import {ConfigHolder} from "./ConfigHolder";
+import {ConfigHolder} from "./api/ConfigHolder";
 
 export default class EnviromentHelper{
 

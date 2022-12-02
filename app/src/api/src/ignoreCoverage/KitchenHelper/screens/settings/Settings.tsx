@@ -5,7 +5,7 @@ import {NavigatorHelper} from "../../navigation/NavigatorHelper";
 import {DeveloperSettings} from "./DeveloperSettings";
 import {keyof} from "ts-keyof";
 import {TouchableOpacity} from "react-native";
-import {ConfigHolder} from "../../ConfigHolder";
+import {ConfigHolder} from "../../api/ConfigHolder";
 
 export const Settings = (props) => {
 

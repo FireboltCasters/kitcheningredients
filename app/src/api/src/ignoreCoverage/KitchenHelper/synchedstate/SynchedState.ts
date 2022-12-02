@@ -2,7 +2,7 @@ import {action, createStore, useStoreActions, useStoreState} from "easy-peasy";
 import {SynchedVariableInterface} from "../storage/SynchedVariableInterface";
 import {KeyExtractorHelper} from "../storage/KeyExtractorHelper";
 import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import {RequiredSynchedStates} from "./RequiredSynchedStates";
 
 export function useSynchedState(storageKey): [value: string, setValue: (value) => {}] {

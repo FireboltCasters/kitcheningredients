@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 import {useColorMode, useColorModeValue, useToken,} from 'native-base';
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 
 export function useBackgroundColor(props?) {
   const [lightBg, darkBg] = useToken(

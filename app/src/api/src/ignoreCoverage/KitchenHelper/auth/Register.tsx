@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {useEffect, useState} from "react";
 import {Platform} from "react-native";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import {keyof} from "ts-keyof";
 import {Button, Flex, FormControl, Input, View, Text} from "native-base";
 import {FormButton} from "../buttons/FormButton";

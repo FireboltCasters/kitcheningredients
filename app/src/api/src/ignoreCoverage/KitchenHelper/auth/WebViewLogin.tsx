@@ -6,7 +6,7 @@ import {UserItem} from "@directus/sdk";
 import {SignOutButton} from "./SignOutButton";
 import {EmailLogin} from "./EmailLogin";
 import {AuthProvidersLoginOptions} from "./AuthProvidersLoginOptions";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 
 export interface WebViewLoginFormState {
 	user?: UserItem;

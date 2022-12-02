@@ -4,7 +4,7 @@ import {AuthProvider} from "./AuthProvider";
 import {Provider} from "./Provider";
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Home} from "../screens/home/Home";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 
 interface AppState {
 	serverInfo: any;

@@ -10,6 +10,7 @@ import {Provider} from "./Provider";
 import {TouchableOpacity} from "react-native";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import {Icon} from "../components/Icon";
+import {DirectusIcon} from "../components/DirectusIcon";
 
 interface AppState {
 	serverInfo: any;
@@ -17,9 +18,10 @@ interface AppState {
 	provider: Provider;
 	buttonText?: any;
 	callback?: any;
+  fromDirectus?: boolean;
 }
 
-export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider, buttonText, callback}) => {
+export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, fromDirectus, provider, buttonText, callback}) => {
 
 	function getUrlToProvider(provider: string){
 		provider= provider.toLowerCase();
@@ -32,6 +34,10 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	function renderIcon(icon, color){
 	  if(typeof icon!=="string"){
 	    return icon(color);
+    }
+
+	  if(fromDirectus){
+	    return <DirectusIcon name={icon} color={color} />
     }
 
 	  let family = MaterialIcons;

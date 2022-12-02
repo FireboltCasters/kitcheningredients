@@ -4,7 +4,7 @@ import {MaterialCommunityIcons} from "@expo/vector-icons";
 import React, {FunctionComponent} from "react";
 import {InterfaceIconProps} from "native-base/lib/typescript/components/primitives/Icon/types";
 
-export const Icon: FunctionComponent<InterfaceIconProps> = ({as, ...props}) => {
+export const Icon: FunctionComponent<InterfaceIconProps> = ({as, size, ...props}) => {
 
   let defaultAs = MaterialCommunityIcons;
   if(!!as){
@@ -16,8 +16,20 @@ export const Icon: FunctionComponent<InterfaceIconProps> = ({as, ...props}) => {
     defaultSize = size;
   }
 
+  function test(){
+    for(let i=0; i<100; i++){
+      console.log("test");
+    }
+  }
+
+  function test2(){
+    for(let i=0; i<100; i++){
+      console.log("test2");
+    }
+  }
+
 
 	return (
-    <NativeBaseIcon as={defaultAs} {...props} />
+    <NativeBaseIcon size={defaultSize} as={defaultAs} {...props} />
   )
 }

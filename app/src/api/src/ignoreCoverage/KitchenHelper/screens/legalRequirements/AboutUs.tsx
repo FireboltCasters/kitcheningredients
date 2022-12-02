@@ -2,7 +2,7 @@
 import React, {useEffect} from "react";
 import {Text} from "native-base";
 import TextGenerator from "../../helper/TextGenerator";
-import {ConfigHolder} from "../../ConfigHolder";
+import {ConfigHolder} from "../../api/ConfigHolder";
 import {Home} from "../home/Home";
 import {keyof} from "ts-keyof";
 

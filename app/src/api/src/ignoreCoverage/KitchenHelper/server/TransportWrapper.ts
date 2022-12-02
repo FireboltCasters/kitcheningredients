@@ -1,6 +1,6 @@
 import {Transport, TransportMethods, TransportOptions, TransportResponse} from "@directus/sdk";
 import ServerAPI from "../ServerAPI";
-import {ConfigHolder} from "../ConfigHolder";
+import {ConfigHolder} from "../api/ConfigHolder";
 import AwaitLock from "await-lock";
 
 let refreshLock = new AwaitLock(); //we want to synchronize the refresh, cause maybe two refreshes collide

@@ -1,64 +1,66 @@
 // @ts-nocheck
-import React, {FunctionComponent} from 'react';
-import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
-import {NavigatorHelper} from "./NavigatorHelper";
-import {Text, View} from "native-base";
+import React, { FunctionComponent } from 'react';
+import { RegisteredRoutesMap } from './RegisteredRoutesMap';
+import { NavigatorHelper } from './NavigatorHelper';
+import { Text, View } from 'native-base';
 
-export class MenuItem{
-    key: string;
-    label: string;
-    content: JSX.Element;
-    command: any;
-    items: [MenuItem];
-    expanded?: boolean;
-    customIcon?: any;
-    position?: number;
+export class MenuItem {
+  key: string;
+  label: string;
+  content: JSX.Element;
+  command: any;
+  items: [MenuItem];
+  expanded?: boolean;
+  customIcon?: any;
+  position?: number;
 
-    constructor(key, label, destination=null, items=null, command=null, content=null, expanded=false, customIcon?, position=0) {
-        if(!items){
-            items=[];
-        }
-
-        this.key = key;
-        this.label = label;
-        this.items = items;
-        this.content = content;
-        this.command = command;
-        this.expanded = expanded;
-        this.customIcon = customIcon;
-        this.position = position;
-
-        if(!command && !!destination){
-            this.command = () => {NavigatorHelper.navigateWithoutParams(destination)};
-        }
+  constructor(key, label, destination = null, items = null, command = null, content = null, expanded = false, customIcon?, position = 0) {
+    if (!items) {
+      items = [];
     }
 
-    getChildItems(){
-        return this.items;
-    }
+    this.key = key;
+    this.label = label;
+    this.items = items;
+    this.content = content;
+    this.command = command;
+    this.expanded = expanded;
+    this.customIcon = customIcon;
+    this.position = position;
 
-  handleOnPress(nextExpandState: boolean){
-        if(!!this.command){
-            this.command(nextExpandState);
-        }
+    if (!command && !!destination) {
+      this.command = () => {
+        NavigatorHelper.navigateWithoutParams(destination);
+      };
     }
+  }
 
-    static getMenuItemFromComponent(component: FunctionComponent){
-        let config = RegisteredRoutesMap.getConfigForComponent(component);
-        return new MenuItem(config.route, config.title, component, null);
-    }
+  getChildItems() {
+    return this.items;
+  }
 
-    addChildsFromFunctionComponents(...components){
-        for(let component of components){
-            let subItem = MenuItem.getMenuItemFromComponent(component);
-            this.addChildMenuItems(subItem);
-        }
+  handleOnPress(nextExpandState: boolean) {
+    if (!!this.command) {
+      this.command(nextExpandState);
     }
+  }
 
-    addChildMenuItems(...items){
-        for(let item of items){
-            this.items.push(item);
-        }
+  static getMenuItemFromComponent(component: FunctionComponent) {
+    let config = RegisteredRoutesMap.getConfigForComponent(component);
+    return new MenuItem(config.route, config.title, component, null);
+  }
+
+  addChildsFromFunctionComponents(...components) {
+    for (let component of components) {
+      let subItem = MenuItem.getMenuItemFromComponent(component);
+      this.addChildMenuItems(subItem);
     }
+  }
+
+  addChildMenuItems(...items) {
+    for (let item of items) {
+      this.items.push(item);
+    }
+  }
 
 }
