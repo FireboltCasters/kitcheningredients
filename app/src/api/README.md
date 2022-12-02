@@ -43,6 +43,7 @@ Helper for a base app template with a Directus Backend based on NativeBase. Writ
 - Synchronised Storage
 - Easy Routing
 - Lottie Files
+- Much more
 
 ## Installation
 
