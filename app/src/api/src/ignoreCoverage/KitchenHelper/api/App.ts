@@ -10,7 +10,7 @@ export default class App {
 
   }
 
-  static getConnectionStatus(): ConnectionStatus {
+  static getConnectionStatus(): ConnectionStatus | any {
 
   }
 
@@ -18,7 +18,7 @@ export default class App {
 
   }
 
-  static getUser(): UserItem {
+  static getUser(): UserItem | any {
 
   }
 
@@ -26,7 +26,7 @@ export default class App {
 
   }
 
-  static getRole(): RoleItem {
+  static getRole(): RoleItem | any {
 
   }
 
@@ -34,7 +34,7 @@ export default class App {
 
   }
 
-  static getDirectus(): Directus<any> {
+  static getDirectus(): Directus<any> | any {
 
   }
 

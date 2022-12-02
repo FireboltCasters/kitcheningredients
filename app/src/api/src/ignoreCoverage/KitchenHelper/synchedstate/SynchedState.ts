@@ -53,7 +53,8 @@ export default class SynchedState {
 
     static getPluginSynchedStates(){
         if(!!ConfigHolder.plugin){
-            return KeyExtractorHelper.getListOfStaticKeyValues(ConfigHolder.plugin.getSynchedStateKeysClass())
+            // @ts-ignore
+          return KeyExtractorHelper.getListOfStaticKeyValues(ConfigHolder.plugin.getSynchedStateKeysClass())
         }
         return [];
     }

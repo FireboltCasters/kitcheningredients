@@ -86,6 +86,7 @@ export class RouteRegisterer {
     RouteRegisterer.registerLegalRequirements();
 
     if (!!ConfigHolder.plugin) {
+      // @ts-ignore
       await ConfigHolder.plugin.registerRoutes(user, role, permissions);
     }
   }
