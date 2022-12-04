@@ -71,7 +71,7 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
       }
 
         return(
-            <View style={{paddingLeft: 15}}>
+            <View key={""} style={{paddingLeft: 15}}>
                 <DrawerContentScrollView contentContainerStyle={{paddingTop: 0}}>
                     {renderedChilds}
                 </DrawerContentScrollView>
@@ -98,9 +98,9 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
     }
 
     return(
-        <View style={{width: "100%"}}>
+        <View id={"ExpandableDrawerItem:"+menu.key} key={"ExpandableDrawerItem:"+menu.key} style={{width: "100%", padding: 8}}>
             <MyThemedBox _shadeLevel={boxShadeLevel} style={{width: "100%"}} >
-                <View style={{padding: 8}}>
+                <View style={{flexDirection: "row", alignItems: "center", width: "100%"}}>
                     <View style={{flexDirection: "row", alignItems: "center", width: "100%"}}>
                       <TouchableOpacity onPress={handleOnPressIcon} >
                         {renderExpandIcon()}

@@ -61,7 +61,7 @@ export const SignOutButton: (props) => JSX.Element[] = (props) => {
 	function renderOnlyIcon(){
 		return (
 			<Button key={"LogoutIcon"} style={{backgroundColor: "transparent"}} onPress={openConfirmBox} >
-				<Icon  name={"logout"}/>
+				<Icon name={"logout"}/>
 			</Button>
 		)
 	}
