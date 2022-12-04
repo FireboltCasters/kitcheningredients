@@ -18,6 +18,6 @@ export const Icon: FunctionComponent<InterfaceIconProps> = ({as, ...props}) => {
 
 
 	return (
-    <NativeBaseIcon as={defaultAs} {...props} />
+    <NativeBaseIcon as={defaultAs} {...props} size={defaultSize} />
   )
 }
