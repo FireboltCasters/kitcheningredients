@@ -43,7 +43,7 @@ export const getDirectusImageUrl = (props: AppState) => {
 export const DirectusImage: FunctionComponent<AppState> = (props) => {
 
   const assetId = props?.assetId;
-  const useCache = props?.useBase64Cache ?? false;
+  const useCache = props?.useBase64Cache;
   const useUnsafeAccessTokenInURL = props?.useUnsafeAccessTokenInURL;
 
   let url = getDirectusImageUrl(props);
