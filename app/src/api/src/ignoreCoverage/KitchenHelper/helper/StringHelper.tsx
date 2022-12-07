@@ -41,6 +41,13 @@ export class StringHelper{
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  static getStringSizeInBits(string: string){
+    if(!string){
+      return 0;
+    }
+    return new Blob([string]).size;
+  }
+
 
 
 }

@@ -4,6 +4,7 @@ import {KeyExtractorHelper} from "../storage/KeyExtractorHelper";
 import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
 import {ConfigHolder} from "../ConfigHolder";
 import {RequiredSynchedStates} from "./RequiredSynchedStates";
+import {StringHelper} from "../helper/StringHelper";
 
 export function useSynchedState(storageKey): [value: string, setValue: (value) => {}] {
     const value = useStoreState((state) => {
@@ -119,4 +120,64 @@ export default class SynchedState {
 
         SynchedState.store = store;
     }
+
+
+  /**
+   * Image cache
+   */
+
+  static useCachedBase64ImagesDict() {
+      return useSynchedJSONState(RequiredStorageKeys.KEY_DIRECTUS_IMAGE_CACHE);
+  }
+
+  static useCachedBase64ImageStorageSize(assetId: string){
+    const [cachedBase64Image, setCachedBase64Image] = SynchedState.useCachedBase64Image(assetId);
+    const dictAsString = JSON.stringify(cachedBase64Image);
+    let stringSizeInBits = StringHelper.getStringSizeInBits(dictAsString);
+    if(!cachedBase64Image){
+      stringSizeInBits = 0;
+    }
+
+    const resetCache = () => {
+      setCachedBase64Image(null);
+    }
+
+    return [stringSizeInBits, resetCache];
+  }
+
+  static useCachedBase64ImagesStorageSize(){
+    const [cachedBase64ImagesDict, setCacheBase64ImagesDict] = SynchedState.useCachedBase64ImagesDict();
+    const dictAsString = JSON.stringify(cachedBase64ImagesDict);
+    let stringSizeInBits = StringHelper.getStringSizeInBits(dictAsString);
+    if(!cachedBase64ImagesDict || dictAsString==="null" || dictAsString === "{}"){
+      stringSizeInBits = 0;
+    }
+
+    const resetCache = () => {
+      setCacheBase64ImagesDict(null);
+    }
+
+    return [stringSizeInBits, resetCache];
+  }
+
+  static useCachedBase64Image(assetId) {
+      if(!assetId) {
+          return [null, () => {}];
+      }
+
+      const [cachedBase64ImagesDict, setCacheBase64ImagesDict] = SynchedState.useCachedBase64ImagesDict();
+      const usedCachedBase64ImagesDict = cachedBase64ImagesDict || {};
+      const cachedBase64Image = usedCachedBase64ImagesDict[assetId] || null;
+      const setCachedBase64Image = (base64Image) => {
+          if(!base64Image){
+              delete usedCachedBase64ImagesDict[assetId];
+          } else {
+              usedCachedBase64ImagesDict[assetId] = base64Image;
+          }
+          setCacheBase64ImagesDict(usedCachedBase64ImagesDict);
+      }
+
+      return [cachedBase64Image, setCachedBase64Image];
+  }
+
 }

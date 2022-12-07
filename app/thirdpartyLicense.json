@@ -7548,7 +7548,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/lorem-ipsum",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/lorem-ipsum/LICENSE"
   },
-  "lottie-ios@3.5.0": {
+  "lottie-ios@3.4.0": {
     "licenses": "Apache-2.0",
     "repository": "https://github.com/airbnb/lottie-ios",
     "publisher": "Brandon Withrow",

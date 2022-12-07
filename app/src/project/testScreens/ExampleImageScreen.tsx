@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from "react";
-import {View} from "native-base";
-import {DirectusImage} from "../../api/src";
+import {View, Text, Button} from "native-base";
+import {DirectusImage, SynchedState} from "../../api/src";
 
 export const ExampleImageScreen: FunctionComponent = (props) => {
 
@@ -9,6 +9,7 @@ export const ExampleImageScreen: FunctionComponent = (props) => {
   return (
     <View>
       <DirectusImage assetId={assetId} style={{width: 100, height: 100}} />
+      <DirectusImage assetId={assetId} style={{width: 100, height: 100}} useUnsafeAccessTokenInURL={true} />
     </View>
   );
 }
