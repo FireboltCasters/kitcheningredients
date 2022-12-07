@@ -10,6 +10,8 @@ export const ExampleImageScreen: FunctionComponent = (props) => {
     <View>
       <DirectusImage assetId={assetId} style={{width: 100, height: 100}} />
       <DirectusImage assetId={assetId} style={{width: 100, height: 100}} useUnsafeAccessTokenInURL={true} />
+      <DirectusImage assetId={null} style={{width: 100, height: 100}} />
+      <DirectusImage assetId={null} style={{width: 100, height: 100}} fallbackElement={<View><Text>{"Showing fallbackElement"}</Text></View>} />
     </View>
   );
 }

@@ -13,7 +13,8 @@ interface AppState {
   url?: string;
 	style?: any;
 	showLoading?: boolean
-	useUnsafeAccessTokenInURL?: boolean
+	useUnsafeAccessTokenInURL?: boolean,
+  fallbackElement?: any,
 //  useBase64Cache?: boolean
 	onPress?: () => {}
 }
@@ -53,6 +54,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 	const usedBase64Image = useCache ? cachedBase64Image : notCachedBase64;
 
   const uri = useUnsafeAccessTokenInURL ? url : usedBase64Image;
+  const [loading, setLoading] = useState(true);
 
 	const axios = ServerAPI.getAxiosInstance();
 
@@ -97,7 +99,11 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
         } else {
           setNotCachedBase64(data);
         }
+      } else {
+        setLoading(false);
       }
+    } else {
+      setLoading(false);
     }
   }
 
@@ -107,7 +113,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
     }
   } , [props?.assetId, props?.url, uri]);
 
-	if(uri) {
+	if(!!uri) {
 		let source={
 			uri: uri,
 		}
@@ -116,7 +122,11 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
       <Image  source={source} alt={props?.alt || "Image"} style={props.style}/>
       </>
 	} else {
-    content = <LoadingView />
+	  if(loading){
+      content = <LoadingView />
+    } else {
+	    content = props?.fallbackElement;
+    }
   }
 
 	let pressWrapper = content;
