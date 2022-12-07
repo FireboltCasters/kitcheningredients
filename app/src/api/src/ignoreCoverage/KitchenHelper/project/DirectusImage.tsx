@@ -5,7 +5,7 @@ import ServerAPI from "../ServerAPI";
 import {LoadingView} from "./LoadingView";
 import {TouchableOpacity, Image} from "react-native";
 import {ConfigHolder} from "../ConfigHolder";
-import {SynchedState} from "./../../../../../../src/api/src";
+import {SynchedState} from "./../synchedstate/SynchedState";
 
 interface AppState {
 	assetId: string;
