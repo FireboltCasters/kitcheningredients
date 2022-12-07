@@ -49,7 +49,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
   let url = getDirectusImageUrl(props);
 
 	const [notCachedBase64, setNotCachedBase64] = useState(null);
-	const [cachedBase64Image, setCachedBase64Image] = SynchedState.useCachedBase64Image(assetId);
+	const [cachedBase64Image, setCachedBase64Image] = SynchedState.useCachedBase64Image(assetId, useCache, useUnsafeAccessTokenInURL);
 	const usedBase64Image = useCache ? cachedBase64Image : notCachedBase64;
 
   const uri = useUnsafeAccessTokenInURL ? url : usedBase64Image;

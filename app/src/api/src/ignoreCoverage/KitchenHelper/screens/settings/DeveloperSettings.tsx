@@ -8,7 +8,7 @@ import {SettingsValue} from "./SettingsValue";
 import {RequiredStorageKeys} from "../../storage/RequiredStorageKeys";
 import {ThemeChanger} from "../../theme/ThemeChanger";
 import ServerAPI from "../../ServerAPI";
-import SynchedState from "../../synchedstate/SynchedState";
+import {SynchedState} from "../../synchedstate/SynchedState";
 import {keyof} from "ts-keyof";
 import {TermsAndConditions} from "../legalRequirements/TermsAndConditions";
 

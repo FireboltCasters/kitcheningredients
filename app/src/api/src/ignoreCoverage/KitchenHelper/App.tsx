@@ -14,7 +14,7 @@ import {URL_Helper} from "./helper/URL_Helper";
 import {NavigatorHelper} from "./navigation/NavigatorHelper";
 import UserHelper from "./utils/UserHelper";
 import {StoreProvider} from "easy-peasy";
-import SynchedState from "./synchedstate/SynchedState";
+import {SynchedState} from "./synchedstate/SynchedState";
 import {ConfigHolder} from "./ConfigHolder";
 import {RequiredStorageKeys} from "./storage/RequiredStorageKeys";
 import {ShowMoreGradientPlaceholder} from "./utils/ShowMoreGradientPlaceholder";

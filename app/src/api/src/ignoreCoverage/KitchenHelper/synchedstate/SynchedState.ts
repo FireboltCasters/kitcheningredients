@@ -4,7 +4,6 @@ import {KeyExtractorHelper} from "../storage/KeyExtractorHelper";
 import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
 import {ConfigHolder} from "../ConfigHolder";
 import {RequiredSynchedStates} from "./RequiredSynchedStates";
-import {StringHelper} from "../helper/StringHelper";
 
 export function useSynchedState(storageKey): [value: string, setValue: (value) => {}] {
     const value = useStoreState((state) => {
@@ -27,7 +26,7 @@ export function useSynchedJSONState(storageKey): [value: any, setValue: (value) 
   ]
 }
 
-export default class SynchedState {
+export class SynchedState {
 
     private static store;
     private static globalSynchedStoreModels: {[key: string] : SynchedVariableInterface} = {};
