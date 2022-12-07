@@ -47,7 +47,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 	if(!!props.assetId || !!props.url){
     let url = getDirectusImageUrl(props);
 		let source={
-			uri: url
+			uri: url,
 		}
 
 		content = (<>
@@ -59,6 +59,14 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 					   setLoading(false)
 				   }}
 			/>
+      <img src={source} alt={props?.alt || "Image"} style={props.style}
+             ignoreFallback={props.ignoreFallback}
+             fallbackSource={props.fallbackSource}
+             fallbackElement={props.fallbackElement}
+             onLoadEnd={() => {
+               setLoading(false)
+             }}
+      />
 			{props.showLoading && loading && <LoadingView/>}
 		</>)
 	}

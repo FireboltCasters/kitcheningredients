@@ -1,8 +1,8 @@
 import React from "react";
 import {Button, Text, View} from "native-base";
 import {FunctionComponent} from "react";
-import {EmptyTemplate, Menu, MenuItem, useSynchedState} from "../api/src";
-import {RequiredSynchedStates} from "../api/src/ignoreCoverage/KitchenHelper/synchedstate/RequiredSynchedStates";
+import {EmptyTemplate, Menu, MenuItem, useSynchedState} from "../../api/src";
+import {RequiredSynchedStates} from "../../api/src/ignoreCoverage/KitchenHelper/synchedstate/RequiredSynchedStates";
 import {HiddenScreen} from "./HiddenScreen";
 
 export const ExampleScreen: FunctionComponent = (props) => {

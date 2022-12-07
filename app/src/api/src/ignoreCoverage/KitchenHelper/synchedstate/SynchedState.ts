@@ -36,7 +36,6 @@ export default class SynchedState {
     }
 
     static getRequiredStorageKeys(){
-        let requiredKeys = KeyExtractorHelper.getListOfStaticKeyValues(RequiredStorageKeys);
         return KeyExtractorHelper.getListOfStaticKeyValues(RequiredStorageKeys);
     }
 

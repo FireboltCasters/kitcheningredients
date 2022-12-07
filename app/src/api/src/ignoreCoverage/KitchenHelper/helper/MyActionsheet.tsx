@@ -1,7 +1,7 @@
 // @ts-nocheck
 import {useToast, View, Text, Actionsheet, Divider, useDisclose, ScrollView} from "native-base";
 import React, {FunctionComponent, useMemo, useState} from "react";
-import {Icon} from "kitcheningredients";
+import {Icon} from "../components/Icon";
 
 export interface MyAlertProps {
     title?: string,

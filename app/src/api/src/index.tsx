@@ -1,6 +1,9 @@
 import {useProjectColor} from "./ignoreCoverage/KitchenHelper/templates/useProjectColor";
 export {useProjectColor}
 
+import {ParentDimension} from "./ignoreCoverage/KitchenHelper/components/ParentDimension";
+export {ParentDimension}
+
 import {RequiredSynchedStates} from "./ignoreCoverage/KitchenHelper/synchedstate/RequiredSynchedStates";
 export {RequiredSynchedStates}
 
