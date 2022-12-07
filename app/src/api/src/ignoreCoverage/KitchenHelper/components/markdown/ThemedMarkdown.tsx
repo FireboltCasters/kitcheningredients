@@ -85,7 +85,9 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
     return(
       <RenderHtml
         contentWidth={width}
+        // @ts-ignore
         baseStyle={defaultTextProps}
+        // @ts-ignore
         tagsStyles={tagsStyles}
         source={source}
       />

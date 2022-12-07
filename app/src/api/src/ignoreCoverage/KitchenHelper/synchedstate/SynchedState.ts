@@ -130,36 +130,6 @@ export default class SynchedState {
       return useSynchedJSONState(RequiredStorageKeys.KEY_DIRECTUS_IMAGE_CACHE);
   }
 
-  static useCachedBase64ImageStorageSize(assetId: string){
-    const [cachedBase64Image, setCachedBase64Image] = SynchedState.useCachedBase64Image(assetId);
-    const dictAsString = JSON.stringify(cachedBase64Image);
-    let stringSizeInBits = StringHelper.getStringSizeInBits(dictAsString);
-    if(!cachedBase64Image){
-      stringSizeInBits = 0;
-    }
-
-    const resetCache = () => {
-      setCachedBase64Image(null);
-    }
-
-    return [stringSizeInBits, resetCache];
-  }
-
-  static useCachedBase64ImagesStorageSize(){
-    const [cachedBase64ImagesDict, setCacheBase64ImagesDict] = SynchedState.useCachedBase64ImagesDict();
-    const dictAsString = JSON.stringify(cachedBase64ImagesDict);
-    let stringSizeInBits = StringHelper.getStringSizeInBits(dictAsString);
-    if(!cachedBase64ImagesDict || dictAsString==="null" || dictAsString === "{}"){
-      stringSizeInBits = 0;
-    }
-
-    const resetCache = () => {
-      setCacheBase64ImagesDict(null);
-    }
-
-    return [stringSizeInBits, resetCache];
-  }
-
   static useCachedBase64Image(assetId) {
       if(!assetId) {
           return [null, () => {}];
