@@ -26,8 +26,6 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
 
 	const theme = useTheme();
 
-	console.log(theme);
-
 	let darkModeTextColor = theme["colors"]["lightText"]; //darkText is used in lightmode !
 	let lightModeTextColor = theme["colors"]["darkText"];
 

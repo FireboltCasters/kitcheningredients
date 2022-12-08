@@ -5,8 +5,8 @@ import {Text, View} from "native-base";
 import {Icon} from "./Icon";
 
 export interface AppState{
-  icon: any,
-  content: string
+  icon?: any | string | undefined,
+  content?: any | string | undefined,
 }
 export const TextWithIcon: FunctionComponent<AppState> = (props) => {
 
@@ -19,18 +19,27 @@ export const TextWithIcon: FunctionComponent<AppState> = (props) => {
       if(isIconString){
         renderedIcon = <Text><Icon name={icon} /></Text>
       } else {
-        renderedIcon = {icon}
+        renderedIcon = icon
       }
     }
-	  
-    let renderedIcon = !!renderedIcon ? <View style={{marginRight: 15}}>{renderedIcon}</View> : null;
+
+    renderedIcon = !!renderedIcon ? <View style={{marginRight: 15}}>{renderedIcon}</View> : null;
+
+	  let renderedContent = null;
+	  if(!!content){
+      if(typeof content === "string"){
+        renderedContent = <Text>{content}</Text>
+      } else {
+        renderedContent = content
+      }
+    }
 
 		return (
 			<View style={{alignItems: "center", flexDirection: "row", margin: 3}}>
-				{renderedIcon}<Text>{content}</Text>
+				{renderedIcon}<Text>{renderedContent}</Text>
 			</View>
 		)
 	}
 
-	return (renderRowInformation(props.icon, props.children))
+	return (renderRowInformation(props?.icon, props?.content || props?.children))
 }
