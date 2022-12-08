@@ -3,7 +3,7 @@ import {Text, View} from "native-base";
 import {Icon, TextWithIcon} from "../../api/src";
 
 export const ExampleIconScreen: FunctionComponent = (props) => {
-  
+
   return (
     <View>
       <Icon name={"google-maps"} />

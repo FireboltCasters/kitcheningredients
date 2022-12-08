@@ -3,11 +3,11 @@ import {Icon as NativeBaseIcon} from "native-base";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import React, {FunctionComponent} from "react";
 import {InterfaceIconProps} from "native-base/lib/typescript/components/primitives/Icon/types";
-import {HelperHooks} from "../helper/HelperHooks";
+import {useThemeTextColor} from "../helper/HelperHooks";
 
 export const Icon: FunctionComponent<InterfaceIconProps> = ({as, size, ...props}) => {
 
-  const defaultColor = HelperHooks.useThemeTextColor();
+  const defaultColor = useThemeTextColor();
 
   let defaultAs = MaterialCommunityIcons;
   if(!!as){

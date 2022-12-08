@@ -85,6 +85,9 @@ export {KitchenSkeleton}
 import {RequiredStorageKeys} from "./ignoreCoverage/KitchenHelper/storage/RequiredStorageKeys";
 export {RequiredStorageKeys}
 
+import {useThemeTextColor} from "./ignoreCoverage/KitchenHelper/helper/HelperHooks";
+export {useThemeTextColor}
+
 import {SynchedState ,useSynchedState, useSynchedJSONState} from "./ignoreCoverage/KitchenHelper/synchedstate/SynchedState";
 export {useSynchedState}
 export {SynchedState}
