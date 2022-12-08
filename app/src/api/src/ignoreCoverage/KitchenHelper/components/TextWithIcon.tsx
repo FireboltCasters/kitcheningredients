@@ -5,13 +5,25 @@ import {Text, View} from "native-base";
 import {Icon} from "./Icon";
 
 export interface AppState{
-  icon: string,
+  icon: any,
   content: string
 }
 export const TextWithIcon: FunctionComponent<AppState> = (props) => {
 
 	function renderRowInformation(icon, content){
-		let renderedIcon = !!icon ? <Text><Icon  name={icon} marginRight={15}/></Text> : null;
+
+	  let renderedIcon = null;
+
+	  if(!!icon){
+      const isIconString = typeof icon === "string";
+      if(isIconString){
+        renderedIcon = <Text><Icon name={icon} /></Text>
+      } else {
+        renderedIcon = {icon}
+      }
+    }
+	  
+    let renderedIcon = !!renderedIcon ? <View style={{marginRight: 15}}>{renderedIcon}</View> : null;
 
 		return (
 			<View style={{alignItems: "center", flexDirection: "row", margin: 3}}>
