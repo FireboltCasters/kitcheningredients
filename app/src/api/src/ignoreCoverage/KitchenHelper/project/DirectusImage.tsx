@@ -46,6 +46,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
   const assetId = props?.assetId;
   const useCache = props?.useBase64Cache;
   const useUnsafeAccessTokenInURL = props?.useUnsafeAccessTokenInURL;
+  const isPublic = props?.isPublic;
 
   let url = getDirectusImageUrl(props);
 
@@ -65,9 +66,16 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 
   async function loadBase64ImageWithAxios(url){
     let token = ConfigHolder.storage.get_auth_access_token();
+    const headers = {
+
+    }
+    if(!isPublic && !!token){
+      headers["Authorization"] = "Bearer " + token;
+    }
+
     return axios.get(url, {
       responseType: 'arraybuffer',
-      headers: { Authorization: `Bearer ${token}` }
+      headers: headers
     })
       .then((response) => {
         let image = btoa(
@@ -80,8 +88,10 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 
 	async function loadBase64WithAuthorization(url) {
     let token = ConfigHolder.storage.get_auth_access_token();
+    const tokenOrPublic = isPublic ? true : !!token;
+
     try{
-      if (!!url && !!token) {
+      if (!!url && tokenOrPublic) {
         return await loadBase64ImageWithAxios(url);
       }
     } catch (e) {
@@ -119,7 +129,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 		}
 
 		content = <>
-      <Image  source={source} alt={props?.alt || "Image"} style={props.style}/>
+      <Image source={source} alt={props?.alt || "Image"} style={props.style}/>
       </>
 	} else {
 	  if(loading){

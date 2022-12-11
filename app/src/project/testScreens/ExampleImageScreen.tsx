@@ -1,6 +1,7 @@
 import React, {FunctionComponent} from "react";
 import {View, Text, Button} from "native-base";
 import {DirectusImage, SynchedState} from "../../api/src";
+import {ProjectLogo} from "../../api/src/ignoreCoverage/KitchenHelper/project/ProjectLogo";
 
 export const ExampleImageScreen: FunctionComponent = (props) => {
 
@@ -8,10 +9,16 @@ export const ExampleImageScreen: FunctionComponent = (props) => {
 
   return (
     <View>
+      <Text>{"Normal image"}</Text>
       <DirectusImage assetId={assetId} style={{width: 100, height: 100}} />
+      <Text>{"Using unsafe access token"}</Text>
       <DirectusImage assetId={assetId} style={{width: 100, height: 100}} useUnsafeAccessTokenInURL={true} />
+      <Text>{"Without asset id"}</Text>
       <DirectusImage assetId={null} style={{width: 100, height: 100}} />
+      <Text>{"With fallback element showing text"}</Text>
       <DirectusImage assetId={null} style={{width: 100, height: 100}} fallbackElement={<View><Text>{"Showing fallbackElement"}</Text></View>} />
+      <Text>{"Public project logo"}</Text>
+      <ProjectLogo />
     </View>
   );
 }
