@@ -86,6 +86,8 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
         // @ts-ignore
         baseStyle={defaultTextProps}
         // @ts-ignore
+        defaultTextProps={defaultTextProps}
+        // @ts-ignore
         tagsStyles={tagsStyles}
         source={source}
       />
