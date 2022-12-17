@@ -2,6 +2,7 @@
 
 You will need:
 
+- Gradle 6.9 (7 and newer does not work)
 - Java v 15:
 
 ```
