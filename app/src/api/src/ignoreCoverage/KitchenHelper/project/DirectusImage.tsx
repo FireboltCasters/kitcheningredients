@@ -6,6 +6,7 @@ import {LoadingView} from "./LoadingView";
 import {TouchableOpacity, Image} from "react-native";
 import {ConfigHolder} from "../ConfigHolder";
 import {SynchedState} from "./../synchedstate/SynchedState";
+import {decode, encode} from 'base-64'
 
 interface AppState {
 	assetId: string;
@@ -78,7 +79,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
       headers: headers
     })
       .then((response) => {
-        let image = btoa(
+        let image = encode(
           new Uint8Array(response.data)
             .reduce((data, byte) => data + String.fromCharCode(byte), '')
         );

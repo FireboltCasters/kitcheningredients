@@ -3130,6 +3130,14 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/balanced-match",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/balanced-match/LICENSE.md"
   },
+  "base-64@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mathiasbynens/base64",
+    "publisher": "Mathias Bynens",
+    "url": "https://mathiasbynens.be/",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/base-64",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/base-64/LICENSE-MIT.txt"
+  },
   "base32.js@0.1.0": {
     "licenses": "MIT",
     "repository": "https://github.com/mikepb/base32.js",
