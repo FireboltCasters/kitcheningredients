@@ -60,6 +60,9 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
     "th": {
       borderColor: "gray",
       borderWidth: 1,
+    },
+    "a": {
+      color: textColor
     }
   }
 

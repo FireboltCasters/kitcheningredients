@@ -65,11 +65,34 @@ Block Quote:
 
 ------
 
-Link Example:
+Link Examples:
 
+
+## Websites
+Link with same title and url:
 [https://www.google.com](https://www.google.com)
 
+Link with different title and url:
 [Link to Google](https://www.google.com)
+
+
+## Mails
+Link to a mail address with same title and url:
+[test@example.com](mailto:test@example.com)
+
+Link to a mail address with different title and url:
+[Send me an email](mailto:test@example.com)
+
+## Phone Numbers
+Link to a phone number with same title and url:
+[+49 123 456789](tel:+49123456789)
+
+Link to a phone number with different title and url:
+[Call me](tel:+49123456789)
+
+
+------------------
+
 
 ------------
 
