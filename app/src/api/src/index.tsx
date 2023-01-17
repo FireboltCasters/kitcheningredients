@@ -88,6 +88,9 @@ export {RequiredStorageKeys}
 import {useThemeTextColor} from "./ignoreCoverage/KitchenHelper/helper/HelperHooks";
 export {useThemeTextColor}
 
+import {useBackgroundColor} from "./ignoreCoverage/KitchenHelper/templates/useBackgroundColor";
+export {useBackgroundColor}
+
 import {SynchedState ,useSynchedState, useSynchedJSONState} from "./ignoreCoverage/KitchenHelper/synchedstate/SynchedState";
 export {useSynchedState}
 export {SynchedState}
