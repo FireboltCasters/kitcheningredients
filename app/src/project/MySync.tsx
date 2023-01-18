@@ -7,6 +7,7 @@ import {ConfigHolder} from "../api/src/ignoreCoverage/KitchenHelper/ConfigHolder
 import {ExampleImageScreen} from "./testScreens/ExampleImageScreen";
 import {ExampleMarkdownScreen} from "./testScreens/ExampleMarkdownScreen";
 import {ExampleIconScreen} from "./testScreens/ExampleIconScreen";
+import {ExampleParamScreen} from "./testScreens/ExampleParamScreen";
 
 export const MySync: FunctionComponent = (props) => {
   console.log("MySynch");
@@ -25,6 +26,9 @@ export const MySync: FunctionComponent = (props) => {
 
     Menu.registerRoute(ExampleIconScreen, BaseTemplate, "ExampleIconScreen", "ExampleIconScreen", null, true);
     Menu.registerCommonMenu(new MenuItem("ExampleIconScreen", "ExampleIconScreen", ExampleIconScreen))
+
+    Menu.registerRoute(ExampleParamScreen, BaseTemplate, "ExampleParamScreen", "ExampleParamScreen", "/:testParam", true);
+    Menu.registerCommonMenu(new MenuItem("ExampleParamScreen", "ExampleParamScreen", ExampleParamScreen))
 
 
     Menu.registerRoute(ExampleMarkdownScreen, BaseTemplate, "ExampleMarkdownScreen", "ExampleMarkdownScreen", null, true);

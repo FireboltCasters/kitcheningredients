@@ -26,7 +26,7 @@ export const Root = (props) => {
 		console.log(err)
 	}
 
-	let prefixes = ["myapp:///"];
+	let prefixes = ["myapp:///", "http://localhost:5000/!"];
 	if(!!ConfigHolder.prefixes && ConfigHolder.prefixes.length> 0){
 	      prefixes = ConfigHolder.prefixes;
   }

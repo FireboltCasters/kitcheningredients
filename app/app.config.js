@@ -18,7 +18,7 @@ function getBackendURL(){
 export default {
     extra: {
         BACKEND_URL: getBackendURL(),
-        BASE_PATH: process.env.BASE_PATH || "",
+        BASE_PATH: process.env.BASE_PATH || "kitcheningredients/!",
     },
         "scheme": "myapp",
         "name": "rocket-meals-app",
