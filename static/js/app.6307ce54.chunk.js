@@ -1759,10 +1759,10 @@ var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
 // EXTERNAL MODULE: ./node_modules/react-native-web/dist/exports/View/index.js
-var View = __webpack_require__(12);
+var exports_View = __webpack_require__(12);
 
 // CONCATENATED MODULE: ./src/api/src/ignoreCoverage/KitchenHelper/components/ParentDimension.tsx
-var ParentDimension_ParentDimension=function ParentDimension(props){return react_default.a.createElement(View["a" /* default */],{style:props.style,onLayout:function onLayout(event){var _event$nativeEvent$la=event.nativeEvent.layout,x=_event$nativeEvent$la.x,y=_event$nativeEvent$la.y,width=_event$nativeEvent$la.width,height=_event$nativeEvent$la.height;if(!!props.setDimension){props.setDimension(x,y,width,height);}}},props.children);};
+var ParentDimension_ParentDimension=function ParentDimension(props){return react_default.a.createElement(exports_View["a" /* default */],{style:props.style,onLayout:function onLayout(event){var _event$nativeEvent$la=event.nativeEvent.layout,x=_event$nativeEvent$la.x,y=_event$nativeEvent$la.y,width=_event$nativeEvent$la.width,height=_event$nativeEvent$la.height;if(!!props.setDimension){props.setDimension(x,y,width,height);}}},props.children);};
 // EXTERNAL MODULE: ./src/api/src/ignoreCoverage/KitchenHelper/synchedstate/RequiredSynchedStates.tsx
 var RequiredSynchedStates = __webpack_require__(122);
 
@@ -1989,7 +1989,7 @@ var EnviromentHelper = __webpack_require__(82);
 // CONCATENATED MODULE: ./src/api/src/ignoreCoverage/KitchenHelper/templates/ViewWithBackgroundColor.tsx
 var ViewWithBackgroundColor_ViewWithBackgroundColor=function ViewWithBackgroundColor(props){var bgColor=useBackgroundColor();return react_default.a.createElement(View_View["a" /* View */],{style:{flex:1,width:"100%",backgroundColor:bgColor}},props.children);};
 // CONCATENATED MODULE: ./src/api/src/ignoreCoverage/KitchenHelper/navigation/RootComponent.tsx
-var RootComponent_Root=function Root(props){var bgColor=useBackgroundColor();react_default.a.useEffect(function(){return function(){NavigatorHelper["b" /* isReadyRef */].current=false;};},[]);var subroute="myapp/app/";try{var basePath=EnviromentHelper["a" /* default */].getBasePath();subroute=basePath;}catch(err){console.log("Trying to get Basepath");console.log(err);}var prefixes=["myapp:///","http://localhost:5000/!"];if(!!ConfigHolder["a" /* ConfigHolder */].prefixes&&ConfigHolder["a" /* ConfigHolder */].prefixes.length>0){prefixes=ConfigHolder["a" /* ConfigHolder */].prefixes;}var linking=RegisteredRoutesMap["a" /* RegisteredRoutesMap */].getRouteLinkingConfig(subroute,prefixes);return react_default.a.createElement(NavigationContainer["a" /* default */],{ref:NavigatorHelper["c" /* navigationRef */],onReady:function onReady(){NavigatorHelper["b" /* isReadyRef */].current=true;NavigatorHelper["a" /* NavigatorHelper */].handleNavigationQueue();},linking:linking,theme:{colors:{background:bgColor}}},react_default.a.createElement(ViewWithBackgroundColor_ViewWithBackgroundColor,null,props.children));};
+var RootComponent_Root=function Root(props){var bgColor=useBackgroundColor();react_default.a.useEffect(function(){return function(){NavigatorHelper["b" /* isReadyRef */].current=false;};},[]);var subroute="myapp/app/";try{var basePath=EnviromentHelper["a" /* default */].getBasePath();subroute=basePath;}catch(err){console.log("Trying to get Basepath");console.log(err);}var prefixes=["myapp:///","http://localhost:5000/!"];if(!!ConfigHolder["a" /* ConfigHolder */].prefixes&&ConfigHolder["a" /* ConfigHolder */].prefixes.length>0){prefixes=ConfigHolder["a" /* ConfigHolder */].prefixes;}var linking=RegisteredRoutesMap["a" /* RegisteredRoutesMap */].getRouteLinkingConfig(subroute,prefixes);return react_default.a.createElement(View,{style:{height:"100%",width:"50%",backgroundColor:"green"}});return react_default.a.createElement(NavigationContainer["a" /* default */],{ref:NavigatorHelper["c" /* navigationRef */],onReady:function onReady(){NavigatorHelper["b" /* isReadyRef */].current=true;NavigatorHelper["a" /* NavigatorHelper */].handleNavigationQueue();},linking:linking,theme:{colors:{background:bgColor}}},react_default.a.createElement(ViewWithBackgroundColor_ViewWithBackgroundColor,null,props.children));};
 // EXTERNAL MODULE: ./src/api/src/ignoreCoverage/KitchenHelper/theme/ColorCodeHelper.ts
 var ColorCodeHelper = __webpack_require__(145);
 
@@ -2114,4 +2114,4 @@ ConfigHolder["a" /* ConfigHolder */].storage=new MyDirectusStorage_web_MyDirectu
 /***/ })
 
 },[[597,1,2]]]);
-//# sourceMappingURL=app.f3a2dddb.chunk.js.map
+//# sourceMappingURL=app.6307ce54.chunk.js.map
