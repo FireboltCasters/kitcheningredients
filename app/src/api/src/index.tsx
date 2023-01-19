@@ -1,3 +1,6 @@
+import {Navigation} from "./ignoreCoverage/KitchenHelper/navigation/Navigation";
+export {Navigation}
+
 import {useProjectColor} from "./ignoreCoverage/KitchenHelper/templates/useProjectColor";
 export {useProjectColor}
 

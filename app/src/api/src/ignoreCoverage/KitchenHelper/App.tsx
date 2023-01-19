@@ -249,13 +249,13 @@ export default class App extends React.Component<any, any>{
 		let root = null;
 
 		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined){
-		  //console.log("Loading screen");
+		  console.log("Loading screen");
 		  root = this.getLoadingScreen();
 		} else if(!this.state.syncFinished) {
-      //console.log("Sync screen");
+      console.log("Sync screen");
 		  root = this.getSynchScreen();
     } else {
-      //console.log("Normal screen");
+      console.log("Normal screen");
 		  root = this.getNormalContent();
     }
 
