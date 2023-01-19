@@ -1,23 +1,23 @@
 import React, {useEffect} from 'react';
 import {Text, View} from "native-base";
 import {RouteRegisterer} from "./RouteRegisterer";
-import {NavigatorHelper} from "../navigation/NavigatorHelper";
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {Linking, TouchableOpacity} from "react-native";
+import {TouchableOpacity} from "react-native";
 import {PlatformHelper} from "../helper/PlatformHelper";
-import {Navigation} from "./Navigation";
-import {Route} from "./Navigation";
+import {Navigation, Route} from "./Navigation";
 import {ExampleParamScreen} from "../../../../../project/testScreens/ExampleParamScreen";
+import {CustomDrawerContent} from "./CustomDrawerContent";
+import {ConfigHolder} from "../../KitchenHelper/ConfigHolder";
+import {Layout} from "../../KitchenHelper/templates/Layout";
 
 export const RootStack = (props) => {
 
-  let firstRender = true;
+  let isSmallDevice = Layout.usesSmallDevice();
+
   const initialURL = props?.initialURL || null;
   console.log("######## ROOT STACK ########");
   console.log("initialURL", initialURL);
 
-  const prefix = Navigation.ROUTE_PATH_PREFIX;
-  const FRAGMENT = "#";
+  const PREFIX = Navigation.ROUTE_PATH_PREFIX;
 
   let initialRouteName = getInitialRouteName(initialURL);
   console.log("initialRouteName", initialRouteName);
@@ -30,7 +30,7 @@ export const RootStack = (props) => {
 
   function getHashRouteWithSearchParams(initialURL){
     let hash = initialURL?.split("#")[1] || "";
-    if(hash.startsWith(prefix)){
+    if(hash.startsWith(PREFIX)){
       hash = hash.substr(1);
     }
     return hash;
@@ -72,8 +72,9 @@ export const RootStack = (props) => {
    */
   async function handleHashChange(){
     console.log("handleHashChange: ");
-    let currentRouteName = getInitialRouteName(window.location.href);
-    let currentSearch = getSearchParam(window.location.href);
+    let currentURL = window.location.href;
+    let currentRouteName = getInitialRouteName(currentURL);
+    let currentSearch = getSearchParam(currentURL);
     Navigation.navigateTo(currentRouteName, currentSearch, true);
   }
 
@@ -89,8 +90,22 @@ export const RootStack = (props) => {
 
   useEffect(() => {
     registerHashChangeForWeb()
-    //Navigation.navigateTo(initialRouteName, initialSearch);
   }, []);
+
+  // TODO do we have this?
+  // navigationOptions={{unmountInactiveRoutes: true}}
+
+  let largeScreenDrawerType = "front";
+
+  const hideDrawer = ConfigHolder.instance.shouldHideDrawer()
+  if(!hideDrawer){
+    largeScreenDrawerType = "permanent";
+  }
+
+  let drawerType = isSmallDevice ? 'front' : largeScreenDrawerType /** 'front' | 'back' | 'slide' | 'permanent' */
+
+  let drawerBorderColor = RouteRegisterer.getDrawerBorderColor();
+  let drawerStyle = !!drawerBorderColor ? {borderColor: drawerBorderColor} : undefined;
 
   let renderedScreens = [];
   let registeredRoutes = Navigation.routeGetRegistered();
@@ -114,6 +129,13 @@ export const RootStack = (props) => {
   return (
     <>
       <Drawer.Navigator initialRouteName={initialRouteName}
+                        drawerStyle={drawerStyle}
+                        drawerType={drawerType}
+                        redirectToLogin={props.redirectToLogin+""}
+                        reloadNumber={ConfigHolder.instance.state.reloadNumber}
+                        swipeEnabled={false}
+                        drawerPosition={'left' /** | 'right' */}
+                        drawerContent={(props) => <CustomDrawerContent {...props} />}
                         screenOptions={{
                           headerShown: false,
                           unmountOnBlur:true
