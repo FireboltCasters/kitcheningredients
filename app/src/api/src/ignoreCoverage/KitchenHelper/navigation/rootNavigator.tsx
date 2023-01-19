@@ -8,29 +8,30 @@ import {TouchableOpacity} from "react-native";
 import {PlatformHelper} from "../helper/PlatformHelper";
 import {Navigation} from "./Navigation";
 import {Route} from "./Navigation";
+import queryString from 'query-string'
 
 export const RootStack = (props) => {
 
   let initialRouteName = "Check";
 
-  const defaultSubRoute = "/#/";
+  const prefix = Navigation.ROUTE_PATH_PREFIX;
 
   console.log("window.location.hash: "+window.location.hash);
 
   if(PlatformHelper.isWeb()){
     initialRouteName = window.location.hash.substr(1);
-    if(initialRouteName.startsWith("/")){
+    if(initialRouteName.startsWith(prefix)){
       initialRouteName = initialRouteName.substr(1);
     }
   }
+
+  initialRouteName = undefined;
 
   let Drawer = RouteRegisterer.getDrawer();
 
   const navigateAndSetHash = (navigation, routeName) => {
     console.log("navigateAndSetHash: "+routeName);
-    let prefix = "";
     if(PlatformHelper.isWeb()){
-      prefix = prefix+"/";
       console.log("Route to: "+window.location.hash+prefix+routeName);
       window.location.hash = prefix+routeName;
     } else {
@@ -38,19 +39,37 @@ export const RootStack = (props) => {
     }
   };
 
-  useEffect(() => {
+  /**
+   * We have to check if the url changed and if so, we have to navigate to the new route
+   * This is a workaround for the web version of react-navigation.
+   */
+  function handleHashChange(){
+    console.log("handleHashChange: ");
+    let currentRoute = window.location.hash.substr(1);
+    let currentRouteName = currentRoute.split("?")[0];
+    let query = queryString.parse(currentRoute)
+    if(currentRouteName.startsWith(prefix)){
+      currentRouteName = currentRouteName.substr(1);
+    }
+    //navigation.navigate(currentRoute);
+    console.log("currentRouteName: "+currentRouteName);
+    console.log("query: "+JSON.stringify(query, null, 2));
+
+    NavigatorHelper.navigateToRouteName(currentRouteName, query);
+  }
+
+  /**
+   * We register a listener for the hash change event
+   */
+  function registerHashChangeForWeb(){
     if(PlatformHelper.isWeb()){
-      function handleHashChange() {
-        let currentRoute = window.location.hash.substr(1);
-        if(currentRoute.startsWith("/")){
-          currentRoute = currentRoute.substr(1);
-        }
-        //navigation.navigate(currentRoute);
-        NavigatorHelper.navigateToRouteName(currentRoute)
-      }
       window.addEventListener('hashchange', handleHashChange);
       return () => window.removeEventListener('hashchange', handleHashChange);
     }
+  }
+
+  useEffect(() => {
+    registerHashChangeForWeb()
   }, []);
 
   let renderedScreens = [];
@@ -63,13 +82,10 @@ export const RootStack = (props) => {
     console.log(routeInfo);
     if(routeInfo?.component){
       renderedScreens.push(
-        <Drawer.Screen key={routeInfo.name} name={routeInfo.name} component={() => {
+        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} component={(screenProps) => {
           return (
             <View>
-              <Text>Test</Text>
-              <TouchableOpacity onPress={() => navigateAndSetHash(navigation, 'Subpath')}>
-                <Text>Go to Subpath</Text>
-              </TouchableOpacity>
+              {routeInfo?.component(screenProps)}
             </View>
           )
         }}/>

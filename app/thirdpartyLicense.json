@@ -5507,12 +5507,12 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fill-range",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fill-range/LICENSE"
   },
-  "filter-obj@1.1.0": {
+  "filter-obj@5.1.0": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/filter-obj",
     "publisher": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
+    "url": "https://sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/filter-obj",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/filter-obj/license"
   },
@@ -9553,7 +9553,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/qs",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/qs/LICENSE"
   },
-  "query-string@6.14.1": {
+  "query-string@8.1.0": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/query-string",
     "publisher": "Sindre Sorhus",
@@ -10681,12 +10681,12 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/spdy",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/spdy/README.md"
   },
-  "split-on-first@1.1.0": {
+  "split-on-first@3.0.0": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/split-on-first",
     "publisher": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com",
+    "url": "https://sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/split-on-first",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/split-on-first/license"
   },
@@ -10834,15 +10834,6 @@
     "url": "https://www.adaltas.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/stream-transform",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/stream-transform/LICENSE"
-  },
-  "strict-uri-encode@2.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/kevva/strict-uri-encode",
-    "publisher": "Kevin Mårtensson",
-    "email": "kevinmartensson@gmail.com",
-    "url": "github.com/kevva",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/strict-uri-encode",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/strict-uri-encode/license"
   },
   "string-width@4.2.3": {
     "licenses": "MIT",

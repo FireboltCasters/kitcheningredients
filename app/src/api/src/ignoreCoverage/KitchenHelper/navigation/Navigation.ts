@@ -11,6 +11,7 @@ export interface Route {
   name?: string;
   params?: string;
   component: FunctionComponent;
+  template?: FunctionComponent;
 }
 
 function getNameOfComponent(component: FunctionComponent): string{
@@ -19,6 +20,8 @@ function getNameOfComponent(component: FunctionComponent): string{
 }
 
 export class Navigation {
+
+    static ROUTE_PATH_PREFIX = "/";
 
     // a dict with string to Route
     private static registeredComponents : {[key: string]: Route} = {};

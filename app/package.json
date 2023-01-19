@@ -3,7 +3,7 @@
 	"name": "rocketmeals",
 	"version": "1.0.0",
 	"homepage": "https://fireboltcasters.github.io/kitcheningredients/",
-  "forLocalDevelopmentChangeHomepageTo": "./",
+	"forLocalDevelopmentChangeHomepageTo": "./",
 	"config": {
 		"codepush_ios": "FireboltCasters/RocketMealsDemo-iOS",
 		"codepush_android": "FireboltCasters/RocketMealsDemo-Android"
@@ -33,7 +33,7 @@
 		"predeploy:web:local": "npm run build:web",
 		"deploy:web:local": "npm run serve:web:local",
 		"serve:web:local": "npx serve web-build --cors --single",
-    "deployghpages" : "npm run build:web && gh-pages -d web-build",
+		"deployghpages": "npm run build:web && gh-pages -d web-build",
 		"prebuild": "npm run licenseSummary && bash ./fix-for-web.sh && npm run deleteDevNodeModules",
 		"licenseSummary": "npx license-checker --production --json --summary --direct --out thirdpartyLicense.json",
 		"codepushkeys:ios": "appcenter codepush deployment list --app ${npm_package_config_codepush_ios} -k && echo 'Keys above for iOS ! Paste these in config.json'",
