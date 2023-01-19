@@ -7,6 +7,7 @@ import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
 import {ConfigHolder} from "../ConfigHolder";
 import {ViewWithBackgroundColor} from "../templates/ViewWithBackgroundColor";
 import {useBackgroundColor} from "../templates/useBackgroundColor";
+import {Linking} from "react-native";
 
 export const Root = (props) => {
 	const bgColor = useBackgroundColor()
@@ -26,11 +27,24 @@ export const Root = (props) => {
 		console.log(err)
 	}
 
-	let prefixes = ["myapp:///", "http://localhost:5000/!"];
+	let prefixes = ["myapp:///", "http://localhost:19006/#/"];
 	if(!!ConfigHolder.prefixes && ConfigHolder.prefixes.length> 0){
 	      prefixes = ConfigHolder.prefixes;
   }
 	let linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
+
+  const getInitialURL = async () => {
+    console.log("getInitialURL");
+
+    const url = await Linking.getInitialURL();
+    console.log(url);
+
+    if (url != null) {
+      return url;
+    }
+
+    return url;
+  };
 
 	return (
 		<NavigationContainer
@@ -40,7 +54,7 @@ export const Root = (props) => {
         NavigatorHelper.handleNavigationQueue();
 			}}
 			// @ts-ignore //this is correct
-//			linking={linking}
+//      linking={linking}
 			theme={{
 				// @ts-ignore
 				colors: { background: bgColor },

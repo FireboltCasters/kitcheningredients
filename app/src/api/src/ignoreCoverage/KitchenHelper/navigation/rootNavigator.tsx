@@ -1,61 +1,76 @@
-// @ts-nocheck
 import React, {useEffect} from 'react';
 import {Text, View} from "native-base";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {NavigatorHelper} from "../navigation/NavigatorHelper";
-import {useNavigation} from '@react-navigation/native';
-import {TouchableOpacity} from "react-native";
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {Linking, TouchableOpacity} from "react-native";
 import {PlatformHelper} from "../helper/PlatformHelper";
 import {Navigation} from "./Navigation";
 import {Route} from "./Navigation";
-import queryString from 'query-string'
+import {ExampleParamScreen} from "../../../../../project/testScreens/ExampleParamScreen";
 
 export const RootStack = (props) => {
 
-  let initialRouteName = "Check";
+  let firstRender = true;
+  const initialURL = props?.initialURL || null;
+  console.log("######## ROOT STACK ########");
+  console.log("initialURL", initialURL);
 
   const prefix = Navigation.ROUTE_PATH_PREFIX;
+  const FRAGMENT = "#";
 
-  console.log("window.location.hash: "+window.location.hash);
+  let initialRouteName = getInitialRouteName(initialURL);
+  console.log("initialRouteName", initialRouteName);
+  let search = getSearchParam(initialURL);
 
-  if(PlatformHelper.isWeb()){
-    initialRouteName = window.location.hash.substr(1);
-    if(initialRouteName.startsWith(prefix)){
-      initialRouteName = initialRouteName.substr(1);
-    }
-  }
-
-  initialRouteName = undefined;
+  const [initialSearch, setInitialSearch] = React.useState(search);
+  console.log("search", search);
 
   let Drawer = RouteRegisterer.getDrawer();
 
-  const navigateAndSetHash = (navigation, routeName) => {
-    console.log("navigateAndSetHash: "+routeName);
-    if(PlatformHelper.isWeb()){
-      console.log("Route to: "+window.location.hash+prefix+routeName);
-      window.location.hash = prefix+routeName;
-    } else {
-      navigation.navigate(routeName);
+  function getHashRouteWithSearchParams(initialURL){
+    let hash = initialURL?.split("#")[1] || "";
+    if(hash.startsWith(prefix)){
+      hash = hash.substr(1);
     }
-  };
+    return hash;
+  }
+
+  function getSearchParamString(initialURL){
+    let search = initialURL?.split("?")[1] || "";
+    // parse for search params in url to dict
+    return search;
+  }
+
+  function getSearchParam(initialURL){
+    let search = getSearchParamString(initialURL);
+    // parse for search params in url to dict
+    let searchParams = new URLSearchParams(search);
+    let searchDict = {};
+    for (let [key, value] of searchParams) {
+      searchDict[key] = value;
+    }
+    return searchDict;
+  }
+
+  function getInitialRouteName(initialURL: string){
+    // initialURL = "https://kitchenhelper.app/#/app/recipes";
+    // get everything after the # and the prefix
+    let hash = getHashRouteWithSearchParams(initialURL);
+    let search = getSearchParamString(initialURL);
+    let routeName = hash.replace("?"+search, "");
+    return routeName;
+  }
 
   /**
    * We have to check if the url changed and if so, we have to navigate to the new route
    * This is a workaround for the web version of react-navigation.
    */
-  function handleHashChange(){
+  async function handleHashChange(){
     console.log("handleHashChange: ");
-    let currentRoute = window.location.hash.substr(1);
-    let currentRouteName = currentRoute.split("?")[0];
-    let query = queryString.parse(currentRoute)
-    if(currentRouteName.startsWith(prefix)){
-      currentRouteName = currentRouteName.substr(1);
-    }
-    //navigation.navigate(currentRoute);
-    console.log("currentRouteName: "+currentRouteName);
-    console.log("query: "+JSON.stringify(query, null, 2));
-
-    NavigatorHelper.navigateToRouteName(currentRouteName, query);
+    let currentRouteName = getInitialRouteName(window.location.href);
+    let currentSearch = getSearchParam(window.location.href);
+    Navigation.navigateTo(currentRouteName, currentSearch, true);
   }
 
   /**
@@ -70,55 +85,48 @@ export const RootStack = (props) => {
 
   useEffect(() => {
     registerHashChangeForWeb()
+    //Navigation.navigateTo(initialRouteName, initialSearch);
   }, []);
 
   let renderedScreens = [];
   let registeredRoutes = Navigation.routeGetRegistered();
-  console.log("Registered Routes")
-  console.log(registeredRoutes)
   for(let routeKey in registeredRoutes){
     let routeInfo: Route = registeredRoutes[routeKey];
-    console.log("Route: "+routeKey);
-    console.log(routeInfo);
     if(routeInfo?.component){
+      let component = (screenProps) => {
+        return (
+          <View>
+            {routeInfo?.component(screenProps)}
+          </View>
+        )
+      }
+
       renderedScreens.push(
-        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} component={(screenProps) => {
-          return (
-            <View>
-              {routeInfo?.component(screenProps)}
-            </View>
-          )
-        }}/>
+        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} initialParams={initialSearch} >
+          {component}
+        </Drawer.Screen>
       );
     }
   }
+
+
 
   return (
     <>
       <Drawer.Navigator initialRouteName={initialRouteName}>
         {renderedScreens}
-        <Drawer.Screen name="Check" component={() => {
-          const navigation = useNavigation();
-          return (
-            <View>
-              <Text>Check</Text>
-              <TouchableOpacity onPress={() => navigateAndSetHash(navigation, 'Subpath')}>
-                <Text>Go to Subpath</Text>
-              </TouchableOpacity>
-            </View>
-          )
-        }}/>
-        <Drawer.Screen name="Subpath" component={() => {
-          const navigation = useNavigation();
-          return (
-            <View>
-              <Text>Subpath</Text>
-              <TouchableOpacity onPress={() => navigateAndSetHash(navigation, 'Check')}>
-                <Text>Go to Check</Text>
-              </TouchableOpacity>
-            </View>
-          )
-        }}/>
+        <Drawer.Screen name="Subpath">
+            {() => {
+              return (
+                <View>
+                  <Text>Subpath</Text>
+                  <TouchableOpacity onPress={() => Navigation.navigateTo('ExampleParamScreen', {testParam: 10})}>
+                    <Text>Go to ExampleParamScreen</Text>
+                  </TouchableOpacity>
+                </View>
+              )
+            }}
+        </Drawer.Screen>
       </Drawer.Navigator>
     </>
   );

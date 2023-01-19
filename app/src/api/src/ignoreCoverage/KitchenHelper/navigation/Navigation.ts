@@ -1,7 +1,8 @@
 import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
 import {useSynchedJSONState} from "../synchedstate/SynchedState";
-import {MenuItem} from "kitcheningredients";
+import {NavigatorHelper} from "./NavigatorHelper";
 import {FunctionComponent} from "react";
+import {PlatformHelper} from "../helper/PlatformHelper";
 
 // todo Update to newest ReactNavigation
 // https://reactnavigation.org/docs/navigating-without-navigation-prop/
@@ -62,6 +63,29 @@ export class Navigation {
 
     static navigateHome(){}
 
-    static navigateTo(){}
+    static navigateTo(routeName, params?, hashChanged?){
+      console.log("navigateAndSetHash: "+routeName);
+      if(PlatformHelper.isWeb() && !hashChanged){
+          console.log("-- isWeb but the hash is not changed, so we do it now");
+          let navigateSearch = "";
+          if(params){
+            navigateSearch = "?";
+            let keys = Object.keys(params);
+            for(let i=0; i<keys.length; i++){
+              let key = keys[i];
+              let value = params[key];
+              if(i>0){
+                navigateSearch += "&";
+              }
+              navigateSearch += key+"="+value;
+            }
+          }
+          console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
+          window.location.hash = Navigation.ROUTE_PATH_PREFIX+routeName+navigateSearch;
+          return; // we do not need to call navigateTo again, because the hash change will trigger the hook
+      } else {
+        NavigatorHelper.navigateToRouteName(routeName, params)
+      }
+    }
 
 }

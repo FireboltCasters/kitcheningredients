@@ -40,6 +40,7 @@ export default class App extends React.Component<any, any>{
 		})
 		this.state = {
 		  syncFinished: false,
+      initialURL: undefined,
 			user: undefined,
       role: undefined,
       offline: undefined,
@@ -200,6 +201,10 @@ export default class App extends React.Component<any, any>{
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.initApp){
       await ConfigHolder.plugin.initApp();
     }
+    let initialURL = await Linking.getInitialURL();
+    await this.setState({
+      initialURL: initialURL,
+    })
     let serverStatus = await this.loadServerInfo();
     await ConfigHolder.instance.setState({offline: !serverStatus});
     let user = await ConfigHolder.instance.loadUser();
@@ -232,7 +237,7 @@ export default class App extends React.Component<any, any>{
   }
 
   getNormalContent(){
-    let content = <RootStack reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+this.state.syncFinished} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
+    let content = <RootStack reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+this.state.syncFinished+this.state.initialURL} initialURL={this.state.initialURL} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
     if(!!this.props.children){
       content = this.props.children;
     }
@@ -248,7 +253,7 @@ export default class App extends React.Component<any, any>{
 	render() {
 		let root = null;
 
-		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined){
+		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined || !this.state.initialURL){
 		  console.log("Loading screen");
 		  root = this.getLoadingScreen();
 		} else if(!this.state.syncFinished) {

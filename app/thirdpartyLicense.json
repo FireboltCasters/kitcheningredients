@@ -4462,15 +4462,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/decamelize",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/decamelize/license"
   },
-  "decode-uri-component@0.2.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/SamVerschueren/decode-uri-component",
-    "publisher": "Sam Verschueren",
-    "email": "sam.verschueren@gmail.com",
-    "url": "github.com/SamVerschueren",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/decode-uri-component",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/decode-uri-component/license"
-  },
   "decompress-response@6.0.0": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/decompress-response",
@@ -5506,15 +5497,6 @@
     "url": "https://github.com/jonschlinkert",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fill-range",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fill-range/LICENSE"
-  },
-  "filter-obj@5.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/filter-obj",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "https://sindresorhus.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/filter-obj",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/filter-obj/license"
   },
   "finalhandler@1.1.2": {
     "licenses": "MIT",
@@ -9553,15 +9535,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/qs",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/qs/LICENSE"
   },
-  "query-string@8.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/query-string",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "https://sindresorhus.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/query-string",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/query-string/license"
-  },
   "querystring-es3@0.2.1": {
     "licenses": "MIT",
     "repository": "https://github.com/mike-spainhower/querystring",
@@ -10680,15 +10653,6 @@
     "email": "fedor.indutny@gmail.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/spdy",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/spdy/README.md"
-  },
-  "split-on-first@3.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/sindresorhus/split-on-first",
-    "publisher": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "https://sindresorhus.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/split-on-first",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/split-on-first/license"
   },
   "split@1.0.1": {
     "licenses": "MIT",

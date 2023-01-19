@@ -22,7 +22,9 @@ export const MySync: FunctionComponent = (props) => {
     })
     Navigation.routeRegister({
       component: ExampleParamScreen,
-      params: "/:testParam",
+      params: {
+        testParam: 0
+      },
     })
 
     await ConfigHolder.instance.setSyncFinished(true)
