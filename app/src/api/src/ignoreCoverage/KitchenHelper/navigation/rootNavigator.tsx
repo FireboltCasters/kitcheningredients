@@ -8,6 +8,8 @@ import {ExampleParamScreen} from "../../../../../project/testScreens/ExamplePara
 import {CustomDrawerContent} from "./CustomDrawerContent";
 import {ConfigHolder} from "../../KitchenHelper/ConfigHolder";
 import {Layout} from "../../KitchenHelper/templates/Layout";
+import {Home} from "../screens/home/Home";
+import {BaseTemplate} from "../../KitchenHelper/templates/BaseTemplate";
 
 export const RootStack = (props) => {
 
@@ -107,24 +109,34 @@ export const RootStack = (props) => {
   let drawerBorderColor = RouteRegisterer.getDrawerBorderColor();
   let drawerStyle = !!drawerBorderColor ? {borderColor: drawerBorderColor} : undefined;
 
+  Navigation.routeRegister({
+    component: Home,
+    template: BaseTemplate,
+  })
   let renderedScreens = [];
   let registeredRoutes = Navigation.routeGetRegistered();
   for(let routeKey in registeredRoutes){
+    console.log("registeredRoutes", routeKey);
     let routeInfo: Route = registeredRoutes[routeKey];
     let component = routeInfo?.component;
     if(component){
       let template = routeInfo?.template;
-      let screenContent = (screenProps) => {
-        return (
-          <View>
-            {component(screenProps)}
-          </View>
-        );
+      let screenContent = (props) => {
+        return React.createElement(component, props)
+      };
+      if(!!template){
+        console.log("Has template");
+        screenContent = (props) => {
+          let customProps = {};
+          let renderedComponent = React.createElement(component, {...props, ...customProps})
+          return React.createElement(template, {...props, ...customProps, children: renderedComponent})
+        };
       }
 
-
       renderedScreens.push(
-        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} initialParams={initialSearch} component={screenContent}/>
+        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} initialParams={initialSearch} >
+          {screenContent}
+        </Drawer.Screen>
       );
     }
   }
@@ -153,27 +165,21 @@ export const RootStack = (props) => {
                           unmountOnBlur:true
                         }}
       >
-        <Drawer.Screen name="Home" component={() => {
-          return (
-            <View>
-              <Text>Home</Text>
-              <TouchableOpacity onPress={() => Navigation.navigateTo('Subpath')}>
-                <Text>Go to Subpath</Text>
-              </TouchableOpacity>
-            </View>
-          )
-        }}/>
         {renderedScreens}
-        <Drawer.Screen name="Subpath" component={() => {
-          return (
-            <View>
-              <Text>Subpath</Text>
-              <TouchableOpacity onPress={() => Navigation.navigateTo('ExampleParamScreen', {testParam: 10})}>
-                <Text>Go to ExampleParamScreen</Text>
-              </TouchableOpacity>
-            </View>
-          )
-        }}/>
+        <Drawer.Screen name="Subpath">
+          {
+            (props) => {
+              return(
+                <View>
+                  <Text>Subpath</Text>
+                  <TouchableOpacity onPress={() => Navigation.navigateTo('ExampleParamScreen', {testParam: 10})}>
+                    <Text>Go to ExampleParamScreen</Text>
+                  </TouchableOpacity>
+                </View>
+              )
+            }
+          }
+        </Drawer.Screen>
       </Drawer.Navigator>
       {pluginRootComponent}
     </>

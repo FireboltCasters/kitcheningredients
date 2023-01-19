@@ -1,12 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {FunctionComponent, useEffect} from "react";
 import {Text, View} from "native-base";
-import {FunctionComponent} from "react";
-import {BaseTemplate, EmptyTemplate, Menu, MenuItem, useSynchedState, Navigation} from "../api/src";
-import {HiddenScreen} from "./testScreens/HiddenScreen";
+import {BaseTemplate, Navigation} from "../api/src";
 import {ConfigHolder} from "../api/src/ignoreCoverage/KitchenHelper/ConfigHolder";
-import {ExampleImageScreen} from "./testScreens/ExampleImageScreen";
-import {ExampleMarkdownScreen} from "./testScreens/ExampleMarkdownScreen";
-import {ExampleIconScreen} from "./testScreens/ExampleIconScreen";
 import {ExampleParamScreen} from "./testScreens/ExampleParamScreen";
 import {ExampleRoutesInformationsScreen} from "./testScreens/ExampleRoutesInformationsScreen";
 import {ExampleTemplateUsageScreen} from "./testScreens/ExampleTemplateUsageScreen";
@@ -29,6 +24,7 @@ export const MySync: FunctionComponent = (props) => {
     })
     Navigation.routeRegister({
       component: ExampleTemplateUsageScreen,
+      template: BaseTemplate,
     });
 
     await ConfigHolder.instance.setSyncFinished(true)

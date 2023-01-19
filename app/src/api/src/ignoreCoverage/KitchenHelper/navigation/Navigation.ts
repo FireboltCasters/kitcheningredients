@@ -51,7 +51,8 @@ export class Navigation {
       Navigation.registeredComponents[componentName] = {
         path: path,
         name: componentName,
-        component: route.component,
+        component: route?.component,
+        template: route?.template
       };
 
     }
