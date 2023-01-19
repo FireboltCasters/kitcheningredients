@@ -111,15 +111,20 @@ export const RootStack = (props) => {
   let registeredRoutes = Navigation.routeGetRegistered();
   for(let routeKey in registeredRoutes){
     let routeInfo: Route = registeredRoutes[routeKey];
-    if(routeInfo?.component){
+    let component = routeInfo?.component;
+    if(component){
+      let template = routeInfo?.template;
+      let screenContent = (screenProps) => {
+        return (
+          <View>
+            {component(screenProps)}
+          </View>
+        );
+      }
+
+
       renderedScreens.push(
-        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} initialParams={initialSearch} component={(screenProps) => {
-          return (
-            <View>
-              {routeInfo?.component(screenProps)}
-            </View>
-          )
-        }}/>
+        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} initialParams={initialSearch} component={screenContent}/>
       );
     }
   }

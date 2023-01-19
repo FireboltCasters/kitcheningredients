@@ -23,7 +23,7 @@ export const AboutUs = (props) => {
 
 	return(
 		<>
-			<Text>{TextGenerator.getVeryLongText()}</Text>
+			<Text>{TextGenerator.generateTextLong()}</Text>
 		</>
 	)
 }

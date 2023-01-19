@@ -16,7 +16,7 @@ const lorem = new LoremIpsum({
 
 export default class TextGenerator{
 
-	static getVeryLongText(){
+	static generateTextLong(){
 		let output = "";
 		for(let i=1; i<10; i++){ //chapters
 			output += i+": "+lorem.generateWords(2); //title

@@ -25,7 +25,7 @@ export const PrivacyPolicy = (props) => {
 
 	return(
 			<View>
-				<Text>{TextGenerator.getVeryLongText()}</Text>
+				<Text>{TextGenerator.generateTextLong()}</Text>
 			</View>
 	)
 }

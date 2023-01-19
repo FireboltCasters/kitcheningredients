@@ -9,6 +9,7 @@ import {ExampleMarkdownScreen} from "./testScreens/ExampleMarkdownScreen";
 import {ExampleIconScreen} from "./testScreens/ExampleIconScreen";
 import {ExampleParamScreen} from "./testScreens/ExampleParamScreen";
 import {ExampleRoutesInformationsScreen} from "./testScreens/ExampleRoutesInformationsScreen";
+import {ExampleTemplateUsageScreen} from "./testScreens/ExampleTemplateUsageScreen";
 
 export const MySync: FunctionComponent = (props) => {
   console.log("MySynch");
@@ -26,6 +27,9 @@ export const MySync: FunctionComponent = (props) => {
         testParam: 0
       },
     })
+    Navigation.routeRegister({
+      component: ExampleTemplateUsageScreen,
+    });
 
     await ConfigHolder.instance.setSyncFinished(true)
   }

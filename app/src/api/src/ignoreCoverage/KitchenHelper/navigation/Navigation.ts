@@ -10,7 +10,8 @@ import {PlatformHelper} from "../helper/PlatformHelper";
 export interface Route {
   path?: string;
   name?: string;
-  params?: string;
+  // params are a dictionary of key: string /value: any pairs that will be sent to the screen
+  params?: {[key: string]: any};
   component: FunctionComponent;
   template?: FunctionComponent;
 }
