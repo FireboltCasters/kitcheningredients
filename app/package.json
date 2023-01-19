@@ -2,7 +2,7 @@
 	"private": true,
 	"name": "rocketmeals",
 	"version": "1.0.0",
-	"homepage": "./kitcheningredients",
+	"homepage": "./",
 	"config": {
 		"codepush_ios": "FireboltCasters/RocketMealsDemo-iOS",
 		"codepush_android": "FireboltCasters/RocketMealsDemo-Android"

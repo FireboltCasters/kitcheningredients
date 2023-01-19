@@ -2,6 +2,7 @@ import {FunctionComponent} from "react";
 import {Home} from "../screens/home/Home";
 import {RouteLink} from "./RouteLink";
 import {Menu} from "./Menu";
+import EnviromentHelper from "../EnviromentHelper";
 
 export class RegisteredRoutesMap {
 
@@ -62,7 +63,7 @@ export class RegisteredRoutesMap {
         RegisteredRoutesMap.mapRouteToScreenItem[route] = {
             screenName: route,
             component: component,
-            route: route,
+            route: EnviromentHelper.getBasePath()+route,
             template: template,
             title: title
         }
@@ -108,7 +109,7 @@ export class RegisteredRoutesMap {
             let routeConfig = RegisteredRoutesMap.getConfigForRoute(route);
             let screenName = routeConfig.screenName
             config.screens[screenName] = {
-                path: subroute+routeConfig.route,
+                path: routeConfig.route,
             };
         }
 

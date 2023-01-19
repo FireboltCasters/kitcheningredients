@@ -5,7 +5,7 @@ const configureWebpackConfig = require('./src/api/src/ignoreCoverage/KitchenHelp
 module.exports = async function(env, argv) {
   let config = await createExpoWebpackConfigAsync(env, argv);
   config = await configureWebpackConfig(config);
-  config.output.publicPath = "https://fireboltcasters.github.io/kitcheningredients/";
+//  config.output.publicPath = "https://fireboltcasters.github.io/kitcheningredients/";
   console.log("config.output.publicPath: " + config.output.publicPath);
   return config;
 };

@@ -32,7 +32,6 @@ export const Root = (props) => {
   }
 	let linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
 
-
 	return (
 		<NavigationContainer
 			ref={navigationRef}
@@ -41,7 +40,7 @@ export const Root = (props) => {
         NavigatorHelper.handleNavigationQueue();
 			}}
 			// @ts-ignore //this is correct
-			linking={linking}
+//			linking={linking}
 			theme={{
 				// @ts-ignore
 				colors: { background: bgColor },
