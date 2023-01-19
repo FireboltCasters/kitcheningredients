@@ -23,30 +23,43 @@ export const RootStack = (props) => {
     window.location.hash = routeName;
   };
 
+  useEffect(() => {
+    function handleHashChange() {
+        const currentRoute = window.location.hash.substr(1);
+        //navigation.navigate(currentRoute);
+        NavigatorHelper.navigateToRouteName(currentRoute)
+    }
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
-    <Drawer.Navigator initialRouteName={initialRouteName}>
-      <Drawer.Screen name="Check" component={() => {
-        const navigation = useNavigation();
-        return (
-          <View>
-            <Text>Check</Text>
-            <TouchableOpacity onPress={() => navigateAndSetHash(navigation, 'Subpath')}>
-              <Text>Go to Subpath</Text>
-            </TouchableOpacity>
-          </View>
-        )
-      }}/>
-      <Drawer.Screen name="Subpath" component={() => {
-        const navigation = useNavigation();
-        return (
-          <View>
-            <Text>Subpath</Text>
-            <TouchableOpacity onPress={() => navigateAndSetHash(navigation, 'Check')}>
-              <Text>Go to Check</Text>
-            </TouchableOpacity>
-          </View>
-        )
-      }}/>
-    </Drawer.Navigator>
+    <>
+      <Drawer.Navigator initialRouteName={initialRouteName}>
+
+        <Drawer.Screen name="Check" component={() => {
+          const navigation = useNavigation();
+          return (
+            <View>
+              <Text>Check</Text>
+              <TouchableOpacity onPress={() => navigateAndSetHash(navigation, 'Subpath')}>
+                <Text>Go to Subpath</Text>
+              </TouchableOpacity>
+            </View>
+          )
+        }}/>
+        <Drawer.Screen name="Subpath" component={() => {
+          const navigation = useNavigation();
+          return (
+            <View>
+              <Text>Subpath</Text>
+              <TouchableOpacity onPress={() => navigateAndSetHash(navigation, 'Check')}>
+                <Text>Go to Check</Text>
+              </TouchableOpacity>
+            </View>
+          )
+        }}/>
+      </Drawer.Navigator>
+    </>
   );
 }
