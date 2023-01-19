@@ -124,6 +124,9 @@ export const RootStack = (props) => {
     }
   }
 
+  RouteRegisterer.loadDrawerScreens();
+  let screens = ConfigHolder.instance.shouldRedirectToLogin() ? RouteRegisterer.loginScreens : renderedScreens;
+
 
   let pluginRootComponent = null;
   if(!!ConfigHolder.plugin.getRootComponent){
