@@ -125,6 +125,10 @@ export const RootStack = (props) => {
   }
 
 
+  let pluginRootComponent = null;
+  if(!!ConfigHolder.plugin.getRootComponent){
+    pluginRootComponent = ConfigHolder.plugin.getRootComponent(props);
+  }
 
   return (
     <>
@@ -163,6 +167,7 @@ export const RootStack = (props) => {
           )
         }}/>
       </Drawer.Navigator>
+      {pluginRootComponent}
     </>
   );
 }
