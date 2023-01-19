@@ -59,6 +59,10 @@ export const RootStack = (props) => {
     let hash = getHashRouteWithSearchParams(initialURL);
     let search = getSearchParamString(initialURL);
     let routeName = hash.replace("?"+search, "");
+    if(!routeName || routeName === ""){
+      routeName = "Home";
+    }
+
     return routeName;
   }
 
@@ -93,18 +97,14 @@ export const RootStack = (props) => {
   for(let routeKey in registeredRoutes){
     let routeInfo: Route = registeredRoutes[routeKey];
     if(routeInfo?.component){
-      let component = (screenProps) => {
-        return (
-          <View>
-            {routeInfo?.component(screenProps)}
-          </View>
-        )
-      }
-
       renderedScreens.push(
-        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} initialParams={initialSearch} >
-          {component}
-        </Drawer.Screen>
+        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} initialParams={initialSearch} component={(screenProps) => {
+          return (
+            <View>
+              {routeInfo?.component(screenProps)}
+            </View>
+          )
+        }}/>
       );
     }
   }
@@ -113,20 +113,33 @@ export const RootStack = (props) => {
 
   return (
     <>
-      <Drawer.Navigator initialRouteName={initialRouteName}>
+      <Drawer.Navigator initialRouteName={initialRouteName}
+                        screenOptions={{
+                          headerShown: false,
+                          unmountOnBlur:true
+                        }}
+      >
+        <Drawer.Screen name="Home" component={() => {
+          return (
+            <View>
+              <Text>Home</Text>
+              <TouchableOpacity onPress={() => Navigation.navigateTo('Subpath')}>
+                <Text>Go to Subpath</Text>
+              </TouchableOpacity>
+            </View>
+          )
+        }}/>
         {renderedScreens}
-        <Drawer.Screen name="Subpath">
-            {() => {
-              return (
-                <View>
-                  <Text>Subpath</Text>
-                  <TouchableOpacity onPress={() => Navigation.navigateTo('ExampleParamScreen', {testParam: 10})}>
-                    <Text>Go to ExampleParamScreen</Text>
-                  </TouchableOpacity>
-                </View>
-              )
-            }}
-        </Drawer.Screen>
+        <Drawer.Screen name="Subpath" component={() => {
+          return (
+            <View>
+              <Text>Subpath</Text>
+              <TouchableOpacity onPress={() => Navigation.navigateTo('ExampleParamScreen', {testParam: 10})}>
+                <Text>Go to ExampleParamScreen</Text>
+              </TouchableOpacity>
+            </View>
+          )
+        }}/>
       </Drawer.Navigator>
     </>
   );

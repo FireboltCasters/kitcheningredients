@@ -63,7 +63,14 @@ export class Navigation {
 
     static navigateHome(){}
 
-    static navigateTo(routeName, params?, hashChanged?){
+    static navigateTo(routeNameOrComponent, params?, hashChanged?){
+      let routeName = "Home";
+      if(typeof routeNameOrComponent === "string"){
+        routeName = routeNameOrComponent;
+      } else if(typeof routeNameOrComponent === "function"){
+        routeName = getNameOfComponent(routeNameOrComponent);
+      }
+
       console.log("navigateAndSetHash: "+routeName);
       if(PlatformHelper.isWeb() && !hashChanged){
           console.log("-- isWeb but the hash is not changed, so we do it now");
