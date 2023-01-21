@@ -21,15 +21,11 @@ export class DefaultNavigation {
   }
 
   static registerDefaultRoutes(){
-    console.log("Registering default routes");
-
-    console.log("--Registering login route");
     Navigation.routeRegister({
       component: Login,
       template: LoginTemplate,
     })
 
-    console.log("--Registering home route");
     Navigation.routeRegister({
       component: Home,
       template: BaseTemplate,
@@ -81,14 +77,30 @@ export class DefaultNavigation {
     return DefaultNavigation.getScreensFor(registeredRoutes, initialSearch);
   }
 
+  private static getRegisteredRouteForScreenByComponent(component){
+    return(
+      {
+        [RouteHelper.getNameOfComponent(component)]: Navigation.routeGetRegistered()[RouteHelper.getNameOfComponent(component)]
+      }
+    )
+  }
+
+  private static getRegisteredRoutesForScreenByComonents(...components){
+    let registeredRoutes = {};
+    for(let i = 0; i < components.length; i++){
+      registeredRoutes = {
+        ...registeredRoutes,
+        ...DefaultNavigation.getRegisteredRouteForScreenByComponent(components[i])
+      }
+    }
+    return registeredRoutes;
+  }
+
   static getAnonymUserScreens(initialSearch){
     let loginScreens = DefaultNavigation.getScreensFor(
       {
         [Navigation.DEFAULT_ROUTE_LOGIN]: Navigation.routeGetRegistered()[Navigation.DEFAULT_ROUTE_LOGIN],
-        [RouteHelper.getNameOfComponent(AboutUs)]: Navigation.routeGetRegistered()[RouteHelper.getNameOfComponent(AboutUs)],
-        [RouteHelper.getNameOfComponent(License)]: Navigation.routeGetRegistered()[RouteHelper.getNameOfComponent(License)],
-        [RouteHelper.getNameOfComponent(PrivacyPolicy)]: Navigation.routeGetRegistered()[RouteHelper.getNameOfComponent(PrivacyPolicy)],
-        [RouteHelper.getNameOfComponent(TermsAndConditions)]: Navigation.routeGetRegistered()[RouteHelper.getNameOfComponent(TermsAndConditions)],
+        ...DefaultNavigation.getRegisteredRoutesForScreenByComonents(AboutUs, License, PrivacyPolicy, TermsAndConditions)
       },
       initialSearch
     );

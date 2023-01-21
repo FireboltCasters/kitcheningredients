@@ -81,9 +81,11 @@ export class Navigation {
 //    static routeUnregister(){} // also unregisteres menu?
 
     static menuRegister(menuItem: MenuItemProps){
-      console.log("Navigation.registerMenu: ");
-      console.log(menuItem);
       Navigation.registeredMenuItems[menuItem.name] = menuItem;
+    }
+
+    static menuGetRegistered(){
+      return Navigation.registeredMenuItems;
     }
 
     static navigateBack(){}
@@ -110,9 +112,8 @@ export class Navigation {
         routeName = RouteHelper.getNameOfComponent(routePathOrComponent);
       }
 
-      console.log("navigateAndSetHash: "+routeName);
       if(PlatformHelper.isWeb() && !hashChanged){
-          console.log("-- isWeb but the hash is not changed, so we do it now");
+          //console.log("-- isWeb but the hash is not changed, so we do it now");
           let navigateSearch = "";
           if(params){
             navigateSearch = "?";
@@ -126,7 +127,7 @@ export class Navigation {
               navigateSearch += key+"="+value;
             }
           }
-          console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
+          //console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
           window.location.hash = Navigation.ROUTE_PATH_PREFIX+routeName+navigateSearch;
           return; // we do not need to call navigateTo again, because the hash change will trigger the hook
       } else {

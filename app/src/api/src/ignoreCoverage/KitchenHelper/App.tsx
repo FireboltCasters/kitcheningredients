@@ -94,9 +94,10 @@ export default class App extends React.Component<any, any>{
   }
 
 	async setHideDrawer(visible, nextRouteName?){
+    let currentRouteName = Navigation.getCurrentRouteName();
 		if(ConfigHolder.instance.state.hideDrawer!==visible){
-		  let currentRouteName = Navigation.getCurrentRouteName();
-		  const useRouteName = !!nextRouteName ? nextRouteName : currentRouteName;
+		  let useRouteName = !!nextRouteName ? nextRouteName : currentRouteName;
+		  useRouteName = useRouteName || ConfigHolder.instance.initialURL;
 
 			await ConfigHolder.instance.setState({
 				hideDrawer: visible,

@@ -14,15 +14,11 @@ export const RootStack = (props) => {
   let isSmallDevice = Layout.usesSmallDevice();
 
   const initialURL = props?.initialURL || null;
-  console.log("######## ROOT STACK ########");
-  console.log("initialURL", initialURL);
 
   let initialRouteName = RouteHelper.getInitialRouteName(initialURL);
-  console.log("initialRouteName", initialRouteName);
   let search = getSearchParam(initialURL);
 
   const [initialSearch, setInitialSearch] = React.useState(search);
-  console.log("search", search);
 
   let Drawer = RouteRegisterer.getDrawer();
 
@@ -46,7 +42,6 @@ export const RootStack = (props) => {
    * This is a workaround for the web version of react-navigation.
    */
   async function handleHashChange(){
-    console.log("handleHashChange: ");
     let currentURL = window.location.href;
     let currentRouteName = RouteHelper.getInitialRouteName(currentURL);
     let currentSearch = getSearchParam(currentURL);
@@ -64,7 +59,8 @@ export const RootStack = (props) => {
   }
 
   useEffect(() => {
-    return registerHashChangeForWeb()
+    let cleanUpFunction = registerHashChangeForWeb()
+    return cleanUpFunction;
   }, []);
 
   // TODO do we have this?
@@ -94,9 +90,6 @@ export const RootStack = (props) => {
   if(!initialRouteName){
     initialRouteName = Navigation.DEFAULT_ROUTE_HOME;
   }
-
-  console.log("showOnlyLogin", showOnlyScreensForAnonymUser);
-  console.log("initialRouteName To Use", initialRouteName);
 
   return (
     <>
