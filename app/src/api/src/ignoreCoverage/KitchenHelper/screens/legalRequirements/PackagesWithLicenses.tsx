@@ -95,7 +95,7 @@ export const PackagesWithLicenses = (props) => {
     }
 
 		return (
-			<View style={{paddingBottom: 10, width: "100%"}}>
+			<View key={dependencyKey} style={{paddingBottom: 10, width: "100%"}}>
 				<ExpandableDrawerItem
           key={key}
 					level={2}

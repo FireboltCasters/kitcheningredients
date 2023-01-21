@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {FunctionComponent, useEffect, useState} from "react";
+import React, {FunctionComponent, useEffect, useRef, useState} from "react";
 import {BaseLayout} from "./BaseLayout";
 import ServerAPI from "../ServerAPI";
 import {View, KeyboardAvoidingView} from "native-base";
@@ -26,10 +26,12 @@ export const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps>=
   const params = props?.route?.params;
 	const [reloadnumber, setReloadnumber] = useState(0)
 	const [serverInfo, setServerInfo] = useState(props.serverInfo)
+  const mountedRef = useRef(true)
 
 	async function loadServerInfo() {
 		try{
 			let serverInfoRemote = await ServerAPI.getServerInfo();
+      if (!mountedRef.current) return null
 			setServerInfo(serverInfoRemote);
 			setReloadnumber(reloadnumber+1);
 		} catch (err){
@@ -43,6 +45,9 @@ export const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps>=
 		if(!serverInfo){
 			loadServerInfo();
 		}
+    return () => {
+      mountedRef.current = false
+    }
 	}, [params])
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});

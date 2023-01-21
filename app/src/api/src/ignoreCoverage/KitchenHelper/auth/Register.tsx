@@ -19,7 +19,7 @@ export const Register = (props) => {
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
 
-	if(!ConfigHolder.instance.shouldHideDrawer()){
+	if(!ConfigHolder.instance.isDrawerHidden()){
 		//console.log("Login calls hide drawer");
 		hideDrawer = true;
 	}

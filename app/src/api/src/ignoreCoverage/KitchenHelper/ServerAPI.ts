@@ -8,6 +8,7 @@ import TransportWrapper from "./server/TransportWrapper";
 import AuthTransportWrapper from "./server/AuthTransportWrapper";
 import {ConfigHolder} from "./ConfigHolder";
 import UserHelper from "./utils/UserHelper";
+import {Navigation} from "kitcheningredients";
 
 export default class ServerAPI{
 
@@ -65,9 +66,8 @@ export default class ServerAPI{
 		}
 		console.log("navigate to login")
     await ConfigHolder.instance.setUser(null);
+		await ConfigHolder.instance.setRedirectToLogin();
 		await ConfigHolder.instance.setSyncFinished(false);
-		NavigatorHelper.navigate(Login, null, false);
-		await ConfigHolder.instance.setRedirectToLogin(true);
 
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.onLogout){
       await ConfigHolder.plugin.onLogout(error);

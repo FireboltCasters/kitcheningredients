@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {View} from "native-base";
 import ServerAPI from "../ServerAPI";
 import {LoadingView} from "./LoadingView";
@@ -57,6 +57,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 
   const uri = useUnsafeAccessTokenInURL ? url : usedBase64Image;
   const [loading, setLoading] = useState(true);
+  const mountedRef = useRef(true)
 
 	const axios = ServerAPI.getAxiosInstance();
 
@@ -104,6 +105,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
   async function loadImage() {
     if (!!url) {
       let data = await loadBase64WithAuthorization(url);
+      if (!mountedRef.current) return null
       if (!!data) {
         if(useCache) {
           setCachedBase64Image(data);
@@ -121,6 +123,9 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 	useEffect(() => {
 	  if(!props?.useUnsafeAccessTokenInURL){
       loadImage();
+    }
+    return () => {
+      mountedRef.current = false
     }
   } , [props?.assetId, props?.url, uri]);
 

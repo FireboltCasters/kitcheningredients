@@ -1,15 +1,13 @@
 import React, {useEffect} from 'react';
-import {Text, View} from "native-base";
 import {RouteRegisterer} from "./RouteRegisterer";
-import {TouchableOpacity} from "react-native";
 import {PlatformHelper} from "../helper/PlatformHelper";
-import {Navigation, Route} from "./Navigation";
-import {ExampleParamScreen} from "../../../../../project/testScreens/ExampleParamScreen";
+import {Navigation} from "./Navigation";
 import {CustomDrawerContent} from "./CustomDrawerContent";
 import {ConfigHolder} from "../../KitchenHelper/ConfigHolder";
 import {Layout} from "../../KitchenHelper/templates/Layout";
-import {Home} from "../screens/home/Home";
-import {BaseTemplate} from "../../KitchenHelper/templates/BaseTemplate";
+import {DefaultNavigation} from "./DefaultNavigation";
+import {RouteHelper} from "./RouteHelper";
+import {Login} from "../auth/Login";
 
 export const RootStack = (props) => {
 
@@ -19,9 +17,7 @@ export const RootStack = (props) => {
   console.log("######## ROOT STACK ########");
   console.log("initialURL", initialURL);
 
-  const PREFIX = Navigation.ROUTE_PATH_PREFIX;
-
-  let initialRouteName = getInitialRouteName(initialURL);
+  let initialRouteName = RouteHelper.getInitialRouteName(initialURL);
   console.log("initialRouteName", initialRouteName);
   let search = getSearchParam(initialURL);
 
@@ -30,22 +26,12 @@ export const RootStack = (props) => {
 
   let Drawer = RouteRegisterer.getDrawer();
 
-  function getHashRouteWithSearchParams(initialURL){
-    let hash = initialURL?.split("#")[1] || "";
-    if(hash.startsWith(PREFIX)){
-      hash = hash.substr(1);
-    }
-    return hash;
-  }
 
-  function getSearchParamString(initialURL){
-    let search = initialURL?.split("?")[1] || "";
-    // parse for search params in url to dict
-    return search;
-  }
+
+
 
   function getSearchParam(initialURL){
-    let search = getSearchParamString(initialURL);
+    let search = RouteHelper.getSearchParamString(initialURL);
     // parse for search params in url to dict
     let searchParams = new URLSearchParams(search);
     let searchDict = {};
@@ -55,19 +41,6 @@ export const RootStack = (props) => {
     return searchDict;
   }
 
-  function getInitialRouteName(initialURL: string){
-    // initialURL = "https://kitchenhelper.app/#/app/recipes";
-    // get everything after the # and the prefix
-    let hash = getHashRouteWithSearchParams(initialURL);
-    let search = getSearchParamString(initialURL);
-    let routeName = hash.replace("?"+search, "");
-    if(!routeName || routeName === ""){
-      routeName = "Home";
-    }
-
-    return routeName;
-  }
-
   /**
    * We have to check if the url changed and if so, we have to navigate to the new route
    * This is a workaround for the web version of react-navigation.
@@ -75,7 +48,7 @@ export const RootStack = (props) => {
   async function handleHashChange(){
     console.log("handleHashChange: ");
     let currentURL = window.location.href;
-    let currentRouteName = getInitialRouteName(currentURL);
+    let currentRouteName = RouteHelper.getInitialRouteName(currentURL);
     let currentSearch = getSearchParam(currentURL);
     Navigation.navigateTo(currentRouteName, currentSearch, true);
   }
@@ -91,7 +64,7 @@ export const RootStack = (props) => {
   }
 
   useEffect(() => {
-    registerHashChangeForWeb()
+    return registerHashChangeForWeb()
   }, []);
 
   // TODO do we have this?
@@ -99,7 +72,7 @@ export const RootStack = (props) => {
 
   let largeScreenDrawerType = "front";
 
-  const hideDrawer = ConfigHolder.instance.shouldHideDrawer()
+  const hideDrawer = ConfigHolder.instance.isDrawerHidden()
   if(!hideDrawer){
     largeScreenDrawerType = "permanent";
   }
@@ -109,46 +82,21 @@ export const RootStack = (props) => {
   let drawerBorderColor = RouteRegisterer.getDrawerBorderColor();
   let drawerStyle = !!drawerBorderColor ? {borderColor: drawerBorderColor} : undefined;
 
-  Navigation.routeRegister({
-    component: Home,
-    template: BaseTemplate,
-  })
-  let renderedScreens = [];
-  let registeredRoutes = Navigation.routeGetRegistered();
-  for(let routeKey in registeredRoutes){
-    console.log("registeredRoutes", routeKey);
-    let routeInfo: Route = registeredRoutes[routeKey];
-    let component = routeInfo?.component;
-    if(component){
-      let template = routeInfo?.template;
-      let screenContent = (props) => {
-        return React.createElement(component, props)
-      };
-      if(!!template){
-        console.log("Has template");
-        screenContent = (props) => {
-          let customProps = {};
-          let renderedComponent = React.createElement(component, {...props, ...customProps})
-          return React.createElement(template, {...props, ...customProps, children: renderedComponent})
-        };
-      }
 
-      renderedScreens.push(
-        <Drawer.Screen key={routeInfo?.name} name={routeInfo?.name} params={routeInfo?.params} initialParams={initialSearch} >
-          {screenContent}
-        </Drawer.Screen>
-      );
-    }
-  }
-
-  RouteRegisterer.loadDrawerScreens();
-  let screens = ConfigHolder.instance.shouldRedirectToLogin() ? RouteRegisterer.loginScreens : renderedScreens;
-
+  const showOnlyScreensForAnonymUser = !ConfigHolder.instance.getUser();
+  let screens = showOnlyScreensForAnonymUser ? DefaultNavigation.getAnonymUserScreens(initialSearch) : DefaultNavigation.getAllScreens(initialSearch);
 
   let pluginRootComponent = null;
   if(!!ConfigHolder.plugin.getRootComponent){
     pluginRootComponent = ConfigHolder.plugin.getRootComponent(props);
   }
+
+  if(!initialRouteName){
+    initialRouteName = Navigation.DEFAULT_ROUTE_HOME;
+  }
+
+  console.log("showOnlyLogin", showOnlyScreensForAnonymUser);
+  console.log("initialRouteName To Use", initialRouteName);
 
   return (
     <>
@@ -165,21 +113,7 @@ export const RootStack = (props) => {
                           unmountOnBlur:true
                         }}
       >
-        {renderedScreens}
-        <Drawer.Screen name="Subpath">
-          {
-            (props) => {
-              return(
-                <View>
-                  <Text>Subpath</Text>
-                  <TouchableOpacity onPress={() => Navigation.navigateTo('ExampleParamScreen', {testParam: 10})}>
-                    <Text>Go to ExampleParamScreen</Text>
-                  </TouchableOpacity>
-                </View>
-              )
-            }
-          }
-        </Drawer.Screen>
+        {screens}
       </Drawer.Navigator>
       {pluginRootComponent}
     </>

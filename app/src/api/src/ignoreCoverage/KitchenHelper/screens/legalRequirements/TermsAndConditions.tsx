@@ -7,10 +7,11 @@ import {RouteRegisterer} from "../../navigation/RouteRegisterer";
 import {RegisteredRoutesMap} from "../../navigation/RegisteredRoutesMap";
 import {keyof} from "ts-keyof";
 import {PrivacyPolicy} from "./PrivacyPolicy";
+import {RouteHelper} from "../../navigation/RouteHelper";
 
 export const TermsAndConditions = (props) => {
 
-	ConfigHolder.instance.setHideDrawer(false);
+  ConfigHolder.instance.setHideDrawer(false, RouteHelper.getNameOfComponent(TermsAndConditions));
 
 	// corresponding componentDidMount
 	useEffect(() => {

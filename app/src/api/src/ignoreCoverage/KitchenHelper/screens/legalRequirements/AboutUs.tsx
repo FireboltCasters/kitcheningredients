@@ -3,12 +3,12 @@ import React, {useEffect} from "react";
 import {Text} from "native-base";
 import TextGenerator from "../../helper/TextGenerator";
 import {ConfigHolder} from "../../ConfigHolder";
-import {Home} from "../home/Home";
 import {keyof} from "ts-keyof";
+import {RouteHelper} from "../../navigation/RouteHelper";
 
 export const AboutUs = (props) => {
 
-	ConfigHolder.instance.setHideDrawer(false);
+	ConfigHolder.instance.setHideDrawer(false, RouteHelper.getNameOfComponent(AboutUs));
 
 	// corresponding componentDidMount
 	useEffect(() => {

@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import {Text, View} from "native-base";
+import {View} from "native-base";
 import {ProjectLogo} from "../project/ProjectLogo";
 import {NavigatorHelper} from "./NavigatorHelper";
 import {ProjectName} from "../project/ProjectName";
@@ -15,8 +15,7 @@ import {SafeAreaView} from "react-native";
 import {SettingsButton} from "../screens/settings/SettingsButton";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {ConfigHolder} from "../ConfigHolder";
-import {MenuItem, useSynchedState} from "kitcheningredients";
-import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
+import {MenuItem, Navigation} from "../../../../src";
 
 export const CustomDrawerContent: FunctionComponent = (props) => {
 	let history = props?.state?.history || [];
@@ -142,19 +141,19 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	return (
 		<MyThemedBox style={[{height: "100%"}, customBackgroundStyle]}>
 			<SafeAreaView style={{height: "100%", width: "100%"}}>
+        <DrawerItem
+          key={"ProjectLogoItem"}
+          label={() => {
+            return (<View style={{flexDirection: "row"}} >
+              <ProjectLogo rounded={true} />
+              <ProjectName themedColor={true} />
+            </View>)
+          }}
+          onPress={() => {
+            Navigation.navigateHome();
+          }}
+        />
 				<DrawerContentScrollView {...props}>
-					<DrawerItem
-						key={"ProjectLogoItem"}
-						label={() => {
-							return (<View style={{flexDirection: "row"}} >
-								<ProjectLogo rounded={true} />
-								<ProjectName themedColor={true} />
-							</View>)
-						}}
-						onPress={() => {
-							NavigatorHelper.navigateHome();
-						}}
-					/>
 					{renderDrawerItems()}
 				</DrawerContentScrollView>
 				{renderBottomPanel()}

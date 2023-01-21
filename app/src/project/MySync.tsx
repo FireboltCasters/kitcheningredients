@@ -13,11 +13,21 @@ export const MySync: FunctionComponent = (props) => {
   console.log(user)
 
   async function load(){
-    Navigation.routeRegister({
+
+    let route = Navigation.routeRegister({
       component: ExampleRoutesInformationsScreen,
+      template: BaseTemplate,
     })
+    Navigation.menuRegister({
+      route: route,
+      name: "ExampleRoutesInformationsScreen",
+      icon: "home",
+    })
+
+
     Navigation.routeRegister({
       component: ExampleParamScreen,
+      template: BaseTemplate,
       params: {
         testParam: 0
       },

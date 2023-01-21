@@ -31,20 +31,7 @@ export const Root = (props) => {
 	if(!!ConfigHolder.prefixes && ConfigHolder.prefixes.length> 0){
 	      prefixes = ConfigHolder.prefixes;
   }
-	let linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
-
-  const getInitialURL = async () => {
-    console.log("getInitialURL");
-
-    const url = await Linking.getInitialURL();
-    console.log(url);
-
-    if (url != null) {
-      return url;
-    }
-
-    return url;
-  };
+	//let linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
 
 	return (
 		<NavigationContainer

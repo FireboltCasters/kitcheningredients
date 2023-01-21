@@ -8,6 +8,7 @@ import {NavigationQueueItem} from "./NavigationQueueItem";
 import {ConfigHolder} from "../ConfigHolder";
 import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
 import {useSynchedJSONState} from "../synchedstate/SynchedState";
+import {Navigation} from "./Navigation";
 
 // todo Update to newest ReactNavigation
 // https://reactnavigation.org/docs/navigating-without-navigation-prop/
@@ -58,7 +59,7 @@ export class NavigatorHelper {
     }
 
     static async handleContinueAfterAuthenticated(){
-        await NavigatorHelper.navigate(Home)
+        await Navigation.navigateHome()
         await ConfigHolder.instance.setHideDrawer(false);
     }
 
@@ -70,9 +71,9 @@ export class NavigatorHelper {
             console.log(err);
         }
         if(!!me){
-            NavigatorHelper.navigate(RouteRegisterer.HOME_AUTHENTICATED)
+            await Navigation.navigateHome()
         } else {
-            NavigatorHelper.navigate(RouteRegisterer.HOME_UNAUTHENTICATED)
+            await Navigation.navigateTo(Navigation.DEFAULT_ROUTE_LOGIN);
         }
     }
 
