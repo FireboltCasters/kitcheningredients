@@ -211,8 +211,8 @@ export default class App extends React.Component<any, any>{
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.initApp){
       await ConfigHolder.plugin.initApp();
     }
-    let initialURL = await Linking.getInitialURL() || "";
-    let startURL = initialURL
+
+    let startURL = await Linking.getInitialURL() || ""
     console.log("Initial URL before checking if token: ",startURL);
 
     let directusAccessTokenSplit = "?"+EnviromentHelper.getDirectusAccessTokenName()+"="
@@ -226,7 +226,6 @@ export default class App extends React.Component<any, any>{
 
     await ConfigHolder.instance.setState({
       startURL: startURL,
-      initialURL: initialURL,
     })
     let serverStatus = await this.loadServerInfo();
     await ConfigHolder.instance.setState({offline: !serverStatus});

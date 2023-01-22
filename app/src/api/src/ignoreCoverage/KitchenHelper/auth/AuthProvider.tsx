@@ -11,6 +11,7 @@ import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import {Icon} from "../components/Icon";
 import * as ExpoLinking from "expo-linking";
 import {ConfigHolder} from "../ConfigHolder";
+import {URL_Helper} from "../helper/URL_Helper";
 
 interface AppState {
 	serverInfo: any;
@@ -25,10 +26,7 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	function getUrlToProvider(provider: string){
 		provider= provider.toLowerCase();
 		console.log("Provider: "+provider);
-		let initialURL = ConfigHolder.instance.state?.initialURL;
-		let urlWithoutParams = initialURL?.split("?")[0];
-		let urlWithoutHash = urlWithoutParams?.split("#")[0];
-    let redirectURL = urlWithoutHash;
+    let redirectURL = URL_Helper.getURLToBase();
 		let redirect_with_access_token = "?redirect="+ServerAPI.getAPIUrl()+"/redirect-with-token?redirect="+redirectURL+"?"+EnviromentHelper.getDirectusAccessTokenName()+"=";
 		let totalURL = ServerAPI.getAPIUrl()+"/auth/login/"+provider+redirect_with_access_token;
 		console.log("URL: "+totalURL);
