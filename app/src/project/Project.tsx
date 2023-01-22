@@ -9,6 +9,7 @@ import {StorageKeys} from "./helper/StorageKeys";
 import {MySync} from "./MySync";
 import {MyLoading} from "./MyLoading";
 import {MyRoot} from "./MyRoot";
+import {ExampleHomeComponent} from "./testScreens/ExampleHomeComponent";
 
 export default class Project extends PluginInterface{
 
@@ -62,7 +63,7 @@ export default class Project extends PluginInterface{
 	}
 
 	getHomeComponent(): any {
-    return null
+    return <ExampleHomeComponent />
 	}
 
   getLoadingComponent(){

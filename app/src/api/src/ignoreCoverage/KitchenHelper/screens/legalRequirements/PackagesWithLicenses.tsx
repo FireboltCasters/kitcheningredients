@@ -37,16 +37,24 @@ export const PackagesWithLicenses = (props) => {
 	}
 
 	function getSubMenuRow(icon, label, text){
+	  if(!text){
+	    return null;
+    }
+
     let content = <Text></Text>;
 
 		if(!!text){
       content = <Text><Text bold={true}>{label+": "}</Text>{text}</Text>;
 		}
 
-		return new MenuItem(label, label, null, null, null, content, false, icon);
+		return new MenuItem({
+      key: label,
+      content: content,
+      icon: icon,
+    });
 	}
 
-	function getSubMenuWithLink(icon, url){
+	function getSubMenuWithLink(icon, label, url){
     let content = (
       <Text>
       </Text>
@@ -55,6 +63,7 @@ export const PackagesWithLicenses = (props) => {
 		if(!!url){
       content = (
         <Text>
+          <Text bold={true}>{label+": "}</Text>
           <Link href={url} >
             <Text>{url}</Text>
           </Link>
@@ -63,24 +72,29 @@ export const PackagesWithLicenses = (props) => {
 		}
 
 
-    return new MenuItem(url, url, null, null, null, content, false, icon);
+    return new MenuItem({
+      key: url,
+      content: content,
+      icon: icon,
+    });
 	}
 
 	function getPackageChildrenMenu(dependencyKey, upperVersion, currentVersion, thirdpartyDependency){
-		let url = thirdpartyDependency?.url;
 		let repositoryUrl = thirdpartyDependency?.repository;
+    let url = thirdpartyDependency?.url;
+    let backupUrl = url || repositoryUrl;
 
-		let packageUrl = getUrlToPackageInformation(dependencyKey);
+    let packageUrl = getUrlToPackageInformation(dependencyKey);
 		let license = thirdpartyDependency?.licenses
 		let publisher = thirdpartyDependency?.publisher
 		let email = thirdpartyDependency?.email
 
     return [
-      getSubMenuWithLink("web", url),
+      getSubMenuWithLink("web", "Website",url || repositoryUrl),
       getSubMenuRow("license", "License", license),
       getSubMenuRow("account-circle", "Publisher", publisher),
       getSubMenuRow("email", "Email", email),
-      getSubMenuWithLink("github", repositoryUrl),
+      getSubMenuWithLink("github", "GitHub",repositoryUrl || backupUrl),
     ]
 	}
 
@@ -88,14 +102,15 @@ export const PackagesWithLicenses = (props) => {
 	  let label = dependencyKey;
 	  let key = dependencyKey;
 
-	  let menuItem = new MenuItem(key, label, null, null, null, null, false);
+	  let menuItem = new MenuItem({
+      key: dependencyKey,
+      label: label,
+    });
 	  let subMenus = getPackageChildrenMenu(dependencyKey, upperVersion, currentVersion, thirdpartyDependency);
-	  for(let subMenu of subMenus){
-      menuItem.addChildMenuItems(subMenu)
-    }
+    menuItem.addChildMenuItems(subMenus)
 
 		return (
-			<View style={{paddingBottom: 10, width: "100%"}}>
+			<View key={dependencyKey} style={{paddingBottom: 10, width: "100%"}}>
 				<ExpandableDrawerItem
           key={key}
 					level={2}

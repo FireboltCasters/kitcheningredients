@@ -1,75 +1,114 @@
-// @ts-nocheck
-import React from 'react';
-import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
-import {useBreakpointValue, useTheme, View, Text} from "native-base";
-import {CustomDrawerContent} from "./CustomDrawerContent";
-import {ConfigHolder} from "../ConfigHolder";
+import React, {useEffect} from 'react';
 import {RouteRegisterer} from "./RouteRegisterer";
-import {Layout} from "../templates/Layout";
-import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
-import {useSynchedState} from "../synchedstate/SynchedState";
-import {useSynchedJSONState} from "../synchedstate/SynchedState";
-import {NavigatorHelper} from "../navigation/NavigatorHelper";
+import {PlatformHelper} from "../helper/PlatformHelper";
+import {Navigation} from "./Navigation";
+import {CustomDrawerContent} from "./CustomDrawerContent";
+import {ConfigHolder} from "../../KitchenHelper/ConfigHolder";
+import {Layout} from "../../KitchenHelper/templates/Layout";
+import {DefaultNavigation} from "./DefaultNavigation";
+import {RouteHelper} from "./RouteHelper";
+import {Login} from "../auth/Login";
 
 export const RootStack = (props) => {
-  const [test, setTest] = useSynchedState(RequiredSynchedStates.menuReloadNumber)
-  const [navigationHistory, setNavigationHistory] = useSynchedJSONState(RequiredSynchedStates.navigationHistory)
-  NavigatorHelper.setSetNavigationHistoryFunction(setNavigationHistory);
 
-	let isSmallDevice = Layout.usesSmallDevice();
+  let isSmallDevice = Layout.usesSmallDevice();
 
-	const theme = useTheme();
+  const startURL = props?.startURL || null;
 
-	// TODO do we have this?
-	// navigationOptions={{unmountInactiveRoutes: true}}
+  let initialRouteName = RouteHelper.getInitialRouteName(startURL);
+  let search = getSearchParam(startURL);
 
-	let largeScreenDrawerType = "front";
+  const [initialSearch, setInitialSearch] = React.useState(search);
 
-	const hideDrawer = ConfigHolder.instance.shouldHideDrawer()
-	if(!hideDrawer){
-		largeScreenDrawerType = "permanent";
-	}
+  let Drawer = RouteRegisterer.getDrawer();
 
-	let drawerType = isSmallDevice ? 'front' : largeScreenDrawerType /** 'front' | 'back' | 'slide' | 'permanent' */
 
-	let drawerBorderColor = RouteRegisterer.getDrawerBorderColor();
-	let drawerStyle = !!drawerBorderColor ? {borderColor: drawerBorderColor} : undefined;
 
-	let Drawer = RouteRegisterer.getDrawer();
 
-  RouteRegisterer.loadDrawerScreens();
-	let screens = ConfigHolder.instance.shouldRedirectToLogin() ? RouteRegisterer.loginScreens : RouteRegisterer.screens;
+
+  function getSearchParam(startURL){
+    let search = RouteHelper.getSearchParamString(startURL);
+    // parse for search params in url to dict
+    let searchParams = new URLSearchParams(search);
+    let searchDict = {};
+    for (let [key, value] of searchParams) {
+      searchDict[key] = value;
+    }
+    return searchDict;
+  }
+
+  /**
+   * We have to check if the url changed and if so, we have to navigate to the new route
+   * This is a workaround for the web version of react-navigation.
+   */
+  async function handleHashChange(){
+    let currentURL = window.location.href;
+    let currentRouteName = RouteHelper.getInitialRouteName(currentURL);
+    let currentSearch = getSearchParam(currentURL);
+    Navigation.navigateTo(currentRouteName, currentSearch, true);
+  }
+
+  /**
+   * We register a listener for the hash change event
+   */
+  function registerHashChangeForWeb(){
+    if(PlatformHelper.isWeb()){
+      window.addEventListener('hashchange', handleHashChange);
+      return () => window.removeEventListener('hashchange', handleHashChange);
+    }
+  }
+
+  useEffect(() => {
+    let cleanUpFunction = registerHashChangeForWeb()
+    return cleanUpFunction;
+  }, []);
+
+  // TODO do we have this?
+  // navigationOptions={{unmountInactiveRoutes: true}}
+
+  let largeScreenDrawerType = "front";
+
+  const hideDrawer = ConfigHolder.instance.isDrawerHidden()
+  if(!hideDrawer){
+    largeScreenDrawerType = "permanent";
+  }
+
+  let drawerType = isSmallDevice ? 'front' : largeScreenDrawerType /** 'front' | 'back' | 'slide' | 'permanent' */
+
+  let drawerBorderColor = RouteRegisterer.getDrawerBorderColor();
+  let drawerStyle = !!drawerBorderColor ? {borderColor: drawerBorderColor} : undefined;
+
+
+  const showOnlyScreensForAnonymUser = !ConfigHolder.instance.getUser();
+  let screens = showOnlyScreensForAnonymUser ? DefaultNavigation.getAnonymUserScreens(initialSearch) : DefaultNavigation.getAllScreens(initialSearch);
 
   let pluginRootComponent = null;
   if(!!ConfigHolder.plugin.getRootComponent){
     pluginRootComponent = ConfigHolder.plugin.getRootComponent(props);
   }
 
-	//TODO maybe add Drawer instead of custom implementation: https://reactnavigation.org/docs/5.x/drawer-navigator
-	return(
-		<View flex={1} flexDirection={"row"} >
-			<View flex={1}>
-					<Drawer.Navigator
-						drawerStyle={drawerStyle}
-						drawerType={drawerType}
-						redirectToLogin={props.redirectToLogin+""}
-						reloadNumber={ConfigHolder.instance.state.reloadNumber}
-						swipeEnabled={false}
-						drawerPosition={'left' /** | 'right' */}
-						drawerContent={(props) => <CustomDrawerContent {...props} />}
-						initialRouteName={RegisteredRoutesMap.getInitialRouteName()}
+  if(!initialRouteName){
+    initialRouteName = Navigation.DEFAULT_ROUTE_HOME;
+  }
 
-						screenOptions={{
-							headerShown: false,
-							unmountOnBlur:true
-						}}>
-						{screens}
-					</Drawer.Navigator>
-          {pluginRootComponent}
-			</View>
-		</View>
-	)
+  return (
+    <>
+      <Drawer.Navigator initialRouteName={initialRouteName}
+                        drawerStyle={drawerStyle}
+                        drawerType={drawerType}
+                        redirectToLogin={props.redirectToLogin+""}
+                        reloadNumber={ConfigHolder.instance.state.reloadNumber}
+                        swipeEnabled={false}
+                        drawerPosition={'left' /** | 'right' */}
+                        drawerContent={(props) => <CustomDrawerContent {...props} />}
+                        screenOptions={{
+                          headerShown: false,
+                          unmountOnBlur: true
+                        }}
+      >
+        {screens}
+      </Drawer.Navigator>
+      {pluginRootComponent}
+    </>
+  );
 }
-/**
-
-*/

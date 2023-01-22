@@ -1,12 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {FunctionComponent, useEffect} from "react";
 import {Text, View} from "native-base";
-import {FunctionComponent} from "react";
-import {BaseTemplate, EmptyTemplate, Menu, MenuItem, useSynchedState} from "../api/src";
-import {HiddenScreen} from "./testScreens/HiddenScreen";
+import {BaseTemplate, MenuItem, Navigation} from "../api/src";
 import {ConfigHolder} from "../api/src/ignoreCoverage/KitchenHelper/ConfigHolder";
-import {ExampleImageScreen} from "./testScreens/ExampleImageScreen";
-import {ExampleMarkdownScreen} from "./testScreens/ExampleMarkdownScreen";
-import {ExampleIconScreen} from "./testScreens/ExampleIconScreen";
+import {ExampleParamScreen} from "./testScreens/ExampleParamScreen";
+import {ExampleRoutesInformationsScreen} from "./testScreens/ExampleRoutesInformationsScreen";
+import {ExampleTemplateUsageScreen} from "./testScreens/ExampleTemplateUsageScreen";
 
 export const MySync: FunctionComponent = (props) => {
   console.log("MySynch");
@@ -15,21 +13,32 @@ export const MySync: FunctionComponent = (props) => {
   console.log(user)
 
   async function load(){
-    if(!!user){
-      Menu.registerRoute(HiddenScreen, EmptyTemplate, "HiddenScreen", "hidden", null, true);
-      Menu.registerCommonMenu(new MenuItem("HiddenScreen", "HiddenScreen", HiddenScreen))
-    }
 
-    Menu.registerRoute(ExampleImageScreen, EmptyTemplate, "ExampleImageScreen", "ExampleImageScreen", null, true);
-    Menu.registerCommonMenu(new MenuItem("ExampleImageScreen", "ExampleImageScreen", ExampleImageScreen))
+    let exampleParamRoute = Navigation.routeRegister({
+      component: ExampleParamScreen,
+      template: BaseTemplate,
+      params: {
+        testParam: 0
+      },
+    })
 
-    Menu.registerRoute(ExampleIconScreen, BaseTemplate, "ExampleIconScreen", "ExampleIconScreen", null, true);
-    Menu.registerCommonMenu(new MenuItem("ExampleIconScreen", "ExampleIconScreen", ExampleIconScreen))
+    let routes = Navigation.routesRegisterMultipleFromComponents(
+      [
+        ExampleTemplateUsageScreen,
+        ExampleRoutesInformationsScreen,
+      ],
+      BaseTemplate
+    )
 
+    let docs = new MenuItem({
+      key: "docs",
+      label: "Documentation",
+    });
 
-    Menu.registerRoute(ExampleMarkdownScreen, BaseTemplate, "ExampleMarkdownScreen", "ExampleMarkdownScreen", null, true);
-    Menu.registerCommonMenu(new MenuItem("ExampleMarkdownScreen", "ExampleMarkdownScreen", ExampleMarkdownScreen))
+    docs.addChildMenuItems(MenuItem.fromRoutes(routes));
+    docs.addChildMenuItem(MenuItem.fromRoute(exampleParamRoute));
 
+    Navigation.menuRegister(docs);
 
     await ConfigHolder.instance.setSyncFinished(true)
   }

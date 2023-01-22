@@ -1,15 +1,28 @@
 import {Platform} from "react-native";
 import * as Linking from 'expo-linking';
+import {Navigation} from "../navigation/Navigation";
 
 export class URL_Helper{
 
+    static getURLToBase(){
+      if(Platform.OS!=="web"){
+        let url = Linking.createURL(Navigation.DEFAULT_ROUTE_LOGIN);
+        return url;
+      } else {
+        let fullURL = window.location.href;
+        let url = fullURL.split('?')[0];
+        url = url.split('#')[0];
+        return url;
+      }
+    }
+
     static getCurrentLocationWithoutQueryParams(){
-        if(Platform.OS!=="web"){
-            let url = Linking.createURL("login");
-            return url;
-        } else {
-            return URL_Helper.getLocationWithoutQueryParams(window.location.href);
-        }
+      if(Platform.OS!=="web"){
+        let url = Linking.createURL("login");
+        return url;
+      } else {
+        return URL_Helper.getLocationWithoutQueryParams(window.location.href);
+      }
     }
 
     static getLocationWithoutQueryParams(url){

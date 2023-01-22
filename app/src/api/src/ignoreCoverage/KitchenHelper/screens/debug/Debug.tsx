@@ -3,9 +3,9 @@ import React, {useEffect, useRef, useState} from "react";
 import {Button, Input, Text, View} from "native-base";
 import {keyof} from "ts-keyof";
 import {TouchableOpacity} from "react-native";
-import {NavigatorHelper} from "./../../navigation/NavigatorHelper";
 import {DeveloperSettings} from "../settings/DeveloperSettings";
 import {DebugDevice} from "./DebugDevice";
+import {Navigation} from "./../../navigation/Navigation";
 
 export const Debug = (props) => {
 
@@ -21,7 +21,7 @@ export const Debug = (props) => {
   function renderOpenDeveloperSettings(){
     return(
       <TouchableOpacity onPress={() => {
-        NavigatorHelper.navigate(DeveloperSettings);
+        Navigation.navigateTo(DeveloperSettings)
       }}
       ><Text>{"Developer Settings"}</Text></TouchableOpacity>
     )

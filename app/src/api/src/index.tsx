@@ -1,3 +1,6 @@
+import {Navigation} from "./ignoreCoverage/KitchenHelper/navigation/Navigation";
+export {Navigation}
+
 import {useProjectColor} from "./ignoreCoverage/KitchenHelper/templates/useProjectColor";
 export {useProjectColor}
 
@@ -46,12 +49,6 @@ export {PlatformHelper}
 import {KitchenSafeAreaView} from "./ignoreCoverage/KitchenHelper/components/KitchenSafeAreaView";
 export {KitchenSafeAreaView}
 
-import {RouteRegisterer} from "./ignoreCoverage/KitchenHelper/navigation/RouteRegisterer";
-export {RouteRegisterer}
-
-import {RegisteredRoutesMap} from "./ignoreCoverage/KitchenHelper/navigation/RegisteredRoutesMap";
-export {RegisteredRoutesMap}
-
 import {Icon} from "./ignoreCoverage/KitchenHelper/components/Icon";
 export {Icon}
 
@@ -72,9 +69,6 @@ export {getDirectusImageUrl}
 
 import {Layout} from "./ignoreCoverage/KitchenHelper/templates/Layout";
 export {Layout}
-
-import {NavigatorHelper} from "./ignoreCoverage/KitchenHelper/navigation/NavigatorHelper";
-export {NavigatorHelper}
 
 import CustomFloaters from "./ignoreCoverage/KitchenHelper/templates/CustomFloaters";
 export {CustomFloaters}
@@ -120,9 +114,6 @@ export {MenuItem}
 
 import {PluginInterface} from "./ignoreCoverage/KitchenHelper/PluginInterface";
 export {PluginInterface}
-
-import {Menu} from "./ignoreCoverage/KitchenHelper/navigation/Menu";
-export {Menu}
 
 import {TextWithIcon} from "./ignoreCoverage/KitchenHelper/components/TextWithIcon";
 export {TextWithIcon};

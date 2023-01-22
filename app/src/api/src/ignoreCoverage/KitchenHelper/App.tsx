@@ -1,13 +1,12 @@
 // @ts-nocheck
 import React from 'react';
-import {Box, NativeBaseProvider, View, Text} from 'native-base';
+import {NativeBaseProvider} from 'native-base';
 import {Root} from './navigation/RootComponent';
 import ColorCodeHelper from "./theme/ColorCodeHelper";
 import BaseThemeGenerator from "./theme";
 import {RootStack} from "./navigation/rootNavigator";
 import {ColorStatusBar} from "./components/ColorStatusBar";
 import ServerAPI from "./ServerAPI";
-import {RouteRegisterer} from "./navigation/RouteRegisterer";
 import {Linking} from "react-native";
 import * as ExpoLinking from "expo-linking";
 import {URL_Helper} from "./helper/URL_Helper";
@@ -17,8 +16,10 @@ import {StoreProvider} from "easy-peasy";
 import {SynchedState} from "./synchedstate/SynchedState";
 import {ConfigHolder} from "./ConfigHolder";
 import {RequiredStorageKeys} from "./storage/RequiredStorageKeys";
-import {ShowMoreGradientPlaceholder} from "./utils/ShowMoreGradientPlaceholder";
 import {ViewWithBackgroundColor} from "./templates/ViewWithBackgroundColor";
+import {DefaultNavigation} from "./navigation/DefaultNavigation";
+import {Navigation} from "./navigation/Navigation";
+import EnviromentHelper from "./EnviromentHelper";
 
 export default class App extends React.Component<any, any>{
 
@@ -36,16 +37,16 @@ export default class App extends React.Component<any, any>{
 			let route = urlSplit[0];
 			let params = URL_Helper.getAllUrlParams(url);
 			//console.log("URL Subscribe: "+route);
-			NavigatorHelper.navigateToRouteName(route, params);
+			//NavigatorHelper.navigateToRouteName(route, params);
 		})
 		this.state = {
 		  syncFinished: false,
+      startURL: undefined,
 			user: undefined,
       role: undefined,
       offline: undefined,
       permissions: undefined,
 			loadedUser: false,
-			redirectToLogin: false,
 			reloadNumber: 0,
 			hideDrawer: false,
 		}
@@ -83,11 +84,7 @@ export default class App extends React.Component<any, any>{
     return await ServerAPI.loadPermissions(role_id);
   }
 
-	shouldRedirectToLogin(){
-		return ConfigHolder.instance.state.redirectToLogin;
-	}
-
-	shouldHideDrawer(){
+	isDrawerHidden(){
 		return ConfigHolder.instance.state.hideDrawer;
 	}
 
@@ -97,22 +94,22 @@ export default class App extends React.Component<any, any>{
     });
   }
 
-	async setHideDrawer(visible){
-		if(ConfigHolder.instance.state.hideDrawer!==visible){
+	async setHideDrawer(hideDrawer, nextRouteName?){
+    let currentRouteName = Navigation.getCurrentRouteName();
+		if(ConfigHolder.instance.state.hideDrawer!==hideDrawer){
+		  let useRouteName = !!nextRouteName ? nextRouteName : currentRouteName;
+		  useRouteName = useRouteName || ConfigHolder.instance.startURL;
+
 			await ConfigHolder.instance.setState({
-				hideDrawer: visible,
+				hideDrawer: hideDrawer,
 				reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
+        startURL: "#"+useRouteName,
 			});
 		}
 	}
 
-	async setRedirectToLogin(redirect){
-		if(ConfigHolder.instance.state.redirectToLogin!==redirect){
-			await ConfigHolder.instance.setState({
-				redirectToLogin: redirect,
-				reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
-			});
-		}
+	async setRedirectToLogin(){
+	  await ConfigHolder.instance.setHideDrawer(true, Navigation.DEFAULT_ROUTE_LOGIN);
 	}
 
 	async setUserAsGuest(){
@@ -131,21 +128,26 @@ export default class App extends React.Component<any, any>{
   }
 
 	async setUser(user, callback?){
+	  console.log("App.setUser: ",user);
+
     if(!!user){
       user.isGuest = UserHelper.isGuest(user);
     }
     let role_id = user?.role;
 
+    console.log("App.setUser: role_id: ",role_id);
 		let role = await this.loadRole(role_id);
+		console.log("App.setUser: role: ",role);
     let permissions = await this.loadPermissions(role_id);
+    console.log("App.setUser: permissions: ",permissions);
 
     if(!callback && !!ConfigHolder.plugin.onLogin){
       await ConfigHolder.plugin.onLogin(user, role, permissions);
-      await RouteRegisterer.register(user, role, permissions);
       callback = () => {};
     }
+    await DefaultNavigation.registerRoutesAndMenus(user, role, permissions);
 
-		await this.setState({
+		await ConfigHolder.instance.setState({
 			reloadNumber: this.state.reloadNumber+1,
 			loadedUser: true,
       syncFinished: false,
@@ -168,16 +170,25 @@ export default class App extends React.Component<any, any>{
   }
 
 	async loadUser(){
+	  console.log("App. Load User");
 		try{
+		  console.log("App. Load User. Try");
 			if(ServerAPI.areCredentialsSaved()){
+			  console.log("-- Load User: Credentials saved");
 				let directus = ServerAPI.getClient();
 				let user = await ServerAPI.getMe(directus);
+				console.log("-- Load User: User loaded");
+				console.log(user);
 				return user;
 			} else if(ConfigHolder.storage.is_guest()){
+			  console.log("-- Load User: Guest");
 				return UserHelper.getGuestUser();
-			}
+			} else {
+			  console.log("-- Load User: No Credentials");
+        return null;
+      }
 		} catch (err){
-			console.log("Error at load User");
+			console.log("-- Error at load User");
 			console.log(err);
 		}
 		return null;
@@ -200,10 +211,32 @@ export default class App extends React.Component<any, any>{
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.initApp){
       await ConfigHolder.plugin.initApp();
     }
+
+    let startURL = await Linking.getInitialURL() || ""
+    console.log("Initial URL before checking if token: ",startURL);
+
+    let directusAccessTokenSplit = "?"+EnviromentHelper.getDirectusAccessTokenName()+"="
+    let directusAutTokenIncluded = startURL.includes(directusAccessTokenSplit);
+    if(directusAutTokenIncluded){
+      let realInitialURL = startURL.split(directusAccessTokenSplit)[0];
+      let directusAccessToken = startURL.split(directusAccessTokenSplit)[1];
+      startURL = realInitialURL+"#"+Navigation.ROUTE_PATH_PREFIX+Navigation.DEFAULT_ROUTE_LOGIN+"?"+EnviromentHelper.getDirectusAccessTokenName()+"="+directusAccessToken;
+    }
+    console.log("Initial URL after checking if token: ",startURL);
+
+    await ConfigHolder.instance.setState({
+      startURL: startURL,
+    })
     let serverStatus = await this.loadServerInfo();
     await ConfigHolder.instance.setState({offline: !serverStatus});
     let user = await ConfigHolder.instance.loadUser();
-    await this.setUser(user);
+    await ConfigHolder.instance.setUser(user, null);
+    if(!user){
+      //let isAllowedInitialRoute = await DefaultNavigation.isAnonymUserRoute(startURL);
+      //if(!isAllowedInitialRoute){
+      //  await ConfigHolder.instance.setRedirectToLogin();
+      //}
+    }
   }
 
 	getBaseTheme(){
@@ -216,6 +249,7 @@ export default class App extends React.Component<any, any>{
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getLoadingComponent){
       loadingContent = ConfigHolder.plugin.getLoadingComponent();
     }
+//    return <ViewWithBackgroundColor><View style={{width: "100%", height: "100%", backgroundColor: "red", justifyContent: "center", alignItems: "center"}}><Text>{JSON.stringify(ConfigHolder.instance.state.startURL, null, 2)}</Text></View></ViewWithBackgroundColor>
     return <ViewWithBackgroundColor>{loadingContent}</ViewWithBackgroundColor>
   }
 
@@ -232,14 +266,14 @@ export default class App extends React.Component<any, any>{
   }
 
   getNormalContent(){
-    let content = <RootStack reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+this.state.syncFinished} hideDrawer={this.state.hideDrawer+this.state.redirectToLogin} />
+    let content = <RootStack reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.startURL+this.state.syncFinished} startURL={this.state.startURL} />
     if(!!this.props.children){
       content = this.props.children;
     }
 
     return (
       <>
-        <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin+this.state.syncFinished}>{content}</Root>
+        <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.startURL+this.state.syncFinished}>{content}</Root>
         <ColorStatusBar />
       </>
     )
@@ -248,14 +282,14 @@ export default class App extends React.Component<any, any>{
 	render() {
 		let root = null;
 
-		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined){
-		  //console.log("Loading screen");
+		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined || this.state.startURL===undefined){
+		  console.log("Loading screen");
 		  root = this.getLoadingScreen();
 		} else if(!this.state.syncFinished) {
-      //console.log("Sync screen");
+      console.log("Sync screen");
 		  root = this.getSynchScreen();
     } else {
-      //console.log("Normal screen");
+      console.log("Normal screen");
 		  root = this.getNormalContent();
     }
 
@@ -263,7 +297,7 @@ export default class App extends React.Component<any, any>{
 
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>
-				<NativeBaseProvider reloadNumber={this.state.syncFinished+this.state.reloadNumber+""+this.state.hideDrawer+this.state.redirectToLogin} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
+				<NativeBaseProvider reloadNumber={this.state.syncFinished+this.state.reloadNumber+""+this.state.hideDrawer+this.state.startURL} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
           <ViewWithBackgroundColor>
           {root}
           </ViewWithBackgroundColor>

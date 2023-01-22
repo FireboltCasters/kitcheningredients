@@ -1,7 +1,6 @@
 // @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import ServerAPI from "../ServerAPI";
-import {NavigatorHelper} from "../navigation/NavigatorHelper";
 import {Login} from "./Login";
 import EnviromentHelper from "../EnviromentHelper";
 import {Button, Flex, FormControl, Input, View} from "native-base";
@@ -11,6 +10,7 @@ import {FormButton} from "../buttons/FormButton";
 import {ConfigHolder} from "./../ConfigHolder";
 import {Register} from "./Register";
 import {Icon} from "../components/Icon";
+import {Navigation} from "../navigation/Navigation";
 
 const showResetPassword = false;
 const showEmailLogin = true;
@@ -26,7 +26,7 @@ export const handleLoginWithCredentials = async (email, password) => {
   });
   let token = response?.refresh_token;
   if(!!token){
-    NavigatorHelper.navigate(Login, {[EnviromentHelper.getDirectusAccessTokenName()]: token} )
+    Navigation.navigateTo(Login, {[EnviromentHelper.getDirectusAccessTokenName()]: token})
     return true;
   }
   return false;
@@ -87,7 +87,9 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 	function renderRegisterButton(){
     if(ConfigHolder.showMailRegister){
       return(
-        <FormButton loading={loginInitiated} disabled={loginInitiated} onPress={() => {NavigatorHelper.navigateWithoutParams(Register)}}>
+        <FormButton loading={loginInitiated} disabled={loginInitiated} onPress={() => {
+          Navigation.navigateTo(Register)
+        }}>
           {"Register"}
         </FormButton>
       )

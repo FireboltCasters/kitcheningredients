@@ -14,19 +14,22 @@ export interface AppState {
 }
 export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
 
-    let menu = props.menu;
+    let menu = props?.menu;
 
-    const [expanded, setExpanded] = useState(menu.expanded)
+    const [expanded, setExpanded] = useState(menu?.expanded)
 
-    let menuChilds = menu?.getChildItems();
-    let hasChildren = menuChilds.length>0;
+    let menuChilds = [];
+    if(menu?.getChildItems){
+        menuChilds = menu?.getChildItems();
+    }
+    let hasChildren = menuChilds?.length>0;
 
     function renderExpandIcon(){
-        if(!!menu.customIcon){
-          if(typeof menu.customIcon === "string"){
-            return <Icon name={menu.customIcon}/>;
+        if(!!menu.icon){
+          if(typeof menu?.icon === "string"){
+            return <Icon name={menu.icon}/>;
           } else {
-            return menu.customIcon(menu, hasChildren, expanded, props.level);
+            return menu.icon(menu, hasChildren, expanded, props.level);
           }
         }
 
@@ -67,7 +70,7 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
 
       let renderedChilds = [];
       for(let childMenu of menuChilds){
-        renderedChilds.push(<ExpandableDrawerItem menu={childMenu} level={props.level+1} />);
+        renderedChilds.push(<ExpandableDrawerItem key={childMenu?.key} menu={childMenu} level={props.level+1} />);
       }
 
         return(

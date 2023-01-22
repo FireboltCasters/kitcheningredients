@@ -5,6 +5,7 @@ import {IButtonProps} from "native-base/src/components/primitives/Button/types";
 import {IBoxProps} from "native-base/src/components/primitives/Box/index";
 import {TransparentButton} from "../buttons/TransparentButton";
 import {NavigatorHelper} from "./NavigatorHelper";
+import {Navigation} from "./Navigation";
 
 interface AppState {
 	destination: FunctionComponent;
@@ -23,7 +24,7 @@ export const InternalLink: FunctionComponent<IButtonProps & IBoxProps & AppState
 			if(!!beforeNavigateCallback){
 				await beforeNavigateCallback();
 			}
-			NavigatorHelper.navigateWithoutParams(props.destination)
+			Navigation.navigateTo(props.destination);
 			if(!!afterNavigateCallback){
 				await afterNavigateCallback();
 			}
