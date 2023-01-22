@@ -21,14 +21,12 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	let user = ConfigHolder.instance.getUser()
 
 	function renderDrawerItems(){
-	  console.log("CustomDrawerContent: renderDrawerItems");
 		let output = [];
 
 		let registeredMenusList = Navigation.menuGetRegisteredList();
 		let sortedMenus = sortMenus(registeredMenusList);
 		for(let i=0; i<sortedMenus.length; i++){
 		  const menu = sortedMenus[i];
-		  console.log("menu", menu);
       output.push(<ExpandableDrawerItem key={menu?.key} menu={menu} level={0}/>);
     }
 

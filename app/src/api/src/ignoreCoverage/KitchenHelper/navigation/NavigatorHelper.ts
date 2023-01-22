@@ -45,11 +45,31 @@ export class NavigatorHelper {
       return state?.history || [];
     }
 
-    static async navigateToRouteName(routeName: string, props= {}){
+  //https://github.com/react-navigation/react-navigation/issues/6674
+  static getEmptyParams(): object {
+    let state = NavigatorHelper.getState()
+    let keys: string[] = [];
+    try{
+      keys = Array.prototype.concat(
+        ...state?.routes?.map((route) =>
+          Object.keys((route as any)?.params || {})
+        )
+      );
+    } catch (err){
+      console.log("getEmptyParams() error");
+      console.log(err);
+    }
+    return keys.reduce((acc, k) => ({ ...acc, [k]: undefined }), {});
+  }
+
+    static async navigateToRouteName(routeName: string, props= {}, keepHistory?: boolean){
         // Perform navigation if the app has mounted
         if (NavigatorHelper.isNavigationLoaded()) {
               // @ts-ignore
-              NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.jumpTo(routeName, {...props}));
+              let emptyParams = NavigatorHelper.getEmptyParams();
+              let usedEmptyParams = keepHistory ? {} : emptyParams;
+              let params = {...usedEmptyParams, ...props};
+              NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.jumpTo(routeName, {...params}));
               if(NavigatorHelper.setNavigationHistory){
                   NavigatorHelper.setNavigationHistory(NavigatorHelper.getHistory());
               }
