@@ -19,14 +19,13 @@ export interface MenuItemProps {
 export class MenuItem implements MenuItemProps {
     key: string;
     private items: MenuItem[];
+    position: number;
 
     static fromRoutes(routes: RouteProps[]){
-      console.log("MenuItem: fromRoutes: routes: ", routes);
         let items = [];
         for(let route of routes){
             items.push(MenuItem.fromRoute(route));
         }
-        console.log("MenuItem: fromRoutes: items: ", items);
         return items;
     }
 
@@ -64,12 +63,15 @@ export class MenuItem implements MenuItemProps {
         }
     }
 
+    addChildMenuItem(childItem: MenuItem){
+      if(!!childItem){
+        this.items.push(childItem);
+      }
+    }
+
     addChildMenuItems(childItems: MenuItem[]){
-      console.log("MenuItem: addChildMenuItems: childItems: ", childItems);
         for(let item of childItems){
-          if(!!item){
-            this.items.push(item);
-          }
+          this.addChildMenuItem(item);
         }
     }
 

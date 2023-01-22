@@ -36,9 +36,11 @@ export class DefaultNavigation {
     })
 
     if(!user){
+      let loginMenu = MenuItem.fromRoute(loginRoute)
+      loginMenu.position = 1000;
       Navigation.menuRegister(MenuItem.fromRoute(loginRoute))
     } else {
-      Navigation.menuRegister(MenuItem.fromRoute(homeRoute))
+      //Navigation.menuRegister(MenuItem.fromRoute(homeRoute))
     }
   }
 
@@ -57,6 +59,7 @@ export class DefaultNavigation {
     let legalRequirementsMenu = new MenuItem({
       key: Navigation.DEFAULT_MENU_KEY_LEGAL_REQUIREMENTS,
       label: "Legal Requirements",
+      position: -1000
     });
     legalRequirementsMenu.addChildMenuItems(MenuItem.fromRoutes(routes));
     console.log("legalRequirementsMenu", legalRequirementsMenu);
@@ -130,7 +133,7 @@ export class DefaultNavigation {
         }
 
         renderedScreens.push(
-            <Drawer.Screen key={routeInfo?.path} name={routeInfo?.path} params={routeInfo?.params} initialParams={initialSearch} >
+            <Drawer.Screen key={routeInfo?.path} name={routeInfo?.path} params={routeInfo?.params} initialParams={initialSearch}>
             {screenContent}
             </Drawer.Screen>
         );

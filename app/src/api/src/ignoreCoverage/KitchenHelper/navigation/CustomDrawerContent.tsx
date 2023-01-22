@@ -24,18 +24,24 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	  console.log("CustomDrawerContent: renderDrawerItems");
 		let output = [];
 
-		let registeredMenusDict = Navigation.menuGetRegisteredDict();
-		console.log("CustomDrawerContent: renderDrawerItems: registeredMenusDict: ", registeredMenusDict);
-		let registeredMenusKeys = Object.values(registeredMenusDict);
-		console.log("CustomDrawerContent: renderDrawerItems: registeredMenusKeys: ", registeredMenusKeys);
-		for(let i=0; i<registeredMenusKeys.length; i++){
-		  const menu = registeredMenusKeys[i];
+		let registeredMenusList = Navigation.menuGetRegisteredList();
+		let sortedMenus = sortMenus(registeredMenusList);
+		for(let i=0; i<sortedMenus.length; i++){
+		  const menu = sortedMenus[i];
 		  console.log("menu", menu);
       output.push(<ExpandableDrawerItem key={menu?.key} menu={menu} level={0}/>);
     }
 
 		return output;
 	}
+
+	function sortMenus(menus){
+    return menus.sort((a, b) => {
+      let positionA = a?.position || 0;
+      let positionB = b?.position || 0;
+      return positionB - positionA;
+    })
+  }
 
 	function handleAvatarPress(){
 		Navigation.navigateTo(Users, {id: user.id});

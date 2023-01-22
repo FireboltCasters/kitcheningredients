@@ -100,6 +100,12 @@ export class Navigation {
       return Navigation.registeredMenuItems;
     }
 
+  static menuGetRegisteredList(){
+      let menuDict = Navigation.menuGetRegisteredDict();
+      let menuList = Object.values(menuDict);
+      return menuList;
+  }
+
     //static navigateBack(){}
 
     static navigateHome(){
@@ -151,6 +157,9 @@ export class Navigation {
       if(PlatformHelper.isWeb() && !hashChanged){
           //console.log("-- isWeb but the hash is not changed, so we do it now");
           let navigateSearch = Navigation.paramsToURLSearch(params);
+          if(navigateSearch){
+            navigateSearch = "?"+navigateSearch;
+          }
           //console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
           //@ts-ignore
           window.location.hash = Navigation.ROUTE_PATH_PREFIX+routeName+navigateSearch;

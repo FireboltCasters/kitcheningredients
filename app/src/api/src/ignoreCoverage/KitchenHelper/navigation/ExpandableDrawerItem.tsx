@@ -14,8 +14,6 @@ export interface AppState {
 }
 export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
 
-  console.log("ExpandableDrawerItem: props: ", props);
-
     let menu = props?.menu;
 
     const [expanded, setExpanded] = useState(menu?.expanded)

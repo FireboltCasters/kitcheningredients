@@ -1,6 +1,6 @@
 import React, {FunctionComponent, useEffect} from "react";
 import {Text, View} from "native-base";
-import {BaseTemplate, Navigation} from "../api/src";
+import {BaseTemplate, MenuItem, Navigation} from "../api/src";
 import {ConfigHolder} from "../api/src/ignoreCoverage/KitchenHelper/ConfigHolder";
 import {ExampleParamScreen} from "./testScreens/ExampleParamScreen";
 import {ExampleRoutesInformationsScreen} from "./testScreens/ExampleRoutesInformationsScreen";
@@ -14,22 +14,31 @@ export const MySync: FunctionComponent = (props) => {
 
   async function load(){
 
-    let route = Navigation.routeRegister({
-      component: ExampleRoutesInformationsScreen,
-      template: BaseTemplate,
-    })
-
-    Navigation.routeRegister({
+    let exampleParamRoute = Navigation.routeRegister({
       component: ExampleParamScreen,
       template: BaseTemplate,
       params: {
         testParam: 0
       },
     })
-    Navigation.routeRegister({
-      component: ExampleTemplateUsageScreen,
-      template: BaseTemplate,
+
+    let routes = Navigation.routesRegisterMultipleFromComponents(
+      [
+        ExampleTemplateUsageScreen,
+        ExampleRoutesInformationsScreen,
+      ],
+      BaseTemplate
+    )
+
+    let docs = new MenuItem({
+      key: "docs",
+      label: "Documentation",
     });
+
+    docs.addChildMenuItems(MenuItem.fromRoutes(routes));
+    docs.addChildMenuItem(MenuItem.fromRoute(exampleParamRoute));
+
+    Navigation.menuRegister(docs);
 
     await ConfigHolder.instance.setSyncFinished(true)
   }

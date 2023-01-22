@@ -103,7 +103,7 @@ export const RootStack = (props) => {
                         drawerContent={(props) => <CustomDrawerContent {...props} />}
                         screenOptions={{
                           headerShown: false,
-                          unmountOnBlur:true
+                          unmountOnBlur: true
                         }}
       >
         {screens}
