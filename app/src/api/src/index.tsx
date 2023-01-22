@@ -49,9 +49,6 @@ export {PlatformHelper}
 import {KitchenSafeAreaView} from "./ignoreCoverage/KitchenHelper/components/KitchenSafeAreaView";
 export {KitchenSafeAreaView}
 
-import {RouteRegisterer} from "./ignoreCoverage/KitchenHelper/navigation/RouteRegisterer";
-export {RouteRegisterer}
-
 import {Icon} from "./ignoreCoverage/KitchenHelper/components/Icon";
 export {Icon}
 
@@ -72,9 +69,6 @@ export {getDirectusImageUrl}
 
 import {Layout} from "./ignoreCoverage/KitchenHelper/templates/Layout";
 export {Layout}
-
-import {NavigatorHelper} from "./ignoreCoverage/KitchenHelper/navigation/NavigatorHelper";
-export {NavigatorHelper}
 
 import CustomFloaters from "./ignoreCoverage/KitchenHelper/templates/CustomFloaters";
 export {CustomFloaters}

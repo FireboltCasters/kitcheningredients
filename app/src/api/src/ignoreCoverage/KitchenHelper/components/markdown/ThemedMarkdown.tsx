@@ -69,10 +69,10 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
   const defaultTextProps = {
     selectable: true,
     color: textColor,
-    fontSize: fontSize+"",
+    fontSize: fontSize+"px",
     fontStyle: "normal",
-    fontWeight: fontWeightNormal+"", // as string because of iOS: NSNumber cannot be converted NSString
-    lineHeight: lineHeightNormal+"", // as string because of iOS: NSNumber cannot be converted NSString
+    fontWeight: fontWeightNormal+"px", // as string because of iOS: NSNumber cannot be converted NSString
+    lineHeight: lineHeightNormal+"px", // as string because of iOS: NSNumber cannot be converted NSString
   };
 
   if(props?.debug) {

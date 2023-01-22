@@ -37,7 +37,7 @@ export default class App extends React.Component<any, any>{
 			let route = urlSplit[0];
 			let params = URL_Helper.getAllUrlParams(url);
 			//console.log("URL Subscribe: "+route);
-			NavigatorHelper.navigateToRouteName(route, params);
+			//NavigatorHelper.navigateToRouteName(route, params);
 		})
 		this.state = {
 		  syncFinished: false,

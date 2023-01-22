@@ -1,11 +1,11 @@
 // @ts-nocheck
 import React, {useEffect} from "react";
-import {Button, Text, View} from "native-base";
-import {NavigatorHelper} from "../../navigation/NavigatorHelper";
+import {Text, View} from "native-base";
 import {DeveloperSettings} from "./DeveloperSettings";
 import {keyof} from "ts-keyof";
 import {TouchableOpacity} from "react-native";
 import {ConfigHolder} from "../../ConfigHolder";
+import {Navigation} from "../../navigation/Navigation";
 
 export const Settings = (props) => {
 
@@ -22,7 +22,7 @@ export const Settings = (props) => {
 	function renderOpenDeveloperSettings(){
 		return(
 			<TouchableOpacity onPress={() => {
-				NavigatorHelper.navigate(DeveloperSettings);
+				Navigation.navigateTo(DeveloperSettings)
 			}}
 			><Text>{"Developer Settings"}</Text></TouchableOpacity>
 		)

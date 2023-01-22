@@ -5,9 +5,10 @@ import {FunctionComponent} from "react";
 import {PlatformHelper} from "../helper/PlatformHelper";
 import {Home} from "../screens/home/Home";
 import {Login} from "../auth/Login";
-import {DrawerActions} from "@react-navigation/native";
+import {CommonActions, DrawerActions} from "@react-navigation/native";
 import {RouteHelper} from "./RouteHelper";
 import {MenuItem} from "./MenuItem";
+import {NavigationQueueItem} from "./NavigationQueueItem";
 
 // todo Update to newest ReactNavigation
 // https://reactnavigation.org/docs/navigating-without-navigation-prop/
@@ -105,6 +106,14 @@ export class Navigation {
       Navigation.navigateTo(Navigation.DEFAULT_ROUTE_HOME);
     }
 
+    static navigateBack(){
+      if(NavigatorHelper.getHistory()===null){
+        Navigation.navigateHome()
+      } else {
+        NavigatorHelper.getCurrentNavigation()?.dispatch(CommonActions.goBack());
+      }
+    }
+
     static getCurrentRouteName(){
       let history = NavigatorHelper.getHistory();
       console.log("++++++++++++ getCurrentRouteName: ");
@@ -143,6 +152,7 @@ export class Navigation {
           //console.log("-- isWeb but the hash is not changed, so we do it now");
           let navigateSearch = Navigation.paramsToURLSearch(params);
           //console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
+          //@ts-ignore
           window.location.hash = Navigation.ROUTE_PATH_PREFIX+routeName+navigateSearch;
           return; // we do not need to call navigateTo again, because the hash change will trigger the hook
       } else {

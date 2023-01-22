@@ -2,9 +2,8 @@
 import React, {FunctionComponent} from 'react';
 import {AuthProvider} from "./AuthProvider";
 import {Provider} from "./Provider";
-import {NavigatorHelper} from "../navigation/NavigatorHelper";
-import {Home} from "../screens/home/Home";
 import {ConfigHolder} from "../ConfigHolder";
+import {Navigation} from "./../navigation/Navigation";
 
 interface AppState {
 	serverInfo: any;
@@ -20,8 +19,7 @@ export const AuthProviderGuest: FunctionComponent<AppState> = ({serverInfo}) => 
 
 	async function handleOpened(){
 		await ConfigHolder.instance.setUserAsGuest();
-		await NavigatorHelper.navigate(Home)
-		await ConfigHolder.instance.setHideDrawer(false);
+		await ConfigHolder.instance.setHideDrawer(false, Navigation.DEFAULT_ROUTE_HOME);
 	}
 
 	return (

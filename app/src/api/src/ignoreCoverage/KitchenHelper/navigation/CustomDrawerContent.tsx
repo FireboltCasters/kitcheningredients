@@ -38,7 +38,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	}
 
 	function handleAvatarPress(){
-		NavigatorHelper.navigate(Users, {id: user.id});
+		Navigation.navigateTo(Users, {id: user.id});
 	}
 
 	function renderBottomPanel(){

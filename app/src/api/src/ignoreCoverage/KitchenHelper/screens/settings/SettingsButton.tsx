@@ -5,6 +5,7 @@ import {NavigatorHelper} from "../../navigation/NavigatorHelper";
 import {Settings} from "./Settings";
 import {TransparentTextButton} from "../../buttons/TransparentTextButton";
 import {Icon} from "../../components/Icon";
+import {Navigation} from "./../../navigation/Navigation";
 
 export interface AppState {
 	onlyIcon?: boolean;
@@ -13,7 +14,7 @@ export interface AppState {
 export const SettingsButton: (props) => any[] = (props) => {
 
 	function handleOpen(){
-		NavigatorHelper.navigate(Settings);
+		Navigation.navigateTo(Settings);
 	}
 
 	function renderOnlyIcon(){
