@@ -41,7 +41,7 @@ export default class App extends React.Component<any, any>{
 		})
 		this.state = {
 		  syncFinished: false,
-      initialURL: undefined,
+      startURL: undefined,
 			user: undefined,
       role: undefined,
       offline: undefined,
@@ -98,12 +98,12 @@ export default class App extends React.Component<any, any>{
     let currentRouteName = Navigation.getCurrentRouteName();
 		if(ConfigHolder.instance.state.hideDrawer!==hideDrawer){
 		  let useRouteName = !!nextRouteName ? nextRouteName : currentRouteName;
-		  useRouteName = useRouteName || ConfigHolder.instance.initialURL;
+		  useRouteName = useRouteName || ConfigHolder.instance.startURL;
 
 			await ConfigHolder.instance.setState({
 				hideDrawer: hideDrawer,
 				reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
-        initialURL: "#"+useRouteName,
+        startURL: "#"+useRouteName,
 			});
 		}
 	}
@@ -212,18 +212,20 @@ export default class App extends React.Component<any, any>{
       await ConfigHolder.plugin.initApp();
     }
     let initialURL = await Linking.getInitialURL() || "";
-    console.log("Initial URL before checking if token: ",initialURL);
+    let startURL = initialURL
+    console.log("Initial URL before checking if token: ",startURL);
 
     let directusAccessTokenSplit = "?"+EnviromentHelper.getDirectusAccessTokenName()+"="
-    let directusAutTokenIncluded = initialURL.includes(directusAccessTokenSplit);
+    let directusAutTokenIncluded = startURL.includes(directusAccessTokenSplit);
     if(directusAutTokenIncluded){
-      let realInitialURL = initialURL.split(directusAccessTokenSplit)[0];
-      let directusAccessToken = initialURL.split(directusAccessTokenSplit)[1];
-      initialURL = realInitialURL+"#"+Navigation.ROUTE_PATH_PREFIX+Navigation.DEFAULT_ROUTE_LOGIN+"?"+EnviromentHelper.getDirectusAccessTokenName()+"="+directusAccessToken;
+      let realInitialURL = startURL.split(directusAccessTokenSplit)[0];
+      let directusAccessToken = startURL.split(directusAccessTokenSplit)[1];
+      startURL = realInitialURL+"#"+Navigation.ROUTE_PATH_PREFIX+Navigation.DEFAULT_ROUTE_LOGIN+"?"+EnviromentHelper.getDirectusAccessTokenName()+"="+directusAccessToken;
     }
-    console.log("Initial URL after checking if token: ",initialURL);
+    console.log("Initial URL after checking if token: ",startURL);
 
     await ConfigHolder.instance.setState({
+      startURL: startURL,
       initialURL: initialURL,
     })
     let serverStatus = await this.loadServerInfo();
@@ -231,7 +233,7 @@ export default class App extends React.Component<any, any>{
     let user = await ConfigHolder.instance.loadUser();
     await ConfigHolder.instance.setUser(user, null);
     if(!user){
-      //let isAllowedInitialRoute = await DefaultNavigation.isAnonymUserRoute(initialURL);
+      //let isAllowedInitialRoute = await DefaultNavigation.isAnonymUserRoute(startURL);
       //if(!isAllowedInitialRoute){
       //  await ConfigHolder.instance.setRedirectToLogin();
       //}
@@ -248,7 +250,7 @@ export default class App extends React.Component<any, any>{
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getLoadingComponent){
       loadingContent = ConfigHolder.plugin.getLoadingComponent();
     }
-//    return <ViewWithBackgroundColor><View style={{width: "100%", height: "100%", backgroundColor: "red", justifyContent: "center", alignItems: "center"}}><Text>{JSON.stringify(ConfigHolder.instance.state.initialURL, null, 2)}</Text></View></ViewWithBackgroundColor>
+//    return <ViewWithBackgroundColor><View style={{width: "100%", height: "100%", backgroundColor: "red", justifyContent: "center", alignItems: "center"}}><Text>{JSON.stringify(ConfigHolder.instance.state.startURL, null, 2)}</Text></View></ViewWithBackgroundColor>
     return <ViewWithBackgroundColor>{loadingContent}</ViewWithBackgroundColor>
   }
 
@@ -265,14 +267,14 @@ export default class App extends React.Component<any, any>{
   }
 
   getNormalContent(){
-    let content = <RootStack reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.initialURL+this.state.syncFinished} initialURL={this.state.initialURL} />
+    let content = <RootStack reloadNumber={this.state.reloadNumber+""+this.state.hideDrawer+this.state.startURL+this.state.syncFinished} startURL={this.state.startURL} />
     if(!!this.props.children){
       content = this.props.children;
     }
 
     return (
       <>
-        <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.initialURL+this.state.syncFinished}>{content}</Root>
+        <Root key={this.state.reloadNumber+""+this.state.hideDrawer+this.state.startURL+this.state.syncFinished}>{content}</Root>
         <ColorStatusBar />
       </>
     )
@@ -281,7 +283,7 @@ export default class App extends React.Component<any, any>{
 	render() {
 		let root = null;
 
-		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined || this.state.initialURL===undefined){
+		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined || this.state.startURL===undefined){
 		  console.log("Loading screen");
 		  root = this.getLoadingScreen();
 		} else if(!this.state.syncFinished) {
@@ -296,7 +298,7 @@ export default class App extends React.Component<any, any>{
 
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>
-				<NativeBaseProvider reloadNumber={this.state.syncFinished+this.state.reloadNumber+""+this.state.hideDrawer+this.state.initialURL} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
+				<NativeBaseProvider reloadNumber={this.state.syncFinished+this.state.reloadNumber+""+this.state.hideDrawer+this.state.startURL} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
           <ViewWithBackgroundColor>
           {root}
           </ViewWithBackgroundColor>

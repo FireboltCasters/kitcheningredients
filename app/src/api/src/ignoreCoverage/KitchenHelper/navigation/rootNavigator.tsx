@@ -13,10 +13,10 @@ export const RootStack = (props) => {
 
   let isSmallDevice = Layout.usesSmallDevice();
 
-  const initialURL = props?.initialURL || null;
+  const startURL = props?.startURL || null;
 
-  let initialRouteName = RouteHelper.getInitialRouteName(initialURL);
-  let search = getSearchParam(initialURL);
+  let initialRouteName = RouteHelper.getInitialRouteName(startURL);
+  let search = getSearchParam(startURL);
 
   const [initialSearch, setInitialSearch] = React.useState(search);
 
@@ -26,8 +26,8 @@ export const RootStack = (props) => {
 
 
 
-  function getSearchParam(initialURL){
-    let search = RouteHelper.getSearchParamString(initialURL);
+  function getSearchParam(startURL){
+    let search = RouteHelper.getSearchParamString(startURL);
     // parse for search params in url to dict
     let searchParams = new URLSearchParams(search);
     let searchDict = {};

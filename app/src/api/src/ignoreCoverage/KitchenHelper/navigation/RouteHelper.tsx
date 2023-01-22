@@ -8,11 +8,11 @@ export class RouteHelper {
     return bestName+"";
   }
 
-  static getInitialRouteName(initialURL: string){
-    // initialURL = "https://kitchenhelper.app/#/app/recipes";
+  static getInitialRouteName(startURL: string){
+    // startURL = "https://kitchenhelper.app/#/app/recipes";
     // get everything after the # and the prefix
-    let hash = RouteHelper.getHashRouteWithSearchParams(initialURL);
-    let search = RouteHelper.getSearchParamString(initialURL);
+    let hash = RouteHelper.getHashRouteWithSearchParams(startURL);
+    let search = RouteHelper.getSearchParamString(startURL);
     let routeName = hash.replace("?"+search, "");
     if(!routeName || routeName === ""){
       routeName = Navigation.DEFAULT_ROUTE_HOME;
@@ -21,16 +21,16 @@ export class RouteHelper {
     return routeName;
   }
 
-  static getHashRouteWithSearchParams(initialURL){
-    let hash = initialURL?.split("#")[1] || "";
+  static getHashRouteWithSearchParams(startURL){
+    let hash = startURL?.split("#")[1] || "";
     if(hash.startsWith(Navigation.ROUTE_PATH_PREFIX)){
       hash = hash.substr(1);
     }
     return hash;
   }
 
-  static getSearchParamString(initialURL){
-    let search = initialURL?.split("?")[1] || "";
+  static getSearchParamString(startURL){
+    let search = startURL?.split("?")[1] || "";
     // parse for search params in url to dict
     return search;
   }
