@@ -20,6 +20,7 @@ export const Login = (props) => {
 	const user = ConfigHolder.instance.getUser();
 
 	const params = NavigatorHelper.getRouteParams(props);
+	console.log("Params: "+JSON.stringify(params));
 	let directus_access_token = params[EnviromentHelper.getDirectusAccessTokenName()];
 
 	async function fetchAccessTokenInUrl(){
@@ -71,6 +72,7 @@ export const Login = (props) => {
   if(isWeb){
     console.log("Login check if browser url is correct");
     let currentURL = window.location.href;
+    console.log("Current URL: "+currentURL);
     currentRouteName = RouteHelper.getInitialRouteName(currentURL);
     isBrowserUrlCorrect = currentRouteName.startsWith(Navigation.DEFAULT_ROUTE_LOGIN);
     console.log("isBrowserUrlCorrect", isBrowserUrlCorrect);
@@ -80,14 +82,26 @@ export const Login = (props) => {
     console.log("Login. Use Effect");
 
     if(!isBrowserUrlCorrect){
-      console.log("Login. Use Effect. Current browser route is not login, so navigate to login in browser url");
-      Navigation.navigateTo(Navigation.DEFAULT_ROUTE_LOGIN);
-      console.log("Login. Use Effect. ends");
-      return;
+      if(!!directus_access_token){ // There is an access token in the url, but the browser url is not correct
+        console.log("Login. Use Effect. There is an access token in the url, but the browser url is not correct");
+        let realInitialRouteName = window.location.href;
+        realInitialRouteName = realInitialRouteName.split("?")[0];
+        realInitialRouteName += "#"+Navigation.ROUTE_PATH_PREFIX+Navigation.DEFAULT_ROUTE_LOGIN+"?"+EnviromentHelper.getDirectusAccessTokenName()+"="+directus_access_token;
+        console.log("realInitialRouteName", realInitialRouteName);
+        window.location.href = realInitialRouteName;
+        return;
+      } else {
+        console.log("Login. Use Effect. Current browser route is not login, so navigate to login in browser url");
+        Navigation.navigateTo(Navigation.DEFAULT_ROUTE_LOGIN);
+        console.log("Login. Use Effect. ends");
+        return;
+      }
     }
     if(drawerNeedsToBeHidden){ // if drawer is not hidden yet and we need to hide it first
       console.log("-- Login. Use Effect. Hide drawer");
-      ConfigHolder.instance.setHideDrawer(true, Navigation.DEFAULT_ROUTE_LOGIN); // hide drawer first
+      let nextInitialRouteName = Navigation.DEFAULT_ROUTE_LOGIN+"?"+Navigation.paramsToURLSearch(params);
+      console.log("nextInitialRouteName", nextInitialRouteName);
+      ConfigHolder.instance.setHideDrawer(true, nextInitialRouteName); // hide drawer first
       console.log("Login. Use Effect. ends");
       return; // and return
     }

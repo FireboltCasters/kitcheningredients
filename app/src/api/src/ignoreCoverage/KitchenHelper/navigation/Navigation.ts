@@ -115,6 +115,22 @@ export class Navigation {
       return null;
     }
 
+    static paramsToURLSearch(params?){
+      let navigateSearch = "";
+      if(params){
+        let keys = Object.keys(params);
+        for(let i=0; i<keys.length; i++){
+          let key = keys[i];
+          let value = params[key];
+          if(i>0){
+            navigateSearch += "&";
+          }
+          navigateSearch += key+"="+value;
+        }
+      }
+      return navigateSearch;
+    }
+
     static navigateTo(routePathOrComponent, params?, hashChanged?){
       let routeName = "Home";
       if(typeof routePathOrComponent === "string"){
@@ -125,19 +141,7 @@ export class Navigation {
 
       if(PlatformHelper.isWeb() && !hashChanged){
           //console.log("-- isWeb but the hash is not changed, so we do it now");
-          let navigateSearch = "";
-          if(params){
-            navigateSearch = "?";
-            let keys = Object.keys(params);
-            for(let i=0; i<keys.length; i++){
-              let key = keys[i];
-              let value = params[key];
-              if(i>0){
-                navigateSearch += "&";
-              }
-              navigateSearch += key+"="+value;
-            }
-          }
+          let navigateSearch = Navigation.paramsToURLSearch(params);
           //console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
           window.location.hash = Navigation.ROUTE_PATH_PREFIX+routeName+navigateSearch;
           return; // we do not need to call navigateTo again, because the hash change will trigger the hook

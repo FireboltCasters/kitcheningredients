@@ -5,11 +5,14 @@ import {MaterialIcons} from "@expo/vector-icons"
 import EnviromentHelper from "../EnviromentHelper";
 import {StringHelper} from "../helper/StringHelper";
 import ServerAPI from "../ServerAPI";
-import {URL_Helper} from "../helper/URL_Helper";
 import {Provider} from "./Provider";
 import {TouchableOpacity} from "react-native";
 import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import {Icon} from "../components/Icon";
+import {ConfigHolder} from "../ConfigHolder";
+import {Navigation} from "../navigation/Navigation";
+import {RouteHelper} from "../navigation/RouteHelper";
+import * as ExpoLinking from "expo-linking";
 
 interface AppState {
 	serverInfo: any;
@@ -23,10 +26,12 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 
 	function getUrlToProvider(provider: string){
 		provider= provider.toLowerCase();
-		let currentLocation = URL_Helper.getCurrentLocationWithoutQueryParams();
-		let redirectURL = currentLocation;
+		console.log("Provider: "+provider);
+		let redirectURL = ExpoLinking.createURL("/");
 		let redirect_with_access_token = "?redirect="+ServerAPI.getAPIUrl()+"/redirect-with-token?redirect="+redirectURL+"?"+EnviromentHelper.getDirectusAccessTokenName()+"=";
-		return ServerAPI.getAPIUrl()+"/auth/login/"+provider+redirect_with_access_token;
+		let totalURL = ServerAPI.getAPIUrl()+"/auth/login/"+provider+redirect_with_access_token;
+		console.log("URL: "+totalURL);
+		return totalURL
 	}
 
 	function renderIcon(icon, color){

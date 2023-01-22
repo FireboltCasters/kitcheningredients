@@ -19,6 +19,7 @@ import {RequiredStorageKeys} from "./storage/RequiredStorageKeys";
 import {ViewWithBackgroundColor} from "./templates/ViewWithBackgroundColor";
 import {DefaultNavigation} from "./navigation/DefaultNavigation";
 import {Navigation} from "./navigation/Navigation";
+import EnviromentHelper from "./EnviromentHelper";
 
 export default class App extends React.Component<any, any>{
 
@@ -211,6 +212,17 @@ export default class App extends React.Component<any, any>{
       await ConfigHolder.plugin.initApp();
     }
     let initialURL = await Linking.getInitialURL() || "";
+    console.log("Initial URL before checking if token: ",initialURL);
+
+    let directusAccessTokenSplit = "?"+EnviromentHelper.getDirectusAccessTokenName()+"="
+    let directusAutTokenIncluded = initialURL.includes(directusAccessTokenSplit);
+    if(directusAutTokenIncluded){
+      let realInitialURL = initialURL.split(directusAccessTokenSplit)[0];
+      let directusAccessToken = initialURL.split(directusAccessTokenSplit)[1];
+      initialURL = realInitialURL+"#"+Navigation.ROUTE_PATH_PREFIX+Navigation.DEFAULT_ROUTE_LOGIN+"?"+EnviromentHelper.getDirectusAccessTokenName()+"="+directusAccessToken;
+    }
+    console.log("Initial URL after checking if token: ",initialURL);
+
     await ConfigHolder.instance.setState({
       initialURL: initialURL,
     })
