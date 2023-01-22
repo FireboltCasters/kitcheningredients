@@ -7,6 +7,7 @@ import {Home} from "../screens/home/Home";
 import {Login} from "../auth/Login";
 import {DrawerActions} from "@react-navigation/native";
 import {RouteHelper} from "./RouteHelper";
+import {MenuItem} from "./MenuItem";
 
 // todo Update to newest ReactNavigation
 // https://reactnavigation.org/docs/navigating-without-navigation-prop/
@@ -20,29 +21,18 @@ export interface RouteProps {
   template?: FunctionComponent;
 }
 
-export interface MenuItemProps {
-  name: string;
-  route?: RouteProps,
-  command?: Function,
-  position?: number,
-  icon?: string,
-  customIcon?: FunctionComponent,
-  children?: MenuItemProps[],
-  expanded?: boolean,
-}
-
 export class Navigation {
 
     static DEFAULT_ROUTE_HOME = RouteHelper.getNameOfComponent(Home);
     static DEFAULT_ROUTE_LOGIN = RouteHelper.getNameOfComponent(Login);
+    static DEFAULT_MENU_KEY_LEGAL_REQUIREMENTS = "legalRequirements";
 
     static ROUTE_PATH_PREFIX = "/";
 
     // a dict with string to Route
     private static registeredComponents : {[key: string]: RouteProps} = {};
 
-    private static registeredMenuItems : {[key: string]: MenuItemProps} = {};
-    static registeredRequiredMenuItems : {[key: string]: MenuItemProps} = {};
+    private static registeredMenuItems : {[key: string]: MenuItem} = {};
 
     static useNavigationHistory(){
       return useSynchedJSONState(RequiredSynchedStates.navigationHistory)
@@ -58,8 +48,25 @@ export class Navigation {
       NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.closeDrawer());
     }
 
+    static routesResetRegistered(){
+      Navigation.registeredComponents = {};
+    }
+
     static routeGetRegistered(){
       return Navigation.registeredComponents;
+    }
+
+    static routesRegisterMultipleFromComponents(funComponents: FunctionComponent[], template?): RouteProps[]{
+      let routes: RouteProps[] = [];
+      for(let i=0; i<funComponents.length; i++){
+        let funComponent = funComponents[i];
+        let route = Navigation.routeRegister({
+          component: funComponent,
+          template: template
+        });
+        routes.push(route);
+      }
+      return routes;
     }
 
     static routeRegister(route: RouteProps): RouteProps{
@@ -80,15 +87,19 @@ export class Navigation {
 
 //    static routeUnregister(){} // also unregisteres menu?
 
-    static menuRegister(menuItem: MenuItemProps){
-      Navigation.registeredMenuItems[menuItem.name] = menuItem;
+    static menuRegister(menuItem: MenuItem){
+      Navigation.registeredMenuItems[menuItem?.key] = menuItem;
     }
 
-    static menuGetRegistered(){
+    static menusResetRegistered(){
+      Navigation.registeredMenuItems = {};
+    }
+
+    static menuGetRegisteredDict(){
       return Navigation.registeredMenuItems;
     }
 
-    static navigateBack(){}
+    //static navigateBack(){}
 
     static navigateHome(){
       Navigation.navigateTo(Navigation.DEFAULT_ROUTE_HOME);

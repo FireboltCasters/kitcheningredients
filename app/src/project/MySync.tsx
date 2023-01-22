@@ -18,12 +18,6 @@ export const MySync: FunctionComponent = (props) => {
       component: ExampleRoutesInformationsScreen,
       template: BaseTemplate,
     })
-    Navigation.menuRegister({
-      route: route,
-      name: "ExampleRoutesInformationsScreen",
-      icon: "home",
-    })
-
 
     Navigation.routeRegister({
       component: ExampleParamScreen,

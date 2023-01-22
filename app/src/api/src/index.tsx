@@ -52,9 +52,6 @@ export {KitchenSafeAreaView}
 import {RouteRegisterer} from "./ignoreCoverage/KitchenHelper/navigation/RouteRegisterer";
 export {RouteRegisterer}
 
-import {RegisteredRoutesMap} from "./ignoreCoverage/KitchenHelper/navigation/RegisteredRoutesMap";
-export {RegisteredRoutesMap}
-
 import {Icon} from "./ignoreCoverage/KitchenHelper/components/Icon";
 export {Icon}
 
@@ -123,9 +120,6 @@ export {MenuItem}
 
 import {PluginInterface} from "./ignoreCoverage/KitchenHelper/PluginInterface";
 export {PluginInterface}
-
-import {Menu} from "./ignoreCoverage/KitchenHelper/navigation/Menu";
-export {Menu}
 
 import {TextWithIcon} from "./ignoreCoverage/KitchenHelper/components/TextWithIcon";
 export {TextWithIcon};

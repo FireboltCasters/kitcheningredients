@@ -1,9 +1,5 @@
-// @ts-nocheck
 import React, {FunctionComponent, Ref} from "react";
-import {NavigationContainerRef, StackActions, DrawerActions, CommonActions} from "@react-navigation/native";
-import {RegisteredRoutesMap} from "./RegisteredRoutesMap";
-import {RouteRegisterer} from "./RouteRegisterer";
-import {Home} from "../screens/home/Home";
+import {CommonActions, DrawerActions, NavigationContainerRef} from "@react-navigation/native";
 import {NavigationQueueItem} from "./NavigationQueueItem";
 import {ConfigHolder} from "../ConfigHolder";
 import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
@@ -20,6 +16,7 @@ export const isReadyRef: Ref<NavigationContainerRef> = React.createRef();
 export class NavigatorHelper {
 
     static navigationQueue: NavigationQueueItem[] = [];
+    static setNavigationHistory: any;
 
     static setSetNavigationHistoryFunction(func){
       NavigatorHelper.setNavigationHistory = func;

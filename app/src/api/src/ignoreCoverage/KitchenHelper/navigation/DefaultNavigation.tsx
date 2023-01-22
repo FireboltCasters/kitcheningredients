@@ -1,4 +1,4 @@
-import {BaseTemplate, ConfigHolder, Menu, Navigation} from "../../../../../api/src";
+import {BaseTemplate, ConfigHolder, MenuItem, Navigation} from "../../../../../api/src";
 import {Login} from "../auth/Login";
 import {LoginTemplate} from "../templates/LoginTemplate";
 import {Home} from "../screens/home/Home";
@@ -13,61 +13,54 @@ import {RouteHelper} from "./RouteHelper";
 
 export class DefaultNavigation {
 
-  static async registerRoutes(user, role, permissions){
-    DefaultNavigation.registerDefaultRoutes();
+  static async registerRoutesAndMenus(user, role, permissions){
+    Navigation.menusResetRegistered();
+    Navigation.routesResetRegistered();
+
+    DefaultNavigation.registerDefaultRoutes(user, role, permissions);
+    DefaultNavigation.registerLegalRequirements();
     if(!!ConfigHolder.plugin){
       await ConfigHolder.plugin.registerRoutes(user, role, permissions);
     }
   }
 
-  static registerDefaultRoutes(){
-    Navigation.routeRegister({
+  static registerDefaultRoutes(user, role, permissions){
+    let loginRoute = Navigation.routeRegister({
       component: Login,
       template: LoginTemplate,
     })
 
-    Navigation.routeRegister({
+    let homeRoute = Navigation.routeRegister({
       component: Home,
       template: BaseTemplate,
     })
 
-    Navigation.routeRegister({
-      component: AboutUs,
-      template: BaseTemplate,
-    })
-    Navigation.routeRegister({
-      component: License,
-      template: BaseTemplate,
-    })
-    Navigation.routeRegister({
-      component: PrivacyPolicy,
-      template: BaseTemplate,
-    })
-    Navigation.routeRegister({
-      component: TermsAndConditions,
-      template: BaseTemplate,
-    })
+    if(!user){
+      Navigation.menuRegister(MenuItem.fromRoute(loginRoute))
+    } else {
+      Navigation.menuRegister(MenuItem.fromRoute(homeRoute))
+    }
+  }
 
-    /**
-    RegisteredRoutesMap.reset();
-    RegisteredRoutesMap.setInitialRouteName(RouteRegisterer.routeLogin);
+  static registerLegalRequirements(){
 
-    Menu.registerRoute(Login, LoginTemplate, "Login", RouteRegisterer.routeLogin);
-    Menu.registerRoute(ResetPassword, LoginTemplate, "Reset Password", "reset-password");
-    Menu.registerRoute(Register, LoginTemplate, "Register", "register");
-    Menu.registerUnauthenticatedMenu(MenuItem.getMenuItemFromComponent(Login));
+    let routes = Navigation.routesRegisterMultipleFromComponents(
+      [
+        AboutUs,
+        License,
+        PrivacyPolicy,
+        TermsAndConditions
+      ],
+      BaseTemplate
+    )
 
-    Menu.registerRoute(Home, BaseTemplate, "Home", "home");
-
-    //Menu.registerRoute(Debug, BaseTemplate, "Debug", "debug");
-    //Menu.registerUnsafeMenuForRoleByName(Menu.ROLE_ADMINISTRATOR, MenuItem.getMenuItemFromComponent(Debug))
-
-    Menu.registerRoute(Users, BaseTemplate, "Users", "users", "/:id?");
-    Menu.registerRoute(Settings, BaseNoPaddingTemplate, "Settings", "settings");
-    //Menu.registerRoute(DeveloperSettings, BaseTemplate, "Developer Settings", "settings/developer", "/:id?");
-
-    RouteRegisterer.registerLegalRequirements();
-     */
+    let legalRequirementsMenu = new MenuItem({
+      key: Navigation.DEFAULT_MENU_KEY_LEGAL_REQUIREMENTS,
+      label: "Legal Requirements",
+    });
+    legalRequirementsMenu.addChildMenuItems(MenuItem.fromRoutes(routes));
+    console.log("legalRequirementsMenu", legalRequirementsMenu);
+    Navigation.menuRegister(legalRequirementsMenu);
   }
 
 

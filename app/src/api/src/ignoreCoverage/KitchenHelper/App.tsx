@@ -93,14 +93,14 @@ export default class App extends React.Component<any, any>{
     });
   }
 
-	async setHideDrawer(visible, nextRouteName?){
+	async setHideDrawer(hideDrawer, nextRouteName?){
     let currentRouteName = Navigation.getCurrentRouteName();
-		if(ConfigHolder.instance.state.hideDrawer!==visible){
+		if(ConfigHolder.instance.state.hideDrawer!==hideDrawer){
 		  let useRouteName = !!nextRouteName ? nextRouteName : currentRouteName;
 		  useRouteName = useRouteName || ConfigHolder.instance.initialURL;
 
 			await ConfigHolder.instance.setState({
-				hideDrawer: visible,
+				hideDrawer: hideDrawer,
 				reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
         initialURL: "#"+useRouteName,
 			});
@@ -144,7 +144,7 @@ export default class App extends React.Component<any, any>{
       await ConfigHolder.plugin.onLogin(user, role, permissions);
       callback = () => {};
     }
-    await DefaultNavigation.registerRoutes(user, role, permissions);
+    await DefaultNavigation.registerRoutesAndMenus(user, role, permissions);
 
 		await ConfigHolder.instance.setState({
 			reloadNumber: this.state.reloadNumber+1,
