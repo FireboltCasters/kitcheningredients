@@ -1,6 +1,6 @@
 // @ts-nocheck
 import {BaseTemplate} from "../templates/BaseTemplate";
-import {ConfigHolder} from "../config/ConfigHolder";
+import {ConfigHolder} from "../ConfigHolder";
 import {MenuItem} from "./MenuItem";
 import {Navigation} from "./Navigation";
 
