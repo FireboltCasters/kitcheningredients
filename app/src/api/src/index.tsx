@@ -1,3 +1,6 @@
+import {GridList} from "./ignoreCoverage/KitchenHelper/layouts/GridList";
+export {GridList};
+
 import {Navigation} from "./ignoreCoverage/KitchenHelper/navigation/Navigation";
 export {Navigation}
 
