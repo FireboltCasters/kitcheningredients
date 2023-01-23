@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {Ref} from "react";
 import {DrawerActions, NavigationContainerRef} from "@react-navigation/native";
 import {NavigationQueueItem} from "./NavigationQueueItem";

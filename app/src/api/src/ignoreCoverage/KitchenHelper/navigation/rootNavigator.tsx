@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useEffect} from 'react';
 import {RouteRegisterer} from "./RouteRegisterer";
 import {PlatformHelper} from "../helper/PlatformHelper";
@@ -7,7 +8,6 @@ import {ConfigHolder} from "../../KitchenHelper/ConfigHolder";
 import {Layout} from "../../KitchenHelper/templates/Layout";
 import {DefaultNavigation} from "./DefaultNavigation";
 import {RouteHelper} from "./RouteHelper";
-import {Login} from "../auth/Login";
 
 export const RootStack = (props) => {
 

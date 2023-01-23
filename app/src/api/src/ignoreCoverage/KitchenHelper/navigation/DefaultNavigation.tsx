@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {BaseTemplate, ConfigHolder, MenuItem, Navigation} from "../../../../../api/src";
 import {Login} from "../auth/Login";
 import {LoginTemplate} from "../templates/LoginTemplate";
