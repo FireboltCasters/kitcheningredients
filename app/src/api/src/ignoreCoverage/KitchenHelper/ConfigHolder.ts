@@ -23,6 +23,7 @@ export class ConfigHolder{
   static showMailRegister: boolean = false;
   static showExternalLogins: boolean = true;
   static showGuestLogin: boolean = false;
+  static startAsGuest: boolean = false;
   static autoLogin: boolean = false;
 
   static prefixes: string[] = [];

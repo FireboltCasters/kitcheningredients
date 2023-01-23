@@ -4830,6 +4830,14 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/elliptic",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/elliptic/README.md"
   },
+  "email-addresses@3.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jackbearheart/email-addresses",
+    "publisher": "Jack Bearheart",
+    "email": "johnrbowman@fastmail.fm",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/email-addresses",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/email-addresses/LICENSE"
+  },
   "emoji-regex@8.0.0": {
     "licenses": "MIT",
     "repository": "https://github.com/mathiasbynens/emoji-regex",
@@ -5482,6 +5490,24 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/file-uri-to-path",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/file-uri-to-path/LICENSE"
   },
+  "filename-reserved-regex@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/filename-reserved-regex",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/filename-reserved-regex",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/filename-reserved-regex/license"
+  },
+  "filenamify@4.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/filenamify",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/filenamify",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/filenamify/license"
+  },
   "filesize@6.1.0": {
     "licenses": "BSD-3-Clause",
     "repository": "https://github.com/avoidwork/filesize.js",
@@ -5798,6 +5824,14 @@
     "email": "alex.wilson@joyent.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/getpass",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/getpass/LICENSE"
+  },
+  "gh-pages@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/tschaub/gh-pages",
+    "publisher": "Tim Schaub",
+    "url": "http://tschaub.net/",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/gh-pages",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/gh-pages/LICENSE"
   },
   "gifwrap@0.9.4": {
     "licenses": "MIT",
@@ -10866,6 +10900,15 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/strip-json-comments",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/strip-json-comments/license"
   },
+  "strip-outer@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/strip-outer",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/strip-outer",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/strip-outer/license"
+  },
   "style-loader@1.2.1": {
     "licenses": "MIT",
     "repository": "https://github.com/webpack-contrib/style-loader",
@@ -11293,6 +11336,15 @@
     "publisher": "Anton Gilgur",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/trim-canvas",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/trim-canvas/LICENSE"
+  },
+  "trim-repeated@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/trim-repeated",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/trim-repeated",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/trim-repeated/license"
   },
   "ts-interface-checker@0.1.13": {
     "licenses": "Apache-2.0",

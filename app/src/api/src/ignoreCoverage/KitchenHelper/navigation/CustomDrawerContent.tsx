@@ -3,7 +3,6 @@ import React, {FunctionComponent} from 'react';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {View} from "native-base";
 import {ProjectLogo} from "../project/ProjectLogo";
-import {NavigatorHelper} from "./NavigatorHelper";
 import {ProjectName} from "../project/ProjectName";
 import {MyThemedBox} from "../helper/MyThemedBox";
 import {ExpandableDrawerItem} from "./ExpandableDrawerItem";

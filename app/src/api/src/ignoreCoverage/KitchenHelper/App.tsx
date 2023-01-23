@@ -183,7 +183,10 @@ export default class App extends React.Component<any, any>{
 			} else if(ConfigHolder.storage.is_guest()){
 			  console.log("-- Load User: Guest");
 				return UserHelper.getGuestUser();
-			} else {
+			} else if(ConfigHolder.startAsGuest){
+        ConfigHolder.storage.set_is_guest(true);
+        return UserHelper.getGuestUser();
+      }	else {
 			  console.log("-- Load User: No Credentials");
         return null;
       }
