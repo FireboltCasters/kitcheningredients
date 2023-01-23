@@ -1,5 +1,10 @@
 // @ts-nocheck
-import {BaseTemplate, ConfigHolder, MenuItem, Navigation} from "../../../../../api/src";
+import {BaseTemplate} from "../templates/BaseTemplate";
+import {ConfigHolder} from "../config/ConfigHolder";
+import {MenuItem} from "./MenuItem";
+import {Navigation} from "./Navigation";
+
+
 import {Login} from "../auth/Login";
 import {LoginTemplate} from "../templates/LoginTemplate";
 import {Home} from "../screens/home/Home";

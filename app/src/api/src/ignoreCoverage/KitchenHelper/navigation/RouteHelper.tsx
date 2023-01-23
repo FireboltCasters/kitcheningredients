@@ -1,4 +1,4 @@
-import {Navigation} from "../../../../../api/src";
+import {Navigation} from "./Navigation";
 import React, {FunctionComponent} from "react";
 
 export class RouteHelper {
