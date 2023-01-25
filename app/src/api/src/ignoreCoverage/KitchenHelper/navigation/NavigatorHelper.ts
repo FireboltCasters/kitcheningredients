@@ -4,6 +4,8 @@ import {DrawerActions, NavigationContainerRef} from "@react-navigation/native";
 import {NavigationQueueItem} from "./NavigationQueueItem";
 import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
 import {useSynchedJSONState} from "../synchedstate/SynchedState";
+import {Navigation} from "./Navigation";
+import {PlatformHelper} from "../helper/PlatformHelper";
 
 // todo Update to newest ReactNavigation
 // https://reactnavigation.org/docs/navigating-without-navigation-prop/
@@ -66,10 +68,28 @@ export class NavigatorHelper {
     static async navigateToRouteName(routeName: string, props= {}, keepHistory?: boolean){
         // Perform navigation if the app has mounted
         if (NavigatorHelper.isNavigationLoaded()) {
+              console.log("navigateToRouteName() " + routeName);
+              console.log(props);
+
               // @ts-ignore
               let emptyParams = NavigatorHelper.getEmptyParams();
               let usedEmptyParams = keepHistory ? {} : emptyParams;
               let params = {...usedEmptyParams, ...props};
+
+              /**
+              if(PlatformHelper.isWeb()){
+                let navigateSearch = Navigation.paramsToURLSearch(props);
+                if(navigateSearch){
+                  navigateSearch = "?"+navigateSearch;
+                }
+                //console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
+                //@ts-ignore
+
+                // this will trigger on same page navigation with different params and on normal navigateToRouteName
+                window.location.hash = Navigation.ROUTE_PATH_PREFIX+routeName+navigateSearch;
+              }
+               */
+
               NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.jumpTo(routeName, {...params}));
               if(NavigatorHelper.setNavigationHistory){
                   NavigatorHelper.setNavigationHistory(NavigatorHelper.getHistory());

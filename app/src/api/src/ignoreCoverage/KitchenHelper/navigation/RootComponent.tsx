@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react';
+import React, {useRef} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import EnviromentHelper from "../EnviromentHelper";
 import {navigationRef, isReadyRef, NavigatorHelper} from "./NavigatorHelper";
@@ -8,9 +8,13 @@ import {ConfigHolder} from "../ConfigHolder";
 import {ViewWithBackgroundColor} from "../templates/ViewWithBackgroundColor";
 import {useBackgroundColor} from "../templates/useBackgroundColor";
 import {Linking} from "react-native";
+import {Navigation} from "./Navigation";
+import {PlatformHelper} from "../helper/PlatformHelper";
 
 export const Root = (props) => {
 	const bgColor = useBackgroundColor()
+
+  const routeNameRef = useRef();
 
 	React.useEffect(() => {
 		return () => {
@@ -38,8 +42,43 @@ export const Root = (props) => {
 			ref={navigationRef}
 			onReady={() => {
 				isReadyRef.current = true;
+        routeNameRef.current = navigationRef.current.getCurrentRoute().name
         NavigatorHelper.handleNavigationQueue();
 			}}
+      onStateChange={async () => {
+        const previousRouteName = routeNameRef.current;
+        const currentRoute = navigationRef.current.getCurrentRoute()
+        console.log("onStateChange");
+        console.log("currentRoute", currentRoute);
+        const currentRouteName = currentRoute.name;
+        const currentRouteParams = currentRoute.params || {};
+        const trackScreenView = () => {
+          if(PlatformHelper.isWeb()){
+            let navigateSearch;
+            let navigateSearchParams = Navigation.paramsToURLSearch(currentRouteParams);
+            if(navigateSearchParams){
+              navigateSearch = "?"+navigateSearchParams;
+            } else {
+              navigateSearch = "";
+            }
+            //console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
+            //@ts-ignore
+
+            // This handle goBack and goForward in the browser, since the hashchange event is not triggered
+            window.location.hash = Navigation.ROUTE_PATH_PREFIX+currentRouteName+navigateSearch;
+          }
+          // Your implementation of analytics goes here!
+
+        };
+
+        //if (previousRouteName !== currentRouteName) {
+          // Replace the line below to add the tracker from a mobile analytics SDK
+          await trackScreenView(currentRouteName);
+        //}
+
+        // Save the current route name for later comparison
+        routeNameRef.current = currentRouteName;
+      }}
 			// @ts-ignore //this is correct
 //      linking={linking}
 			theme={{

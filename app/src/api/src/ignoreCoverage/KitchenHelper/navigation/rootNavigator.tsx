@@ -8,6 +8,7 @@ import {ConfigHolder} from "../../KitchenHelper/ConfigHolder";
 import {Layout} from "../../KitchenHelper/templates/Layout";
 import {DefaultNavigation} from "./DefaultNavigation";
 import {RouteHelper} from "./RouteHelper";
+import {NavigatorHelper} from "./NavigatorHelper";
 
 export const RootStack = (props) => {
 
@@ -19,12 +20,11 @@ export const RootStack = (props) => {
   let search = getSearchParam(startURL);
 
   const [initialSearch, setInitialSearch] = React.useState(search);
+  const [history, setHistory] = Navigation.useNavigationHistory();
+
+  NavigatorHelper.setSetNavigationHistoryFunction(setHistory);
 
   let Drawer = RouteRegisterer.getDrawer();
-
-
-
-
 
   function getSearchParam(startURL){
     let search = RouteHelper.getSearchParamString(startURL);
@@ -59,9 +59,13 @@ export const RootStack = (props) => {
   }
 
   useEffect(() => {
-    let cleanUpFunction = registerHashChangeForWeb()
-    return cleanUpFunction;
+    //let cleanUpFunction = registerHashChangeForWeb()
+    //return cleanUpFunction;
   }, []);
+
+  useEffect(() => {
+    console.log("RootStack: useEffect: history changed");
+  }, [history]);
 
   // TODO do we have this?
   // navigationOptions={{unmountInactiveRoutes: true}}

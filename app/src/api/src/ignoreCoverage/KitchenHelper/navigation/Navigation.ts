@@ -137,10 +137,12 @@ export class Navigation {
         for(let i=0; i<keys.length; i++){
           let key = keys[i];
           let value = params[key];
-          if(i>0){
-            navigateSearch += "&";
+          if(value!==undefined && value!==null){
+            if(i>0){
+              navigateSearch += "&";
+            }
+            navigateSearch += key+"="+value;
           }
-          navigateSearch += key+"="+value;
         }
       }
       return navigateSearch;
@@ -154,6 +156,7 @@ export class Navigation {
         routeName = RouteHelper.getNameOfComponent(routePathOrComponent);
       }
 
+      /**
       if(PlatformHelper.isWeb() && !hashChanged){
           //console.log("-- isWeb but the hash is not changed, so we do it now");
           let navigateSearch = Navigation.paramsToURLSearch(params);
@@ -167,6 +170,9 @@ export class Navigation {
       } else {
         NavigatorHelper.navigateToRouteName(routeName, params)
       }
+      */
+
+      NavigatorHelper.navigateToRouteName(routeName, params)
     }
 
 }

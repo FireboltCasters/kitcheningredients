@@ -5,6 +5,8 @@ import {ConfigHolder} from "../api/src/ignoreCoverage/KitchenHelper/ConfigHolder
 import {ExampleParamScreen} from "./testScreens/ExampleParamScreen";
 import {ExampleRoutesInformationsScreen} from "./testScreens/ExampleRoutesInformationsScreen";
 import {ExampleTemplateUsageScreen} from "./testScreens/ExampleTemplateUsageScreen";
+import {ExampleNavigationGoBack} from "./testScreens/ExampleNavigationGoBack";
+import {ExampleNavigationGoBackSub} from "./testScreens/ExampleNavigationGoBackSub";
 
 export const MySync: FunctionComponent = (props) => {
   console.log("MySynch");
@@ -26,6 +28,8 @@ export const MySync: FunctionComponent = (props) => {
       [
         ExampleTemplateUsageScreen,
         ExampleRoutesInformationsScreen,
+        ExampleNavigationGoBack,
+        ExampleNavigationGoBackSub
       ],
       BaseTemplate
     )
