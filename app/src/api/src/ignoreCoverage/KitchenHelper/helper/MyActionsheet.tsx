@@ -1,7 +1,8 @@
 // @ts-nocheck
-import {useToast, View, Text, Actionsheet, Divider, useDisclose, ScrollView} from "native-base";
-import React, {FunctionComponent, useMemo, useState} from "react";
+import {Actionsheet, Divider, KeyboardAvoidingView, ScrollView, Text, useDisclose, useToast, View} from "native-base";
+import React, {FunctionComponent} from "react";
 import {Icon} from "../components/Icon";
+import {KitchenSafeAreaView} from "kitcheningredients";
 
 export interface MyAlertProps {
     title?: string,
@@ -102,9 +103,13 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
           }
 
           return (
-            <ScrollView style={{width: "100%"}}>
-              {output}
-            </ScrollView>
+            <KitchenSafeAreaView>
+              <KeyboardAvoidingView>
+                <ScrollView style={{width: "100%"}}>
+                  {output}
+                </ScrollView>
+              </KeyboardAvoidingView>
+            </KitchenSafeAreaView>
           )
         }
     }
