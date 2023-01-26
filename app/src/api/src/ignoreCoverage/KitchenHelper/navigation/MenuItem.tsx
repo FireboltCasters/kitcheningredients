@@ -12,8 +12,7 @@ export interface MenuItemProps {
   route?: RouteProps,
   command?: Function,
   position?: number,
-  icon?: string,
-  customIcon?: ((MenuItem) => any),
+  icon?: string | ((MenuItem, boolean, boolean, number) => any),
   expanded?: boolean,
 }
 export class MenuItem implements MenuItemProps {
