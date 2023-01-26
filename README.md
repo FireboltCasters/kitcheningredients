@@ -38,6 +38,7 @@
 
 ## About
 
+
 DEMO: https://fireboltcasters.github.io/kitcheningredients/
 
 Helper for a base app template with a Directus Backend based on NativeBase. Written for React Web & React Native. Designed for an expo app.
