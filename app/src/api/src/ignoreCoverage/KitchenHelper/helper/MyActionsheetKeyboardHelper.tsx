@@ -2,6 +2,7 @@ import {PlatformHelper} from "kitcheningredients";
 import {Keyboard} from "react-native";
 import React from "react";
 
+// https://github.com/GeekyAnts/NativeBase/issues/3939
 export const useKeyboardBottomInset = () => {
   const [bottom, setBottom] = React.useState(0);
   const subscriptions = React.useRef([]);

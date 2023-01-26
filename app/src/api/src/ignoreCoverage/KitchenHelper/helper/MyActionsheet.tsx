@@ -125,6 +125,12 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
 
     const opacity = 0.75;
 
+    let actionSheetContentHeight = undefined; // default it is undefined, so that it will be calculated automatically up to i think 80% of the screen height
+    if(bottomInset > 0){ // if the keyboard is open, we need to set the height to the bottom inset, so that the keyboard does not hide the actionsheet
+      actionSheetContentHeight = height - bottomInset; // the height is the height of the actionsheet, minus the bottom inset
+      //TODO: we could subtract the handler height. But we don't know the height of the handler, so we would need to measure it
+    }
+
     return(
       <KitchenSafeAreaView>
           <Actionsheet isOpen={isOpen} onClose={handleClose} onLayout={(event) => {
@@ -135,7 +141,7 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
           }} _backdrop={{
             opacity: opacity,
           }}>
-            <Actionsheet.Content bottom={bottomInset} height={bottomInset > 0 ? height-bottomInset : undefined} >
+            <Actionsheet.Content bottom={bottomInset} height={actionSheetContentHeight} >
               <View key={"ActionSheetHeader"} style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                 <Text>{props?.title}</Text>
               </View>
