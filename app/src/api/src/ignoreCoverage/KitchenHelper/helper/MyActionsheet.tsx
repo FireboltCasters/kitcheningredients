@@ -47,6 +47,7 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
         return(
           <>
             <Actionsheet.Item
+              key={key+"-item"}
               startIcon={renderedIcon}
               onPress={() => {
                 if(onPress){
@@ -56,7 +57,7 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
               }} style={{backgroundColor: "transparent"}}>
               <Text>{label}</Text>
             </Actionsheet.Item>
-            <Divider />
+            <Divider key={key+"-divider"} />
           </>
         )
     }
@@ -103,13 +104,9 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
           }
 
           return (
-            <KitchenSafeAreaView>
-              <KeyboardAvoidingView>
-                <ScrollView style={{width: "100%"}}>
+                <ScrollView key={"ActionSheetScrollview"} style={{width: "100%"}}>
                   {output}
                 </ScrollView>
-              </KeyboardAvoidingView>
-            </KitchenSafeAreaView>
           )
         }
     }
@@ -127,11 +124,15 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
             opacity: 0.75,
         }}>
             <Actionsheet.Content >
-                <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
+              <KitchenSafeAreaView>
+                <KeyboardAvoidingView>
+                  <View key={"ActionSheetHeader"} style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                     <Text>{props?.title}</Text>
-                </View>
-                {renderDescription()}
-                {renderContent()}
+                  </View>
+                  {renderDescription()}
+                  {renderContent()}
+                </KeyboardAvoidingView>
+              </KitchenSafeAreaView>
             </Actionsheet.Content>
         </Actionsheet>
     );
