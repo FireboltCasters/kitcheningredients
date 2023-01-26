@@ -10,6 +10,7 @@ import {MySync} from "./MySync";
 import {MyLoading} from "./MyLoading";
 import {MyRoot} from "./MyRoot";
 import {ExampleHomeComponent} from "./testScreens/ExampleHomeComponent";
+import {ExampleActionSheet} from "./testScreens/ExampleActionSheet";
 
 export default class Project extends PluginInterface{
 

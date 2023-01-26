@@ -1,8 +1,9 @@
 // @ts-nocheck
-import {Actionsheet, Divider, KeyboardAvoidingView, ScrollView, Text, useDisclose, useToast, View} from "native-base";
+import {Actionsheet, Divider, ScrollView, Text, useDisclose, useToast, View} from "native-base";
 import React, {FunctionComponent} from "react";
 import {Icon} from "../components/Icon";
 import {KitchenSafeAreaView} from "kitcheningredients";
+import {useKeyboardBottomInset} from "./MyActionsheetKeyboardHelper";
 
 export interface MyAlertProps {
     title?: string,
@@ -23,6 +24,9 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
         onOpen,
         onClose
     } = useDisclose(true);
+
+    const bottomInset = useKeyboardBottomInset();
+    const [height, setHeight] = React.useState(0);
 
     function handleClose(){
         onClose();
@@ -104,9 +108,9 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
           }
 
           return (
-                <ScrollView key={"ActionSheetScrollview"} style={{width: "100%"}}>
-                  {output}
-                </ScrollView>
+            <>
+              {output}
+            </>
           )
         }
     }
@@ -119,22 +123,29 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
       }
     }
 
+    const opacity = 0.75;
+
     return(
-        <Actionsheet isOpen={isOpen} onClose={handleClose} _backdrop={{
-            opacity: 0.75,
-        }}>
-            <Actionsheet.Content >
-              <KitchenSafeAreaView>
-                <KeyboardAvoidingView>
-                  <View key={"ActionSheetHeader"} style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
-                    <Text>{props?.title}</Text>
-                  </View>
-                  {renderDescription()}
-                  {renderContent()}
-                </KeyboardAvoidingView>
-              </KitchenSafeAreaView>
+      <KitchenSafeAreaView>
+          <Actionsheet isOpen={isOpen} onClose={handleClose} onLayout={(event) => {
+            const height = event?.nativeEvent?.layout?.height;
+            if(height){
+              setHeight(height);
+            }
+          }} _backdrop={{
+            opacity: opacity,
+          }}>
+            <Actionsheet.Content bottom={bottomInset} height={bottomInset > 0 ? height-bottomInset : undefined} >
+              <View key={"ActionSheetHeader"} style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
+                <Text>{props?.title}</Text>
+              </View>
+              {renderDescription()}
+              <ScrollView style={{width: "100%", backgroundColor: "orange"}}>
+                {renderContent()}
+              </ScrollView>
             </Actionsheet.Content>
-        </Actionsheet>
+          </Actionsheet>
+      </KitchenSafeAreaView>
     );
 
 }
