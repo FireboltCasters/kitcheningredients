@@ -1,4 +1,4 @@
-import {PlatformHelper} from "kitcheningredients";
+import {PlatformHelper} from "../helper/PlatformHelper";
 import {Keyboard} from "react-native";
 import React from "react";
 
