@@ -2,7 +2,7 @@
 import {Actionsheet, Divider, ScrollView, Text, useDisclose, useToast, View} from "native-base";
 import React, {FunctionComponent} from "react";
 import {Icon} from "../components/Icon";
-import {KitchenSafeAreaView} from "kitcheningredients";
+import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 import {useKeyboardBottomInset} from "./MyActionsheetKeyboardHelper";
 
 export interface MyAlertProps {
