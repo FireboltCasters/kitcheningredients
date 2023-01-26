@@ -146,7 +146,7 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
                 <Text>{props?.title}</Text>
               </View>
               {renderDescription()}
-              <ScrollView style={{width: "100%", backgroundColor: "orange"}}>
+              <ScrollView style={{width: "100%"}}>
                 {renderContent()}
               </ScrollView>
             </Actionsheet.Content>
