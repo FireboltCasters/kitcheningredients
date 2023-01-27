@@ -1,3 +1,6 @@
+import {BreakPointLayout} from "./ignoreCoverage/KitchenHelper/templates/BreakPointLayout";
+export {BreakPointLayout}
+
 import {NavigatorHelper} from "./ignoreCoverage/KitchenHelper/navigation/NavigatorHelper";
 export {NavigatorHelper}
 

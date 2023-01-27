@@ -32,7 +32,7 @@ export const BaseLayout = ({
 	const ssoIconColor = useProjectColor();
 
 	function renderHeading(){
-	  if(!!header){
+	  if(header!==undefined){
 	    return header;
     }
 
