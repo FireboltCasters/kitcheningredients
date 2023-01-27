@@ -4,6 +4,7 @@ import React, {FunctionComponent} from "react";
 import {Icon} from "../components/Icon";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 import {useKeyboardBottomInset} from "./MyActionsheetKeyboardHelper";
+import {useBackgroundColor} from "./../templates/useBackgroundColor";
 
 export interface MyAlertProps {
     title?: string,
@@ -15,9 +16,12 @@ export interface MyAlertProps {
     renderCustomContent?: any,
     options?: any,
     onOptionSelect?: any,
+    backgroundColor?: string,
 }
 
 export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) => {
+
+    const backgroundColor = props?.backgroundColor || useBackgroundColor();
 
     const {
         isOpen,
@@ -141,7 +145,7 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
           }} _backdrop={{
             opacity: opacity,
           }}>
-            <Actionsheet.Content bottom={bottomInset} height={actionSheetContentHeight} >
+            <Actionsheet.Content bottom={bottomInset} height={actionSheetContentHeight} backgroundColor={backgroundColor} >
               <View key={"ActionSheetHeader"} style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                 <Text>{props?.title}</Text>
               </View>
