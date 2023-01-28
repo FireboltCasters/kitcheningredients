@@ -55,14 +55,14 @@ export const Root = (props) => {
         let trackScreenView = () => {}
 
         if(NavigatorHelper.isNavigationLoaded()){
-          const previousRouteName = routeNameRef.current;
+          const previousRouteName = routeNameRef?.current+"";
           const currentNavigation = NavigatorHelper.getCurrentNavigation();
           if(!!currentNavigation && !!currentNavigation.getCurrentRoute){
             const currentRoute = currentNavigation.getCurrentRoute()
             console.log("onStateChange");
             console.log("currentRoute", currentRoute);
-            const currentRouteName = currentRoute.name;
-            const currentRouteParams = currentRoute.params || {};
+            const currentRouteName = currentRoute?.name || "";
+            const currentRouteParams = currentRoute?.params || {};
             trackScreenView = () => {
               if(PlatformHelper.isWeb()){
                 let navigateSearch;
@@ -81,16 +81,13 @@ export const Root = (props) => {
               // Your implementation of analytics goes here!
 
             };
+            routeNameRef.current = currentRouteName;
           }
         }
 
-        //if (previousRouteName !== currentRouteName) {
-          // Replace the line below to add the tracker from a mobile analytics SDK
-          await trackScreenView(currentRouteName);
-        //}
+        await trackScreenView();
 
         // Save the current route name for later comparison
-        routeNameRef.current = currentRouteName;
       }}
 			// @ts-ignore //this is correct
 //      linking={linking}
