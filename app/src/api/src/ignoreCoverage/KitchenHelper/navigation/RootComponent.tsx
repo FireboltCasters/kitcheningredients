@@ -46,30 +46,37 @@ export const Root = (props) => {
         NavigatorHelper.handleNavigationQueue();
 			}}
       onStateChange={async () => {
-        const previousRouteName = routeNameRef.current;
-        const currentRoute = navigationRef.current.getCurrentRoute()
-        console.log("onStateChange");
-        console.log("currentRoute", currentRoute);
-        const currentRouteName = currentRoute.name;
-        const currentRouteParams = currentRoute.params || {};
-        const trackScreenView = () => {
-          if(PlatformHelper.isWeb()){
-            let navigateSearch;
-            let navigateSearchParams = Navigation.paramsToURLSearch(currentRouteParams);
-            if(navigateSearchParams){
-              navigateSearch = "?"+navigateSearchParams;
-            } else {
-              navigateSearch = "";
-            }
-            //console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
-            //@ts-ignore
+        let trackScreenView = () => {}
 
-            // This handle goBack and goForward in the browser, since the hashchange event is not triggered
-            window.location.hash = Navigation.ROUTE_PATH_PREFIX+currentRouteName+navigateSearch;
+        if(NavigatorHelper.isNavigationLoaded()){
+          const previousRouteName = routeNameRef.current;
+          const currentNavigation = NavigatorHelper.getCurrentNavigation();
+          if(!!currentNavigation && !!currentNavigation.getCurrentRoute){
+            const currentRoute = currentNavigation.getCurrentRoute()
+            console.log("onStateChange");
+            console.log("currentRoute", currentRoute);
+            const currentRouteName = currentRoute.name;
+            const currentRouteParams = currentRoute.params || {};
+            trackScreenView = () => {
+              if(PlatformHelper.isWeb()){
+                let navigateSearch;
+                let navigateSearchParams = Navigation.paramsToURLSearch(currentRouteParams);
+                if(navigateSearchParams){
+                  navigateSearch = "?"+navigateSearchParams;
+                } else {
+                  navigateSearch = "";
+                }
+                //console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
+                //@ts-ignore
+
+                // This handle goBack and goForward in the browser, since the hashchange event is not triggered
+                window.location.hash = Navigation.ROUTE_PATH_PREFIX+currentRouteName+navigateSearch;
+              }
+              // Your implementation of analytics goes here!
+
+            };
           }
-          // Your implementation of analytics goes here!
-
-        };
+        }
 
         //if (previousRouteName !== currentRouteName) {
           // Replace the line below to add the tracker from a mobile analytics SDK
