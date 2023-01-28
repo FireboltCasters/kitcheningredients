@@ -42,8 +42,14 @@ export const Root = (props) => {
 			ref={navigationRef}
 			onReady={() => {
 				isReadyRef.current = true;
-        routeNameRef.current = navigationRef.current.getCurrentRoute().name
-        NavigatorHelper.handleNavigationQueue();
+				const currentNavigation = navigationRef?.current;
+				if(currentNavigation){
+				  if(currentNavigation.getCurrentRoute){
+				    const name = currentNavigation.getCurrentRoute()?.name;
+            routeNameRef.current = name
+            NavigatorHelper.handleNavigationQueue();
+          }
+        }
 			}}
       onStateChange={async () => {
         let trackScreenView = () => {}
