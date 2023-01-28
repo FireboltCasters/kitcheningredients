@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/kitcheningredients/static/js/app.e88d7adf.chunk.js",
-    "app.js.map": "/kitcheningredients/static/js/app.e88d7adf.chunk.js.map",
+    "app.js": "/kitcheningredients/static/js/app.567a996c.chunk.js",
+    "app.js.map": "/kitcheningredients/static/js/app.567a996c.chunk.js.map",
     "runtime~app.js": "/kitcheningredients/static/js/runtime~app.94108066.js",
     "runtime~app.js.map": "/kitcheningredients/static/js/runtime~app.94108066.js.map",
     "static/js/2.b652aab5.chunk.js": "/kitcheningredients/static/js/2.b652aab5.chunk.js",
@@ -27,6 +27,6 @@
   "entrypoints": [
     "static/js/runtime~app.94108066.js",
     "static/js/2.b652aab5.chunk.js",
-    "static/js/app.e88d7adf.chunk.js"
+    "static/js/app.567a996c.chunk.js"
   ]
 }
