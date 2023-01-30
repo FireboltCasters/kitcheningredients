@@ -73,6 +73,9 @@ export {CrossLottie}
 import {DirectusImage} from "./ignoreCoverage/KitchenHelper/project/DirectusImage";
 export {DirectusImage}
 
+import {DirectusIcon} from "./ignoreCoverage/KitchenHelper/project/DirectusIcon";
+export {DirectusIcon}
+
 import {getDirectusImageUrl} from "./ignoreCoverage/KitchenHelper/project/DirectusImage";
 export {getDirectusImageUrl}
 
