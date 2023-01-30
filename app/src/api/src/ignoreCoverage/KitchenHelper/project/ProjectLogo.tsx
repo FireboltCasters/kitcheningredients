@@ -5,7 +5,7 @@ import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import {ServerInfo} from "@directus/sdk";
 import {DirectusImage} from "./DirectusImage";
 import ServerAPI from "../ServerAPI";
-import {ConfigHolder} from "kitcheningredients";
+import {ConfigHolder} from "../ConfigHolder";
 
 let titleBoxHeight = 60;
 
