@@ -5,6 +5,7 @@ import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import {ServerInfo} from "@directus/sdk";
 import {DirectusImage} from "./DirectusImage";
 import ServerAPI from "../ServerAPI";
+import {ConfigHolder} from "kitcheningredients";
 
 let titleBoxHeight = 60;
 
@@ -20,6 +21,16 @@ export const ProjectLogo: FunctionComponent<AppState> = (props) => {
 
 	let borderRadius = props.rounded? 10 : 0;
 	const heightAndWidth = titleBoxHeight;
+
+	if(!!ConfigHolder.plugin.renderCustomProjectLogo){
+	  return ConfigHolder.plugin.renderCustomProjectLogo({
+      serverInfo: serverInfo,
+      height: heightAndWidth,
+      width: heightAndWidth,
+      backgroundColor: project_color,
+      borderRadius: borderRadius
+	  });
+  }
 
 	return(
 		// @ts-ignore

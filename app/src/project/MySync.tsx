@@ -9,6 +9,7 @@ import {ExampleNavigationGoBack} from "./testScreens/ExampleNavigationGoBack";
 import {ExampleNavigationGoBackSub} from "./testScreens/ExampleNavigationGoBackSub";
 import {ExampleActionSheet} from "./testScreens/ExampleActionSheet";
 import {ExampleImageScreen} from "./testScreens/ExampleImageScreen";
+import {ExampleMarkdownScreen} from "./testScreens/ExampleMarkdownScreen";
 
 export const MySync: FunctionComponent = (props) => {
   console.log("MySynch");
@@ -33,7 +34,8 @@ export const MySync: FunctionComponent = (props) => {
         ExampleNavigationGoBack,
         ExampleNavigationGoBackSub,
         ExampleActionSheet,
-        ExampleImageScreen
+        ExampleImageScreen,
+        ExampleMarkdownScreen
       ],
       BaseTemplate
     )

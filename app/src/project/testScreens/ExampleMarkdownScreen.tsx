@@ -1,7 +1,6 @@
 import React, {FunctionComponent, useState} from "react";
-import {Input, TextArea, View} from "native-base";
-import {ParentDimension, ThemedMarkdown} from "../../api/src";
-import {TextInput} from "react-native";
+import {Input, Text, View} from "native-base";
+import {MyThemedBox, ParentDimension, ThemedMarkdown} from "../../api/src";
 
 export const ExampleMarkdownScreen: FunctionComponent = (props) => {
 
@@ -9,6 +8,8 @@ export const ExampleMarkdownScreen: FunctionComponent = (props) => {
 
   const markdownTextExample = `
 Welcome to the markdown test.
+
+![Example Image](https://raw.githubusercontent.com/FireboltCasters/kitcheningredients/master/app/assets/icon.png)
 
 This is a test of the markdown component. Lorizzle dolizzle sheezy tellivizzle, **Bold** and *italic* its fo rizzle adipiscing shut the shizzle up. Nullizzle sapizzle velizzle, dope volutpizzle, suscipizzle yo, dope vel, fo shizzle. Pellentesque fo shizzle tortor. Sed erizzle. Ghetto fo shizzle dolizzle dapibizzle turpis tempizzle gangsta. Maurizzle pellentesque nibh izzle turpizzle. Fizzle shizzlin dizzle tortizzle. Rizzle eleifend rhoncizzle check out this. In hac fo shizzle shut the shizzle up dictumst. Donec dapibus. Nizzle tellizzle mah nizzle, pretizzle hizzle, mattis izzle, eleifend fizzle, . Daahng dawg suscipizzle. Integizzle semper fizzle sizzle fo shizzle.
 
@@ -114,23 +115,27 @@ Table:
   return (
     <View style={{width: "100%", flex: 1, flexDirection: "row"}}>
       <View  style={{width: "100%", flex: 1}}>
+        <Text bold={true}>{"Rendered Markdown"}</Text>
         <ThemedMarkdown>
           {markdownText}
         </ThemedMarkdown>
       </View>
-      <View  style={{width: "100%", flex: 1, backgroundColor: "red"}}>
-        <ParentDimension style={{width: "100%", flex: 1, backgroundColor: "red", height: "100%"}} setDimension={(x, y, width, height) => {
-          setDimension({x, y, width, height});
-        } }>
-          <Input
-            placeholder="Your Placeholder"
-            size={"lg"}
-            style={{height: dimension?.height-10, width: 300, backgroundColor: "blue", flexGrow: 1, flex: 1}}
-            editable
-            multiline
-            value={markdownText}
-            onChangeText={(value) => setMarkdownText(value)} />
-        </ParentDimension>
+      <View  style={{width: "100%", flex: 1}}>
+        <Text bold={true}>{"Markdown Editor"}</Text>
+          <ParentDimension style={{width: "100%", flex: 1, height: "100%"}} setDimension={(x, y, width, height) => {
+            setDimension({x, y, width, height});
+          } }>
+            <MyThemedBox _shadeLevel={2} >
+            <Input
+              placeholder="Your Placeholder"
+              size={"lg"}
+              style={{height: dimension?.height-10, width: 300, flexGrow: 1, flex: 1}}
+              editable
+              multiline
+              value={markdownText}
+              onChangeText={(value) => setMarkdownText(value)} />
+            </MyThemedBox>
+          </ParentDimension>
       </View>
     </View>
   );

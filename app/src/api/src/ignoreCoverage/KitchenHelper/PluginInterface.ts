@@ -62,4 +62,8 @@ export abstract class PluginInterface{
     getOverwriteTheme(): ColorMode {
       return null;
     }
+
+    renderCustomProjectLogo(): JSX.Element{
+      return null;
+    }
 }

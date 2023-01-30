@@ -90,7 +90,9 @@ export default class App extends React.Component<any, any>{
 
 	async reload(){
     await ConfigHolder.instance.setState({
-      reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
+      reloadNumber: 0, //ConfigHolder.instance.state.reloadNumber+1,
+      syncFinished: false,
+
     });
   }
 
