@@ -1,3 +1,6 @@
+import TextGenerator from "./ignoreCoverage/KitchenHelper/helper/TextGenerator";
+export {TextGenerator}
+
 import {BreakPointLayout} from "./ignoreCoverage/KitchenHelper/templates/BreakPointLayout";
 export {BreakPointLayout}
 

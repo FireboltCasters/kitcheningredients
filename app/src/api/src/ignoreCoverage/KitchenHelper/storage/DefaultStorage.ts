@@ -74,6 +74,7 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     clear_credentials(){
+        this.set_user(null);
         this.set_refresh_token(null);
         this.set_access_token(null);
         this.set_is_guest(false);
@@ -86,7 +87,12 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
         return !!this.get_auth_access_token();
     }
 
-
+    set_user(user){
+      if(!!user){
+        user = JSON.stringify(user);
+      }
+      this.setValueOrDeleteIfNull(RequiredStorageKeys.USER, user)
+    }
     /**
      * Refresh Token
      */

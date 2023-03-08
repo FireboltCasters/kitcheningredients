@@ -6,6 +6,8 @@ export class RequiredStorageKeys {
     static KEY_AUTH_ACCESS_TOKEN = 'auth_token'; //DO not change
 
     static THEME = 'theme';
+    static USER = 'user';
+    static SERVER_INFO = 'server_info';
 
     static KEY_DIRECTUS_IMAGE_CACHE = 'KEY_DIRECTUS_IMAGE_CACHE';
 

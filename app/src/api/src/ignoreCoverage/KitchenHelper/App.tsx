@@ -10,7 +10,6 @@ import ServerAPI from "./ServerAPI";
 import {Linking} from "react-native";
 import * as ExpoLinking from "expo-linking";
 import {URL_Helper} from "./helper/URL_Helper";
-import {NavigatorHelper} from "./navigation/NavigatorHelper";
 import UserHelper from "./utils/UserHelper";
 import {StoreProvider} from "easy-peasy";
 import {SynchedState} from "./synchedstate/SynchedState";
@@ -20,6 +19,7 @@ import {ViewWithBackgroundColor} from "./templates/ViewWithBackgroundColor";
 import {DefaultNavigation} from "./navigation/DefaultNavigation";
 import {Navigation} from "./navigation/Navigation";
 import EnviromentHelper from "./EnviromentHelper";
+import {UserInitLoader} from "./utils/UserInitLoader";
 
 export default class App extends React.Component<any, any>{
 
@@ -66,14 +66,6 @@ export default class App extends React.Component<any, any>{
 			// Clean up the event listeners
 			Linking.removeEventListener('url', onReceiveURL);
 		};
-	}
-
-	async loadServerInfo(){
-		try{
-			return await ServerAPI.getServerInfo();
-		} catch (err){
-			console.log("Error at get Server Info: ",err);
-		}
 	}
 
 	async loadRole(role_id){
@@ -232,16 +224,6 @@ export default class App extends React.Component<any, any>{
     await ConfigHolder.instance.setState({
       startURL: startURL,
     })
-    let serverStatus = await this.loadServerInfo();
-    await ConfigHolder.instance.setState({offline: !serverStatus});
-    let user = await ConfigHolder.instance.loadUser();
-    await ConfigHolder.instance.setUser(user, null);
-    if(!user){
-      //let isAllowedInitialRoute = await DefaultNavigation.isAnonymUserRoute(startURL);
-      //if(!isAllowedInitialRoute){
-      //  await ConfigHolder.instance.setRedirectToLogin();
-      //}
-    }
   }
 
 	getBaseTheme(){
@@ -249,13 +231,18 @@ export default class App extends React.Component<any, any>{
 		return BaseThemeGenerator.getBaseTheme(initialColorMode);
 	}
 
-	getLoadingScreen(){
+	getLoadingScreen(additionalContent?){
     let loadingContent = null;
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.getLoadingComponent){
       loadingContent = ConfigHolder.plugin.getLoadingComponent();
     }
 //    return <ViewWithBackgroundColor><View style={{width: "100%", height: "100%", backgroundColor: "red", justifyContent: "center", alignItems: "center"}}><Text>{JSON.stringify(ConfigHolder.instance.state.startURL, null, 2)}</Text></View></ViewWithBackgroundColor>
-    return <ViewWithBackgroundColor>{loadingContent}</ViewWithBackgroundColor>
+    return (
+      <ViewWithBackgroundColor>
+        {loadingContent}
+        {additionalContent}
+      </ViewWithBackgroundColor>
+    )
   }
 
   getSynchScreen(){
@@ -287,10 +274,14 @@ export default class App extends React.Component<any, any>{
 	render() {
 		let root = null;
 
-		if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined || this.state.startURL===undefined){
+		if(this.state.startURL===undefined){
 		  console.log("Loading screen");
 		  root = this.getLoadingScreen();
-		} else if(!this.state.syncFinished) {
+		} else if(this.state.reloadNumber===0 || !this.state.loadedUser || this.state.offline===undefined){
+		  root = this.getLoadingScreen(
+        <UserInitLoader key={JSON.stringify(this.getUser())} />
+      )
+    } else if(!this.state.syncFinished) {
       console.log("Sync screen");
 		  root = this.getSynchScreen();
     } else {
