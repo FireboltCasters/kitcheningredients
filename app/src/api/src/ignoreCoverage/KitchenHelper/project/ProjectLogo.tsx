@@ -20,16 +20,20 @@ export const ProjectLogo: FunctionComponent<AppState> = (props) => {
 	let project_logo_asset_id = ServerInfoHelper.getProjectLogoAssetId(serverInfo);
 
 	let borderRadius = props.rounded? 10 : 0;
-	const heightAndWidth = titleBoxHeight;
+	const heightAndWidth = titleBoxHeight || 10;
 
-	if(!!ConfigHolder.plugin.renderCustomProjectLogo){
-	  return ConfigHolder.plugin.renderCustomProjectLogo({
+
+	if(!!ConfigHolder?.plugin?.renderCustomProjectLogo){
+	  let rendered = ConfigHolder?.plugin?.renderCustomProjectLogo({
       serverInfo: serverInfo,
       height: heightAndWidth,
       width: heightAndWidth,
       backgroundColor: project_color,
       borderRadius: borderRadius
 	  });
+	  if(!!rendered){
+	    return rendered;
+    }
   }
 
 	return(

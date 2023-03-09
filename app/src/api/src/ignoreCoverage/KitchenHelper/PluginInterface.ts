@@ -63,7 +63,13 @@ export abstract class PluginInterface{
       return null;
     }
 
-    renderCustomProjectLogo(): JSX.Element{
+    renderCustomProjectLogo({
+                              serverInfo,
+                              height,
+                              width,
+                              backgroundColor,
+                              borderRadius
+                            }): JSX.Element{
       return null;
     }
 }
