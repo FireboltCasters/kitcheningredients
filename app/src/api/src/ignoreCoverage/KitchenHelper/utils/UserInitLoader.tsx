@@ -8,23 +8,17 @@ import ServerAPI from "../ServerAPI";
 
 export const UserInitLoader = (props) => {
 
-  console.log("UserInitLoader Component")
-
-  const [userLocalSaved, setUser] = useSynchedJSONState(RequiredStorageKeys.USER);
+  const [userLocalSaved, setUser] = useSynchedJSONState(RequiredStorageKeys.KITCHEN_CACHED_USER);
   const [syncedUser, setSyncedUser] = useState({});
 
-  const [serverInfoLocalSaved, setServerInfo] = useSynchedJSONState(RequiredStorageKeys.SERVER_INFO);
+  const [serverInfoLocalSaved, setServerInfo] = useSynchedJSONState(RequiredStorageKeys.KITCHEN_CACHED_SERVER_INFO);
   const [syncedServerInfo, setSyncedServerInfo] = useState({});
-
-
 
   const configHolderUser = ConfigHolder.instance.getUser();
 
   async function load(){
-    console.log("UserInitLoader load")
     let serverStatus = await loadServerInfo();
     let isOffline = !serverStatus;
-    console.log("isOffline: "+isOffline)
     await ConfigHolder.instance.setState({offline: isOffline});
     if(!isOffline){
       let userRemote = await ConfigHolder.instance.loadUser();
@@ -64,11 +58,6 @@ export const UserInitLoader = (props) => {
   }, [serverInfoLocalSaved, syncedServerInfo])
 
   return (
-    <View>
-      <Text>{"User Init Loader"}</Text>
-      <Text>{"configHolderUser: "+JSON.stringify(configHolderUser, null, 2)}</Text>
-
-      <Text>{JSON.stringify(userLocalSaved, null, 2)}</Text>
-    </View>
+    null
   );
 }

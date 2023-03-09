@@ -91,7 +91,7 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
       if(!!user){
         user = JSON.stringify(user);
       }
-      this.setValueOrDeleteIfNull(RequiredStorageKeys.USER, user)
+      this.setValueOrDeleteIfNull(RequiredStorageKeys.KITCHEN_CACHED_USER, user)
     }
     /**
      * Refresh Token
