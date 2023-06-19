@@ -113,7 +113,11 @@ export class Navigation {
     }
 
     static navigateBack(){
-      if(NavigatorHelper.getHistory()===null){
+      let history = NavigatorHelper.getHistory();
+
+      if(history===null){
+        Navigation.navigateHome()
+      } if(history.length===1){ // well then we can't go back, since we are on our current page
         Navigation.navigateHome()
       } else {
         NavigatorHelper.getCurrentNavigation()?.dispatch(CommonActions.goBack());
