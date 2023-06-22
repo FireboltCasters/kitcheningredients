@@ -14,7 +14,6 @@ import {RouteRegisterer} from "./RouteRegisterer";
 import {AboutUs} from "../screens/legalRequirements/AboutUs";
 import {License} from "../screens/legalRequirements/License";
 import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
-import {TermsAndConditions} from "../screens/legalRequirements/TermsAndConditions";
 import {RouteHelper} from "./RouteHelper";
 
 export class DefaultNavigation {
@@ -51,25 +50,29 @@ export class DefaultNavigation {
   }
 
   static registerLegalRequirements(){
+    let about_us_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
+      component: AboutUs,
+      template: BaseTemplate
+    }))
+    about_us_menu_item.label = "Über uns";
 
-    let routes = Navigation.routesRegisterMultipleFromComponents(
-      [
-        AboutUs,
-        License,
-        PrivacyPolicy,
-        TermsAndConditions
-      ],
-      BaseTemplate
-    )
+    Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_ABOUT_US] = about_us_menu_item;
 
-    let legalRequirementsMenu = new MenuItem({
-      key: Navigation.DEFAULT_MENU_KEY_LEGAL_REQUIREMENTS,
-      label: "Legal Requirements",
-      position: -1000
-    });
-    legalRequirementsMenu.addChildMenuItems(MenuItem.fromRoutes(routes));
-    console.log("legalRequirementsMenu", legalRequirementsMenu);
-    Navigation.menuRegister(legalRequirementsMenu);
+    let privacy_policy_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
+      component: PrivacyPolicy,
+      template: BaseTemplate
+    }))
+    privacy_policy_menu_item.label = "Datenschutz";
+
+    Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_PRIVACY_POLICY] = privacy_policy_menu_item;
+
+    let license_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
+      component: License,
+      template: BaseTemplate
+    }));
+    license_menu_item.label = "Lizenz";
+
+    Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_LICENSE] = license_menu_item;
   }
 
 
@@ -102,7 +105,7 @@ export class DefaultNavigation {
     let loginScreens = DefaultNavigation.getScreensFor(
       {
         [Navigation.DEFAULT_ROUTE_LOGIN]: Navigation.routeGetRegistered()[Navigation.DEFAULT_ROUTE_LOGIN],
-        ...DefaultNavigation.getRegisteredRoutesForScreenByComonents(AboutUs, License, PrivacyPolicy, TermsAndConditions)
+        ...DefaultNavigation.getRegisteredRoutesForScreenByComonents(AboutUs, License, PrivacyPolicy)
       },
       initialSearch
     );

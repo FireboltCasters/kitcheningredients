@@ -1,23 +1,8 @@
-import {ResetPassword} from "../auth/ResetPassword";
 import {Home} from "../screens/home/Home";
-import {Debug} from "../screens/debug/Debug";
 import {Login} from "../auth/Login";
-import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
-import {AboutUs} from "../screens/legalRequirements/AboutUs";
-import {License} from "../screens/legalRequirements/License";
-import {TermsAndConditions} from "../screens/legalRequirements/TermsAndConditions";
-import {BaseTemplate} from "../templates/BaseTemplate";
-import {LoginTemplate} from "../templates/LoginTemplate";
 // @ts-nocheck
 import React from "react";
-import {MenuItem} from "./MenuItem";
-import {Users} from "../screens/user/Users";
-import {ConfigHolder} from "../ConfigHolder";
 import {createDrawerNavigator} from "@react-navigation/drawer";
-import {Settings} from "../screens/settings/Settings";
-import {DeveloperSettings} from "../screens/settings/DeveloperSettings";
-import {BaseNoPaddingTemplate} from "./../templates/BaseNoPaddingTemplate";
-import {Register} from "../auth/Register";
 
 const Drawer = createDrawerNavigator();
 

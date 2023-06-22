@@ -2,13 +2,14 @@ import {RequiredSynchedStates} from "../synchedstate/RequiredSynchedStates";
 import {useSynchedJSONState} from "../synchedstate/SynchedState";
 import {NavigatorHelper} from "./NavigatorHelper";
 import {FunctionComponent} from "react";
-import {PlatformHelper} from "../helper/PlatformHelper";
 import {Home} from "../screens/home/Home";
 import {Login} from "../auth/Login";
 import {CommonActions, DrawerActions} from "@react-navigation/native";
 import {RouteHelper} from "./RouteHelper";
 import {MenuItem} from "./MenuItem";
-import {NavigationQueueItem} from "./NavigationQueueItem";
+import {AboutUs} from "../screens/legalRequirements/AboutUs";
+import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
+import {License} from "../screens/legalRequirements/License";
 
 // todo Update to newest ReactNavigation
 // https://reactnavigation.org/docs/navigating-without-navigation-prop/
@@ -26,7 +27,10 @@ export class Navigation {
 
     static DEFAULT_ROUTE_HOME = RouteHelper.getNameOfComponent(Home);
     static DEFAULT_ROUTE_LOGIN = RouteHelper.getNameOfComponent(Login);
-    static DEFAULT_MENU_KEY_LEGAL_REQUIREMENTS = "legalRequirements";
+
+    static DEFAULT_MENU_KEY_ABOUT_US = RouteHelper.getNameOfComponent(AboutUs);
+    static DEFAULT_MENU_KEY_PRIVACY_POLICY = RouteHelper.getNameOfComponent(PrivacyPolicy);
+    static DEFAULT_MENU_KEY_LICENSE = RouteHelper.getNameOfComponent(License);
 
     static ROUTE_PATH_PREFIX = "/";
 
@@ -34,6 +38,7 @@ export class Navigation {
     private static registeredComponents : {[key: string]: RouteProps} = {};
 
     private static registeredMenuItems : {[key: string]: MenuItem} = {};
+    public static requiredMenuItems : {[key: string]: MenuItem} = {};
 
     static useNavigationHistory(){
       return useSynchedJSONState(RequiredSynchedStates.navigationHistory)
@@ -94,10 +99,15 @@ export class Navigation {
 
     static menusResetRegistered(){
       Navigation.registeredMenuItems = {};
+      Navigation.requiredMenuItems = {};
     }
 
     static menuGetRegisteredDict(){
       return Navigation.registeredMenuItems;
+    }
+
+    static menuGetRequiredMenuDict(){
+      return Navigation.requiredMenuItems;
     }
 
   static menuGetRegisteredList(){
@@ -126,8 +136,6 @@ export class Navigation {
 
     static getCurrentRouteName(){
       let history = NavigatorHelper.getHistory();
-      console.log("++++++++++++ getCurrentRouteName: ");
-      console.log(history);
       if(history && history.length>0){
         return history[history.length-1].name;
       }

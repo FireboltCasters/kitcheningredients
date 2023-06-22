@@ -61,19 +61,6 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 
 	}, [])
 
-	function renderInvisibleForm(){
-		let output = [];
-		output.push(<input className='form-control' name={"email"} value={email}/>)
-		output.push(<input className='form-control' name={"password"} value={password}/>)
-		return(
-			<div key={reloadnumber} style={{display: "none"}}>
-				<form ref={markerRef} action={"/"} method="post">
-					{output}
-					<input type='submit' className='btn btn-success'/>
-				</form>
-			</div>
-		)
-	}
 
 	function renderResetPasswordButton(){
 		if(showResetPassword){
@@ -101,7 +88,7 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
     const toggleShowPasswordIcon = showPassword ? "eye" : "eye-off";
     let rightElement = (
       <Button roundedLeft="0" onPress={() => {setShowPassword(!showPassword)}}>
-        <Icon name={toggleShowPasswordIcon} size="sm" />
+        <Icon invert={true} name={toggleShowPasswordIcon} size="sm" />
       </Button>
     )
 

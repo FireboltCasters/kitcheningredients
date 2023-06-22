@@ -14,7 +14,6 @@ export interface DeviceInformation{
   isSimulator: boolean,
   isTablet: boolean,
   isLandscape: boolean,
-  deviceFingerprint: string,
   brand: string,
   platform: string,
   systemVersion: string,
@@ -25,6 +24,7 @@ export interface DeviceInformation{
 
 export class DeviceHelper {
 
+  /** Removed due to privacy policy problems on google
   private static async getDeviceFingerprint(): Promise<string> {
     let internalId = await DeviceInfo.getUniqueId();
     if (PlatformHelper.isWeb()) {
@@ -42,6 +42,7 @@ export class DeviceHelper {
     }
     return internalId;
   }
+   */
 
   private static async getBrand(): Promise<string> {
     let brand = await DeviceInfo.getBrand();
@@ -58,7 +59,6 @@ export class DeviceHelper {
     const windowScale = Dimensions.get('screen').scale;
     const isSimulator = await DeviceInfo.isEmulator();
     const isTablet = await DeviceInfo.isTablet();
-    const deviceFingerprint = await DeviceHelper.getDeviceFingerprint();
     const brand = await DeviceHelper.getBrand();
     const platform = PlatformHelper.getPlatformDisplayName();
     const systemVersion = await DeviceInfo.getSystemVersion();
@@ -76,7 +76,6 @@ export class DeviceHelper {
       isSimulator: isSimulator,
       isTablet: isTablet,
       isLandscape: isLandscape,
-      deviceFingerprint: deviceFingerprint,
       brand: brand,
       platform: platform,
       systemVersion: systemVersion,

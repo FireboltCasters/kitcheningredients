@@ -1,19 +1,17 @@
 // @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from 'react';
-import {Flex, useBreakpointValue, View, Wrap, KeyboardAvoidingView} from "native-base";
+import {Flex, KeyboardAvoidingView, useBreakpointValue, View, Wrap} from "native-base";
 import ServerAPI from "../ServerAPI";
 import {Floaters} from "./Floaters";
 import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
-import {Platform, SafeAreaView, StatusBar, useWindowDimensions} from "react-native";
-import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
-import {AboutUs} from "../screens/legalRequirements/AboutUs";
-import {License} from "../screens/legalRequirements/License";
-import {TermsAndConditions} from "../screens/legalRequirements/TermsAndConditions";
+import {Platform, StatusBar} from "react-native";
 import {ProjectBanner} from "../project/ProjectBanner";
-import {InternalLink} from "../navigation/InternalLink";
 import {ProjectBackground} from "../project/ProjectBackground";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
+import {LegalRequiredInternalLink} from "../screens/legalRequirements/LegalRequiredInternalLink";
+import {Navigation} from "../navigation/Navigation";
+import {ThemeFloaterButton} from "./ThemeFloaterButton";
 
 const titleBoxHeight = 64;
 
@@ -84,10 +82,9 @@ export const LoginTemplate: FunctionComponent = (props) => {
 					flexDirection="row"
 					justify="center"
 				>
-					<InternalLink destination={AboutUs} fontSize={"sm"}>{"About Us"}</InternalLink>
-					<InternalLink destination={License} fontSize={"sm"}>{"License"}</InternalLink>
-					<InternalLink destination={PrivacyPolicy} fontSize={"sm"}>{"Privacy Policy"}</InternalLink>
-					<InternalLink destination={TermsAndConditions} fontSize={"sm"}>{"Terms & Conditions"}</InternalLink>
+          <LegalRequiredInternalLink requiredMenuKey={Navigation.DEFAULT_MENU_KEY_ABOUT_US} />
+          <LegalRequiredInternalLink requiredMenuKey={Navigation.DEFAULT_MENU_KEY_PRIVACY_POLICY} />
+          <LegalRequiredInternalLink requiredMenuKey={Navigation.DEFAULT_MENU_KEY_LICENSE} />
 				</Wrap>
 			</Flex>
 		);

@@ -36,9 +36,7 @@ export abstract class PluginInterface{
     getPrivacyPolicyComponent(){
       return null;
     }
-    getTermsAndConditionsComponent(){
-      return null;
-    }
+
     getHomeComponent(){
       return null;
     }

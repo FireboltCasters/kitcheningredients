@@ -19,6 +19,7 @@ export class MenuItem implements MenuItemProps {
     key: string;
     private items: MenuItem[];
     position: number;
+    public route;
 
     static fromRoutes(routes: RouteProps[]){
         let items = [];

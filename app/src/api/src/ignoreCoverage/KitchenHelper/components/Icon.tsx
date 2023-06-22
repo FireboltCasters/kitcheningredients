@@ -5,9 +5,12 @@ import React, {FunctionComponent} from "react";
 import {InterfaceIconProps} from "native-base/lib/typescript/components/primitives/Icon/types";
 import {useThemeTextColor} from "../helper/HelperHooks";
 
-export const Icon: FunctionComponent<InterfaceIconProps> = ({as, size, ...props}) => {
+interface AppState {
+  invert?: boolean;
+}
+export const Icon: FunctionComponent<InterfaceIconProps & AppState> = ({as, size, invert, ...props}) => {
 
-  const defaultColor = useThemeTextColor();
+  const defaultColor = useThemeTextColor(invert);
 
   let defaultAs = MaterialCommunityIcons;
   if(!!as){
