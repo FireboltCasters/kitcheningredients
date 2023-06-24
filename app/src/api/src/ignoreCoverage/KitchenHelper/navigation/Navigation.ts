@@ -10,6 +10,7 @@ import {MenuItem} from "./MenuItem";
 import {AboutUs} from "../screens/legalRequirements/AboutUs";
 import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
 import {License} from "../screens/legalRequirements/License";
+import {Settings} from "../screens/settings/Settings";
 
 // todo Update to newest ReactNavigation
 // https://reactnavigation.org/docs/navigating-without-navigation-prop/
@@ -31,6 +32,7 @@ export class Navigation {
     static DEFAULT_MENU_KEY_ABOUT_US = RouteHelper.getNameOfComponent(AboutUs);
     static DEFAULT_MENU_KEY_PRIVACY_POLICY = RouteHelper.getNameOfComponent(PrivacyPolicy);
     static DEFAULT_MENU_KEY_LICENSE = RouteHelper.getNameOfComponent(License);
+    static DEFAULT_MENU_KEY_SETTINGS = RouteHelper.getNameOfComponent(Settings);
 
     static ROUTE_PATH_PREFIX = "/";
 

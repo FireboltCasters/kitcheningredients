@@ -1,20 +1,17 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import {View, Text} from "native-base";
+import {View} from "native-base";
 import {ProjectLogo} from "../project/ProjectLogo";
 import {ProjectName} from "../project/ProjectName";
 import {MyThemedBox} from "../helper/MyThemedBox";
 import {ExpandableDrawerItem} from "./ExpandableDrawerItem";
-import {UserProfileAvatar} from "../project/UserProfileAvatar";
-import {SignOutButton} from "../auth/SignOutButton";
-import {Users} from "../screens/user/Users";
 import {SafeAreaView} from "react-native";
-import {SettingsButton} from "../screens/settings/SettingsButton";
 import {RouteRegisterer} from "./RouteRegisterer";
 import {ConfigHolder} from "../ConfigHolder";
 import {Navigation} from "../navigation/Navigation";
-import {LegalRequiredInternalLink} from "../screens/legalRequirements/LegalRequiredInternalLink";
+import {LegalRequiredLinks} from "../screens/legalRequirements/LegalRequiredLinks";
+import {RequiredSettingsButton} from "../screens/settings/RequiredSettingsButton";
 
 export const CustomDrawerContent: FunctionComponent = (props) => {
 
@@ -51,22 +48,17 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
     })
   }
 
-	function handleAvatarPress(){
-		Navigation.navigateTo(Users, {id: user.id});
-	}
-
 	function renderLegalRequirements(){
 	  return (
       <MyThemedBox style={{flexDirection: "row", alignItems: "center"}}>
         <View style={{
           flex: 1,
           width: '100%',
+          alignItems: "center", justifyContent: "center",
           flexDirection: 'row',
           flexWrap: 'wrap', // Enable wrapping of items
         }}>
-          <LegalRequiredInternalLink requiredMenuKey={Navigation.DEFAULT_MENU_KEY_ABOUT_US} />
-          <LegalRequiredInternalLink requiredMenuKey={Navigation.DEFAULT_MENU_KEY_PRIVACY_POLICY} />
-          <LegalRequiredInternalLink requiredMenuKey={Navigation.DEFAULT_MENU_KEY_LICENSE} />
+          <LegalRequiredLinks />
         </View>
       </MyThemedBox>
     )
@@ -78,11 +70,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
         <>
           {renderLegalRequirements()}
           <MyThemedBox style={{flexDirection: "row", alignItems: "center"}}>
-            <UserProfileAvatar user={user} onPress={handleAvatarPress} />
-            <SettingsButton onlyIcon={true} />
-            <View style={{flex: 1, flexDirection: "row-reverse"}}>
-              <SignOutButton onlyIcon={true} />
-            </View>
+            <RequiredSettingsButton />
           </MyThemedBox>
         </>
 			)

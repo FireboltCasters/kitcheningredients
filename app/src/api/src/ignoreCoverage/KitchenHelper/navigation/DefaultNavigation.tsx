@@ -15,6 +15,8 @@ import {AboutUs} from "../screens/legalRequirements/AboutUs";
 import {License} from "../screens/legalRequirements/License";
 import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
 import {RouteHelper} from "./RouteHelper";
+import {Settings} from "../screens/settings/Settings";
+import {BaseNoPaddingTemplate} from "../templates/BaseNoPaddingTemplate";
 
 export class DefaultNavigation {
 
@@ -50,29 +52,38 @@ export class DefaultNavigation {
   }
 
   static registerLegalRequirements(){
+
     let about_us_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
+      title: "Impressum",
       component: AboutUs,
       template: BaseTemplate
     }))
-    about_us_menu_item.label = "Über uns";
 
     Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_ABOUT_US] = about_us_menu_item;
 
     let privacy_policy_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
+      title: "Datenschutz",
       component: PrivacyPolicy,
       template: BaseTemplate
     }))
-    privacy_policy_menu_item.label = "Datenschutz";
 
     Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_PRIVACY_POLICY] = privacy_policy_menu_item;
 
     let license_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
+      title: "Lizenz",
       component: License,
       template: BaseTemplate
     }));
-    license_menu_item.label = "Lizenz";
 
     Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_LICENSE] = license_menu_item;
+
+    let settings_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
+      title: "Einstellungen",
+      component: Settings,
+      template: BaseNoPaddingTemplate
+    }));
+
+    Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_SETTINGS] = settings_menu_item;
   }
 
 
@@ -105,7 +116,7 @@ export class DefaultNavigation {
     let loginScreens = DefaultNavigation.getScreensFor(
       {
         [Navigation.DEFAULT_ROUTE_LOGIN]: Navigation.routeGetRegistered()[Navigation.DEFAULT_ROUTE_LOGIN],
-        ...DefaultNavigation.getRegisteredRoutesForScreenByComonents(AboutUs, License, PrivacyPolicy)
+        ...DefaultNavigation.getRegisteredRoutesForScreenByComonents(AboutUs, License, PrivacyPolicy, Settings)
       },
       initialSearch
     );
@@ -131,13 +142,13 @@ export class DefaultNavigation {
       if(component){
         let template = routeInfo?.template;
         let screenContent = (props) => {
-          return React.createElement(component, props)
+          return React.createElement(component, {...props})
         };
         if(!!template){
           screenContent = (props) => {
             let customProps = {};
             let renderedComponent = React.createElement(component, {...props, ...customProps})
-            return React.createElement(template, {...props, ...customProps, children: renderedComponent})
+            return React.createElement(template, {...props, ...customProps, children: renderedComponent, title: routeInfo?.title})
           };
         }
 

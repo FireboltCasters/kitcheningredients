@@ -1,19 +1,15 @@
 // @ts-nocheck
 import React from 'react';
-import {Box, Button, Heading, HStack, useColorMode, View,} from 'native-base';
+import {Box, Heading, HStack, View,} from 'native-base';
 import {Floaters} from './Floaters';
 import {SafeAreaTop} from "./SafeAreaTop";
-
-import {NavigatorHelper} from "../navigation/NavigatorHelper";
-import ServerAPI from "../ServerAPI";
-import {ServerInfoHelper} from "../helper/ServerInfoHelper";
 import {ConfigHolder} from "../ConfigHolder";
 import {Layout} from "./Layout";
-import {Icon} from "../components/Icon";
 import {DrawerButton} from "./DrawerButton";
 import {BackButton} from "./BackButton";
 import {useCustomHeaderTextColor} from "./useHeaderTextColor";
 import {useProjectColor} from "./useProjectColor";
+import {RequiredSettingsButton} from "../screens/settings/RequiredSettingsButton";
 
 export const BaseLayout = ({
 						   children,
@@ -30,6 +26,14 @@ export const BaseLayout = ({
 
 	let isSmallDevice = Layout.usesSmallDevice();
 	const ssoIconColor = useProjectColor();
+
+  function renderActions(){
+    return null;
+  }
+
+  function renderBottomRow(){
+    return null;
+  }
 
 	function renderHeading(){
 	  if(header!==undefined){
@@ -53,21 +57,32 @@ export const BaseLayout = ({
     }
 
 		return (
-		  <>
-        {leftButton}
-        <Heading
-          color={color}
-          // fontSize={{
-          // 	lg: '3xl',
-          // }}
-          _web={{ py: 2 }}
-          isTruncated
+      <View style={{width: "100%"}}>
+        <View style={{flexDirection: "row", width: "100%", alignItems: "center"}}>
+          {leftButton}
 
-        >
+          <View style={{flex: 1,justifyContent: "flex-start"}}>
+            <Heading
+              color={color}
+              // fontSize={{
+              // 	lg: '3xl',
+              // }}
+              _web={{ py: 2 }}
+              isTruncated
 
-          {title ? title : ConfigHolder.config.title}
-        </Heading>
-      </>
+            >
+              {!!title ? title : ConfigHolder.config.title}
+            </Heading>
+          </View>
+          <View style={{justifyContent: "flex-end", flexDirection: "row", alignItems: "center"}}>
+            {renderActions()}
+            <RequiredSettingsButton color={color} />
+          </View>
+        </View>
+        <View style={{flexDirection: "row", width: "100%", alignItems: "center"}}>
+          {renderBottomRow()}
+        </View>
+      </View>
 		)
 	}
 

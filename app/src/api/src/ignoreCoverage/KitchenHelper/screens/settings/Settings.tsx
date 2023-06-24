@@ -1,11 +1,10 @@
 // @ts-nocheck
 import React, {useEffect} from "react";
-import {Text, View} from "native-base";
-import {DeveloperSettings} from "./DeveloperSettings";
+import {View} from "native-base";
 import {keyof} from "ts-keyof";
-import {TouchableOpacity} from "react-native";
 import {ConfigHolder} from "../../ConfigHolder";
-import {Navigation} from "../../navigation/Navigation";
+import {LegalRequiredLinks} from "../legalRequirements/LegalRequiredLinks";
+import {SignOutButton} from "../../auth/SignOutButton";
 
 export const Settings = (props) => {
 
@@ -19,21 +18,21 @@ export const Settings = (props) => {
 
 	}, [props?.route?.params])
 
-	function renderOpenDeveloperSettings(){
-		return(
-			<TouchableOpacity onPress={() => {
-				Navigation.navigateTo(DeveloperSettings)
-			}}
-			><Text>{"Developer Settings"}</Text></TouchableOpacity>
-		)
-	}
-
 	return(
-		<>
-			<View>
-				{renderOpenDeveloperSettings()}
-			</View>
-		</>
+		<View style={{width: "100%"}}>
+      <View style={{flex: 1, flexDirection: "row-reverse"}}>
+        <SignOutButton onlyIcon={true} />
+      </View>
+      <View style={{
+        flex: 1,
+        width: '100%',
+        alignItems: "center", justifyContent: "center",
+        flexDirection: 'row',
+        flexWrap: 'wrap', // Enable wrapping of items
+      }}>
+        <LegalRequiredLinks />
+      </View>
+		</View>
 	)
 }
 

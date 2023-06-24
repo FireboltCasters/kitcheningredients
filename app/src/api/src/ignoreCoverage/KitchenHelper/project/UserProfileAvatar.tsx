@@ -13,6 +13,7 @@ const titleBoxHeight = 64;
 
 interface AppState {
 	user?: UserItem;
+	color?: color,
 	onPress?: () => void
 	heightAndWidth?: string
 }
@@ -41,6 +42,7 @@ export const UserProfileAvatar: FunctionComponent<AppState> = (props) => {
 	let content = (
 		<Icon
 			name={"account-circle"}
+      color={props?.color}
 			style={{}}
 		/>
 	)

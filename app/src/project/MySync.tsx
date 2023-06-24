@@ -50,8 +50,6 @@ export const MySync: FunctionComponent = (props) => {
 
     Navigation.menuRegister(docs);
 
-    Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_ABOUT_US].label = "About us";
-
     await ConfigHolder.instance.setSyncFinished(true)
   }
 

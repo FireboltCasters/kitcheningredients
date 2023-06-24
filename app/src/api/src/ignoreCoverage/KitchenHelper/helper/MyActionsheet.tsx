@@ -62,7 +62,12 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
                   onPress(key);
                 }
                 handleClose();
-              }} style={{backgroundColor: "transparent"}}>
+              }}
+              style={{
+                backgroundColor: "transparent",
+                cursor: 'pointer' // This line changes the cursor to a hand icon on hover
+              }}
+              >
               <Text>{label}</Text>
             </Actionsheet.Item>
             <Divider key={key+"-divider"} />

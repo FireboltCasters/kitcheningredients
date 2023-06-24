@@ -9,9 +9,7 @@ import {ProjectBanner} from "../project/ProjectBanner";
 import {ProjectBackground} from "../project/ProjectBackground";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
-import {LegalRequiredInternalLink} from "../screens/legalRequirements/LegalRequiredInternalLink";
-import {Navigation} from "../navigation/Navigation";
-import {ThemeFloaterButton} from "./ThemeFloaterButton";
+import {LegalRequiredLinks} from "../screens/legalRequirements/LegalRequiredLinks";
 
 const titleBoxHeight = 64;
 
@@ -82,9 +80,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
 					flexDirection="row"
 					justify="center"
 				>
-          <LegalRequiredInternalLink requiredMenuKey={Navigation.DEFAULT_MENU_KEY_ABOUT_US} />
-          <LegalRequiredInternalLink requiredMenuKey={Navigation.DEFAULT_MENU_KEY_PRIVACY_POLICY} />
-          <LegalRequiredInternalLink requiredMenuKey={Navigation.DEFAULT_MENU_KEY_LICENSE} />
+          <LegalRequiredLinks />
 				</Wrap>
 			</Flex>
 		);

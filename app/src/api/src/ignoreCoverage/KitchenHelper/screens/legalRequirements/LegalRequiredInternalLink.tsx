@@ -3,7 +3,7 @@ import React, {FunctionComponent} from "react";
 import {InternalLink} from "../../navigation/InternalLink";
 import {MenuItem} from "../../navigation/MenuItem";
 import {Navigation} from "../../navigation/Navigation";
-import {View, Text} from "native-base";
+import {View} from "native-base";
 
 interface AppState {
   requiredMenuKey?: string;
@@ -18,7 +18,7 @@ export const LegalRequiredInternalLink : FunctionComponent<AppState> = (props) =
 
   return (
     <View>
-      <InternalLink destination={menuItem?.route?.path} fontSize={"sm"}>{menuItem?.route?.path}</InternalLink>
+      <InternalLink destination={menuItem?.route?.path} fontSize={"sm"}>{label}</InternalLink>
     </View>
   )
 

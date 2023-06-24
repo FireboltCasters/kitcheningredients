@@ -1,3 +1,12 @@
+import {RequiredSettingsButton} from "./ignoreCoverage/KitchenHelper/screens/settings/RequiredSettingsButton";
+export {RequiredSettingsButton}
+
+import {LegalRequiredInternalLink} from "./ignoreCoverage/KitchenHelper/screens/legalRequirements/LegalRequiredInternalLink";
+export {LegalRequiredInternalLink}
+
+import {LegalRequiredLinks} from "./ignoreCoverage/KitchenHelper/screens/legalRequirements/LegalRequiredLinks";
+export {LegalRequiredLinks}
+
 import TextGenerator from "./ignoreCoverage/KitchenHelper/helper/TextGenerator";
 export {TextGenerator}
 

@@ -59,10 +59,6 @@ export default class Project extends PluginInterface{
     return null
 	}
 
-	getTermsAndConditionsComponent() {
-    return null
-	}
-
 	getHomeComponent(): any {
     return <ExampleHomeComponent />
 	}
