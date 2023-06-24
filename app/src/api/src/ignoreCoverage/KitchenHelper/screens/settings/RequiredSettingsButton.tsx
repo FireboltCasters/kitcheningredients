@@ -6,7 +6,7 @@ import {UserProfileAvatar} from "../../project/UserProfileAvatar";
 import {ConfigHolder} from "../../ConfigHolder";
 
 export interface AppState {
-  color?: color
+  color?: string
 }
 export const RequiredSettingsButton: (props) => any[] = (props) => {
 

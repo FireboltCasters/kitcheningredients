@@ -13,7 +13,7 @@ const titleBoxHeight = 64;
 
 interface AppState {
 	user?: UserItem;
-	color?: color,
+	color?: string,
 	onPress?: () => void
 	heightAndWidth?: string
 }
