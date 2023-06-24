@@ -1,9 +1,9 @@
 // @ts-nocheck
 import React from 'react';
-import {Settings} from "./Settings";
 import {Navigation} from "./../../navigation/Navigation";
 import {UserProfileAvatar} from "../../project/UserProfileAvatar";
 import {ConfigHolder} from "../../ConfigHolder";
+import {MenuItem} from "kitcheningredients";
 
 export interface AppState {
   color?: string
@@ -14,7 +14,8 @@ export const RequiredSettingsButton: (props) => any[] = (props) => {
 
   function handleAvatarPress(){
     //Navigation.navigateTo(Users, {id: user.id});
-    Navigation.navigateTo(Settings);
+    let menuItem: MenuItem = Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_SETTINGS];
+    Navigation.navigateTo(menuItem?.route?.path);
   }
 
   return (
