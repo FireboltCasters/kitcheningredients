@@ -1,16 +1,17 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
-import {Button, Text} from "native-base";
+import {Button, Text, Tooltip} from "native-base";
 import {IButtonProps} from "native-base/src/components/primitives/Button/types";
 import {IBoxProps} from "native-base/src/components/primitives/Box/index";
 
-export const TransparentButton: FunctionComponent<IButtonProps & IBoxProps> = (props) => {
+export const TransparentButton: FunctionComponent<IButtonProps & IBoxProps> = ({children, accessibilityLabel, ...props}) => {
 
-	let content = props.children;
 
 	return (
-		<Button minWidth={154} bgColor={"#00000000"} {...props}>
-			{content}
-		</Button>
+	  <Tooltip label={accessibilityLabel} >
+      <Button accessibilityLabel={accessibilityLabel} minWidth={154} bgColor={"#00000000"} {...props}>
+        {children}
+      </Button>
+    </Tooltip>
 	)
 }

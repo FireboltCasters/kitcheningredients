@@ -1,10 +1,12 @@
 // @ts-nocheck
 import React, {useState} from 'react';
 import ServerAPI from "../ServerAPI";
-import {AlertDialog, Button, Divider, Text} from "native-base";
+import {AlertDialog, Button, Divider, Text, Tooltip} from "native-base";
 import {TransparentTextButton} from "../buttons/TransparentTextButton";
 
 import {Icon} from "../components/Icon";
+import {ConfigHolder} from "../ConfigHolder";
+import {TranslationKeys} from "../translations/TranslationKeys";
 
 export interface AppState {
 	onlyIcon?: boolean;
@@ -14,6 +16,10 @@ export const SignOutButton: (props) => JSX.Element[] = (props) => {
 
 	const cancelRef = React.useRef(null)
 	const [isOpen, setIsOpen] = useState(false)
+
+  const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+  const accessibilityLabel = useTranslation(TranslationKeys.logout);
+  const logout_confirm_message = useTranslation(TranslationKeys.logout_confirm_message);
 
 	async function handleLogout(){
 		await setIsOpen(false);
@@ -39,17 +45,14 @@ export const SignOutButton: (props) => JSX.Element[] = (props) => {
 			>
 				<AlertDialog.Content>
 					<AlertDialog.CloseButton />
-					<AlertDialog.Header>Abmelden</AlertDialog.Header>
+					<AlertDialog.Header>{accessibilityLabel}</AlertDialog.Header>
 					<AlertDialog.Body>
-						<Text key={"a"}> </Text>
-						<Divider />
-						<Text key={"b"}> </Text>
-						<Text key={"c"}>Sind Sie sicher, dass Sie sich abmelden möchten?</Text>
+						<Text key={"c"}>{logout_confirm_message}</Text>
 					</AlertDialog.Body>
 					<AlertDialog.Footer>
 						<Button.Group space={2}>
-							<Button onPress={handleLogout}>
-								Abmelden
+							<Button accessibilityLabel={accessibilityLabel} onPress={handleLogout}>
+                {accessibilityLabel}
 							</Button>
 						</Button.Group>
 					</AlertDialog.Footer>
@@ -60,16 +63,19 @@ export const SignOutButton: (props) => JSX.Element[] = (props) => {
 
 	function renderOnlyIcon(){
 		return (
-			<Button key={"LogoutIcon"} style={{backgroundColor: "transparent"}} onPress={openConfirmBox} >
-				<Icon  name={"logout"}/>
-			</Button>
+		  <Tooltip label={accessibilityLabel}>
+        <Button accessibilityLabel={accessibilityLabel} key={"LogoutIcon"} style={{backgroundColor: "transparent"}} onPress={openConfirmBox} >
+          <Icon name={"logout"}/>
+        </Button>
+      </Tooltip>
+
 		)
 	}
 
 	function renderLogoutText(){
 		return(
-			<TransparentTextButton key={"logoutTextButton"} onPress={openConfirmBox}>
-				<Text>{"Sign Out"}</Text>
+			<TransparentTextButton accessibilityLabel={accessibilityLabel} key={"logoutTextButton"} onPress={openConfirmBox}>
+				<Text>{accessibilityLabel}</Text>
 			</TransparentTextButton>
 		)
 	}

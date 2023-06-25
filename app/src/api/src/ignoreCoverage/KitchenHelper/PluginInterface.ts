@@ -1,5 +1,6 @@
 import {UserItem} from "@directus/sdk";
 import { ColorMode } from 'native-base';
+import {DefaultTranslator} from "./translations/DefaultTranslator";
 
 export abstract class PluginInterface{
     initApp(){
@@ -46,6 +47,14 @@ export abstract class PluginInterface{
     }
 
     getRootComponent(props){
+      return null;
+    }
+
+    getUseTranslationFunction(){
+      return DefaultTranslator.useTranslation;
+    }
+
+    getBottomNavbarComponent(){
       return null;
     }
 

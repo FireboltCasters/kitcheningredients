@@ -10,6 +10,7 @@ import {BackButton} from "./BackButton";
 import {useCustomHeaderTextColor} from "./useHeaderTextColor";
 import {useProjectColor} from "./useProjectColor";
 import {RequiredSettingsButton} from "../screens/settings/RequiredSettingsButton";
+import {RequiredNavigationBar} from "./RequiredNavigationBar";
 
 export const BaseLayout = ({
 						   children,
@@ -60,7 +61,7 @@ export const BaseLayout = ({
       <View style={{width: "100%"}}>
         <View style={{flexDirection: "row", width: "100%", alignItems: "center"}}>
           {leftButton}
-
+          <View style={{width: 12}} />
           <View style={{flex: 1,justifyContent: "flex-start"}}>
             <Heading
               color={color}
@@ -76,7 +77,6 @@ export const BaseLayout = ({
           </View>
           <View style={{justifyContent: "flex-end", flexDirection: "row", alignItems: "center"}}>
             {renderActions()}
-            <RequiredSettingsButton color={color} />
           </View>
         </View>
         <View style={{flexDirection: "row", width: "100%", alignItems: "center"}}>
@@ -135,8 +135,8 @@ export const BaseLayout = ({
 				<View style={{width: "100%", flex: 1, alignItems: "center"}} onLayout={props.onLayout}>
 					{children}
 				</View>
+
 			</Box>
-			<Floaters />
 		</>
 	);
 

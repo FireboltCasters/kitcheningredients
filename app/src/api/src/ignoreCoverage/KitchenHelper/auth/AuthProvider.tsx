@@ -12,6 +12,7 @@ import {Icon} from "../components/Icon";
 import * as ExpoLinking from "expo-linking";
 import {ConfigHolder} from "../ConfigHolder";
 import {URL_Helper} from "../helper/URL_Helper";
+import {TranslationKeys} from "../translations/TranslationKeys";
 
 interface AppState {
 	serverInfo: any;
@@ -22,6 +23,9 @@ interface AppState {
 }
 
 export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider, buttonText, callback}) => {
+
+  const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+  const translation_log_in_with = useTranslation(TranslationKeys.log_in_with);
 
 	function getUrlToProvider(provider: string){
 		provider= provider.toLowerCase();
@@ -77,10 +81,10 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	      providerNameReadable = provider?.label;
   }
 
-	let text = buttonText || "Log in with "+providerNameReadable;
+	let text = buttonText || translation_log_in_with+" "+providerNameReadable;
 
 	let content = (
-		<Flex flexDirection={"row"} _light={{backgroundColor: "rgb(240, 244, 249)"}} _dark={{backgroundColor: "darkgray"}} style={{borderRadius: 6, flex: 1, margin: 12}}>
+		<Flex flexDirection={"row"} _light={{backgroundColor: "rgb(240, 244, 249)"}} _dark={{backgroundColor: "darkgray"}} style={{borderRadius: 6, flex: 1}}>
 			<View style={{height: 60, width: 60, alignItems: "center", justifyContent: "center", backgroundColor: iconBackgroundColor, borderRadius: 6}}>
 				{renderIcon(icon, ssoIconStyle.color)}
 			</View>
@@ -90,17 +94,25 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 		</Flex>
 	);
 
+	let touchableContent = null;
+
 	if(!!callback){
-		return (
-			<TouchableOpacity onPress={() => {callback()}} >
-				{content}
-			</TouchableOpacity>
-		)
-	}
+		touchableContent = (
+      <TouchableOpacity onPress={() => {callback()}} >
+        {content}
+      </TouchableOpacity>
+    )
+	} else {
+	  touchableContent = (
+      <Link key={"Link"+providerName} href={url} >
+        {content}
+      </Link>
+    )
+  }
 
 	return (
-		<Link key={"Link"+providerName} href={url} >
-			{content}
-		</Link>
+	  <View style={{marginVertical: 6}}>
+      {touchableContent}
+    </View>
 	)
 }

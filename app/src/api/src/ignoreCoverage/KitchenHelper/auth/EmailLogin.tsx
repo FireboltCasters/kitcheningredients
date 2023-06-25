@@ -3,7 +3,7 @@ import React, {FunctionComponent, useEffect, useState} from 'react';
 import ServerAPI from "../ServerAPI";
 import {Login} from "./Login";
 import EnviromentHelper from "../EnviromentHelper";
-import {Button, Flex, FormControl, Input, View} from "native-base";
+import {Button, Flex, FormControl, Input, Tooltip, View} from "native-base";
 import {InternalLink} from "../navigation/InternalLink";
 import {ResetPassword} from "./ResetPassword";
 import {FormButton} from "../buttons/FormButton";
@@ -11,6 +11,7 @@ import {ConfigHolder} from "./../ConfigHolder";
 import {Register} from "./Register";
 import {Icon} from "../components/Icon";
 import {Navigation} from "../navigation/Navigation";
+import {TranslationKeys} from "../translations/TranslationKeys";
 
 const showResetPassword = false;
 const showEmailLogin = true;
@@ -43,6 +44,15 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
   const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
+  const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+  const translation_email = useTranslation(TranslationKeys.email);
+  const translation_register = useTranslation(TranslationKeys.register);
+  const translation_password = useTranslation(TranslationKeys.password);
+  const translation_password_show = useTranslation(TranslationKeys.password_visible);
+  const translation_password_hide = useTranslation(TranslationKeys.password_hidden);
+  const translation_forgot_password = useTranslation(TranslationKeys.forgot_password);
+  const translation_sign_in = useTranslation(TranslationKeys.sign_in);
+
 	async function handleLoginWithEmail(){
 		await setLoginInitiated(true);
 		try{
@@ -65,7 +75,7 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 	function renderResetPasswordButton(){
 		if(showResetPassword){
 			return (
-				<InternalLink destination={ResetPassword}>{"Forgot Password"}</InternalLink>
+				<InternalLink destination={ResetPassword}>{translation_forgot_password}</InternalLink>
 			)
 		}
 		return null;
@@ -74,10 +84,10 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 	function renderRegisterButton(){
     if(ConfigHolder.showMailRegister){
       return(
-        <FormButton loading={loginInitiated} disabled={loginInitiated} onPress={() => {
+        <FormButton accessibilityLabel={translation_register} loading={loginInitiated} disabled={loginInitiated} onPress={() => {
           Navigation.navigateTo(Register)
         }}>
-          {"Register"}
+          {translation_register}
         </FormButton>
       )
     }
@@ -86,10 +96,14 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 
 	function renderEmailLogin(){
     const toggleShowPasswordIcon = showPassword ? "eye" : "eye-off";
+    const accessibilityLabel = showPassword ? translation_password_show : translation_password_hide
+
     let rightElement = (
-      <Button roundedLeft="0" onPress={() => {setShowPassword(!showPassword)}}>
-        <Icon invert={true} name={toggleShowPasswordIcon} size="sm" />
-      </Button>
+      <Tooltip label={accessibilityLabel} >
+        <Button accessibilityLabel={accessibilityLabel} roundedLeft="0" onPress={() => {setShowPassword(!showPassword)}}>
+          <Icon invert={true} name={toggleShowPasswordIcon} size="sm" />
+        </Button>
+      </Tooltip>
     )
 
 
@@ -101,12 +115,12 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 							<Input
 								isDisabled={loginInitiated}
 								nativeID={"username"}
-								type={"email"}
+								type={translation_email}
 								//TODO extract the on change method to an extra class to call the callback
 								onChange={async (event) => { // @ts-ignore
 									setEmail(event.nativeEvent.text)
 								}}
-								placeholder="Email" size="lg" />
+								placeholder={translation_email} size="lg" />
 						</View>
 					</FormControl>
 					<FormControl isInvalid={loginIncorrect}  isRequired>
@@ -119,15 +133,15 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
                 InputRightElement={rightElement}
 								onChange={(event) => { // @ts-ignore
 									setPassword(event.nativeEvent.text)
-								}} placeholder="Password" size="lg" />
+								}} placeholder={translation_password} size="lg" />
               <FormControl.ErrorMessage>
                 Incorrect email or password
               </FormControl.ErrorMessage>
 						</View>
 					</FormControl>
 					<Flex flexDirection={"row"} justify={"space-between"} >
-						<FormButton loading={loginInitiated} disabled={loginInitiated} onPress={() => {handleLoginWithEmail()}}>
-							{"Sign In"}
+						<FormButton accessibilityLabel={translation_sign_in} loading={loginInitiated} disabled={loginInitiated} onPress={() => {handleLoginWithEmail()}}>
+							{translation_sign_in}
 						</FormButton>
             {renderRegisterButton()}
 					</Flex>

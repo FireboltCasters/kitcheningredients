@@ -8,6 +8,7 @@ import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 import {NavigatorHelper} from "./../navigation/NavigatorHelper";
 import {Platform, StatusBar} from "react-native";
+import {EmptyTemplate} from "./EmptyTemplate";
 
 
 export interface BaseNoScrollTemplateProps{
@@ -61,20 +62,14 @@ export const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps>=
   const keyboardVerticalOffset = paddingTop;
 
 	return(
-		<KitchenSafeAreaView>
-      <KeyboardAvoidingView
-        keyboardVerticalOffset = {keyboardVerticalOffset} // adjust the value here if you need more padding
-        style = {{height: "100%", width: "100%"}}
-        behavior={Platform.OS === "ios" ? "padding" : "height"} >
+		<EmptyTemplate>
         <View flex={1} flexDirection={"row"}>
           <BaseLayout title={title} serverInfo={serverInfo} header={header} showbackbutton={showbackbutton} >
             <View style={{width: "100%", height: "100%"}} >
               {childrenWithProps}
             </View>
           </BaseLayout>
-          <CookieInformation />
         </View>
-      </KeyboardAvoidingView>
-		</KitchenSafeAreaView>
+		</EmptyTemplate>
 	)
 }

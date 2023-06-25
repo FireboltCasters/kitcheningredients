@@ -4,6 +4,7 @@ import {Navigation} from "./../../navigation/Navigation";
 import {UserProfileAvatar} from "../../project/UserProfileAvatar";
 import {ConfigHolder} from "../../ConfigHolder";
 import {MenuItem} from "kitcheningredients";
+import {TranslationKeys} from "../../translations/TranslationKeys";
 
 export interface AppState {
   color?: string
@@ -18,7 +19,10 @@ export const RequiredSettingsButton: (props) => any[] = (props) => {
     Navigation.navigateTo(menuItem?.route?.path);
   }
 
+  const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+  const accessibilityLabel = useTranslation(TranslationKeys.profile_and_settings);
+
   return (
-    <UserProfileAvatar user={user} color={props?.color} onPress={handleAvatarPress} />
+    <UserProfileAvatar accessibilityLabel={accessibilityLabel} user={user} color={props?.color} onPress={handleAvatarPress} />
   )
 }

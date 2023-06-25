@@ -18,7 +18,7 @@ export const LegalRequiredInternalLink : FunctionComponent<AppState> = (props) =
 
   return (
     <View>
-      <InternalLink destination={menuItem?.route?.path} fontSize={"sm"}>{label}</InternalLink>
+      <InternalLink accessibilityLabel={label} destination={menuItem?.route?.path} fontSize={"sm"}>{label}</InternalLink>
     </View>
   )
 

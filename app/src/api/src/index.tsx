@@ -1,3 +1,6 @@
+import {TranslationKeys} from "./ignoreCoverage/KitchenHelper/translations/TranslationKeys";
+export {TranslationKeys}
+
 import {RequiredSettingsButton} from "./ignoreCoverage/KitchenHelper/screens/settings/RequiredSettingsButton";
 export {RequiredSettingsButton}
 

@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import {View} from "native-base";
+import {Tooltip, View} from "native-base";
 import {ProjectLogo} from "../project/ProjectLogo";
 import {ProjectName} from "../project/ProjectName";
 import {MyThemedBox} from "../helper/MyThemedBox";
@@ -12,10 +12,15 @@ import {ConfigHolder} from "../ConfigHolder";
 import {Navigation} from "../navigation/Navigation";
 import {LegalRequiredLinks} from "../screens/legalRequirements/LegalRequiredLinks";
 import {RequiredSettingsButton} from "../screens/settings/RequiredSettingsButton";
+import {TranslationKeys} from "../translations/TranslationKeys";
+import {MyTouchableOpacity} from "../buttons/MyTouchableOpacity";
 
 export const CustomDrawerContent: FunctionComponent = (props) => {
 
 	let user = ConfigHolder.instance.getUser()
+
+  const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+  const translation_home = useTranslation(TranslationKeys.home);
 
 	function renderDrawerItems(){
 		let output = [];
@@ -64,22 +69,6 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
     )
   }
 
-	function renderBottomPanel(){
-		if(!!user){
-			return (
-        <>
-          {renderLegalRequirements()}
-          <MyThemedBox style={{flexDirection: "row", alignItems: "center"}}>
-            <RequiredSettingsButton />
-          </MyThemedBox>
-        </>
-			)
-		}
-		else {
-		  return (renderLegalRequirements())
-    }
-	}
-
 	let bgColor = RouteRegisterer.getDrawerBackgroundColor();
 	let customBackgroundStyle = {};
 	if(!!bgColor){
@@ -89,14 +78,10 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	return (
 		<MyThemedBox style={[{height: "100%"}, customBackgroundStyle]}>
 			<SafeAreaView style={{height: "100%", width: "100%"}}>
-        <DrawerItem
+        <MyTouchableOpacity
           key={"ProjectLogoItem"}
-          label={() => {
-            return (<View style={{flexDirection: "row"}} >
-              <ProjectLogo rounded={true} />
-              <ProjectName themedColor={true} />
-            </View>)
-          }}
+          style={{padding: 18}}
+          accessibilityLabel={translation_home}
           onPress={() => {
             if(!user){
               Navigation.navigateTo(Navigation.DEFAULT_ROUTE_LOGIN)
@@ -104,11 +89,16 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
               Navigation.navigateHome()
             }
           }}
-        />
+        >
+          <View style={{flexDirection: "row"}} >
+            <ProjectLogo rounded={true} />
+            <ProjectName themedColor={true} />
+          </View>
+        </MyTouchableOpacity>
 				<DrawerContentScrollView {...props}>
 					{renderDrawerItems()}
 				</DrawerContentScrollView>
-				{renderBottomPanel()}
+				{renderLegalRequirements()}
 			</SafeAreaView>
 		</MyThemedBox>
 	);

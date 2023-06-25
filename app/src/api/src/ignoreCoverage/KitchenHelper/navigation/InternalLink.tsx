@@ -20,7 +20,7 @@ export const InternalLink: FunctionComponent<IButtonProps & IBoxProps & AppState
 	let afterNavigateCallback = props.afterNavigateCallback;
 
 	return (
-		<TransparentButton onPress={async () => {
+		<TransparentButton accessibilityLabel={props?.accessibilityLabel} onPress={async () => {
 			if(!!beforeNavigateCallback){
 				await beforeNavigateCallback();
 			}

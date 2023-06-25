@@ -17,6 +17,7 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
     let menu = props?.menu;
 
     const [expanded, setExpanded] = useState(menu?.expanded)
+    let nextExpandState = !expanded;
 
     let menuChilds = [];
     if(menu?.getChildItems){
@@ -44,7 +45,6 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
     }
 
     async function handleOnPressIcon(){
-        let nextExpandState = !expanded;
         menu.expanded = nextExpandState;
         setExpanded(nextExpandState);
         if(!hasChildren){

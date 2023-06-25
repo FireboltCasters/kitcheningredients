@@ -8,11 +8,13 @@ import {TouchableOpacity} from "react-native";
 
 import {Icon} from "../components/Icon";
 import {ConfigHolder} from "./../ConfigHolder";
+import {MyTouchableOpacity} from "../buttons/MyTouchableOpacity";
 
-const titleBoxHeight = 64;
+const titleBoxHeight = 48;
 
 interface AppState {
 	user?: UserItem;
+	accessibilityLabel?: string;
 	color?: string,
 	onPress?: () => void
 	heightAndWidth?: string
@@ -56,14 +58,14 @@ export const UserProfileAvatar: FunctionComponent<AppState> = (props) => {
 	  content = customUserAvatar;
   }
 
-	let dimension = props.heightAndWidth || titleBoxHeight;
+	let dimension = props?.heightAndWidth || titleBoxHeight;
 
 	if(!!props.onPress){
 		return(
 			// @ts-ignore
-			<TouchableOpacity onPress={props.onPress} style={{height: dimension, width: dimension, borderRadius: 6, alignItems: "center", justifyContent: "center"}}>
+			<MyTouchableOpacity accessibilityLabel={props?.accessibilityLabel} onPress={props.onPress} style={{height: dimension, width: dimension, borderRadius: 6, alignItems: "center", justifyContent: "center"}}>
 				{content}
-			</TouchableOpacity>
+			</MyTouchableOpacity>
 		)
 	} else {
 		return(

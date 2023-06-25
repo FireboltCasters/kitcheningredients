@@ -30,7 +30,7 @@ ConfigHolder.AppConfig = AppConfig
 
 ConfigHolder.displayThemeFloater = true;
 ConfigHolder.showMailLogin = true;
-ConfigHolder.showMailRegister = true;
+ConfigHolder.showMailRegister = false;
 ConfigHolder.showExternalLogins = true;
 ConfigHolder.showGuestLogin = true;
 ConfigHolder.autoLogin = true;

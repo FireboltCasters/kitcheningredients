@@ -7,6 +7,7 @@ import {SignOutButton} from "./SignOutButton";
 import {EmailLogin} from "./EmailLogin";
 import {AuthProvidersLoginOptions} from "./AuthProvidersLoginOptions";
 import {ConfigHolder} from "../ConfigHolder";
+import {TranslationKeys} from "../translations/TranslationKeys";
 
 export interface WebViewLoginFormState {
 	user?: UserItem;
@@ -15,6 +16,11 @@ export interface WebViewLoginFormState {
   handleContinue: any
 }
 export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
+
+  const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+  const translation_sign_in = useTranslation(TranslationKeys.sign_in);
+  const translation_continue = useTranslation(TranslationKeys.continue);
+  const translation_is_currently_authenticated_remember_this_account = useTranslation(TranslationKeys.is_currently_authenticated_remember_this_account);
 
 	// corresponding componentDidMount
 	useEffect(() => {
@@ -25,7 +31,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 		return(
 			<View>
 				<Text fontSize="4xl" fontWeight={800}>
-					{"Sign in"}
+					{translation_sign_in}
 				</Text>
 			</View>
 		)
@@ -46,7 +52,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
     return(
       <View style={{flex: 1}}>
         <View style={{marginVertical: 20}}></View>
-        <Text><Text bold={true} >{identifier}</Text> is currently authenticated. If you recognize this account, press continue.</Text>
+        <Text><Text bold={true} >{identifier}</Text> {translation_is_currently_authenticated_remember_this_account}</Text>
         <View style={{marginVertical: 20}}></View>
         <Flex flexDirection={"row"} justify={"space-between"}>
           <SignOutButton />
@@ -54,7 +60,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
             await props.handleContinue();
             //
           }}>
-            {"Continue"}
+            {translation_continue}
           </FormButton>
         </Flex>
       </View>

@@ -5,14 +5,12 @@ import {IButtonProps} from "native-base/src/components/primitives/Button/types";
 import {IBoxProps} from "native-base/src/components/primitives/Box/index";
 import {TransparentButton} from "./TransparentButton";
 
-export const TransparentTextButton: FunctionComponent<IButtonProps & IBoxProps> = (props) => {
-
-	let content = props.children;
+export const TransparentTextButton: FunctionComponent<IButtonProps & IBoxProps> = ({children, accessibilityLabel, ...props}) => {
 
 	return (
-		<TransparentButton {...props}>
+		<TransparentButton accessibilityLabel={accessibilityLabel} {...props}>
 			<Text {...props}>
-				{content}
+				{children}
 			</Text>
 		</TransparentButton>
 	)

@@ -25,12 +25,12 @@ ConfigHolder.currentpackageJsonLock = currentpackageJsonLock
 ConfigHolder.thirdpartyLicense = thirdpartyLicense
 ConfigHolder.AppConfig = AppConfig
 
-ConfigHolder.displayThemeFloater = false;
+ConfigHolder.displayThemeFloater = true;
 ConfigHolder.showMailLogin = true;
 ConfigHolder.showMailRegister = true;
 ConfigHolder.showExternalLogins = true;
 ConfigHolder.showGuestLogin = true;
-ConfigHolder.startAsGuest = true;
+ConfigHolder.startAsGuest = false;
 ConfigHolder.autoLogin = true;
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);

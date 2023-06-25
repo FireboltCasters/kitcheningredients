@@ -4,6 +4,7 @@ import {AuthProvider} from "./AuthProvider";
 import {Provider} from "./Provider";
 import {ConfigHolder} from "../ConfigHolder";
 import {Navigation} from "./../navigation/Navigation";
+import {TranslationKeys} from "../translations/TranslationKeys";
 
 interface AppState {
 	serverInfo: any;
@@ -17,12 +18,15 @@ export const AuthProviderGuest: FunctionComponent<AppState> = ({serverInfo}) => 
 		icon: "incognito-circle"
 	};
 
+  const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+  const translation_continue_as_guest = useTranslation(TranslationKeys.continue_as_guest);
+
 	async function handleOpened(){
 		await ConfigHolder.instance.setUserAsGuest();
 		await ConfigHolder.instance.setHideDrawer(false, Navigation.DEFAULT_ROUTE_HOME);
 	}
 
 	return (
-		<AuthProvider serverInfo={serverInfo} provider={provider} buttonText={"Continue as Guest"} callback={handleOpened} />
+		<AuthProvider serverInfo={serverInfo} provider={provider} buttonText={translation_continue_as_guest} callback={handleOpened} />
 	)
 }

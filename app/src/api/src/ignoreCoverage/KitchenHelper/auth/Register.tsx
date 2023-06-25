@@ -9,6 +9,7 @@ import {InternalLink} from "../navigation/InternalLink";
 import {Login} from "./Login";
 import ServerAPI from "../ServerAPI";
 import {handleLoginWithCredentials} from "./EmailLogin";
+import {TranslationKeys} from "../translations/TranslationKeys";
 
 export const Register = (props) => {
 
@@ -18,6 +19,15 @@ export const Register = (props) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
+
+  const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+  const translation_email = useTranslation(TranslationKeys.email);
+  const translation_register = useTranslation(TranslationKeys.register);
+  const translation_password = useTranslation(TranslationKeys.password);
+  const translation_password_show = useTranslation(TranslationKeys.password_visible);
+  const translation_password_hide = useTranslation(TranslationKeys.password_hidden);
+  const translation_confirm_password = useTranslation(TranslationKeys.confirm_password);
+  const translation_sign_in = useTranslation(TranslationKeys.sign_in);
 
 	if(!ConfigHolder.instance.isDrawerHidden()){
 		//console.log("Login calls hide drawer");
@@ -67,7 +77,7 @@ export const Register = (props) => {
   return (
     <View style={{flex: 1}}>
       <Text fontSize="4xl" fontWeight={800}>
-        {"Register"}
+        {translation_register}
       </Text>
       <FormControl isRequired>
         <View style={{marginVertical: 10}}>
@@ -77,7 +87,7 @@ export const Register = (props) => {
               setEmail(event.target.value)}}
             type="email"
             value={email}
-            placeholder="Email"
+            placeholder={translation_email}
             size="lg" />
         </View>
       </FormControl>
@@ -89,7 +99,7 @@ export const Register = (props) => {
             type={"password"}
             onChange={(event) => { // @ts-ignore
               setPassword(event.nativeEvent.text)
-            }} placeholder="Password" size="lg" />
+            }} placeholder={translation_password} size="lg" />
         </View>
       </FormControl>
       <FormControl isRequired>
@@ -100,14 +110,14 @@ export const Register = (props) => {
             type={"password"}
             onChange={(event) => { // @ts-ignore
               setPasswordConfirm(event.nativeEvent.text)
-            }} placeholder="Password Confirm" size="lg" />
+            }} placeholder={translation_confirm_password} size="lg" />
         </View>
       </FormControl>
       <Flex flexDirection={"row"} justify={"space-between"}>
         <FormButton disabled={registerInitiated} onPress={() => {registerUser()}}>
-          {"Register"}
+          {translation_register}
         </FormButton>
-        <InternalLink destination={Login}>{"Sign In"}</InternalLink>
+        <InternalLink destination={Login}>{translation_sign_in}</InternalLink>
       </Flex>
     </View>
   )
