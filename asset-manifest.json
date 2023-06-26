@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/kitcheningredients/static/js/app.310ea187.chunk.js",
-    "app.js.map": "/kitcheningredients/static/js/app.310ea187.chunk.js.map",
+    "app.js": "/kitcheningredients/static/js/app.fe108570.chunk.js",
+    "app.js.map": "/kitcheningredients/static/js/app.fe108570.chunk.js.map",
     "runtime~app.js": "/kitcheningredients/static/js/runtime~app.94108066.js",
     "runtime~app.js.map": "/kitcheningredients/static/js/runtime~app.94108066.js.map",
-    "static/js/2.e278e868.chunk.js": "/kitcheningredients/static/js/2.e278e868.chunk.js",
-    "static/js/2.e278e868.chunk.js.map": "/kitcheningredients/static/js/2.e278e868.chunk.js.map",
+    "static/js/2.c44f0bb3.chunk.js": "/kitcheningredients/static/js/2.c44f0bb3.chunk.js",
+    "static/js/2.c44f0bb3.chunk.js.map": "/kitcheningredients/static/js/2.c44f0bb3.chunk.js.map",
     "fonts/AntDesign.ttf": "/kitcheningredients/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/kitcheningredients/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/kitcheningredients/./fonts/Feather.ttf",
@@ -26,7 +26,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.94108066.js",
-    "static/js/2.e278e868.chunk.js",
-    "static/js/app.310ea187.chunk.js"
+    "static/js/2.c44f0bb3.chunk.js",
+    "static/js/app.fe108570.chunk.js"
   ]
 }
