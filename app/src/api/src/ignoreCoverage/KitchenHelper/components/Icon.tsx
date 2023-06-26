@@ -26,6 +26,6 @@ export const Icon: FunctionComponent<InterfaceIconProps & AppState> = ({as, size
   const color = props?.color || defaultColor;
 
 	return (
-    <Text color={color}><NativeBaseIcon as={defaultAs} {...props} size={useSize}  /></Text>
+    <NativeBaseIcon as={defaultAs} {...props} size={useSize} color={color} />
   )
 }

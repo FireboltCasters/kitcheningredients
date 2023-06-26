@@ -11,6 +11,7 @@ import {TranslationKeys} from "../translations/TranslationKeys";
 export interface AppState {
 	onlyIcon?: boolean;
 	transparent?: boolean;
+	touchableOnly?: boolean
 }
 export const SignOutButton: (props) => JSX.Element[] = (props) => {
 
