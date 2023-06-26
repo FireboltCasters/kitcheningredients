@@ -1,3 +1,6 @@
+import {HeaderWithActions} from "./ignoreCoverage/KitchenHelper/templates/HeaderWithActions";
+export {HeaderWithActions}
+
 import {TranslationKeys} from "./ignoreCoverage/KitchenHelper/translations/TranslationKeys";
 export {TranslationKeys}
 

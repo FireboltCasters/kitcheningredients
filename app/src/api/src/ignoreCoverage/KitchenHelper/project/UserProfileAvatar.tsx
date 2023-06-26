@@ -4,7 +4,6 @@ import {View} from "native-base";
 import {UserItem} from "@directus/sdk";
 import ServerAPI from "../ServerAPI";
 import {DirectusImage} from "./DirectusImage";
-import {TouchableOpacity} from "react-native";
 
 import {Icon} from "../components/Icon";
 import {ConfigHolder} from "./../ConfigHolder";
