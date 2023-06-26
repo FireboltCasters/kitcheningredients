@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from 'react';
-import {View} from "native-base";
+import {View, Text} from "native-base";
 import {UserItem} from "@directus/sdk";
 import ServerAPI from "../ServerAPI";
 import {DirectusImage} from "./DirectusImage";
@@ -25,6 +25,8 @@ export const UserProfileAvatar: FunctionComponent<AppState> = (props) => {
 
 	const directus = ServerAPI.getClient();
 
+  let usedColor = props?.color
+
 	async function loadUserInformation(){
 		let me = await ServerAPI.getMe(directus);
 		setUser(me);
@@ -43,7 +45,7 @@ export const UserProfileAvatar: FunctionComponent<AppState> = (props) => {
 	let content = (
 		<Icon
 			name={"account-circle"}
-      color={props?.color}
+      color={usedColor}
 			style={{}}
 		/>
 	)

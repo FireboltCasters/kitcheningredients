@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import {Box, Button, Heading, HStack, Tooltip, useColorMode, View,} from 'native-base';
+import {Box, Button, Heading, HStack, Tooltip, useColorMode, View,Text} from 'native-base';
 
 import {Icon} from "../components/Icon";
 import {useCustomHeaderTextColor} from "./useHeaderTextColor";

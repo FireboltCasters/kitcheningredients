@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import {ScrollView, View,} from 'native-base';
+import {ScrollView, View,Text} from 'native-base';
 import {ConfigHolder} from "../ConfigHolder";
 import {DrawerButton} from "./DrawerButton";
 import {useCustomHeaderTextColor} from "./useHeaderTextColor";
@@ -21,7 +21,7 @@ export const RequiredNavigationBar = ({
                                       }: any) => {
 
   const ssoIconColor = useProjectColor();
-  let color = useCustomHeaderTextColor(props);
+  let usedColor = props?.color || useCustomHeaderTextColor(props);
 
   let childContent = ConfigHolder.plugin.getBottomNavbarComponent();
 
@@ -64,7 +64,7 @@ export const RequiredNavigationBar = ({
         >
           {renderChildren(childContent)}
         </ScrollView>
-        <RequiredSettingsButton color={color} />
+        <RequiredSettingsButton color={usedColor} />
       </View>
 
     </View>
