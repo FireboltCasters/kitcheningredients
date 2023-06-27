@@ -3,15 +3,15 @@ import React from 'react';
 import {Navigation} from "./../../navigation/Navigation";
 import {UserProfileAvatar} from "../../project/UserProfileAvatar";
 import {ConfigHolder} from "../../ConfigHolder";
-import {MenuItem} from "kitcheningredients";
+import {MenuItem} from "../../navigation/MenuItem";
+import {useCustomHeaderTextColor} from "../../templates/useHeaderTextColor";
 import {TranslationKeys} from "../../translations/TranslationKeys";
 
-export interface AppState {
-  color?: string
-}
-export const RequiredSettingsButton: (props) => any[] = (props) => {
+export const RequiredSettingsButton = ({color, ...props}: any) => {
 
   let user = ConfigHolder.instance.getUser()
+
+  let usedColor = color || useCustomHeaderTextColor(props);
 
   function handleAvatarPress(){
     //Navigation.navigateTo(Users, {id: user.id});
@@ -23,6 +23,6 @@ export const RequiredSettingsButton: (props) => any[] = (props) => {
   const accessibilityLabel = useTranslation(TranslationKeys.profile_and_settings);
 
   return (
-    <UserProfileAvatar accessibilityLabel={accessibilityLabel} user={user} color={props?.color} onPress={handleAvatarPress} />
+    <UserProfileAvatar accessibilityLabel={accessibilityLabel} user={user} color={usedColor} onPress={handleAvatarPress} />
   )
 }

@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {FunctionComponent} from 'react';
-import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import {Tooltip, View} from "native-base";
+import {DrawerContentScrollView} from '@react-navigation/drawer';
+import {View} from "native-base";
 import {ProjectLogo} from "../project/ProjectLogo";
 import {ProjectName} from "../project/ProjectName";
 import {MyThemedBox} from "../helper/MyThemedBox";
@@ -11,7 +11,6 @@ import {RouteRegisterer} from "./RouteRegisterer";
 import {ConfigHolder} from "../ConfigHolder";
 import {Navigation} from "../navigation/Navigation";
 import {LegalRequiredLinks} from "../screens/legalRequirements/LegalRequiredLinks";
-import {RequiredSettingsButton} from "../screens/settings/RequiredSettingsButton";
 import {TranslationKeys} from "../translations/TranslationKeys";
 import {MyTouchableOpacity} from "../buttons/MyTouchableOpacity";
 

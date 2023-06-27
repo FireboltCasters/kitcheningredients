@@ -1,7 +1,6 @@
 // @ts-nocheck
 import React from 'react';
 import {Box, Heading, HStack, View,} from 'native-base';
-import {Floaters} from './Floaters';
 import {SafeAreaTop} from "./SafeAreaTop";
 import {ConfigHolder} from "../ConfigHolder";
 import {Layout} from "./Layout";
@@ -9,8 +8,6 @@ import {DrawerButton} from "./DrawerButton";
 import {BackButton} from "./BackButton";
 import {useCustomHeaderTextColor} from "./useHeaderTextColor";
 import {useProjectColor} from "./useProjectColor";
-import {RequiredSettingsButton} from "../screens/settings/RequiredSettingsButton";
-import {RequiredNavigationBar} from "./RequiredNavigationBar";
 
 export const BaseLayout = ({
 						   children,
