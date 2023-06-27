@@ -46,10 +46,12 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     get_cookie_config(){
+      console.log("DefaultStorage: get_cookie_config");
         return null;
     }
 
     has_cookie_config(): boolean{
+      console.log("DefaultStorage: has_cookie_config()")
        return !!this.get_cookie_config();
     }
 

@@ -21,6 +21,10 @@ export class DefaultTranslator{
         case TranslationKeys.forgot_password: return "Forgot password";
         case TranslationKeys.is_currently_authenticated_remember_this_account: return "is currently authenticated. Is this you?";
         case TranslationKeys.profile_and_settings: return "Profile and Settings";
+
+        case TranslationKeys.cookie_policy_consent: return "Zustimmung";
+        case TranslationKeys.cookie_policy_details: return "Details";
+        case TranslationKeys.cookie_policy_about: return "Über Cookies";
       }
     }
 

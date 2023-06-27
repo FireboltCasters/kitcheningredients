@@ -10,7 +10,7 @@ export const ExampleScreen: FunctionComponent = (props) => {
   const [reloadNumber, setReloadNumber] = useSynchedState(RequiredSynchedStates.menuReloadNumber)
 
   function addRoute(){
-    console.log("addRoute");
+    //console.log("addRoute");
     Menu.registerRoute(HiddenScreen, EmptyTemplate, "HiddenScreen", "hidden", null, true);
     Menu.registerCommonMenu(new MenuItem("HiddenScreen", "HiddenScreen", HiddenScreen))
     setReloadNumber(reloadNumber+1 || 1);

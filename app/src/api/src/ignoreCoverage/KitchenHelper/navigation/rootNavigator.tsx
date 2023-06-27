@@ -64,7 +64,7 @@ export const RootStack = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log("RootStack: useEffect: history changed");
+    //console.log("RootStack: useEffect: history changed");
   }, [history]);
 
   // TODO do we have this?

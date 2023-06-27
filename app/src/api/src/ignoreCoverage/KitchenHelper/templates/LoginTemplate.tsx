@@ -10,6 +10,7 @@ import {ProjectBackground} from "../project/ProjectBackground";
 import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 import {LegalRequiredLinks} from "../screens/legalRequirements/LegalRequiredLinks";
+import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
 
 const titleBoxHeight = 64;
 
@@ -105,6 +106,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
           {renderLeftSide()}
           {renderRightSide()}
           <Floaters />
+          <CookieInformation />
         </Flex>
 		</KitchenSafeAreaView>
 	)

@@ -27,16 +27,11 @@ export default class Project extends PluginInterface{
 	}
 
   async registerRoutes(user, role, permissions){
-	  /**
-	  	  console.log("registerRoutes");
-	  	  console.log(user);
-	  Menu.registerRoute(ExampleScreen, EmptyTemplate, "Example", "example");
-    Menu.registerCommonMenu(new MenuItem("Example", "Example"+user?.role, ExampleScreen))
-     */
+
 	}
 
 	async initApp() {
-		console.log("Project init")
+		//console.log("Project init")
 	}
 
 	async onLogin(user, role){

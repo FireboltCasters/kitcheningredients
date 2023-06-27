@@ -29,11 +29,9 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 
 	function getUrlToProvider(provider: string){
 		provider= provider.toLowerCase();
-		console.log("Provider: "+provider);
-    let redirectURL = URL_Helper.getURLToBase();
+		let redirectURL = URL_Helper.getURLToBase();
 		let redirect_with_access_token = "?redirect="+ServerAPI.getAPIUrl()+"/redirect-with-token?redirect="+redirectURL+"?"+EnviromentHelper.getDirectusAccessTokenName()+"=";
 		let totalURL = ServerAPI.getAPIUrl()+"/auth/login/"+provider+redirect_with_access_token;
-		console.log("URL: "+totalURL);
 		return totalURL
 	}
 
@@ -65,7 +63,6 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	if(!!icon && icon!=="incognito-circle"){
 	  // replace all _ with - for icon names
     icon = icon.replace(/_/g, "-");
-    console.log("icon", icon);
   }
 
 	const { colorMode, toggleColorMode } = useColorMode();

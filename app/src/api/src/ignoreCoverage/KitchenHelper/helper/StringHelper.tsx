@@ -3,6 +3,9 @@ import React from "react";
 
 export class StringHelper{
 
+  static EMPTY_SPACE = "\u200b"
+  static NONBREAKING_SPACE = "\u00a0"
+
   static renderZeroSpaceHeight(amount?: number){
     if(amount===undefined){
       amount=1;
@@ -11,7 +14,7 @@ export class StringHelper{
     let content = [];
     for(let i=0; i<amount; i++){
       // @ts-ignore
-      content.push(<Text key={"zeroSpace_"+i}>{"\u200b"}</Text>);
+      content.push(<Text key={"zeroSpace_"+i}>{StringHelper.EMPTY_SPACE}</Text>);
     }
 
     return(

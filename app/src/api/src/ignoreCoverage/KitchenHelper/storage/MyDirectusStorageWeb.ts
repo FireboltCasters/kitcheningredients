@@ -12,6 +12,11 @@ export class MyDirectusStorageWeb extends DefaultStorage/** extends Storage */{
 
     constructor(askForCookies?) {
         super();
+        console.log("MyDirectusStorageWeb constructor: askForCookies: "+askForCookies)
+        if(askForCookies === undefined || askForCookies === null){ // but not === false !!!
+          askForCookies = true;
+        }
+        console.log("Saving private field: "+askForCookies)
         this.askForCookies = askForCookies;
     }
 
@@ -19,7 +24,6 @@ export class MyDirectusStorageWeb extends DefaultStorage/** extends Storage */{
       if(this.askForCookies){
         let cookie_config = this.get_cookie_config();
         let necessaryAccepted = cookie_config?.necessary;
-
 
         let selectedWebstorage = !!necessaryAccepted ? localStorage : sessionStorage;
 
@@ -30,10 +34,13 @@ export class MyDirectusStorageWeb extends DefaultStorage/** extends Storage */{
     }
 
     get_cookie_config(){
-        let sessionStorageConfig = sessionStorage.getItem(RequiredStorageKeys.KEY_COOKIE_CONFIG);
+      console.log("MyDirectusStorageWeb get_cookie_config()");
         let localStorageConfig = localStorage.getItem(RequiredStorageKeys.KEY_COOKIE_CONFIG);
 
-        let usedCookieConfig = !!localStorageConfig ? localStorageConfig : sessionStorageConfig
+        console.log("localStorageConfig");
+        console.log(localStorageConfig)
+
+        let usedCookieConfig = localStorageConfig
         if(!!usedCookieConfig){
             try{
                 return JSON.parse(usedCookieConfig);
@@ -45,6 +52,7 @@ export class MyDirectusStorageWeb extends DefaultStorage/** extends Storage */{
     }
 
     has_cookie_config(): boolean{
+      console.log("MyDirectusStorageWeb has_cookie_config()");
       if(this.askForCookies){
         return !!this.get_cookie_config();
       } else {

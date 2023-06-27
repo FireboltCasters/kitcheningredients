@@ -6,7 +6,7 @@ import {HiddenScreen} from "./HiddenScreen";
 import {RequiredSynchedStates} from "../api/src/ignoreCoverage/KitchenHelper/synchedstate/RequiredSynchedStates";
 
 export const MyLoading: FunctionComponent = (props) => {
-  console.log("MyLoading");
+  //console.log("MyLoading");
 
   return (
     <View>

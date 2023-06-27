@@ -12,10 +12,8 @@ import {ExampleImageScreen} from "./testScreens/ExampleImageScreen";
 import {ExampleMarkdownScreen} from "./testScreens/ExampleMarkdownScreen";
 
 export const MySync: FunctionComponent = (props) => {
-  console.log("MySynch");
 
   const user = ConfigHolder.instance.getUser()
-  console.log(user)
 
   async function load(){
 

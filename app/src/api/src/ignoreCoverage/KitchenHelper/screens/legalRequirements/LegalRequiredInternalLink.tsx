@@ -14,8 +14,6 @@ export const LegalRequiredInternalLink : FunctionComponent<AppState> = (props) =
   let menuItem: MenuItem = Navigation.requiredMenuItems[requiredMenuKey];
   let label = menuItem?.label;
 
-  console.log(menuItem)
-
   return (
     <View>
       <InternalLink accessibilityLabel={label} destination={menuItem?.route?.path} fontSize={"sm"}>{label}</InternalLink>

@@ -17,6 +17,9 @@ export class TranslationKeys {
   static continue_as_guest = "continue_as_guest";
   static log_in_with = "log_in_with";
   static home = "home";
-  static i_hereby_accept_the_privacy_policy = "I hereby accept the privacy policy";
+
+  static cookie_policy_consent = "cookie_policy_consent";
+  static cookie_policy_details = "cookie_policy_details";
+  static cookie_policy_about = "cookie_policy_about";
 
 }

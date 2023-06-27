@@ -34,6 +34,11 @@ export abstract class PluginInterface{
     getAboutUsComponent(){
       return null;
     }
+
+    getCookiePolicyComponent(){
+      return null;
+    }
+
     getPrivacyPolicyComponent(){
       return null;
     }
