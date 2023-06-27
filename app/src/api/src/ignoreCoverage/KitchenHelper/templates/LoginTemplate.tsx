@@ -69,6 +69,8 @@ export const LoginTemplate: FunctionComponent = (props) => {
           style={{flex: 1, width: "100%"}}
           behavior={Platform.OS === "ios" ? "padding" : "height"} >
 				<ScrollViewWithGradient style={{flex: 1}}>
+
+          <CookieInformation />
 					<View style={{paddingHorizontal: padding, paddingTop: padding, height: "100%", width: "100%"}}>
 						<ProjectBanner serverInfo={serverInfo} />
 						{renderSpaceBetweenLogoAndSignIn()}
@@ -106,7 +108,6 @@ export const LoginTemplate: FunctionComponent = (props) => {
           {renderLeftSide()}
           {renderRightSide()}
           <Floaters />
-          <CookieInformation />
         </Flex>
 		</KitchenSafeAreaView>
 	)

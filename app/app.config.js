@@ -1,6 +1,6 @@
 function getBackendURL(){
-    let fallbackBackendUrl = "http://127.0.0.1/myapp/api";
-    fallbackBackendUrl = "https://nilsbaumgartner.de/rocketmeals/api";
+    let fallbackBackendUrl = "http://127.0.0.1/myapp/api"; // For local testing
+    fallbackBackendUrl = "https://rocket-meals.de/demo/api"; // For demo purpose
 
     let backendUrl = process.env.BACKEND_URL
 

@@ -10,7 +10,7 @@ export type DetailsComponentMenuType = {
 	onPress?: (menuKey: string) => Promise<boolean | undefined>, // an async onPress function that returns a boolean or undefined
 	element?: JSX.Element,
 	menuButtonContent?: any | string,
-	icon: JSX.Element,
+	icon?: JSX.Element,
 	amount?: number,
 }
 export interface AppState{
