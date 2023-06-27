@@ -9674,15 +9674,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/rc",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/rc/LICENSE.APACHE2"
   },
-  "react-cookiebot@1.0.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/yeutech-lab/react-cookiebot",
-    "publisher": "Dimitri Kopriwa",
-    "email": "dimitri.kopriwa@yeutech.vn",
-    "url": "https://github.com/kopax",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/react-cookiebot",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/react-cookiebot/LICENSE.md"
-  },
   "react-dev-utils@11.0.4": {
     "licenses": "MIT",
     "repository": "https://github.com/facebook/create-react-app",
