@@ -18,6 +18,8 @@ export class TranslationKeys {
   static log_in_with = "log_in_with";
   static home = "home";
 
+  static by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy = "by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy";
+
   static cookie_policy_consent = "cookie_policy_consent";
   static cookie_policy_details = "cookie_policy_details";
   static cookie_policy_about = "cookie_policy_about";

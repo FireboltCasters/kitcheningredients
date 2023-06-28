@@ -22,6 +22,8 @@ export class DefaultTranslator{
         case TranslationKeys.is_currently_authenticated_remember_this_account: return "is currently authenticated. Is this you?";
         case TranslationKeys.profile_and_settings: return "Profile and Settings";
 
+        case TranslationKeys.by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy: return "Indem du fortfährst, stimmst du den AGB zu und bestätigst, dass du unsere Datenschutzrichtlinien gelesen hast.";
+
         case TranslationKeys.cookie_policy_consent: return "Zustimmung";
         case TranslationKeys.cookie_policy_details: return "Details";
         case TranslationKeys.cookie_policy_about: return "Über Cookies";

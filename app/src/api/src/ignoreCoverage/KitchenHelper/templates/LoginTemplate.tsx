@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from 'react';
-import {Flex, KeyboardAvoidingView, useBreakpointValue, View, Wrap} from "native-base";
+import {Flex, KeyboardAvoidingView, useBreakpointValue, View, Wrap, Text} from "native-base";
 import ServerAPI from "../ServerAPI";
 import {Floaters} from "./Floaters";
 import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
@@ -11,6 +11,8 @@ import {ShowMoreGradientPlaceholder} from "../utils/ShowMoreGradientPlaceholder"
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 import {LegalRequiredLinks} from "../screens/legalRequirements/LegalRequiredLinks";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
+import {ConfigHolder} from "../ConfigHolder";
+import {TranslationKeys} from "../translations/TranslationKeys";
 
 const titleBoxHeight = 64;
 
@@ -24,6 +26,9 @@ export const LoginTemplate: FunctionComponent = (props) => {
 		xl: 1280,
 	};
 	 */
+
+	const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+	const translation_by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy = useTranslation(TranslationKeys.by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy);
 
   const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
   const keyboardVerticalOffset = paddingTop;
@@ -57,6 +62,19 @@ export const LoginTemplate: FunctionComponent = (props) => {
 		)
 	}
 
+	function renderConsentTermsOfUseAndPrivacyPolicy(){
+	  return(
+	    <View style={{
+	      flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "center"
+      }}>
+        <Text textAlign={"center"} fontSize={"sm"}>{translation_by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy}</Text>
+      </View>
+    )
+  }
+
 	function renderLeftSide(){
 
 		let padding = isSmallDevice ? 20: 80;
@@ -79,12 +97,15 @@ export const LoginTemplate: FunctionComponent = (props) => {
           <ShowMoreGradientPlaceholder />
 				</ScrollViewWithGradient>
         </KeyboardAvoidingView>
-				<Wrap
-					flexDirection="row"
-					justify="center"
-				>
-          <LegalRequiredLinks />
-				</Wrap>
+        <View style={{paddingHorizontal: padding, width: "100%"}}>
+          {renderConsentTermsOfUseAndPrivacyPolicy()}
+          <Wrap
+            flexDirection="row"
+            justify="center"
+          >
+            <LegalRequiredLinks />
+          </Wrap>
+        </View>
 			</Flex>
 		);
 	}
