@@ -232,7 +232,7 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
           </View>
         </AlertDialog.Header>
 
-        <View style={{width: width, padding: Layout.padding, flex: 1, backgroundColor: backgroundColor}}>
+        <View style={{width: "100%", padding: Layout.padding, flex: 1, backgroundColor: backgroundColor}}>
           <DetailsComponentMenus flex={1} menus={menus} defaultMenuKey={default_menu_key} key={default_menu_key} />
         </View>
         <AlertDialog.Footer>
