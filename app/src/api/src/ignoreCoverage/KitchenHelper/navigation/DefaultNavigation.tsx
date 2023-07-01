@@ -17,6 +17,7 @@ import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
 import {RouteHelper} from "./RouteHelper";
 import {Settings} from "../screens/settings/Settings";
 import {BaseNoPaddingTemplate} from "../templates/BaseNoPaddingTemplate";
+import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {CookiePolicy} from "../screens/legalRequirements/CookiePolicy";
 
 export class DefaultNavigation {
@@ -54,17 +55,19 @@ export class DefaultNavigation {
 
   static registerLegalRequirements(){
 
+    const BaseTemplateWithoutCookiesForce = (props) => {return <BaseTemplate autoOpenCookies={false}  {...props}/>};
+
     let about_us_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
       title: "Impressum",
       component: AboutUs,
-      template: BaseTemplate
+      template: BaseTemplateWithoutCookiesForce
     }))
     Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_ABOUT_US] = about_us_menu_item;
 
     let privacy_policy_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
       title: "Datenschutz",
       component: PrivacyPolicy,
-      template: BaseTemplate
+      template: BaseTemplateWithoutCookiesForce
     }))
     Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_PRIVACY_POLICY] = privacy_policy_menu_item;
 
@@ -81,14 +84,6 @@ export class DefaultNavigation {
       template: BaseNoPaddingTemplate
     }));
     Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_SETTINGS] = settings_menu_item;
-
-    let cookie_policy_menu_item = MenuItem.fromRoute(Navigation.routeRegister({
-      title: "Cookie-Richtlinie",
-      component: CookiePolicy,
-      template: BaseNoPaddingTemplate
-    }));
-    Navigation.requiredMenuItems[Navigation.DEFAULT_MENU_KEY_COOKIE_POLICY] = cookie_policy_menu_item;
-
 
   }
 

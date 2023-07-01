@@ -2,7 +2,7 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Flex, FormControl, Input, Text, View} from "native-base";
 import {Login} from "./Login";
-import {FormButton} from "../buttons/FormButton";
+import {FormButton} from "../components/buttons/FormButton";
 import {InternalLink} from "../navigation/InternalLink";
 
 export const ResetPasswordForm: FunctionComponent = (props) => {

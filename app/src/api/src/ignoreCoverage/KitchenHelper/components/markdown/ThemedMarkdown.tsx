@@ -11,10 +11,13 @@ interface AppState {
 	darkmode?: boolean,
   hideSkeleton?: boolean,
   debug?: boolean,
+  markdown?: string,
 }
 export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
 
-  if(props.children===undefined && !props.hideSkeleton){
+  let sourceContent = props?.markdown || props.children;
+
+  if(sourceContent===undefined && !props.hideSkeleton){
     return <MarkdownSkeleton />
   }
 
@@ -41,7 +44,7 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
 	const lineHeightNormal = emToPixel(parseFloat(lineHeightNormalInEm)) || 0;
 
   const md = new MarkdownIt();
-  const result = md.render(props.children);
+  const result = md.render(sourceContent);
 
   const source = {
     html: result || ""
@@ -78,7 +81,7 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
   if(props?.debug) {
     return (
       // @ts-ignore
-      <Text>
+      <Text selectable={true}>
         {result}
       </Text>
     )

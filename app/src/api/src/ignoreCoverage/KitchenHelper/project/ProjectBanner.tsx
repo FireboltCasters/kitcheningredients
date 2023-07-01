@@ -10,15 +10,18 @@ const titleBoxHeight = 64;
 
 interface AppState {
 	serverInfo?: ServerInfo;
+	size?: string
 }
 export const ProjectBanner: FunctionComponent<AppState> = (props) => {
 	const serverInfo = props.serverInfo || ServerAPI.tempStore.serverInfo;
 
+	let boxHeight = titleBoxHeight;
+
 	return(
 		<View
-			style={{flexDirection: "row" ,height: titleBoxHeight}}
+			style={{flexDirection: "row" ,height: boxHeight}}
 		>
-			<ProjectLogo serverInfo={serverInfo} rounded={true} />
+			<ProjectLogo serverInfo={serverInfo} rounded={true} titleBoxHeight={boxHeight-4} />
 			<ProjectName serverInfo={serverInfo} />
 		</View>
 	)

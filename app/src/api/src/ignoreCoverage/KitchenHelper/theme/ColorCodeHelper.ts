@@ -1,15 +1,22 @@
 import type {StorageManager} from 'native-base';
-import {ColorMode} from 'native-base';
+import {ColorMode, useColorMode} from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Appearance} from "react-native";
 import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
 import {ConfigHolder} from "../ConfigHolder";
+import {useSynchedState} from "kitcheningredients";
 
 //TODO dont save it directly into storage, use synched storage variable
 export default class ColorCodeHelper {
 	static VALUE_THEME_DARK: ColorMode = 'dark';
 	static VALUE_THEME_LIGHT: ColorMode = 'light';
 	static VALUE_THEME_DEFAULT: ColorMode = ColorCodeHelper.VALUE_THEME_LIGHT;
+
+	static isDarkMode(){
+    const { colorMode, toggleColorMode } = useColorMode();
+    let nextTheme = colorMode===ColorCodeHelper.VALUE_THEME_LIGHT ? ColorCodeHelper.VALUE_THEME_DARK : ColorCodeHelper.VALUE_THEME_LIGHT;
+    return colorMode!==ColorCodeHelper.VALUE_THEME_LIGHT
+  }
 
 	static getSystemPreferedColor(){
 		const colorScheme = Appearance.getColorScheme();

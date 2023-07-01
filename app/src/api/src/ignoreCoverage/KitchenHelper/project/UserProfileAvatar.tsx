@@ -7,7 +7,7 @@ import {DirectusImage} from "./DirectusImage";
 
 import {Icon} from "../components/Icon";
 import {ConfigHolder} from "./../ConfigHolder";
-import {MyTouchableOpacity} from "../buttons/MyTouchableOpacity";
+import {MyTouchableOpacity} from "../components/buttons/MyTouchableOpacity";
 
 const titleBoxHeight = 48;
 

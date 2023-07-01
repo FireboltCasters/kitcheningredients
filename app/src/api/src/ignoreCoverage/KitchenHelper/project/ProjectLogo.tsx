@@ -7,13 +7,14 @@ import {DirectusImage} from "./DirectusImage";
 import ServerAPI from "../ServerAPI";
 import {ConfigHolder} from "../ConfigHolder";
 
-let titleBoxHeight = 60;
-
 interface AppState {
 	serverInfo?: ServerInfo;
 	rounded?: boolean
+  titleBoxHeight?: number
 }
 export const ProjectLogo: FunctionComponent<AppState> = (props) => {
+
+  const titleBoxHeight = props?.titleBoxHeight || 60;
 
 	const serverInfo = props.serverInfo || ServerAPI.tempStore.serverInfo;
 	let project_color = ServerInfoHelper.getProjectColor(serverInfo);
@@ -38,11 +39,11 @@ export const ProjectLogo: FunctionComponent<AppState> = (props) => {
 
 	return(
 		// @ts-ignore
-		<View style={{height: heightAndWidth, width: heightAndWidth, backgroundColor: project_color, borderRadius: borderRadius, alignItems: "center", justifyContent: "center"}}>
+		<View style={{height: heightAndWidth, width: heightAndWidth, backgroundColor: project_color, borderRadius: borderRadius, alignItems: "center", justifyContent: "center", overflow: "hidden"}}>
 			<DirectusImage alt={""}
 						   isPublic={true}
 						   assetId={project_logo_asset_id}
-						   style={{height: 40, width: 40}} />
+						   style={{height: heightAndWidth-20, width: heightAndWidth-20}} />
 		</View>
 	)
 }

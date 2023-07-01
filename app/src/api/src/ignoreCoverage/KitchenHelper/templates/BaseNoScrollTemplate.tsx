@@ -2,10 +2,8 @@
 import React, {FunctionComponent, useEffect, useRef, useState} from "react";
 import {BaseLayout} from "./BaseLayout";
 import ServerAPI from "../ServerAPI";
-import {View, KeyboardAvoidingView} from "native-base";
-import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
+import {Text, View} from "native-base";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
-import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 import {NavigatorHelper} from "./../navigation/NavigatorHelper";
 import {Platform, StatusBar} from "react-native";
 import {EmptyTemplate} from "./EmptyTemplate";
@@ -14,7 +12,8 @@ import {EmptyTemplate} from "./EmptyTemplate";
 export interface BaseNoScrollTemplateProps{
   title?: string,
   header?: JSX.Element,
-  serverInfo?: any
+  serverInfo?: any,
+  autoOpenCookies?: boolean
 }
 export const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps>= ({
 								 children,
@@ -62,7 +61,7 @@ export const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps>=
   const keyboardVerticalOffset = paddingTop;
 
 	return(
-		<EmptyTemplate>
+		<EmptyTemplate autoOpenCookies={props?.autoOpenCookies}>
         <View flex={1} flexDirection={"row"}>
           <BaseLayout title={title} serverInfo={serverInfo} header={header} showbackbutton={showbackbutton} >
             <View style={{width: "100%", height: "100%"}} >

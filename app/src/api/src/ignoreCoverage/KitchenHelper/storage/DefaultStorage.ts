@@ -1,6 +1,7 @@
 import {RequiredStorageKeys} from "./RequiredStorageKeys";
 import {MyDirectusStorageInterface} from "./MyDirectusStorageInterface";
 import {StorageImplementationInterface} from "./StorageImplementationInterface";
+import {CookieTypes} from "../screens/legalRequirements/CookieTypes";
 
 export class DefaultStorage implements MyDirectusStorageInterface/** extends Storage */{
 
@@ -24,12 +25,12 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
 
     async initContextStores(SynchedState){
         let keys = SynchedState.getRequiredStorageKeys();
-        this.initSynchedKeys(SynchedState, keys, true);
+        this.initSynchedKeys(SynchedState, keys, true, CookieTypes.Necessary);
         let pluginStorageKeys = SynchedState.getPluginStorageKeys()
-        this.initSynchedKeys(SynchedState, pluginStorageKeys, false);
+        this.initSynchedKeys(SynchedState, pluginStorageKeys, false, CookieTypes.Necessary);
     }
 
-    initSynchedKeys(SynchedState, keys, override){
+    initSynchedKeys(SynchedState, keys, override, cookieType: CookieTypes){
         for(let i=0; i<keys.length; i++){
             let storageKey = keys[i];
             let value = this.get(storageKey);
@@ -45,26 +46,12 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
         return null;
     }
 
-    get_cookie_config(){
-      console.log("DefaultStorage: get_cookie_config");
-        return null;
-    }
-
-    has_cookie_config(): boolean{
-      console.log("DefaultStorage: has_cookie_config()")
-       return !!this.get_cookie_config();
-    }
-
-    set_cookie_config(config){
-
-    }
-
     is_guest(){
-        return !!this.get(RequiredStorageKeys.KEY_COOKIE_IS_GUEST);
+        return !!this.get(RequiredStorageKeys.IS_GUEST);
     }
 
     set_is_guest(isGuest){
-        this.setValueOrDeleteIfNull(RequiredStorageKeys.KEY_COOKIE_IS_GUEST, isGuest)
+        this.setValueOrDeleteIfNull(RequiredStorageKeys.IS_GUEST, isGuest)
     }
 
     setValueOrDeleteIfNull(key, value){
@@ -80,7 +67,14 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
         this.set_refresh_token(null);
         this.set_access_token(null);
         this.set_is_guest(false);
+        this.set_cookie_config(null);
     }
+
+    set_cookie_config(cookieConfig){
+      this.setValueOrDeleteIfNull(RequiredStorageKeys.KEY_COOKIE_CONFIG, cookieConfig);
+    }
+
+
 
     has_credentials_saved(){
         if(!!this.get_auth_refresh_token()){

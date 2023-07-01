@@ -1,6 +1,7 @@
 import {UserItem} from "@directus/sdk";
-import { ColorMode } from 'native-base';
+import {ColorMode} from 'native-base';
 import {DefaultTranslator} from "./translations/DefaultTranslator";
+import {CookieDefaultComponents} from "./screens/legalRequirements/CookieDefaultComponents";
 
 export abstract class PluginInterface{
     initApp(){
@@ -35,8 +36,17 @@ export abstract class PluginInterface{
       return null;
     }
 
-    getCookiePolicyComponent(){
-      return null;
+
+    getCookieComponentConsent(){
+      return CookieDefaultComponents.getCookieComponentConsent()
+    }
+
+    getCookieComponentDetails(){
+      return CookieDefaultComponents.getCookieComponentDetails()
+    }
+
+    getCookieComponentAbout(){
+      return CookieDefaultComponents.getCookieComponentAbout()
     }
 
     getPrivacyPolicyComponent(){

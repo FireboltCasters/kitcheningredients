@@ -5,7 +5,7 @@ import {CookieInformation} from "../screens/legalRequirements/CookieInformation"
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {RequiredNavigationBar} from "./RequiredNavigationBar";
-import {View, KeyboardAvoidingView} from "native-base";
+import {View, KeyboardAvoidingView, Text} from "native-base";
 
 import {Platform, StatusBar} from "react-native";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
@@ -18,6 +18,7 @@ export const EmptyTemplate = ({
 								 serverInfo,
 								 _status,
 								 _hStack,
+                autoOpenCookies,
 								 ...props}: any) => {
 
   const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
@@ -58,6 +59,7 @@ export const EmptyTemplate = ({
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
 
+
 	return(
     <KitchenSafeAreaView>
       <KeyboardAvoidingView
@@ -71,7 +73,7 @@ export const EmptyTemplate = ({
               {childrenWithProps}
             </View>
           </View>
-          <CookieInformation />
+          <CookieInformation autoOpenCookies={autoOpenCookies} />
         </View>
       </KeyboardAvoidingView>
     </KitchenSafeAreaView>

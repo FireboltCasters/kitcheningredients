@@ -7,10 +7,11 @@ import {useThemeTextColor} from "../helper/HelperHooks";
 
 interface AppState {
   invert?: boolean;
+  useDarkTheme?: boolean
 }
-export const Icon: FunctionComponent<InterfaceIconProps & AppState> = ({as, size, invert, ...props}) => {
+export const Icon: FunctionComponent<InterfaceIconProps & AppState> = ({as, size, invert, useDarkTheme, ...props}) => {
 
-  const defaultColor = useThemeTextColor(invert);
+  const defaultColor = useThemeTextColor(invert, useDarkTheme);
 
   let defaultAs = MaterialCommunityIcons;
   if(!!as){

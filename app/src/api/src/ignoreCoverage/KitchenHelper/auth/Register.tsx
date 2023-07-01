@@ -4,7 +4,7 @@ import {Platform} from "react-native";
 import {ConfigHolder} from "../ConfigHolder";
 import {keyof} from "ts-keyof";
 import {Button, Flex, FormControl, Input, View, Text} from "native-base";
-import {FormButton} from "../buttons/FormButton";
+import {FormButton} from "../components/buttons/FormButton";
 import {InternalLink} from "../navigation/InternalLink";
 import {Login} from "./Login";
 import ServerAPI from "../ServerAPI";

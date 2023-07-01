@@ -26,6 +26,38 @@ export function useSynchedJSONState(storageKey): [value: any, setValue: (value) 
   ]
 }
 
+export function useSynchedCookieConfig(){
+  // define cookieConfig type
+  type CookieConfigType = {
+    date_updated: string,
+    necessary: boolean,
+    preferences: boolean,
+    statistics: boolean,
+    marketing: boolean,
+  }
+
+  let usedCookieConfig: CookieConfigType;
+
+  let [cookieConfig, setCookieConfig] = useSynchedJSONState(RequiredStorageKeys.KEY_COOKIE_CONFIG);
+
+  usedCookieConfig = cookieConfig;
+
+  if(!usedCookieConfig){
+    usedCookieConfig = {
+        date_updated: null,
+        necessary: true,
+        preferences: false,
+        statistics: false,
+        marketing: false,
+      }
+  }
+
+  return [
+    usedCookieConfig,
+    setCookieConfig
+  ];
+}
+
 export class SynchedState {
 
     private static store;

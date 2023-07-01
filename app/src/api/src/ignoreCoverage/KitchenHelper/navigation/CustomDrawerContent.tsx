@@ -12,7 +12,7 @@ import {ConfigHolder} from "../ConfigHolder";
 import {Navigation} from "../navigation/Navigation";
 import {LegalRequiredLinks} from "../screens/legalRequirements/LegalRequiredLinks";
 import {TranslationKeys} from "../translations/TranslationKeys";
-import {MyTouchableOpacity} from "../buttons/MyTouchableOpacity";
+import {MyTouchableOpacity} from "../components/buttons/MyTouchableOpacity";
 
 export const CustomDrawerContent: FunctionComponent = (props) => {
 

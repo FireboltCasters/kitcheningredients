@@ -6,7 +6,7 @@ import {useCustomHeaderTextColor} from "./useHeaderTextColor";
 import {Navigation} from "../navigation/Navigation";
 import {ConfigHolder} from "../ConfigHolder";
 import {TranslationKeys} from "../translations/TranslationKeys";
-import {MyTouchableOpacity} from "../buttons/MyTouchableOpacity";
+import {MyTouchableOpacity} from "../components/buttons/MyTouchableOpacity";
 
 export const DrawerButton = ({color, ...props}: any) => {
 

@@ -1,8 +1,8 @@
 import React, {FunctionComponent, useState} from "react";
 import {Text, View} from "native-base";
 import {TouchableOpacity} from "react-native";
-import {SettingsRowInner} from "./SettingsRowInner";
-import {SettingsSpacer} from "./SettingsSpacer";
+import {SettingsRowInner} from "./settings/SettingsRowInner";
+import {SettingsSpacer} from "./settings/SettingsSpacer";
 
 export type DetailsComponentMenuType = {
 	color?: string,
@@ -22,6 +22,7 @@ export interface AppState{
 	defaultActiveColor?: string,
 	hideSelection?: boolean,
 	style?: any,
+  flex?: number,
 }
 export const DetailsComponentMenus: FunctionComponent<AppState> = (props) => {
 
@@ -114,7 +115,7 @@ export const DetailsComponentMenus: FunctionComponent<AppState> = (props) => {
 	const spacer = props?.spacer!==undefined ? props?.spacer : <SettingsSpacer/>;
 
 	return (
-		<View style={{width: "100%"}}>
+		<View style={{width: "100%", flex: props?.flex}}>
 			{renderMenuButtons()}
 			{spacer}
 			{element}

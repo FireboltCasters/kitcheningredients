@@ -34,7 +34,6 @@ export class Navigation {
     static DEFAULT_MENU_KEY_PRIVACY_POLICY = RouteHelper.getNameOfComponent(PrivacyPolicy);
     static DEFAULT_MENU_KEY_LICENSE = RouteHelper.getNameOfComponent(License);
     static DEFAULT_MENU_KEY_SETTINGS = RouteHelper.getNameOfComponent(Settings);
-    static DEFAULT_MENU_KEY_COOKIE_POLICY = RouteHelper.getNameOfComponent(CookiePolicy);
 
     static ROUTE_PATH_PREFIX = "/";
 

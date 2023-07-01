@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import ServerAPI from "../ServerAPI";
 import {AlertDialog, Button, Divider, Text, Tooltip} from "native-base";
-import {TransparentTextButton} from "../buttons/TransparentTextButton";
+import {TransparentTextButton} from "../components/buttons/TransparentTextButton";
 
 import {Icon} from "../components/Icon";
 import {ConfigHolder} from "../ConfigHolder";

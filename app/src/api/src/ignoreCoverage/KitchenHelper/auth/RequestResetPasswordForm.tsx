@@ -2,7 +2,7 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Flex, FormControl, Input, Text, View} from "native-base";
 import {Login} from "./Login";
-import {FormButton} from "../buttons/FormButton";
+import {FormButton} from "../components/buttons/FormButton";
 import ServerAPI from "../ServerAPI";
 import {URL_Helper} from "../helper/URL_Helper";
 import {InternalLink} from "../navigation/InternalLink";

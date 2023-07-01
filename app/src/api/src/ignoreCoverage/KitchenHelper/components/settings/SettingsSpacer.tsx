@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from "react";
 import {Text, View} from "native-base";
-import {StringHelper} from "../helper/StringHelper";
+import {StringHelper} from "../../helper/StringHelper";
 
 interface AppState {
 

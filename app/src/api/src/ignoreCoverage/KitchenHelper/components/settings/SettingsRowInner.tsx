@@ -1,9 +1,9 @@
 // @ts-nocheck
 import React, {FunctionComponent} from "react";
 import {Text, View} from "native-base";
-import {Icon} from "../components/Icon";
-import {ViewPixelRatio} from "./ViewPixelRatio";
-import {ViewPercentageBorderradius} from "./ViewPercentageBorderradius";
+import {Icon} from "../Icon";
+import {ViewPixelRatio} from "../ViewPixelRatio";
+import {ViewPercentageBorderradius} from "../ViewPercentageBorderradius";
 
 export interface SettingsRowProps {
     leftContent: any | string | number,

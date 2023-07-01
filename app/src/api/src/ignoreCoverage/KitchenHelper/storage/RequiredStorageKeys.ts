@@ -12,5 +12,5 @@ export class RequiredStorageKeys {
     static KEY_DIRECTUS_IMAGE_CACHE = 'KEY_DIRECTUS_IMAGE_CACHE';
 
     static KEY_COOKIE_CONFIG = 'cookie_config';
-    static KEY_COOKIE_IS_GUEST = 'isGuest';
+    static IS_GUEST = 'isGuest';
 }

@@ -3,10 +3,10 @@ import React, {FunctionComponent, useEffect, useState} from 'react';
 import ServerAPI from "../ServerAPI";
 import {Login} from "./Login";
 import EnviromentHelper from "../EnviromentHelper";
-import {Button, Flex, FormControl, Input, Tooltip, View} from "native-base";
+import {Button, Flex, FormControl, Input, Tooltip, View, Text} from "native-base";
 import {InternalLink} from "../navigation/InternalLink";
 import {ResetPassword} from "./ResetPassword";
-import {FormButton} from "../buttons/FormButton";
+import {FormButton} from "../components/buttons/FormButton";
 import {ConfigHolder} from "./../ConfigHolder";
 import {Register} from "./Register";
 import {Icon} from "../components/Icon";
@@ -35,9 +35,6 @@ export const handleLoginWithCredentials = async (email, password) => {
 
 export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 
-	const markerRef = React.createRef();
-
-	const [reloadnumber, setReloadnumber] = useState(0)
 	const [loginInitiated, setLoginInitiated] = useState(false)
   const [loginIncorrect, setLogginIncorrect] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
@@ -101,7 +98,7 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
     let rightElement = (
       <Tooltip label={accessibilityLabel} >
         <Button accessibilityLabel={accessibilityLabel} roundedLeft="0" onPress={() => {setShowPassword(!showPassword)}}>
-          <Icon invert={true} name={toggleShowPasswordIcon} size="sm" />
+          <Icon useDarkTheme={true} name={toggleShowPasswordIcon} size="sm" />
         </Button>
       </Tooltip>
     )

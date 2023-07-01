@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, {FunctionComponent, useEffect} from 'react';
 import {Divider, Flex, Spinner, Text, View} from "native-base";
-import {FormButton} from "../buttons/FormButton";
+import {FormButton} from "../components/buttons/FormButton";
 import {UserItem} from "@directus/sdk";
 import {SignOutButton} from "./SignOutButton";
 import {EmailLogin} from "./EmailLogin";

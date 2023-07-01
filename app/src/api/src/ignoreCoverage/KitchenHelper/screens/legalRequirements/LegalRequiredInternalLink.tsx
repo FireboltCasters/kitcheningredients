@@ -4,6 +4,8 @@ import {InternalLink} from "../../navigation/InternalLink";
 import {MenuItem} from "../../navigation/MenuItem";
 import {Navigation} from "../../navigation/Navigation";
 import {View} from "native-base";
+import {RequiredSynchedStates} from "../../synchedstate/RequiredSynchedStates";
+import {useSynchedState} from "../../synchedstate/SynchedState";
 
 interface AppState {
   requiredMenuKey?: string;
@@ -14,9 +16,13 @@ export const LegalRequiredInternalLink : FunctionComponent<AppState> = (props) =
   let menuItem: MenuItem = Navigation.requiredMenuItems[requiredMenuKey];
   let label = menuItem?.label;
 
+  let [isOpen, setIsOpen] = useSynchedState(RequiredSynchedStates.showCookies)
+
   return (
     <View>
-      <InternalLink accessibilityLabel={label} destination={menuItem?.route?.path} fontSize={"sm"}>{label}</InternalLink>
+      <InternalLink beforeNavigateCallback={() => {
+        setIsOpen(false) // close the cookie banner when navigating to a legal page
+      }} accessibilityLabel={label} destination={menuItem?.route?.path} fontSize={"sm"}>{label}</InternalLink>
     </View>
   )
 

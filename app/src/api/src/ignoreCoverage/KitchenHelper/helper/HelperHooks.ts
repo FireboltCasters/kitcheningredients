@@ -1,6 +1,6 @@
 import {useColorMode, useTheme} from "native-base";
 
-export const useThemeTextColor = (invert?: boolean) => {
+export const useThemeTextColor = (invert?: boolean, useDarkTheme?) => {
   const theme = useTheme();
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -10,6 +10,13 @@ export const useThemeTextColor = (invert?: boolean) => {
   let darkMode = colorMode!=="light";
   if(invert){
     darkMode = !darkMode;
+  }
+
+  if(useDarkTheme===true){
+    darkMode = true;
+  }
+  if(useDarkTheme===false){
+    darkMode = false;
   }
 
   let textColor = darkMode ? darkModeTextColor : lightModeTextColor;
