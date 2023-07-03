@@ -32,11 +32,14 @@ export class DefaultTranslator{
         case TranslationKeys.cookie_policy_about: return "Über Cookies";
         case TranslationKeys.cookie_policy_button_accept_all: return "Alles akzeptieren";
         case TranslationKeys.cookie_policy_button_only_necessary: return "Nur notwendige Cookies";
+        case TranslationKeys.cookie_policy_button_deny_all: return "Ablehnen";
         case TranslationKeys.cookie_policy_button_allow_selected: return "Auswahl erlauben";
         case TranslationKeys.cookie_policy_checkbox_necessary: return "Notwendig";
         case TranslationKeys.cookie_policy_checkbox_preference: return "Präferenzen";
         case TranslationKeys.cookie_policy_checkbox_statistics: return "Statistiken";
         case TranslationKeys.cookie_policy_checkbox_marketing: return "Marketing";
+        case TranslationKeys.cookie_policy_consent_date: return "Einwilligungsdatum";
+        case TranslationKeys.cookie_policy_policy_date_updated: return "Die Cookie-Erklärung wurde das letzte Mal aktualisiert am";
         case TranslationKeys.cookies: return "Cookies";
       }
     }

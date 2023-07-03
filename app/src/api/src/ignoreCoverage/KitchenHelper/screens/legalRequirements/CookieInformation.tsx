@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from "react";
 import {AlertDialog, Button, Heading, Modal, Text, useContrastText, View} from "native-base";
 import {Platform} from "react-native";
@@ -17,6 +16,7 @@ import {ShowMoreGradientPlaceholder} from "../../utils/ShowMoreGradientPlacehold
 import {SettingsSpacer} from "../../components/settings/SettingsSpacer";
 import {useBackgroundColor} from "../../templates/useBackgroundColor";
 import {ProjectLogo} from "../../project/ProjectLogo";
+import {DateHelper} from "../../helper/DateHelper";
 
 interface AppState {
   autoOpenCookies?: boolean;
@@ -40,6 +40,18 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   const [cookieConfig, setCookieConfig] = useSynchedCookieConfig();
   const [tempCookieConfig, setTempCookieConfig] = useState(cookieConfig);
 
+  const date_consent = cookieConfig?.date_consent;
+  const date_consent_human_readable = getHumanReadableDate(date_consent);
+  const date_cookie_policy_updated = undefined;
+  const date_cookie_policy_updated_human_readable = getHumanReadableDate(date_cookie_policy_updated);
+
+  function getHumanReadableDate(date: Date | undefined): string {
+    if (!date) {
+      return "/";
+    }
+    return DateHelper.formatDateToReadable(new Date(date), true, true);
+  }
+
   const translation_cookies = useTranslation(TranslationKeys.cookies);
   const translation_cookie_policy_consent = useTranslation(TranslationKeys.cookie_policy_consent)
   const translation_cookie_policy_details = useTranslation(TranslationKeys.cookie_policy_details)
@@ -52,7 +64,11 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
 
   const translation_cookie_policy_button_accept_all = useTranslation(TranslationKeys.cookie_policy_button_accept_all)
   const translation_cookie_policy_button_only_necessary = useTranslation(TranslationKeys.cookie_policy_button_only_necessary)
+  const translation_cookie_policy_button_deny_all = useTranslation(TranslationKeys.cookie_policy_button_deny_all)
   const translation_cookie_policy_button_allow_selected = useTranslation(TranslationKeys.cookie_policy_button_allow_selected)
+
+  const translation_cookie_policy_consent_date = useTranslation(TranslationKeys.cookie_policy_consent_date)
+  const translation_cookie_policy_policy_date_updated = useTranslation(TranslationKeys.cookie_policy_policy_date_updated)
 
   function onlyNecessarySelected(){
     return (
@@ -94,15 +110,24 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
     return null;
   }
 
-  function hasCookieConfig(){
-    if(!cookieConfig || !cookieConfig.date_updated){
+  function cookieConsentUpToDate(){
+    if(!cookieConfig || !date_consent){
       return false;
     } else {
-      return true;
+      let isUpToDate = true;
+      if(!!date_cookie_policy_updated){
+        if(!!date_consent){
+          if(new Date(date_consent) < new Date(date_cookie_policy_updated)){
+            isUpToDate = false;
+          }
+        }
+      }
+
+      return isUpToDate;
     }
   }
 
-  if(!hasCookieConfig() && autoOpenCookies!==false){
+  if(!cookieConsentUpToDate() && autoOpenCookies!==false){
     isOpen = true;
   }
 
@@ -117,6 +142,14 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
     handleDecision(tempCookieConfig);
   }
 
+  function denyCookiesAll(){
+    tempCookieConfig.necessary = true;
+    tempCookieConfig.preferences = false;
+    tempCookieConfig.statistics = false;
+    tempCookieConfig.marketing = false;
+    handleDecision({...tempCookieConfig});
+  }
+
   function acceptCookiesAll(){
     tempCookieConfig.necessary = true;
     tempCookieConfig.preferences = true;
@@ -126,7 +159,7 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   }
 
   function handleDecision(cookie_config){
-    cookie_config.date_updated = new Date().getTime();
+    cookie_config.date_consent = new Date().getTime();
     setCookieConfig({...cookie_config});
     setTempCookieConfig({...cookie_config});
     // add a small delay to make sure the user sees the change
@@ -188,6 +221,10 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
               }}
               value={tempCookieConfig.marketing} accessibilityLabel={translation_cookie_policy_checkbox_marketing} leftContent={<Text>{translation_cookie_policy_checkbox_marketing}</Text>} />
           </View>
+          <View style={{width: "100%"}}>
+              <Text>{translation_cookie_policy_consent_date+": "+date_consent_human_readable}</Text>
+              <Text>{translation_cookie_policy_policy_date_updated+": "+date_cookie_policy_updated_human_readable}</Text>
+          </View>
         </View>
       )
   }
@@ -243,14 +280,20 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
             width: "100%",
             flexWrap: "wrap",
           }}>
+            <Button onPress={denyCookiesAll} style={{backgroundColor: defaultButtonColor}}>
+              <Text color={defaultButtonContrastColor}>
+                {translation_cookie_policy_button_deny_all}
+              </Text>
+            </Button>
+            <View style={{width: 16}} />
             <Button style={{backgroundColor: defaultButtonColor}} onPress={acceptCookiesSelected}>
               <Text color={defaultButtonContrastColor}>
                 {translation_save_current_selection}
               </Text>
             </Button>
             <View style={{width: 16}} />
-            <Button onPress={acceptCookiesAll} style={{backgroundColor: project_color}}>
-              <Text bold={true} color={project_color_contrast_color}>
+            <Button onPress={acceptCookiesAll} style={{backgroundColor: defaultButtonColor}}>
+              <Text color={defaultButtonContrastColor}>
                 {translation_cookie_policy_button_accept_all}
               </Text>
             </Button>

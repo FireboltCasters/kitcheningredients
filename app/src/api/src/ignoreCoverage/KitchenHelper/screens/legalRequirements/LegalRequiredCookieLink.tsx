@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from "react";
 import {Text, View} from "native-base";
 import {ConfigHolder} from "../../ConfigHolder";
