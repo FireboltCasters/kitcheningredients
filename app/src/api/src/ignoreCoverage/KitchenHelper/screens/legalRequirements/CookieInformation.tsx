@@ -1,6 +1,5 @@
 import React, {FunctionComponent, useEffect, useState} from "react";
 import {AlertDialog, Button, Heading, Modal, Text, useContrastText, View} from "native-base";
-import {Platform} from "react-native";
 import {ConfigHolder} from "../../ConfigHolder";
 import {DetailsComponentMenus, DetailsComponentMenuType} from "../../components/DetailsComponentMenus";
 import {TranslationKeys} from "../../translations/TranslationKeys";
