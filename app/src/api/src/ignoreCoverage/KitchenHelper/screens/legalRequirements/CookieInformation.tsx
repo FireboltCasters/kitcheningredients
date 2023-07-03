@@ -17,7 +17,7 @@ import {SettingsSpacer} from "../../components/settings/SettingsSpacer";
 import {useBackgroundColor} from "../../templates/useBackgroundColor";
 import {ProjectLogo} from "../../project/ProjectLogo";
 import {DateHelper} from "../../helper/DateHelper";
-import {KitchenSafeAreaView} from "kitcheningredients";
+import {KitchenSafeAreaView} from "../../components/KitchenSafeAreaView";
 
 interface AppState {
   autoOpenCookies?: boolean;
