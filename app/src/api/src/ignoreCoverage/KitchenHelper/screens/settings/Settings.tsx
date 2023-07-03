@@ -20,7 +20,7 @@ export const Settings = (props) => {
 
 	return(
 		<View style={{width: "100%"}}>
-      <View style={{flex: 1, flexDirection: "row-reverse"}}>
+      <View style={{flex: 1, flexDirection: "row-reverse"}} key={"signOutButton"}>
         <SignOutButton onlyIcon={true} />
       </View>
       <View style={{
@@ -29,7 +29,7 @@ export const Settings = (props) => {
         alignItems: "center", justifyContent: "center",
         flexDirection: 'row',
         flexWrap: 'wrap', // Enable wrapping of items
-      }}>
+      }} key={"legalRequiredLinks"}>
         <LegalRequiredLinks />
       </View>
 		</View>

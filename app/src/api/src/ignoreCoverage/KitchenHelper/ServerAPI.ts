@@ -45,7 +45,7 @@ export default class ServerAPI{
 
 	static async handleLogoutError(){
 		let storage = ConfigHolder.instance.storage;
-		storage.deleteAll();
+		storage.clear_credentials();
 	}
 
 	static async handleLogout(error=null){
@@ -54,11 +54,12 @@ export default class ServerAPI{
 			let directus = ServerAPI.getDirectus(ConfigHolder.instance.storage);
       console.log("call await directus.auth.logout();")
 			let response = await directus.auth.logout();
+      await ServerAPI.handleLogoutError(); // we better make sure to reset variables in storage
       console.log("logout: ", response);
 		} catch (err){
 			console.log("Error at: handleLogout");
 			console.log(err);
-//			await ServerAPI.handleLogoutError(); // we better make sure to reset variables in storage
+			await ServerAPI.handleLogoutError(); // we better make sure to reset variables in storage
 		}
     await ServerAPI.handleLogoutError(); // we better make sure to reset variables in storage
 		console.log("navigate to login")

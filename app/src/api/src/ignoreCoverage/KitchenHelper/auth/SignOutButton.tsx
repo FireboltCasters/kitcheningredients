@@ -64,9 +64,9 @@ export const SignOutButton: (props) => JSX.Element[] = (props) => {
 
 	function renderOnlyIcon(){
 		return (
-		  <Tooltip label={accessibilityLabel}>
-        <Button accessibilityLabel={accessibilityLabel} key={"LogoutIcon"} style={{backgroundColor: "transparent"}} onPress={openConfirmBox} >
-          <Icon name={"logout"}/>
+		  <Tooltip label={accessibilityLabel} key={"logoutToolTip"}>
+        <Button accessibilityLabel={accessibilityLabel} key={"LogoutButton"} style={{backgroundColor: "transparent"}} onPress={openConfirmBox} >
+          <Icon name={"logout"} key={"logoutIcon"}/>
         </Button>
       </Tooltip>
 

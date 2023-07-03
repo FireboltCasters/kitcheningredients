@@ -1,11 +1,19 @@
 // @ts-nocheck
-import React, {FunctionComponent, useState} from "react";
+import React, {FunctionComponent, useEffect, useRef, useState} from "react";
 import {ViewProps} from "react-native";
 import {View} from "native-base";
 
 export const ViewPercentageBorderradius: FunctionComponent<ViewProps> = ({style, children, ...props}) => {
 
     const [dimension, setDimension] = useState({x: undefined, y: undefined, width: undefined, height: undefined, reloadNumber: 0});
+
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
     let copiedStyle = JSON.parse(JSON.stringify(style || {}));
 
@@ -50,7 +58,9 @@ export const ViewPercentageBorderradius: FunctionComponent<ViewProps> = ({style,
     return(
         <View {...props} style={[outerStyle]} onLayout={(event) => {
                 const {x, y, width, height} = event.nativeEvent.layout;
-                setDimension({x: x, y: y, width: width, height: height, reloadNumber: dimension.reloadNumber+1});
+          if (isMounted.current) {
+            setDimension({x: x, y: y, width: width, height: height, reloadNumber: dimension.reloadNumber+1});
+          }
         }}>
             {children}
         </View>

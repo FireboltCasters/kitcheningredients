@@ -73,7 +73,7 @@ export const DetailsComponentMenus: FunctionComponent<AppState> = (props) => {
 		}
 
 		return(
-			<View style={{marginHorizontal: 5, marginVertical: 5}}>
+			<View style={{marginHorizontal: 5, marginVertical: 5}} key={menuKey}>
 				<TouchableOpacity style={[{ borderColor: "transparent", borderWidth: 2,justifyContent: "center", flexDirection: "row", backgroundColor: color, borderRadius: 10}, additionalStyle]}
 								  onPress={async () => {
 								  	let proceed = true;

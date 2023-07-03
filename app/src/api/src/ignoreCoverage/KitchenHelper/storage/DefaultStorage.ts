@@ -64,7 +64,11 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     clear_credentials(){
-      this.deleteAll();
+      console.log("clear_credentials");
+      this.set_user(null);
+      this.set_refresh_token(null);
+      this.set_access_token(null);
+      this.set_is_guest(false);
     }
 
     has_credentials_saved(){
