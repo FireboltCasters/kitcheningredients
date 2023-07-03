@@ -45,7 +45,7 @@ export default class ServerAPI{
 
 	static async handleLogoutError(){
 		let storage = ConfigHolder.instance.storage;
-		storage.clear_credentials();
+		storage.deleteAll();
 	}
 
 	static async handleLogout(error=null){

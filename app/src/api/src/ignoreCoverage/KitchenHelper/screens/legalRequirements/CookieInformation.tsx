@@ -4,7 +4,7 @@ import {ConfigHolder} from "../../ConfigHolder";
 import {DetailsComponentMenus, DetailsComponentMenuType} from "../../components/DetailsComponentMenus";
 import {TranslationKeys} from "../../translations/TranslationKeys";
 import {RequiredSynchedStates} from "../../synchedstate/RequiredSynchedStates";
-import {useSynchedCookieConfig, useSynchedState} from "../../synchedstate/SynchedState";
+import {useSynchedCookieConfig, useSynchedJSONState, useSynchedState} from "../../synchedstate/SynchedState";
 import {Layout} from "../../templates/Layout";
 import {useProjectColor} from "../../templates/useProjectColor";
 import {useDefaultButtonColor} from "../../theme/useDefaultButtonColor";
@@ -17,6 +17,7 @@ import {useBackgroundColor} from "../../templates/useBackgroundColor";
 import {ProjectLogo} from "../../project/ProjectLogo";
 import {DateHelper} from "../../helper/DateHelper";
 import {KitchenSafeAreaView} from "../../components/KitchenSafeAreaView";
+import {CookieTypeEnum} from "./CookieHelper";
 
 interface AppState {
   autoOpenCookies?: boolean;
@@ -45,7 +46,7 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   const date_cookie_policy_updated = undefined;
   const date_cookie_policy_updated_human_readable = getHumanReadableDate(date_cookie_policy_updated);
 
-  function getHumanReadableDate(date: Date | undefined): string {
+  function getHumanReadableDate(date: string | undefined): string {
     if (!date) {
       return "/";
     }
@@ -72,10 +73,10 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
 
   function onlyNecessarySelected(){
     return (
-      tempCookieConfig.necessary &&
-      !tempCookieConfig.preferences &&
-      !tempCookieConfig.statistics &&
-      !tempCookieConfig.marketing
+      tempCookieConfig[CookieTypeEnum.Necessary] &&
+      !tempCookieConfig[CookieTypeEnum.Preference] &&
+      !tempCookieConfig[CookieTypeEnum.Statistics] &&
+      !tempCookieConfig[CookieTypeEnum.Marketing]
     );
   }
 
@@ -83,7 +84,7 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
 
   const [default_menu_key, setDefaultMenuKey] = useState(menu_key_cookie_consent);
 
-  let [isOpen, setIsOpen] = useSynchedState(RequiredSynchedStates.showCookies)
+  let [isOpen, setIsOpen] = useSynchedJSONState(RequiredSynchedStates.showCookies)
 
   function getMenu(translation_text, element): DetailsComponentMenuType {
     return {

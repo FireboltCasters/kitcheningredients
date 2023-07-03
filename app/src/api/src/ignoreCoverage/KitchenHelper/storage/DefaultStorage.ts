@@ -1,7 +1,7 @@
 import {RequiredStorageKeys} from "./RequiredStorageKeys";
 import {MyDirectusStorageInterface} from "./MyDirectusStorageInterface";
 import {StorageImplementationInterface} from "./StorageImplementationInterface";
-import {CookieTypes} from "../screens/legalRequirements/CookieTypes";
+import {CookieTypeEnum} from "../screens/legalRequirements/CookieHelper";
 import {ConfigHolder} from "../ConfigHolder";
 
 export class DefaultStorage implements MyDirectusStorageInterface/** extends Storage */{
@@ -26,12 +26,12 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
 
     async initContextStores(SynchedState){
         let keys = SynchedState.getRequiredStorageKeys();
-        this.initSynchedKeys(SynchedState, keys, true, CookieTypes.Necessary);
+        this.initSynchedKeys(SynchedState, keys, true, CookieTypeEnum.Necessary);
         let pluginStorageKeys = SynchedState.getPluginStorageKeys()
-        this.initSynchedKeys(SynchedState, pluginStorageKeys, false, CookieTypes.Necessary);
+        this.initSynchedKeys(SynchedState, pluginStorageKeys, false, CookieTypeEnum.Necessary);
     }
 
-    initSynchedKeys(SynchedState, keys, override, cookieType: CookieTypes){
+    initSynchedKeys(SynchedState, keys, override, cookieType: CookieTypeEnum){
         for(let i=0; i<keys.length; i++){
             let storageKey = keys[i];
             let value = this.get(storageKey);
@@ -40,7 +40,10 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     getAllKeys(): string[] {
-        throw new Error("Method not implemented.");
+      if(!!ConfigHolder.storage){
+        return ConfigHolder.storage.getAllKeys();
+      }
+      throw new Error("Method not implemented.");
     }
 
     getStorageImplementation(): StorageImplementationInterface{

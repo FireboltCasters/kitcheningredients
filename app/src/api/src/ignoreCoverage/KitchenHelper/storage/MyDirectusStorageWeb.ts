@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {StorageImplementationInterface} from "./StorageImplementationInterface";
 
 export class MyDirectusStorageWeb implements StorageImplementationInterface/** extends Storage */{
@@ -6,6 +5,7 @@ export class MyDirectusStorageWeb implements StorageImplementationInterface/** e
 
     // webstorage: Storage
     constructor() {
+        // @ts-ignore
         this.webstorage = localStorage;
     }
 
@@ -20,6 +20,14 @@ export class MyDirectusStorageWeb implements StorageImplementationInterface/** e
     set(key: string, value: string) {
         return this.webstorage.setItem(key, value)
     }
+
+  getAllKeys(): string[] {
+    return Object.keys(this.webstorage);
+  }
+
+  init(): Promise<void> {
+    return Promise.resolve(undefined);
+  }
 
 
 }

@@ -4,7 +4,7 @@ import {MenuItem} from "../../navigation/MenuItem";
 import {Navigation} from "../../navigation/Navigation";
 import {View} from "native-base";
 import {RequiredSynchedStates} from "../../synchedstate/RequiredSynchedStates";
-import {useSynchedState} from "../../synchedstate/SynchedState";
+import {useSynchedJSONState, useSynchedState} from "../../synchedstate/SynchedState";
 
 interface AppState {
   requiredMenuKey?: string;
@@ -15,7 +15,7 @@ export const LegalRequiredInternalLink : FunctionComponent<AppState> = (props) =
   let menuItem: MenuItem = Navigation.requiredMenuItems[requiredMenuKey];
   let label = menuItem?.label;
 
-  let [isOpen, setIsOpen] = useSynchedState(RequiredSynchedStates.showCookies)
+  let [isOpen, setIsOpen] = useSynchedJSONState(RequiredSynchedStates.showCookies)
 
   return (
     <View>

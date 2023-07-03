@@ -4,11 +4,11 @@ import {ConfigHolder} from "../../ConfigHolder";
 import {TranslationKeys} from "../../translations/TranslationKeys";
 import {TransparentButton} from "../../components/buttons/TransparentButton";
 import {RequiredSynchedStates} from "../../synchedstate/RequiredSynchedStates";
-import {useSynchedState} from "../../synchedstate/SynchedState";
+import {useSynchedJSONState, useSynchedState} from "../../synchedstate/SynchedState";
 
 export const LegalRequiredCookieLink = (props) => {
 
-  let [isOpen, setIsOpen] = useSynchedState(RequiredSynchedStates.showCookies)
+  let [isOpen, setIsOpen] = useSynchedJSONState(RequiredSynchedStates.showCookies)
 
   const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
 

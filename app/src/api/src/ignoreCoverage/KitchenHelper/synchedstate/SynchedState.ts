@@ -4,6 +4,7 @@ import {KeyExtractorHelper} from "../storage/KeyExtractorHelper";
 import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
 import {ConfigHolder} from "../ConfigHolder";
 import {RequiredSynchedStates} from "./RequiredSynchedStates";
+import {CookieConfigType, getDefaultCookieConfig} from "../screens/legalRequirements/CookieHelper";
 
 export function useSynchedState(storageKey): [value: string, setValue: (value) => {}] {
     const value = useStoreState((state) => {
@@ -26,15 +27,8 @@ export function useSynchedJSONState(storageKey): [value: any, setValue: (value) 
   ]
 }
 
-export function useSynchedCookieConfig(){
+export function useSynchedCookieConfig(): [CookieConfigType, (value: CookieConfigType) => {}] {
   // define cookieConfig type
-  type CookieConfigType = {
-    date_updated: string,
-    necessary: boolean,
-    preferences: boolean,
-    statistics: boolean,
-    marketing: boolean,
-  }
 
   let usedCookieConfig: CookieConfigType;
 
@@ -43,13 +37,7 @@ export function useSynchedCookieConfig(){
   usedCookieConfig = cookieConfig;
 
   if(!usedCookieConfig){
-    usedCookieConfig = {
-        date_updated: null,
-        necessary: true,
-        preferences: false,
-        statistics: false,
-        marketing: false,
-      }
+    usedCookieConfig = getDefaultCookieConfig();
   }
 
   return [
