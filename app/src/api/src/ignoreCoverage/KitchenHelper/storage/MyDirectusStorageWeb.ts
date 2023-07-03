@@ -1,79 +1,25 @@
 // @ts-nocheck
-import {RequiredStorageKeys} from "./RequiredStorageKeys";
-import {DefaultStorage} from "./DefaultStorage";
 import {StorageImplementationInterface} from "./StorageImplementationInterface";
-import {WebStorageWrapper} from "./WebStorageWrapper";
 
-export class MyDirectusStorageWeb extends DefaultStorage/** extends Storage */{
+export class MyDirectusStorageWeb implements StorageImplementationInterface/** extends Storage */{
+    private webstorage: any;
 
-    async init(){
-
+    // webstorage: Storage
+    constructor() {
+        this.webstorage = localStorage;
     }
 
-    constructor(askForCookies?) {
-        super();
-        console.log("MyDirectusStorageWeb constructor: askForCookies: "+askForCookies)
-        if(askForCookies === undefined || askForCookies === null){ // but not === false !!!
-          askForCookies = true;
-        }
-        console.log("Saving private field: "+askForCookies)
-        this.askForCookies = askForCookies;
+    get(key: string) {
+        return this.webstorage.getItem(key)
     }
 
-    getStorageImplementation(): StorageImplementationInterface{
-      if(this.askForCookies){
-        let cookie_config = this.get_cookie_config();
-        let necessaryAccepted = cookie_config?.necessary;
-
-        let selectedWebstorage = !!necessaryAccepted ? localStorage : sessionStorage;
-
-        return new WebStorageWrapper(selectedWebstorage);
-      } else {
-        return new WebStorageWrapper(localStorage);
-      }
+    remove(key: string) {
+        return this.webstorage.removeItem(key)
     }
 
-    get_cookie_config(){
-      console.log("MyDirectusStorageWeb get_cookie_config()");
-        let localStorageConfig = localStorage.getItem(RequiredStorageKeys.KEY_COOKIE_CONFIG);
-
-        console.log("localStorageConfig");
-        console.log(localStorageConfig)
-
-        let usedCookieConfig = localStorageConfig
-        if(!!usedCookieConfig){
-            try{
-                return JSON.parse(usedCookieConfig);
-            } catch (err){
-                console.log(err);
-            }
-        }
-        return null;
+    set(key: string, value: string) {
+        return this.webstorage.setItem(key, value)
     }
 
-    has_cookie_config(): boolean{
-      console.log("MyDirectusStorageWeb has_cookie_config()");
-      if(this.askForCookies){
-        return !!this.get_cookie_config();
-      } else {
-        return true;
-      }
-    }
 
-    getAllKeys(){
-        let storage = this.getStorageImplementation();
-        return Object.keys(storage.webstorage);
-    }
-
-    set_cookie_config(config){
-        if(this.askForCookies){
-          if(config?.necessary){
-            localStorage.setItem(RequiredStorageKeys.KEY_COOKIE_CONFIG, JSON.stringify(config))
-          } else {
-            sessionStorage.setItem(RequiredStorageKeys.KEY_COOKIE_CONFIG, JSON.stringify(config))
-          }
-        } else {
-          localStorage.setItem(RequiredStorageKeys.KEY_COOKIE_CONFIG, JSON.stringify(config))
-        }
-    }
 }

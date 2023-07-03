@@ -68,7 +68,7 @@ export const DeveloperSettings = (props) => {
 					<Text>{"Reset App"}</Text>
 					<Button onPress={async () => {
 						await ServerAPI.handleLogout()
-						ConfigHolder.storage.deleteAll();
+						ConfigHolder.instance.storage.deleteAll();
 						}}><Text>{"Delete"}</Text></Button>
 				</MyThemedBox>
 			</>

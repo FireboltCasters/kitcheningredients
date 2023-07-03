@@ -2,6 +2,7 @@ import {RequiredStorageKeys} from "./RequiredStorageKeys";
 import {MyDirectusStorageInterface} from "./MyDirectusStorageInterface";
 import {StorageImplementationInterface} from "./StorageImplementationInterface";
 import {CookieTypes} from "../screens/legalRequirements/CookieTypes";
+import {ConfigHolder} from "../ConfigHolder";
 
 export class DefaultStorage implements MyDirectusStorageInterface/** extends Storage */{
 
@@ -43,7 +44,7 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     getStorageImplementation(): StorageImplementationInterface{
-        return null;
+        return ConfigHolder.storage;
     }
 
     is_guest(){
@@ -63,18 +64,8 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     clear_credentials(){
-        this.set_user(null);
-        this.set_refresh_token(null);
-        this.set_access_token(null);
-        this.set_is_guest(false);
-        this.set_cookie_config(null);
+      this.deleteAll();
     }
-
-    set_cookie_config(cookieConfig){
-      this.setValueOrDeleteIfNull(RequiredStorageKeys.KEY_COOKIE_CONFIG, cookieConfig);
-    }
-
-
 
     has_credentials_saved(){
         if(!!this.get_auth_refresh_token()){
@@ -99,7 +90,7 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
         this.set_refresh_token(token);
     }
     get_auth_refresh_token(){
-        return this.getStorageImplementation().get(RequiredStorageKeys.KEY_AUTH_REFRESH_TOKEN);
+        return this.get(RequiredStorageKeys.KEY_AUTH_REFRESH_TOKEN);
     }
     get auth_refresh_token() { //DO not change
         return this.get_auth_refresh_token();
@@ -115,7 +106,7 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
         this.set_access_token(token);
     }
     get_auth_access_token(){
-        return this.getStorageImplementation().get(RequiredStorageKeys.KEY_AUTH_ACCESS_TOKEN);
+        return this.get(RequiredStorageKeys.KEY_AUTH_ACCESS_TOKEN);
     }
     get auth_token() { //DO not change
         return this.get_auth_access_token();
@@ -139,11 +130,11 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     get_auth_expires_date(){
-      return this.getStorageImplementation().get(RequiredStorageKeys.KEY_AUTH_EXPIRES_DATE);
+      return this.get(RequiredStorageKeys.KEY_AUTH_EXPIRES_DATE);
     }
 
     get_auth_expires(){
-        return Number(this.getStorageImplementation().get(RequiredStorageKeys.KEY_AUTH_EXPIRES));
+        return Number(this.get(RequiredStorageKeys.KEY_AUTH_EXPIRES));
     }
     get auth_expires() { //DO not change
         return this.get_auth_expires();

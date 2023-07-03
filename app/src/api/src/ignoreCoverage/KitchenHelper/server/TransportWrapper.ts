@@ -92,7 +92,7 @@ export default class TransportWrapper extends Transport{
   }
 
 	async wasAlreadyRefreshed(){
-	  let expiresDateISOString = await ConfigHolder.storage.get_auth_expires_date();
+	  let expiresDateISOString = await ConfigHolder.instance.storage.get_auth_expires_date();
 	  if(!expiresDateISOString){
 	    return false;
     }
@@ -110,12 +110,12 @@ export default class TransportWrapper extends Transport{
 	async handleRefresh(){
     try{
       console.log("Token is expired, lets try to refresh it")
-      let directus = ServerAPI.getDirectus(ConfigHolder.storage, ServerAPI.handleLogoutError);
-      //console.log("get_auth_refresh_token: "+ConfigHolder.storage.get_auth_refresh_token());
-      //console.log("get_auth_access_token: "+ConfigHolder.storage.get_auth_access_token());
+      let directus = ServerAPI.getDirectus(ConfigHolder.instance.storage, ServerAPI.handleLogoutError);
+      //console.log("get_auth_refresh_token: "+ConfigHolder.instance.storage.get_auth_refresh_token());
+      //console.log("get_auth_access_token: "+ConfigHolder.instance.storage.get_auth_access_token());
       // ServerAPI.loginWithAccessDirectusAccessToken
-      let refresh_token = await ConfigHolder.storage.get_auth_refresh_token();
-      let access_token = await ConfigHolder.storage.get_auth_access_token();
+      let refresh_token = await ConfigHolder.instance.storage.get_auth_refresh_token();
+      let access_token = await ConfigHolder.instance.storage.get_auth_access_token();
 
       console.log("using refresh_token: "+refresh_token);
       //let refreshAnswer = await ServerAPI.loginWithRefreshToken(refresh_token);

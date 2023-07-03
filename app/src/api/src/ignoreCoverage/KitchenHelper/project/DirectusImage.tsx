@@ -28,7 +28,7 @@ export const getDirectusImageUrl = (props: AppState) => {
       let imageURL = ServerAPI.getAssetImageURL(props.assetId);
       url = imageURL;
       if (!props?.isPublic && props?.useUnsafeAccessTokenInURL) {
-        let token = ConfigHolder.storage.get_auth_access_token();
+        let token = ConfigHolder.instance.storage.get_auth_access_token();
         if (!!url && !!token) {
           if (!url.includes("?")) {
             url += "?";
@@ -67,7 +67,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
 	let content = null;
 
   async function loadBase64ImageWithAxios(url){
-    let token = ConfigHolder.storage.get_auth_access_token();
+    let token = ConfigHolder.instance.storage.get_auth_access_token();
     const headers = {
 
     }
@@ -89,7 +89,7 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
   }
 
 	async function loadBase64WithAuthorization(url) {
-    let token = ConfigHolder.storage.get_auth_access_token();
+    let token = ConfigHolder.instance.storage.get_auth_access_token();
     const tokenOrPublic = isPublic ? true : !!token;
 
     try{

@@ -1,12 +1,10 @@
-// @ts-nocheck
 import SyncStorage from 'sync-storage';
-import {RequiredStorageKeys} from "./RequiredStorageKeys";
-import {DefaultStorage} from "./DefaultStorage";
+import {StorageImplementationInterface} from "./StorageImplementationInterface";
 
-export class MyDirectusStorageNative extends DefaultStorage/** extends Storage */{
+export class MyDirectusStorageNative implements StorageImplementationInterface/** extends Storage */{
 
-    constructor(askForCookies?) {
-        super();
+    constructor() {
+
     }
 
     async init(){
@@ -17,30 +15,20 @@ export class MyDirectusStorageNative extends DefaultStorage/** extends Storage *
         return SyncStorage;
     }
 
-    get_cookie_config(){
-        let sessionStorageConfig = null;
-        let localStorageConfig = SyncStorage.get(RequiredStorageKeys.KEY_COOKIE_CONFIG);
-
-        let usedCookieConfig = !!localStorageConfig ? localStorageConfig : sessionStorageConfig
-        if(!!usedCookieConfig){
-            try{
-                return JSON.parse(usedCookieConfig);
-            } catch (err){
-                console.log(err);
-            }
-        }
-        return null;
-    }
-
     getAllKeys(){
         return SyncStorage.getAllKeys()
     }
 
-    has_cookie_config(): boolean{
-       return !!this.get_cookie_config();
+    get(key: string) {
+        return SyncStorage.get(key);
     }
 
-    set_cookie_config(config){
-        SyncStorage.set(RequiredStorageKeys.KEY_COOKIE_CONFIG, JSON.stringify(config));
+    remove(key: string) {
+        SyncStorage.remove(key);
     }
+
+    set(key: string, value: string) {
+        return SyncStorage.set(key, value)
+    }
+
 }

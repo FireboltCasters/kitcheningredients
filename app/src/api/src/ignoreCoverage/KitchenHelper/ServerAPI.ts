@@ -40,18 +40,18 @@ export default class ServerAPI{
 	}
 
 	static areCredentialsSaved(){
-		return ConfigHolder.storage.has_credentials_saved();
+		return ConfigHolder.instance.storage.has_credentials_saved();
 	}
 
 	static async handleLogoutError(){
-		let storage = ConfigHolder.storage;
+		let storage = ConfigHolder.instance.storage;
 		storage.clear_credentials();
 	}
 
 	static async handleLogout(error=null){
 		console.log("handleLogout")
 		try{
-			let directus = ServerAPI.getDirectus(ConfigHolder.storage);
+			let directus = ServerAPI.getDirectus(ConfigHolder.instance.storage);
       console.log("call await directus.auth.logout();")
 			let response = await directus.auth.logout();
       console.log("logout: ", response);
@@ -76,10 +76,10 @@ export default class ServerAPI{
 			return ServerAPI.directus;
 		}
 		let errorHandler = ServerAPI.handleLogoutError; //use default error handler
-		if(ConfigHolder.storage.is_guest()){
+		if(ConfigHolder.instance.storage.is_guest()){
 			errorHandler = () => {}; //as guest we ignore errors
 		}
-		const directus = ServerAPI.getDirectus(ConfigHolder.storage, errorHandler);
+		const directus = ServerAPI.getDirectus(ConfigHolder.instance.storage, errorHandler);
 		// api.interceptors.response.use(onResponse, onError);
 
 		ServerAPI.directus = directus;
@@ -144,7 +144,7 @@ export default class ServerAPI{
   }
 
 	static async loginWithRefreshToken(refresh_token_to_use){
-    let storage = ConfigHolder.storage;
+    let storage = ConfigHolder.instance.storage;
     await ServerAPI.delayInDev(1000);
 		let data = await ServerAPI.refreshWithRefreshToken(refresh_token_to_use);
 		let access_token = data?.access_token;
@@ -174,7 +174,7 @@ export default class ServerAPI{
 		return auth;
 	}
 
-	static getAuthorizationHeader(storage = ConfigHolder.storage){
+	static getAuthorizationHeader(storage = ConfigHolder.instance.storage){
 		const token = storage.auth_token;
 		const bearer = token
 			? token.startsWith(`Bearer `)
@@ -284,7 +284,7 @@ export default class ServerAPI{
 	}
 
 	static async isRefreshTokenSaved(){
-		let token = ConfigHolder.storage.auth_refresh_token;
+		let token = ConfigHolder.instance.storage.auth_refresh_token;
 		return !!token;
 	}
 

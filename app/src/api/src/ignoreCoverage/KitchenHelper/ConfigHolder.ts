@@ -1,12 +1,12 @@
 // @ts-nocheck
 
 import type {PluginInterface} from "./PluginInterface";
-import {DefaultStorage} from "./storage/DefaultStorage";
 import App from "./App";
+import {StorageImplementationInterface} from "./storage/StorageImplementationInterface";
 
 export class ConfigHolder{
 
-  static storage: DefaultStorage = null;
+  static storage: StorageImplementationInterface = null;
   static displayThemeFloater: boolean = true;
   static instance: App = null;
   static plugin: PluginInterface = null;

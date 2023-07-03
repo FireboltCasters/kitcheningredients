@@ -6,5 +6,4 @@ export interface MyDirectusStorageInterface{
     init();
     initContextStores(SynchedState: any);
     has_credentials_saved(): boolean;
-    clear_credentials();
 }

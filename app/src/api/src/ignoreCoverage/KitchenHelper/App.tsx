@@ -20,11 +20,14 @@ import {DefaultNavigation} from "./navigation/DefaultNavigation";
 import {Navigation} from "./navigation/Navigation";
 import EnviromentHelper from "./EnviromentHelper";
 import {UserInitLoader} from "./utils/UserInitLoader";
+import {DefaultStorage} from "./storage/DefaultStorage";
 
 export default class App extends React.Component<any, any>{
 
 	constructor(props) {
 		super(props);
+
+		this.storage = new DefaultStorage();
 
 		if(!props?.ignoreInstance){
       ConfigHolder.instance = this;
@@ -107,7 +110,7 @@ export default class App extends React.Component<any, any>{
 	}
 
 	async setUserAsGuest(){
-		ConfigHolder.storage.set_is_guest(true);
+		ConfigHolder.instance.storage.set_is_guest(true);
 		await ConfigHolder.instance.setUser(UserHelper.getGuestUser());
 	}
 
@@ -174,11 +177,11 @@ export default class App extends React.Component<any, any>{
 				console.log("-- Load User: User loaded");
 				console.log(user);
 				return user;
-			} else if(ConfigHolder.storage.is_guest()){
+			} else if(ConfigHolder.instance.storage.is_guest()){
 			  console.log("-- Load User: Guest");
 				return UserHelper.getGuestUser();
 			} else if(ConfigHolder.startAsGuest){
-        ConfigHolder.storage.set_is_guest(true);
+        ConfigHolder.instance.storage.set_is_guest(true);
         return UserHelper.getGuestUser();
       }	else {
 			  console.log("-- Load User: No Credentials");
@@ -193,10 +196,10 @@ export default class App extends React.Component<any, any>{
 
 	async loadSynchedVariables(){
 	  SynchedState.registerSynchedStates(RequiredStorageKeys.THEME, ColorCodeHelper.VALUE_THEME_DEFAULT, null, null, false);
-		await ConfigHolder.storage.init(); //before ConfigHolder.storage.initContextStores();
-		await ConfigHolder.storage.initContextStores(SynchedState); //before SynchedState.initContextStores();
+		await ConfigHolder.instance.storage.init(); //before ConfigHolder.instance.storage.initContextStores();
+		await ConfigHolder.instance.storage.initContextStores(SynchedState); //before SynchedState.initContextStores();
 		await SynchedState.initSynchedKeys();
-		await SynchedState.initContextStores(); //after ConfigHolder.storage.initContextStores();
+		await SynchedState.initContextStores(); //after ConfigHolder.instance.storage.initContextStores();
 	}
 
 	async componentDidMount() {

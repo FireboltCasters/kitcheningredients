@@ -15,7 +15,7 @@ export const Home = (props) => {
   }
 
   async function loadInformation() {
-    let storage = ConfigHolder.storage;
+    let storage = ConfigHolder.instance.storage;
     let expires = storage.get_auth_expires();
     let now = new Date();
     setTest({expires: expires, now: now});
