@@ -15,7 +15,6 @@ import currentpackageJsonLock from "./package-lock.json";
 import thirdpartyLicense from "./thirdpartyLicense.json"
 import AppConfig from "./app.config"
 
-ConfigHolder.storage = new MyDirectusStorage();
 ConfigHolder.plugin = new Project()
 ConfigHolder.nativebaseConfig = nativebaseConfig
 ConfigHolder.styleConfig = styleConfig

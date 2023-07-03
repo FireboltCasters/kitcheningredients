@@ -21,6 +21,7 @@ import {Navigation} from "./navigation/Navigation";
 import EnviromentHelper from "./EnviromentHelper";
 import {UserInitLoader} from "./utils/UserInitLoader";
 import {DefaultStorage} from "./storage/DefaultStorage";
+import {MyDirectusStorage} from "./storage/MyDirectusStorage";
 
 export default class App extends React.Component<any, any>{
 
@@ -28,6 +29,9 @@ export default class App extends React.Component<any, any>{
 		super(props);
 
 		this.storage = new DefaultStorage();
+		if(!ConfigHolder.storage){
+		  ConfigHolder.storage = new MyDirectusStorage();
+    }
 
 		if(!props?.ignoreInstance){
       ConfigHolder.instance = this;
