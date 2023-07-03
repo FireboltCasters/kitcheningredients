@@ -65,11 +65,10 @@ export default class ServerAPI{
 		console.log("navigate to login")
     await ConfigHolder.instance.setUser(null);
 		await ConfigHolder.instance.setRedirectToLogin();
-		await ConfigHolder.instance.setSyncFinished(false);
-
     if(!!ConfigHolder.plugin && !!ConfigHolder.plugin.onLogout){
       await ConfigHolder.plugin.onLogout(error);
     }
+		await ConfigHolder.instance.initialize();
 	}
 
 	static getClient(): Directus<any>{

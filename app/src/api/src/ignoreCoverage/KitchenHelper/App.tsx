@@ -230,6 +230,7 @@ export default class App extends React.Component<any, any>{
 
     await ConfigHolder.instance.setState({
       startURL: startURL,
+      loadedUser: false,
     })
   }
 
