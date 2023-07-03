@@ -17,6 +17,7 @@ import {SettingsSpacer} from "../../components/settings/SettingsSpacer";
 import {useBackgroundColor} from "../../templates/useBackgroundColor";
 import {ProjectLogo} from "../../project/ProjectLogo";
 import {DateHelper} from "../../helper/DateHelper";
+import {KitchenSafeAreaView} from "kitcheningredients";
 
 interface AppState {
   autoOpenCookies?: boolean;
@@ -106,10 +107,6 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
     [menu_key_cookie_about]: menu_about
   }
 
-  if(Platform.OS!=="web"){
-    return null;
-  }
-
   function cookieConsentUpToDate(){
     if(!cookieConfig || !date_consent){
       return false;
@@ -194,37 +191,50 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
           <View style={{width: "100%", flex: 1}}>
             {renderCookiesConsentScrollView()}
           </View>
-          <View style={{width: "100%"}}>
-            <SettingsSpacer />
-            <SettingsRowBooleanSwitch
-              key={"cookieConsentNecessary"+tempCookieConfig.date_updated}
-              value={true} disabled={true} accessibilityLabel={translation_cookie_policy_checkbox_necessary} leftContent={<Text>{translation_cookie_policy_checkbox_necessary}</Text>} />
-            <SettingsRowBooleanSwitch
-              key={"cookieConsentPreferences"+tempCookieConfig.preferences}
-              onPress={(nextValue) => {
-                tempCookieConfig.preferences = nextValue;
-                setTempCookieConfig({...tempCookieConfig})
-              }}
-              value={tempCookieConfig.preferences} accessibilityLabel={translation_cookie_policy_checkbox_preference} leftContent={<Text>{translation_cookie_policy_checkbox_preference}</Text>} />
-            <SettingsRowBooleanSwitch
-              key={"cookieConsentStatistics"+tempCookieConfig.statistics}
-              onPress={(nextValue) => {
-                tempCookieConfig.statistics = nextValue;
-                setTempCookieConfig({...tempCookieConfig})
-              }}
-              value={tempCookieConfig.statistics} accessibilityLabel={translation_cookie_policy_checkbox_statistics} leftContent={<Text>{translation_cookie_policy_checkbox_statistics}</Text>} />
-            <SettingsRowBooleanSwitch
-              key={"cookieConsentMarketing"+tempCookieConfig.marketing}
-              onPress={(nextValue) => {
-                tempCookieConfig.marketing = nextValue;
-                setTempCookieConfig({...tempCookieConfig})
-              }}
-              value={tempCookieConfig.marketing} accessibilityLabel={translation_cookie_policy_checkbox_marketing} leftContent={<Text>{translation_cookie_policy_checkbox_marketing}</Text>} />
-          </View>
-          <View style={{width: "100%"}}>
-              <Text>{translation_cookie_policy_consent_date+": "+date_consent_human_readable}</Text>
-              <Text>{translation_cookie_policy_policy_date_updated+": "+date_cookie_policy_updated_human_readable}</Text>
-          </View>
+          <ScrollViewWithGradient>
+            <View style={{
+              flex: 1,
+              width: "100%",
+              alignItems: "center", justifyContent: "center",
+              flexDirection: 'row',
+              flexWrap: 'wrap', // Enable wrapping of items
+            }}>
+              <View style={{width: "100%"}}>
+                <View style={{width: "100%"}}>
+                  <SettingsSpacer />
+                  <SettingsRowBooleanSwitch
+                    key={"cookieConsentNecessary"+tempCookieConfig.date_updated}
+                    value={true} disabled={true} accessibilityLabel={translation_cookie_policy_checkbox_necessary} leftContent={<Text>{translation_cookie_policy_checkbox_necessary}</Text>} />
+                  <SettingsRowBooleanSwitch
+                    key={"cookieConsentPreferences"+tempCookieConfig.preferences}
+                    onPress={(nextValue) => {
+                      tempCookieConfig.preferences = nextValue;
+                      setTempCookieConfig({...tempCookieConfig})
+                    }}
+                    value={tempCookieConfig.preferences} accessibilityLabel={translation_cookie_policy_checkbox_preference} leftContent={<Text>{translation_cookie_policy_checkbox_preference}</Text>} />
+                  <SettingsRowBooleanSwitch
+                    key={"cookieConsentStatistics"+tempCookieConfig.statistics}
+                    onPress={(nextValue) => {
+                      tempCookieConfig.statistics = nextValue;
+                      setTempCookieConfig({...tempCookieConfig})
+                    }}
+                    value={tempCookieConfig.statistics} accessibilityLabel={translation_cookie_policy_checkbox_statistics} leftContent={<Text>{translation_cookie_policy_checkbox_statistics}</Text>} />
+                  <SettingsRowBooleanSwitch
+                    key={"cookieConsentMarketing"+tempCookieConfig.marketing}
+                    onPress={(nextValue) => {
+                      tempCookieConfig.marketing = nextValue;
+                      setTempCookieConfig({...tempCookieConfig})
+                    }}
+                    value={tempCookieConfig.marketing} accessibilityLabel={translation_cookie_policy_checkbox_marketing} leftContent={<Text>{translation_cookie_policy_checkbox_marketing}</Text>} />
+                  <View style={{width: "100%"}}>
+                    <Text>{translation_cookie_policy_consent_date+": "+date_consent_human_readable}</Text>
+                    <Text>{translation_cookie_policy_policy_date_updated+": "+date_cookie_policy_updated_human_readable}</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <ShowMoreGradientPlaceholder />
+          </ScrollViewWithGradient>
         </View>
       )
   }
@@ -256,50 +266,53 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   }
 
   return (
-    <Modal isOpen={isOpen} style={{width: "100%", height: "100%"}}>
-      <View style={{width: width, padding: Layout.padding, height: "100%"}}>
-        <AlertDialog.Header>
-          <View style={{flexDirection: "row"}}>
-            <ProjectLogo rounded={true} />
-            <View style={{ marginLeft: 16}}>
-              <Heading>
-                {translation_cookies}
-              </Heading>
-            </View>
-          </View>
-        </AlertDialog.Header>
+      <Modal isOpen={isOpen} style={{width: "100%", height: "100%"}}>
+        <KitchenSafeAreaView style={{width: width, height: "100%"}}>
+          <View style={{width: width, height: "100%"}}>
+            <AlertDialog.Header>
+              <View style={{flexDirection: "row"}}>
+                <ProjectLogo rounded={true} />
+                <View style={{ marginLeft: 16}}>
+                  <Heading>
+                    {translation_cookies}
+                  </Heading>
+                </View>
+              </View>
+            </AlertDialog.Header>
 
-        <View style={{width: "100%", padding: Layout.padding, flex: 1, backgroundColor: backgroundColor}}>
-          <DetailsComponentMenus flex={1} menus={menus} defaultMenuKey={default_menu_key} key={default_menu_key} />
-        </View>
-        <AlertDialog.Footer>
-          <View style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            width: "100%",
-            flexWrap: "wrap",
-          }}>
-            <Button onPress={denyCookiesAll} style={{backgroundColor: defaultButtonColor}}>
-              <Text color={defaultButtonContrastColor}>
-                {translation_cookie_policy_button_deny_all}
-              </Text>
-            </Button>
-            <View style={{width: 16}} />
-            <Button style={{backgroundColor: defaultButtonColor}} onPress={acceptCookiesSelected}>
-              <Text color={defaultButtonContrastColor}>
-                {translation_save_current_selection}
-              </Text>
-            </Button>
-            <View style={{width: 16}} />
-            <Button onPress={acceptCookiesAll} style={{backgroundColor: defaultButtonColor}}>
-              <Text color={defaultButtonContrastColor}>
-                {translation_cookie_policy_button_accept_all}
-              </Text>
-            </Button>
+            <View style={{width: "100%", padding: Layout.padding, flex: 1, backgroundColor: backgroundColor}}>
+              <DetailsComponentMenus flex={1} menus={menus} defaultMenuKey={default_menu_key} key={default_menu_key} />
+            </View>
+            <AlertDialog.Footer>
+              <View style={{
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                width: "100%",
+                flexWrap: "wrap",
+              }}>
+                <Button onPress={denyCookiesAll} style={{backgroundColor: defaultButtonColor, marginTop: 4}}>
+                  <Text color={defaultButtonContrastColor}>
+                    {translation_cookie_policy_button_deny_all}
+                  </Text>
+                </Button>
+                <View style={{width: 4}} />
+                <Button style={{backgroundColor: defaultButtonColor, marginTop: 4}} onPress={acceptCookiesSelected}>
+                  <Text color={defaultButtonContrastColor}>
+                    {translation_save_current_selection}
+                  </Text>
+                </Button>
+                <View style={{width: 4}} />
+                <Button onPress={acceptCookiesAll} style={{backgroundColor: defaultButtonColor, marginTop: 4}}>
+                  <Text color={defaultButtonContrastColor}>
+                    {translation_cookie_policy_button_accept_all}
+                  </Text>
+                </Button>
+              </View>
+            </AlertDialog.Footer>
           </View>
-        </AlertDialog.Footer>
-      </View>
-    </Modal>
+        </KitchenSafeAreaView>
+
+      </Modal>
   );
 }
