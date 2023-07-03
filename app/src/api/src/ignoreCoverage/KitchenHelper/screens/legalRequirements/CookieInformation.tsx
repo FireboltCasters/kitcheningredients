@@ -131,7 +131,7 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
     isOpen = true;
   }
 
-  isOpen = true;
+  //isOpen = true;
 
   // corresponding componentDidMount
   useEffect(() => {
