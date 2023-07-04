@@ -3,10 +3,9 @@ import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {View} from "native-base";
 import ServerAPI from "../ServerAPI";
 import {LoadingView} from "./LoadingView";
-import {TouchableOpacity, Image} from "react-native";
+import {Image, TouchableOpacity} from "react-native";
 import {ConfigHolder} from "../ConfigHolder";
-import {SynchedState} from "./../synchedstate/SynchedState";
-import {decode, encode} from 'base-64'
+import {encode} from 'base-64'
 
 interface AppState {
 	assetId: string;
@@ -52,8 +51,9 @@ export const DirectusImage: FunctionComponent<AppState> = (props) => {
   let url = getDirectusImageUrl(props);
 
 	const [notCachedBase64, setNotCachedBase64] = useState(null);
-	const [cachedBase64Image, setCachedBase64Image] = SynchedState.useCachedBase64Image(assetId, useCache, useUnsafeAccessTokenInURL);
-	const usedBase64Image = useCache ? cachedBase64Image : notCachedBase64;
+//	const [cachedBase64Image, setCachedBase64Image] = SynchedState.useCachedBase64Image(assetId, useCache, useUnsafeAccessTokenInURL);
+//	const usedBase64Image = useCache ? cachedBase64Image : notCachedBase64;
+	const usedBase64Image = notCachedBase64;
 
   const uri = useUnsafeAccessTokenInURL ? url : usedBase64Image;
   const [loading, setLoading] = useState(true);

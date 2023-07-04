@@ -2,6 +2,10 @@ import {UserItem} from "@directus/sdk";
 import {ColorMode} from 'native-base';
 import {DefaultTranslator} from "./translations/DefaultTranslator";
 import {CookieDefaultComponents} from "./screens/legalRequirements/CookieDefaultComponents";
+import {CookieDetails, CookieGroupEnum, CookieStorageTypeEnum} from "./screens/legalRequirements/CookieHelper";
+import {TranslationKeys} from "./translations/TranslationKeys";
+import {SynchedState} from "./synchedstate/SynchedState";
+import {RequiredStorageKeys} from "./storage/RequiredStorageKeys";
 
 export abstract class PluginInterface{
     initApp(){
@@ -17,6 +21,7 @@ export abstract class PluginInterface{
     onLogin(user, role, permissions){
 
     }
+
     getSynchedStateKeysClass(){
       return null;
     }
@@ -36,13 +41,50 @@ export abstract class PluginInterface{
       return null;
     }
 
+    getCookieDetails(cookieName: string): CookieDetails{
+      let translationWe = DefaultTranslator.useTranslation(TranslationKeys.cookie_policy_provider_we);
+
+      let requiredCookiesNames = SynchedState.getRequiredStorageKeys();
+      let defaultDetails = {
+        name: cookieName,
+        provider: translationWe,
+        provider_url: undefined,
+        purpose: DefaultTranslator.useRequiredStorageKeysPurpose(undefined),
+        expiry: DefaultTranslator.useTranslation(TranslationKeys.cookie_policy_details_expiry_persistent),
+        type: CookieGroupEnum.Necessary,
+        storageType: CookieStorageTypeEnum.LocalStorage,
+      }
+
+      for(let requiredCookieName of requiredCookiesNames){
+        if(requiredCookieName === cookieName){
+          defaultDetails.purpose = DefaultTranslator.useRequiredStorageKeysPurpose(requiredCookieName as RequiredStorageKeys);
+          break;
+        }
+      }
+      // Default case
+      return defaultDetails;
+    }
+
+    getCookieGroupName(cookieGroup: string): string{
+      if(cookieGroup === CookieGroupEnum.Necessary){
+        return DefaultTranslator.useTranslation(TranslationKeys.cookie_policy_group_necessary);
+      }
+      return cookieGroup+" (Missing description)";
+    }
+
+    getCookieGroupDescriptionComponent(cookieGroup: string){
+      if(cookieGroup === CookieGroupEnum.Necessary){
+        return CookieDefaultComponents.getCookieGroupDescriptionNecessary();
+      }
+      return cookieGroup+" (Missing description)";
+    }
+
+    getCookieAdditionalGroups(){
+      return [];
+    }
 
     getCookieComponentConsent(){
       return CookieDefaultComponents.getCookieComponentConsent()
-    }
-
-    getCookieComponentDetails(){
-      return CookieDefaultComponents.getCookieComponentDetails()
     }
 
     getCookieComponentAbout(){

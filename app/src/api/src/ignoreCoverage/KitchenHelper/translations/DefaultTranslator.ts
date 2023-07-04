@@ -1,4 +1,5 @@
 import {TranslationKeys} from "./TranslationKeys";
+import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
 
 export class DefaultTranslator{
 
@@ -31,19 +32,37 @@ export class DefaultTranslator{
         case TranslationKeys.cookie_policy_details: return "Details";
         case TranslationKeys.cookie_policy_about: return "Über Cookies";
         case TranslationKeys.cookie_policy_button_accept_all: return "Alles akzeptieren";
-        case TranslationKeys.cookie_policy_button_only_necessary: return "Nur notwendige Cookies";
         case TranslationKeys.cookie_policy_button_deny_all: return "Ablehnen";
         case TranslationKeys.cookie_policy_button_allow_selected: return "Auswahl erlauben";
-        case TranslationKeys.cookie_policy_checkbox_necessary: return "Notwendig";
-        case TranslationKeys.cookie_policy_checkbox_preference: return "Präferenzen";
-        case TranslationKeys.cookie_policy_checkbox_statistics: return "Statistiken";
-        case TranslationKeys.cookie_policy_checkbox_marketing: return "Marketing";
         case TranslationKeys.cookie_policy_consent_date: return "Einwilligungsdatum";
         case TranslationKeys.cookie_policy_policy_date_updated: return "Die Cookie-Erklärung wurde das letzte Mal aktualisiert am";
         case TranslationKeys.cookies: return "Cookies";
+        case TranslationKeys.cookie_policy_details_name: return "Name";
+        case TranslationKeys.cookie_policy_details_provider: return "Anbieter";
+        case TranslationKeys.cookie_policy_details_purpose: return "Zweck";
+        case TranslationKeys.cookie_policy_details_expiry: return "Ablauf";
+        case TranslationKeys.cookie_policy_details_expiry_persistent: return "Persistent";
+        case TranslationKeys.cookie_policy_details_type: return "Typ";
+        case TranslationKeys.cookie_policy_group_necessary: return "Notwendig";
+        case TranslationKeys.cookie_policy_provider_we: return "Wir";
+
       }
     }
 
+    static useRequiredStorageKeysPurpose(storageKey: RequiredStorageKeys): string{
+      switch (storageKey) {
+        case RequiredStorageKeys.KEY_AUTH_REFRESH_TOKEN: return "Speichert den Refresh-Token";
+        case RequiredStorageKeys.KEY_AUTH_EXPIRES: return "Speichert die Lebensdauer des Authentifizierungs-Tokens";
+        case RequiredStorageKeys.KEY_AUTH_EXPIRES_DATE: return "Speichert das Ablaufdatum des Authentifizierungs-Tokens";
+        case RequiredStorageKeys.KEY_AUTH_ACCESS_TOKEN: return "Speichert den Authentifizierungs-Token";
+        case RequiredStorageKeys.CACHED_SERVER_INFO: return "Speichert die Server-Informationen";
+        case RequiredStorageKeys.CACHED_THEME: return "Speichert das aktuelle Theme";
+        case RequiredStorageKeys.CACHED_USER: return "Speichert den aktuellen Benutzer";
+        case RequiredStorageKeys.IS_GUEST: return "Speichert ob der Benutzer ein Gast ist";
+        case RequiredStorageKeys.COOKIE_CONFIG: return "Speichert die Cookie-Einstellungen";
+        default: return "Erforderlich für die grundlegende Funktionalität der Webseite";
+      }
+    }
 
 
 }

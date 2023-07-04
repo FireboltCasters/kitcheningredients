@@ -10,11 +10,15 @@ import {ConfigHolder} from "../ConfigHolder";
 interface AppState {
 	serverInfo?: ServerInfo;
 	rounded?: boolean
+  size?: string
   titleBoxHeight?: number
 }
 export const ProjectLogo: FunctionComponent<AppState> = (props) => {
 
-  const titleBoxHeight = props?.titleBoxHeight || 60;
+  let titleBoxHeight = props?.titleBoxHeight || 60;
+  if(props?.size === "sm"){
+    titleBoxHeight = 40;
+  }
 
 	const serverInfo = props.serverInfo || ServerAPI.tempStore.serverInfo;
 	let project_color = ServerInfoHelper.getProjectColor(serverInfo);
@@ -43,7 +47,7 @@ export const ProjectLogo: FunctionComponent<AppState> = (props) => {
 			<DirectusImage alt={""}
 						   isPublic={true}
 						   assetId={project_logo_asset_id}
-						   style={{height: heightAndWidth-20, width: heightAndWidth-20}} />
+						   style={{height: heightAndWidth*2/3, width: heightAndWidth*2/3}} />
 		</View>
 	)
 }

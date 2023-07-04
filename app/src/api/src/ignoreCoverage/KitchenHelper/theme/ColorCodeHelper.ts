@@ -4,7 +4,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Appearance} from "react-native";
 import {RequiredStorageKeys} from "../storage/RequiredStorageKeys";
 import {ConfigHolder} from "../ConfigHolder";
-import {useSynchedState} from "kitcheningredients";
 
 //TODO dont save it directly into storage, use synched storage variable
 export default class ColorCodeHelper {
@@ -29,7 +28,9 @@ export default class ColorCodeHelper {
 
 	static async getColorModeFromStorage(): Promise<ColorMode>{
 		try {
-			let val = await AsyncStorage.getItem(RequiredStorageKeys.THEME);
+			let cookieAsString = await AsyncStorage.getItem(RequiredStorageKeys.CACHED_THEME);
+			let cookie = ConfigHolder.instance.storage.getCookieFromStorageString(cookieAsString);
+			let val = cookie?.value;
 			if(!val){
 				return ColorCodeHelper.getSystemPreferedColor();
 			}
@@ -42,7 +43,9 @@ export default class ColorCodeHelper {
 
 	static async setColorModeToStorage(value: ColorMode){
 		try {
-			await AsyncStorage.setItem(RequiredStorageKeys.THEME, value);
+		  let cookie = ConfigHolder.instance.storage.getNewCookieFromKeyValue(RequiredStorageKeys.CACHED_THEME, value);
+		  let storageString = ConfigHolder.instance.storage.getStorageStringFromCookie(cookie);
+			await AsyncStorage.setItem(RequiredStorageKeys.CACHED_THEME, storageString);
 		} catch (e) {
 			console.log(e);
 		}

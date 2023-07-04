@@ -94,7 +94,6 @@ export const LoginTemplate: FunctionComponent = (props) => {
 						{renderSpaceBetweenLogoAndSignIn()}
 						{props.children}
 					</View>
-          <ShowMoreGradientPlaceholder />
 				</ScrollViewWithGradient>
         </KeyboardAvoidingView>
         <View style={{paddingHorizontal: padding, width: "100%"}}>

@@ -41,7 +41,7 @@ export const DeveloperSettings = (props) => {
 		for(let i=0; i<allKeys.length; i++){
 			let storageKey = allKeys[i];
 			console.log("renderStorage: storageKey: ", storageKey);
-			if(storageKey===RequiredStorageKeys.THEME){
+			if(storageKey===RequiredStorageKeys.CACHED_THEME){
 				output.push(
 					<MyThemedBox style={{margin: 5, padding: 5}} _shadeLevel={2} >
 						<Text>{storageKey}</Text>

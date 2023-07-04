@@ -25,6 +25,24 @@ export const SettingsRow: FunctionComponent<SettingsRowProps> = (props) => {
 
     const expanded = props.expanded;
 
+    let onPress = props?.onPress;
+
+    const [expandedState, setExpandedState] = React.useState(expanded);
+
+    let expandable = props?.children !== undefined;
+    if(props?.expandable !== undefined){
+        expandable = props.expandable
+    }
+
+    if(expandable){
+        onPress = () => {
+            setExpandedState(!expandedState);
+            if(props?.onPress){
+                props.onPress()
+            }
+        }
+    }
+
     let accessibilityLabel = props?.accessibilityLabel
     if (accessibilityLabel === undefined) {
         accessibilityLabel = "";
@@ -55,30 +73,36 @@ export const SettingsRow: FunctionComponent<SettingsRowProps> = (props) => {
         let rightIcon = props?.rightIcon
         if(showPress && !rightIcon){
             rightIcon = <Icon name={"chevron-right"}  />;
+            if(expandedState){
+                rightIcon = <Icon name={"chevron-down"}  />;
+            }
         }
 
-        const divider = props.customDivider!==undefined ? props.customDivider : <Divider />
 
         const flex = props.flex!==undefined ? props.flex : 1;
 
         return(
             <>
                 <SettingsRowInner flex={flex} leftContent={props?.leftContent} leftIcon={renderLeftIcon()} rightContent={props?.rightContent} rightIcon={rightIcon} />
-                {divider}
             </>
         )
     }
 
     function renderOuter(){
-        let children = expanded ? props.children : null
+        let children = expandedState ? props.children : null
 
-        if(!!props.onPress){
+      const divider = props.customDivider!==undefined ? props.customDivider : <Divider />
+
+        if(!!onPress){
             return(
               // @ts-ignore
-                <MyTouchableOpacity disabled={props?.disabled} accessibilityLabel={accessibilityLabel} key={props?.key+props.leftIcon} onPress={props?.onPress} >
+                <>
+                  <MyTouchableOpacity disabled={props?.disabled} accessibilityLabel={accessibilityLabel} key={props?.key+props.leftIcon} onPress={onPress} >
                     {renderInner(true)}
-                    {children}
-                </MyTouchableOpacity>
+                  </MyTouchableOpacity>
+                  {children}
+                  {divider}
+                </>
             )
         }
         return(

@@ -1,3 +1,6 @@
+import {useMyContrastColor} from "./ignoreCoverage/KitchenHelper/theme/useMyContrastColor";
+export {useMyContrastColor}
+
 import {HeaderWithActions} from "./ignoreCoverage/KitchenHelper/templates/HeaderWithActions";
 export {HeaderWithActions}
 

@@ -8,10 +8,10 @@ import ServerAPI from "../ServerAPI";
 
 export const UserInitLoader = (props) => {
 
-  const [userLocalSaved, setUser] = useSynchedJSONState(RequiredStorageKeys.KITCHEN_CACHED_USER);
+  const [userLocalSaved, setUser] = useSynchedJSONState(RequiredStorageKeys.CACHED_USER);
   const [syncedUser, setSyncedUser] = useState({});
 
-  const [serverInfoLocalSaved, setServerInfo] = useSynchedJSONState(RequiredStorageKeys.KITCHEN_CACHED_SERVER_INFO);
+  const [serverInfoLocalSaved, setServerInfo] = useSynchedJSONState(RequiredStorageKeys.CACHED_SERVER_INFO);
   const [syncedServerInfo, setSyncedServerInfo] = useState({});
 
   const configHolderUser = ConfigHolder.instance.getUser();

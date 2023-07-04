@@ -11,7 +11,7 @@ interface AppState {
 }
 export const ThemeChanger: FunctionComponent<AppState> = (props) => {
 
-	let storageKey = RequiredStorageKeys.THEME;
+	let storageKey = RequiredStorageKeys.CACHED_THEME;
 	const [value, setValue] = useSynchedState(storageKey);
 	const { colorMode, toggleColorMode } = useColorMode();
 	let nextTheme = colorMode===ColorCodeHelper.VALUE_THEME_LIGHT ? ColorCodeHelper.VALUE_THEME_DARK : ColorCodeHelper.VALUE_THEME_LIGHT;

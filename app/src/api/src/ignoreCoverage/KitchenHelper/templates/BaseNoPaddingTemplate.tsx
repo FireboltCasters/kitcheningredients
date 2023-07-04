@@ -27,7 +27,6 @@ export const BaseNoPaddingTemplate: FunctionComponent<BaseNoPaddingTemplateProps
 				<BreakPointLayout >
 					<Box style={{height: "100%", alignItems: "flex-start", width: "100%"}}>
 						{childrenWithProps}
-            <ShowMoreGradientPlaceholder />
 					</Box>
 				</BreakPointLayout>
       </ScrollViewWithGradient>

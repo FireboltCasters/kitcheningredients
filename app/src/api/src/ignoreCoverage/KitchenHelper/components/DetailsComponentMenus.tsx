@@ -1,125 +1,183 @@
 import React, {FunctionComponent, useState} from "react";
-import {Text, View} from "native-base";
+import {Text, useContrastText, View} from "native-base";
 import {TouchableOpacity} from "react-native";
 import {SettingsRowInner} from "./settings/SettingsRowInner";
 import {SettingsSpacer} from "./settings/SettingsSpacer";
+import {ScrollViewWithGradient} from "../utils/ScrollViewWithGradient";
+import {useProjectColor} from "../templates/useProjectColor";
+import {useMyContrastColor} from "../theme/useMyContrastColor";
 
 export type DetailsComponentMenuType = {
-	color?: string,
-	activeColor?: string,
-	onPress?: (menuKey: string) => Promise<boolean | undefined>, // an async onPress function that returns a boolean or undefined
-	element?: JSX.Element,
-	menuButtonContent?: any | string,
-	icon?: JSX.Element,
-	amount?: number,
+  color?: string,
+  activeColor?: string,
+  onPress?: (menuKey: string) => Promise<boolean | undefined>, // an async onPress function that returns a boolean or undefined
+  element?: JSX.Element,
+  menuButtonContent?: any | string,
+  menuButtonText?: string,
+  icon?: JSX.Element,
+  amount?: number,
 }
-export interface AppState{
-	// menus are a dict with DetailsComponentMenuType as value and a string as key
-	menus: Record<string, DetailsComponentMenuType>,
-	spacer?: any,
-	defaultMenuKey?: string,
-	defaultColor?: string,
-	defaultActiveColor?: string,
-	hideSelection?: boolean,
-	style?: any,
+
+export interface AppState {
+  // menus are a dict with DetailsComponentMenuType as value and a string as key
+  menus: Record<string, DetailsComponentMenuType>,
+  spacer?: any,
+  size?: string,
+  defaultMenuKey?: string,
+  defaultColor?: string,
+  defaultActiveColor?: string,
+  defaultTextColor?: string,
+  defaultActiveTextColor?: string,
+  hideSelection?: boolean,
+  style?: any,
   flex?: number,
+  useScrollViewForHeader?: boolean,
 }
+
 export const DetailsComponentMenus: FunctionComponent<AppState> = (props) => {
 
-	const defaultColor = props?.defaultColor || "orange";
-	let defaultActiveColor = props?.defaultActiveColor || "darkorange";
-	if(props?.hideSelection) {
-		defaultActiveColor = defaultColor;
-	}
+  let projectColor = useProjectColor()
 
-	const menus = props.menus || {};
-	const menuKeys = Object.keys(menus);
-	const defaultMenuKey = props?.defaultMenuKey || menuKeys[0];
+  let defaultButtonColor = props?.defaultColor || projectColor || "orange";
+  let defaultTextColor = props?.defaultTextColor || useMyContrastColor(defaultButtonColor) || "white";
+  let defaultActiveTextColor = props?.defaultActiveColor || defaultTextColor;
 
-	const [selectedMenuKey, setSelectedMenuKey] = useState(defaultMenuKey);
-	let selectedMenu = menus[selectedMenuKey];
-	let element = selectedMenu?.element;
+  if (props?.hideSelection) {
+    defaultActiveTextColor = defaultTextColor;
+  }
 
-	function renderMenuButton(menuKey){
-		let menu = menus[menuKey];
-		let isSelected = selectedMenuKey === menuKey;
+  const useScrollViewForHeader = props?.useScrollViewForHeader || false;
 
-		let color = menu?.color || defaultColor;
-		let activeColor = menu?.activeColor || defaultActiveColor;
+  const menus = props.menus || {};
+  const menuKeys = Object.keys(menus);
+  const defaultMenuKey = props?.defaultMenuKey || menuKeys[0];
 
-		let buttonContent = menu?.menuButtonContent;
-		const onPressMenu = menu?.onPress;
+  const [selectedMenuKey, setSelectedMenuKey] = useState(defaultMenuKey);
+  let selectedMenu = menus[selectedMenuKey];
+  let element = selectedMenu?.element;
 
-		let amount = menu?.amount;
-		let amountText = "";
-		if(amount!==undefined){
-			amountText = " ("+amount+")";
-		}
+  function renderMenuButton(menuKey) {
+    let menu = menus[menuKey];
+    let isSelected = selectedMenuKey === menuKey;
 
-		let icon = menu?.icon;
-		let renderedIcon = null;
-		if(!!icon){
-			renderedIcon = icon;
-		}
+    let color = menu?.color || defaultButtonColor;
 
-		let additionalStyle = {};
-		if(isSelected && !props?.hideSelection){
-			let selectedStyle = {
-				borderWidth: 2,
-				borderColor: "white",
-				backgroundColor: activeColor,
-			}
-			additionalStyle = selectedStyle;
-		}
+    let buttonContent = menu?.menuButtonContent;
+    let buttonText = menu?.menuButtonText;
+    const onPressMenu = menu?.onPress;
 
-		return(
-			<View style={{marginHorizontal: 5, marginVertical: 5}} key={menuKey}>
-				<TouchableOpacity style={[{ borderColor: "transparent", borderWidth: 2,justifyContent: "center", flexDirection: "row", backgroundColor: color, borderRadius: 10}, additionalStyle]}
-								  onPress={async () => {
-								  	let proceed = true;
-								  	if(onPressMenu){
-								  		let result = await onPressMenu(menuKey);
-								  		if(result!==undefined && result!==null){
-								  			proceed = result;
-								  		}
-									}
-								  	if(proceed){
-										setSelectedMenuKey(menuKey)
-									}
-								  }}
-				>
-					<SettingsRowInner leftContent={<View style={{flexDirection: "row", alignItems: "center"}}>{buttonContent}<Text>{amountText}</Text></View>} leftIcon={renderedIcon} rightIcon={null} />
-				</TouchableOpacity>
-			</View>
-		)
-	}
+    let amount = menu?.amount;
+    let amountText = "";
+    if (amount !== undefined) {
+      amountText = " (" + amount + ")";
+    }
 
-	function renderMenuButtons(){
-		let menuKeys = Object.keys(menus);
-		let output = [];
-		for(let menuKey of menuKeys){
-			if(menus[menuKey]){
-				output.push(renderMenuButton(menuKey))
-			}
-		}
+    let icon = menu?.icon;
+    let renderedIcon = null;
+    if (!!icon) {
+      renderedIcon = icon;
+    }
 
-		let style = props?.style || {width: "100%", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", alignItems: "center"};
+    let additionalStyle = {};
+    let fontColor = defaultTextColor;
+    let activeColorHighlight = undefined
+    if (isSelected && !props?.hideSelection) {
+      activeColorHighlight = defaultActiveTextColor;
+    }
 
-		return(
-			<View style={style}>
-				{output}
-			</View>
-		)
-	}
+    let usedMenuButtonContent = null;
+    if (buttonText !== undefined) {
+      usedMenuButtonContent = <Text color={fontColor}>{buttonText}</Text>
+    }
+    if (buttonContent !== undefined) {
+      usedMenuButtonContent = buttonContent;
+    }
 
-	const spacer = props?.spacer!==undefined ? props?.spacer : <SettingsSpacer/>;
+    let heightHighlight = 2;
 
-	return (
-		<View style={{width: "100%", flex: props?.flex}}>
-			{renderMenuButtons()}
-			{spacer}
-			{element}
-		</View>
-	)
+    let leftContent = (
+      <View style={{flexDirection: "column", alignItems: "center"}}>
+        <View style={{flexDirection: "row", alignItems: "center"}}>
+          {usedMenuButtonContent}<Text color={fontColor}>{amountText}</Text>
+        </View>
+        <View style={{width: "100%", backgroundColor: activeColorHighlight, height: heightHighlight}}></View>
+      </View>
+    )
+
+    return (
+      <View style={{marginHorizontal: 5, marginTop: 5, marginBottom: 0}} key={menuKey}>
+        <TouchableOpacity style={[{
+          borderColor: "transparent",
+          borderWidth: 0,
+          justifyContent: "center",
+          flexDirection: "row",
+          backgroundColor: color,
+          borderRadius: 10
+        }, additionalStyle]}
+                          onPress={async () => {
+                            let proceed = true;
+                            if (onPressMenu) {
+                              let result = await onPressMenu(menuKey);
+                              if (result !== undefined && result !== null) {
+                                proceed = result;
+                              }
+                            }
+                            if (proceed) {
+                              setSelectedMenuKey(menuKey)
+                            }
+                          }}
+        >
+          <SettingsRowInner leftContent={leftContent} leftIcon={renderedIcon} rightIcon={null}/>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
+  function renderMenuButtons() {
+    let menuKeys = Object.keys(menus);
+    let output = [];
+    for (let menuKey of menuKeys) {
+      if (menus[menuKey]) {
+        output.push(renderMenuButton(menuKey))
+      }
+    }
+
+    let style = props?.style || {
+      width: "100%",
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      alignItems: "center"
+    };
+
+    let content: any = output;
+    if (useScrollViewForHeader) {
+      content = (
+        <ScrollViewWithGradient
+          scrollViewProps={{
+            horizontal: true,
+          }}
+        >
+          {output}
+        </ScrollViewWithGradient>
+      )
+    }
+
+    return (
+      <View style={style}>
+        {content}
+      </View>
+    )
+  }
+
+  const spacer = props?.spacer !== undefined ? props?.spacer : <SettingsSpacer/>;
+
+  return (
+    <View style={{width: "100%", flex: props?.flex}}>
+      {renderMenuButtons()}
+      {spacer}
+      {element}
+    </View>
+  )
 
 }

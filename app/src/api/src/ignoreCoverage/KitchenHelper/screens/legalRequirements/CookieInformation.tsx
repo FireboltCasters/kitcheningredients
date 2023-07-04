@@ -4,20 +4,29 @@ import {ConfigHolder} from "../../ConfigHolder";
 import {DetailsComponentMenus, DetailsComponentMenuType} from "../../components/DetailsComponentMenus";
 import {TranslationKeys} from "../../translations/TranslationKeys";
 import {RequiredSynchedStates} from "../../synchedstate/RequiredSynchedStates";
-import {useSynchedCookieConfig, useSynchedJSONState, useSynchedState} from "../../synchedstate/SynchedState";
+import {useSynchedCookieConfig, useSynchedJSONState} from "../../synchedstate/SynchedState";
 import {Layout} from "../../templates/Layout";
 import {useProjectColor} from "../../templates/useProjectColor";
 import {useDefaultButtonColor} from "../../theme/useDefaultButtonColor";
 import {SettingsRowBooleanSwitch} from "../../components/settings/SettingsRowBooleanSwitch";
 import {LegalRequiredLinks} from "../legalRequirements/LegalRequiredLinks";
 import {ScrollViewWithGradient} from "../../utils/ScrollViewWithGradient";
-import {ShowMoreGradientPlaceholder} from "../../utils/ShowMoreGradientPlaceholder";
 import {SettingsSpacer} from "../../components/settings/SettingsSpacer";
 import {useBackgroundColor} from "../../templates/useBackgroundColor";
 import {ProjectLogo} from "../../project/ProjectLogo";
 import {DateHelper} from "../../helper/DateHelper";
 import {KitchenSafeAreaView} from "../../components/KitchenSafeAreaView";
-import {CookieTypeEnum} from "./CookieHelper";
+import {
+  CookieDetails,
+  CookieGroupEnum,
+  CookieHelper,
+  getAcceptAllCookieConfig,
+  getDefaultCookieConfig
+} from "./CookieHelper";
+import {SettingsRow} from "../../components/settings/SettingsRow";
+import {MyTouchableOpacity} from "../../components/buttons/MyTouchableOpacity";
+import {Linking} from "react-native";
+import {MyThemedBox} from "../../helper/MyThemedBox";
 
 interface AppState {
   autoOpenCookies?: boolean;
@@ -30,7 +39,7 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   const backgroundColor = useBackgroundColor();
 
   const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
-  const project_color = useProjectColor()
+  let project_color = useProjectColor()
   const project_color_contrast_color = useContrastText(project_color);
 
   const defaultButtonColor = useDefaultButtonColor();
@@ -39,7 +48,7 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   const width = Layout.useBaseTemplateContentWidth()
 
   const [cookieConfig, setCookieConfig] = useSynchedCookieConfig();
-  const [tempCookieConfig, setTempCookieConfig] = useState(cookieConfig);
+  let [tempCookieConfig, setTempCookieConfig] = useState(cookieConfig);
 
   const date_consent = cookieConfig?.date_consent;
   const date_consent_human_readable = getHumanReadableDate(date_consent);
@@ -58,29 +67,20 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   const translation_cookie_policy_details = useTranslation(TranslationKeys.cookie_policy_details)
   const translation_cookie_policy_about = useTranslation(TranslationKeys.cookie_policy_about)
 
-  const translation_cookie_policy_checkbox_necessary = useTranslation(TranslationKeys.cookie_policy_checkbox_necessary)
-  const translation_cookie_policy_checkbox_preference = useTranslation(TranslationKeys.cookie_policy_checkbox_preference)
-  const translation_cookie_policy_checkbox_statistics = useTranslation(TranslationKeys.cookie_policy_checkbox_statistics)
-  const translation_cookie_policy_checkbox_marketing = useTranslation(TranslationKeys.cookie_policy_checkbox_marketing)
-
   const translation_cookie_policy_button_accept_all = useTranslation(TranslationKeys.cookie_policy_button_accept_all)
-  const translation_cookie_policy_button_only_necessary = useTranslation(TranslationKeys.cookie_policy_button_only_necessary)
   const translation_cookie_policy_button_deny_all = useTranslation(TranslationKeys.cookie_policy_button_deny_all)
   const translation_cookie_policy_button_allow_selected = useTranslation(TranslationKeys.cookie_policy_button_allow_selected)
+
+  const translation_cookie_policy_details_name = useTranslation(TranslationKeys.cookie_policy_details_name)
+  const translation_cookie_policy_details_purpose = useTranslation(TranslationKeys.cookie_policy_details_purpose)
+  const translation_cookie_policy_details_type = useTranslation(TranslationKeys.cookie_policy_details_type)
+  const translation_cookie_policy_details_expiry = useTranslation(TranslationKeys.cookie_policy_details_expiry)
+  const translation_cookie_policy_details_provider = useTranslation(TranslationKeys.cookie_policy_details_provider)
 
   const translation_cookie_policy_consent_date = useTranslation(TranslationKeys.cookie_policy_consent_date)
   const translation_cookie_policy_policy_date_updated = useTranslation(TranslationKeys.cookie_policy_policy_date_updated)
 
-  function onlyNecessarySelected(){
-    return (
-      tempCookieConfig[CookieTypeEnum.Necessary] &&
-      !tempCookieConfig[CookieTypeEnum.Preference] &&
-      !tempCookieConfig[CookieTypeEnum.Statistics] &&
-      !tempCookieConfig[CookieTypeEnum.Marketing]
-    );
-  }
-
-  const translation_save_current_selection = onlyNecessarySelected() ? translation_cookie_policy_button_only_necessary : translation_cookie_policy_button_allow_selected;
+  const translation_save_current_selection = translation_cookie_policy_button_allow_selected;
 
   const [default_menu_key, setDefaultMenuKey] = useState(menu_key_cookie_consent);
 
@@ -89,7 +89,7 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   function getMenu(translation_text, element): DetailsComponentMenuType {
     return {
       element: element,
-      menuButtonContent: <Text>{translation_text}</Text>,
+      menuButtonText: translation_text,
       onPress: (menuKey) => {
         setDefaultMenuKey(menuKey)
       }
@@ -128,6 +128,10 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
     isOpen = true;
   }
 
+  if(!ConfigHolder.useCookiePolicy){
+    isOpen = false;
+  }
+
   //isOpen = true;
 
   // corresponding componentDidMount
@@ -140,18 +144,12 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   }
 
   function denyCookiesAll(){
-    tempCookieConfig.necessary = true;
-    tempCookieConfig.preferences = false;
-    tempCookieConfig.statistics = false;
-    tempCookieConfig.marketing = false;
+    tempCookieConfig = getDefaultCookieConfig();
     handleDecision({...tempCookieConfig});
   }
 
   function acceptCookiesAll(){
-    tempCookieConfig.necessary = true;
-    tempCookieConfig.preferences = true;
-    tempCookieConfig.statistics = true;
-    tempCookieConfig.marketing = true;
+    tempCookieConfig = getAcceptAllCookieConfig();
     handleDecision({...tempCookieConfig});
   }
 
@@ -180,9 +178,38 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
           </View>
           <LegalRequiredLinks />
         </View>
-        <ShowMoreGradientPlaceholder />
       </ScrollViewWithGradient>
     )
+  }
+
+  function renderSwitchCookie(type: string, disabled: boolean = false){
+    let translation_text = ConfigHolder.plugin.getCookieGroupName(type);
+
+    return (
+      <SettingsRowBooleanSwitch
+        disabled={disabled}
+        key={"renderSwitchCookie"+type+tempCookieConfig.consent[type]}
+        value={tempCookieConfig.consent[type]} accessibilityLabel={translation_text}
+        leftContent={<Text>{translation_text}</Text>}
+        onValueChange={(value) => {
+          tempCookieConfig.consent[type] = value;
+          setTempCookieConfig({...tempCookieConfig});
+        }} />
+    )
+  }
+
+  function renderSwitchCookieForAdditionalGroups(){
+    const additional_groups = ConfigHolder.plugin.getCookieAdditionalGroups()
+    if(additional_groups.length===0){
+      return null;
+    } else {
+      let output = [];
+      for(let i=0; i<additional_groups.length; i++){
+        let group = additional_groups[i];
+        output.push(renderSwitchCookie(group, false));
+      }
+      return output;
+    }
   }
 
   function renderCookiesConsent(){
@@ -202,30 +229,8 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
               <View style={{width: "100%"}}>
                 <View style={{width: "100%"}}>
                   <SettingsSpacer />
-                  <SettingsRowBooleanSwitch
-                    key={"cookieConsentNecessary"+tempCookieConfig.date_updated}
-                    value={true} disabled={true} accessibilityLabel={translation_cookie_policy_checkbox_necessary} leftContent={<Text>{translation_cookie_policy_checkbox_necessary}</Text>} />
-                  <SettingsRowBooleanSwitch
-                    key={"cookieConsentPreferences"+tempCookieConfig.preferences}
-                    onPress={(nextValue) => {
-                      tempCookieConfig.preferences = nextValue;
-                      setTempCookieConfig({...tempCookieConfig})
-                    }}
-                    value={tempCookieConfig.preferences} accessibilityLabel={translation_cookie_policy_checkbox_preference} leftContent={<Text>{translation_cookie_policy_checkbox_preference}</Text>} />
-                  <SettingsRowBooleanSwitch
-                    key={"cookieConsentStatistics"+tempCookieConfig.statistics}
-                    onPress={(nextValue) => {
-                      tempCookieConfig.statistics = nextValue;
-                      setTempCookieConfig({...tempCookieConfig})
-                    }}
-                    value={tempCookieConfig.statistics} accessibilityLabel={translation_cookie_policy_checkbox_statistics} leftContent={<Text>{translation_cookie_policy_checkbox_statistics}</Text>} />
-                  <SettingsRowBooleanSwitch
-                    key={"cookieConsentMarketing"+tempCookieConfig.marketing}
-                    onPress={(nextValue) => {
-                      tempCookieConfig.marketing = nextValue;
-                      setTempCookieConfig({...tempCookieConfig})
-                    }}
-                    value={tempCookieConfig.marketing} accessibilityLabel={translation_cookie_policy_checkbox_marketing} leftContent={<Text>{translation_cookie_policy_checkbox_marketing}</Text>} />
+                  {renderSwitchCookie(CookieGroupEnum.Necessary, true)}
+                  {renderSwitchCookieForAdditionalGroups()}
                   <View style={{width: "100%"}}>
                     <Text>{translation_cookie_policy_consent_date+": "+date_consent_human_readable}</Text>
                     <Text>{translation_cookie_policy_policy_date_updated+": "+date_cookie_policy_updated_human_readable}</Text>
@@ -233,14 +238,149 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
                 </View>
               </View>
             </View>
-            <ShowMoreGradientPlaceholder />
           </ScrollViewWithGradient>
         </View>
       )
   }
 
-  function renderCookieDetails(){
+  function renderSpecificCookieDetailsTableHeader(){
+    return(
+      <View style={{width: "100%", flex: 1}}>
+        <MyThemedBox _shadeLevel={2}>
+          <View style={{width: "100%", flexDirection: "row", flex: 1}}>
+            <View style={{flex: 2}}>
+              <Text fontSize={"sm"}>{translation_cookie_policy_details_name}</Text>
+            </View>
+            <View style={{flex: 2}}>
+              <Text fontSize={"sm"}>{translation_cookie_policy_details_provider}</Text>
+            </View>
+            <View style={{flex: 2}}>
+              <Text fontSize={"sm"}>{translation_cookie_policy_details_purpose}</Text>
+            </View>
+            <View style={{flex: 1}}>
+              <Text fontSize={"sm"}>{translation_cookie_policy_details_expiry}</Text>
+            </View>
+            <View style={{flex: 1}}>
+              <Text fontSize={"sm"}>{translation_cookie_policy_details_type}</Text>
+            </View>
+          </View>
+        </MyThemedBox>
+        <SettingsSpacer />
+      </View>
+    )
+  }
 
+  function renderSpecificCookieDetails(specificCookieName: string, cookieDetails: CookieDetails){
+    const providerLabel = cookieDetails?.provider || cookieDetails?.provider_url;
+    let renderedProvider = <Text fontSize={"sm"}>{providerLabel}</Text>
+    if(!!cookieDetails?.provider_url){
+      renderedProvider = (
+        <MyTouchableOpacity accessibilityLabel={cookieDetails?.provider_url} onPress={() => {
+          Linking.openURL(cookieDetails.provider_url);
+        }}>
+          {renderedProvider}
+        </MyTouchableOpacity>
+      )
+    }
+
+    return(
+      <View style={{width: "100%", flex: 1}} key={"renderSpecificCookieDetails"+specificCookieName}>
+        <View style={{width: "100%", flexDirection: "row", flex: 1}}>
+          <View style={{flex: 2}}>
+            <Text selectable={true} fontSize={"sm"}>{specificCookieName}</Text>
+          </View>
+          <View style={{flex: 2}}>
+            {renderedProvider}
+          </View>
+          <View style={{flex: 2}}>
+            <Text fontSize={"sm"}>{cookieDetails?.purpose}</Text>
+          </View>
+          <View style={{flex: 1}}>
+            <Text fontSize={"sm"}>{cookieDetails?.expiry}</Text>
+          </View>
+          <View style={{flex: 1}}>
+            <Text fontSize={"sm"}>{cookieDetails?.storageType}</Text>
+          </View>
+        </View>
+        <SettingsSpacer />
+      </View>
+    )
+  }
+
+  function renderCookieTypeDetails(cookieType: string){
+
+    let totalCookieList = Object.keys(CookieHelper.CookieDictNameToDetails);
+    let cookiesFoundInType = [];
+
+    let renderedCookieDetails = [];
+    for(let i=0; i<totalCookieList.length; i++){
+      let specificCookieName = totalCookieList[i];
+      let specificCookieDetails = ConfigHolder.plugin.getCookieDetails(specificCookieName);
+      let specificCookieType = specificCookieDetails?.type;
+      if(specificCookieType===cookieType){
+        cookiesFoundInType.push(specificCookieName);
+        renderedCookieDetails.push(renderSpecificCookieDetails(specificCookieName, specificCookieDetails));
+      }
+    }
+    let amountCookiesFoundInType = cookiesFoundInType.length;
+
+    let leftIcon = (
+      <View>
+        <Text>{"("+amountCookiesFoundInType+")"}</Text>
+      </View>
+    )
+
+    let translation_text = ConfigHolder.plugin.getCookieGroupName(cookieType)
+
+
+
+    return(
+      <View style={{width: "100%", flex: 1}} key={"cookieTypeDetails"+cookieType} >
+        <SettingsRow leftIcon={leftIcon} leftContent={<Text>{translation_text}</Text>}>
+          <View style={{width: "100%", flex: 1}}>
+            {renderSpecificCookieDetailsTableHeader()}
+            {renderedCookieDetails}
+          </View>
+        </SettingsRow>
+      </View>
+    )
+  }
+
+  function renderCookieDetailsForAdditionalGroups(){
+    const additional_groups = ConfigHolder.plugin.getCookieAdditionalGroups()
+    if(additional_groups.length===0){
+      return null;
+    } else {
+      let output = [];
+      for(let i=0; i<additional_groups.length; i++){
+        let group = additional_groups[i];
+        output.push(renderCookieTypeDetails(group));
+      }
+      return output;
+    }
+  }
+
+  function renderCookieDetails(){
+    return(
+      <View style={{width: "100%", flex: 1}}>
+        <ScrollViewWithGradient>
+          <View style={{
+            flex: 1,
+            width: "100%",
+            alignItems: "center", justifyContent: "center",
+            flexDirection: 'row',
+            flexWrap: 'wrap', // Enable wrapping of items
+          }}>
+            <View style={{width: "100%"}}>
+              <View style={{width: "100%"}}>
+                {renderCookieTypeDetails(CookieGroupEnum.Necessary)}
+                {renderCookieDetailsForAdditionalGroups()}
+              </View>
+            </View>
+          </View>
+        </ScrollViewWithGradient>
+      </View>
+    )
   }
 
 
@@ -259,7 +399,6 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
                 {ConfigHolder.plugin.getCookieComponentAbout()}
               </View>
             </View>
-            <ShowMoreGradientPlaceholder />
           </ScrollViewWithGradient>
         </View>
       )
@@ -269,9 +408,9 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
       <Modal isOpen={isOpen} style={{width: "100%", height: "100%"}}>
         <KitchenSafeAreaView style={{width: width, height: "100%"}}>
           <View style={{width: width, height: "100%"}}>
-            <AlertDialog.Header>
+            <AlertDialog.Header style={{padding: 0}}>
               <View style={{flexDirection: "row"}}>
-                <ProjectLogo rounded={true} />
+                <ProjectLogo size={"sm"} rounded={true} />
                 <View style={{ marginLeft: 16}}>
                   <Heading>
                     {translation_cookies}
@@ -279,9 +418,8 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
                 </View>
               </View>
             </AlertDialog.Header>
-
-            <View style={{width: "100%", padding: Layout.padding, flex: 1, backgroundColor: backgroundColor}}>
-              <DetailsComponentMenus flex={1} menus={menus} defaultMenuKey={default_menu_key} key={default_menu_key} />
+            <View style={{width: "100%", paddingHorizontal: Layout.padding, flex: 1, backgroundColor: backgroundColor}}>
+              <DetailsComponentMenus useScrollViewForHeader={true} size={"xs"} flex={1} menus={menus} defaultMenuKey={default_menu_key} key={default_menu_key} />
             </View>
             <AlertDialog.Footer>
               <View style={{
@@ -291,20 +429,20 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
                 width: "100%",
                 flexWrap: "wrap",
               }}>
-                <Button onPress={denyCookiesAll} style={{backgroundColor: defaultButtonColor, marginTop: 4}}>
+                <Button size={"xs"} onPress={denyCookiesAll} style={{backgroundColor: defaultButtonColor, marginTop: 4}}>
                   <Text color={defaultButtonContrastColor}>
                     {translation_cookie_policy_button_deny_all}
                   </Text>
                 </Button>
                 <View style={{width: 4}} />
-                <Button style={{backgroundColor: defaultButtonColor, marginTop: 4}} onPress={acceptCookiesSelected}>
-                  <Text color={defaultButtonContrastColor}>
+                <Button size={"xs"} style={{backgroundColor: project_color, marginTop: 4}} onPress={acceptCookiesSelected}>
+                  <Text color={project_color_contrast_color}>
                     {translation_save_current_selection}
                   </Text>
                 </Button>
                 <View style={{width: 4}} />
-                <Button onPress={acceptCookiesAll} style={{backgroundColor: defaultButtonColor, marginTop: 4}}>
-                  <Text color={defaultButtonContrastColor}>
+                <Button size={"xs"} onPress={acceptCookiesAll} style={{backgroundColor: project_color, marginTop: 4}}>
+                  <Text color={project_color_contrast_color}>
                     {translation_cookie_policy_button_accept_all}
                   </Text>
                 </Button>

@@ -1,3 +1,5 @@
+import {Cookie} from "../screens/legalRequirements/CookieHelper";
+
 export interface MyDirectusStorageInterface{
     get(key: string);
     set(key: string, value: string);
@@ -6,4 +8,7 @@ export interface MyDirectusStorageInterface{
     init();
     initContextStores(SynchedState: any);
     has_credentials_saved(): boolean;
+    getCookieFromStorageString(storageString: string): Cookie;
+    getNewCookieFromKeyValue(key: string, value: string): Cookie
+    getStorageStringFromCookie(cookie: Cookie): string
 }

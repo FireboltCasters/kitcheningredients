@@ -32,7 +32,7 @@ export function useSynchedCookieConfig(): [CookieConfigType, (value: CookieConfi
 
   let usedCookieConfig: CookieConfigType;
 
-  let [cookieConfig, setCookieConfig] = useSynchedJSONState(RequiredStorageKeys.KEY_COOKIE_CONFIG);
+  let [cookieConfig, setCookieConfig] = useSynchedJSONState(RequiredStorageKeys.COOKIE_CONFIG);
 
   usedCookieConfig = cookieConfig;
 
@@ -139,34 +139,5 @@ export class SynchedState {
 
         SynchedState.store = store;
     }
-
-
-  /**
-   * Image cache
-   */
-
-  static useCachedBase64ImagesDict() {
-      return useSynchedJSONState(RequiredStorageKeys.KEY_DIRECTUS_IMAGE_CACHE);
-  }
-
-  static useCachedBase64Image(assetId) {
-      if(!assetId) {
-          return [null, () => {}];
-      }
-
-      const [cachedBase64ImagesDict, setCacheBase64ImagesDict] = SynchedState.useCachedBase64ImagesDict();
-      const usedCachedBase64ImagesDict = cachedBase64ImagesDict || {};
-      const cachedBase64Image = usedCachedBase64ImagesDict[assetId] || null;
-      const setCachedBase64Image = (base64Image) => {
-          if(!base64Image){
-              delete usedCachedBase64ImagesDict[assetId];
-          } else {
-              usedCachedBase64ImagesDict[assetId] = base64Image;
-          }
-          setCacheBase64ImagesDict(usedCachedBase64ImagesDict);
-      }
-
-      return [cachedBase64Image, setCachedBase64Image];
-  }
 
 }

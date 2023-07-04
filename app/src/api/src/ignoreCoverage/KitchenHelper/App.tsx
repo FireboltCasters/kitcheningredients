@@ -22,16 +22,15 @@ import EnviromentHelper from "./EnviromentHelper";
 import {UserInitLoader} from "./utils/UserInitLoader";
 import {DefaultStorage} from "./storage/DefaultStorage";
 import {MyDirectusStorage} from "./storage/MyDirectusStorage";
+import {MyDirectusStorageInterface} from "./storage/MyDirectusStorageInterface";
 
 export default class App extends React.Component<any, any>{
+  storage: MyDirectusStorageInterface;
 
 	constructor(props) {
 		super(props);
 
-		this.storage = new DefaultStorage();
-		if(!ConfigHolder.storage){
-		  ConfigHolder.storage = new MyDirectusStorage();
-    }
+		this.storage = new DefaultStorage(new MyDirectusStorage());
 
 		if(!props?.ignoreInstance){
       ConfigHolder.instance = this;
@@ -199,7 +198,7 @@ export default class App extends React.Component<any, any>{
 	}
 
 	async loadSynchedVariables(){
-	  SynchedState.registerSynchedStates(RequiredStorageKeys.THEME, ColorCodeHelper.VALUE_THEME_DEFAULT, null, null, false);
+	  SynchedState.registerSynchedStates(RequiredStorageKeys.CACHED_THEME, ColorCodeHelper.VALUE_THEME_DEFAULT, null, null, false);
 		await ConfigHolder.instance.storage.init(); //before ConfigHolder.instance.storage.initContextStores();
 		await ConfigHolder.instance.storage.initContextStores(SynchedState); //before SynchedState.initContextStores();
 		await SynchedState.initSynchedKeys();

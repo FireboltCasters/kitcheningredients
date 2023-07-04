@@ -3,9 +3,9 @@
  * If you want to adapt the iOS and Android Entryfile open: index.js
  */
 
-import { registerRootComponent } from 'expo';
+import {registerRootComponent} from 'expo';
 //import App from './src/KitchenHelper/App'
-import {App, ConfigHolder, MyDirectusStorage} from './src/api/src/index'
+import {App, ConfigHolder} from './src/api/src/index'
 import Project from "./src/project/Project";
 import nativebaseConfig from "./nativebase.config";
 import styleConfig from "./styleConfig.json";
@@ -15,6 +15,7 @@ import currentpackageJsonLock from "./package-lock.json";
 import thirdpartyLicense from "./thirdpartyLicense.json"
 import AppConfig from "./app.config"
 
+//ConfigHolder.useCookiePolicy = true;
 ConfigHolder.plugin = new Project()
 ConfigHolder.nativebaseConfig = nativebaseConfig
 ConfigHolder.styleConfig = styleConfig

@@ -1,11 +1,17 @@
 // @ts-nocheck
-import React, {useEffect} from "react";
+import React, {FunctionComponent, useEffect} from "react";
 import {useColorModeValue, useToken, View} from "native-base";
 import {LinearGradient} from "expo-linear-gradient";
 import {ShowMoreGradientPlaceholder} from "./ShowMoreGradientPlaceholder";
 import {ConfigHolder} from "../ConfigHolder";
+import {ScrollViewProps} from "react-native";
 
-export const ShowMoreGradient = (props) => {
+interface AppState {
+  horizontal?: boolean
+}
+export const ShowMoreGradient: FunctionComponent<AppState> = (props) => {
+  const horizontal = props?.horizontal;
+
 	const [lightBg, darkBg] = useToken(
 		'colors',
 		[ConfigHolder.styleConfig.backgroundColor.light, ConfigHolder.styleConfig.backgroundColor.dark],
@@ -33,6 +39,8 @@ export const ShowMoreGradient = (props) => {
 
      */
 
+    const heightWidthStyle = horizontal ? {height: "100%"} : {width: "100%"};
+
     // Custom LinearGradient
     const steps = new Array(50).fill(0);
     return(
@@ -45,7 +53,7 @@ export const ShowMoreGradient = (props) => {
               flex: 1,
               backgroundColor: bgColor,
               opacity: i / steps.length,  // Increase the opacity for each step
-              width: "100%",
+              ...heightWidthStyle
             }}
           />
         ))}
@@ -53,10 +61,13 @@ export const ShowMoreGradient = (props) => {
     )
   }
 
+  const heightWidthStyle = horizontal ? {height: "100%", width: "auto"} : {width: "100%", height: "auto", };
+  const flexDirection = horizontal ? "row" : "column";
+
 	return (
-		<View pointerEvents="none" style={[{width: "100%", position: "absolute", bottom: 0, height: "auto"}]}>
+		<View pointerEvents="none" style={{position: "absolute", right: 0, bottom: 0, ...heightWidthStyle}}>
 			<ShowMoreGradientPlaceholder />
-			<View style={{position: "absolute", height: "100%", width: "100%", bottom: 0}}>
+			<View style={{position: "absolute", flexDirection: flexDirection, height: "100%", width: "100%", bottom: 0, right: 0}}>
         {renderGradient()}
 				<View style={{flex: 1, backgroundColor: bgColor}} />
 			</View>

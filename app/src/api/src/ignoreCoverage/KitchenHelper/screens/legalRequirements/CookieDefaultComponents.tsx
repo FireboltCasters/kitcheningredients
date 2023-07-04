@@ -13,7 +13,7 @@ Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen f�
     </ThemedMarkdown>
   }
 
-  static getCookieComponentDetailsNecessary(){
+  static getCookieGroupDescriptionNecessary(){
     return <ThemedMarkdown markdown={`
 Cookies zur Gewährleistung der Betriebsbereitschaft können nicht deaktiert werden, soweit wir sie verwenden, um unsere Dienste bereitzustellen.
 

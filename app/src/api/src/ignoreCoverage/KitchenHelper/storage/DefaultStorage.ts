@@ -1,17 +1,23 @@
 import {RequiredStorageKeys} from "./RequiredStorageKeys";
 import {MyDirectusStorageInterface} from "./MyDirectusStorageInterface";
 import {StorageImplementationInterface} from "./StorageImplementationInterface";
-import {CookieTypeEnum} from "../screens/legalRequirements/CookieHelper";
-import {ConfigHolder} from "../ConfigHolder";
+import {
+  Cookie,
+  CookieDetails,
+  CookieHelper,
+  CookieStorageTypeEnum,
+  CookieGroupEnum
+} from "../screens/legalRequirements/CookieHelper";
 
 export class DefaultStorage implements MyDirectusStorageInterface/** extends Storage */{
+    implementation: StorageImplementationInterface;
 
     async init(){
 
     }
 
-    constructor() {
-
+    constructor(implementation: StorageImplementationInterface) {
+        this.implementation = implementation;
     }
 
     defaultSaveStorageContext(storageKey, state, payload){
@@ -26,28 +32,30 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
 
     async initContextStores(SynchedState){
         let keys = SynchedState.getRequiredStorageKeys();
-        this.initSynchedKeys(SynchedState, keys, true, CookieTypeEnum.Necessary);
+        this.initSynchedStorageKeys(SynchedState, keys, true);
         let pluginStorageKeys = SynchedState.getPluginStorageKeys()
-        this.initSynchedKeys(SynchedState, pluginStorageKeys, false, CookieTypeEnum.Necessary);
+        this.initSynchedStorageKeys(SynchedState, pluginStorageKeys, false);
     }
 
-    initSynchedKeys(SynchedState, keys, override, cookieType: CookieTypeEnum){
+    initSynchedStorageKeys(SynchedState, keys, override){
         for(let i=0; i<keys.length; i++){
             let storageKey = keys[i];
-            let value = this.get(storageKey);
+            let cookie = this.getCookie(storageKey);
+            let value = cookie?.value;
+            CookieHelper.CookieDictNameToDetails[storageKey] = storageKey;
             SynchedState.registerSynchedStates(storageKey, value, this.defaultSaveStorageContext.bind(this), null, override);
         }
     }
 
     getAllKeys(): string[] {
-      if(!!ConfigHolder.storage){
-        return ConfigHolder.storage.getAllKeys();
+      if(!!this.implementation){
+        return this.implementation.getAllKeys();
       }
       throw new Error("Method not implemented.");
     }
 
     getStorageImplementation(): StorageImplementationInterface{
-        return ConfigHolder.storage;
+        return this.implementation;
     }
 
     is_guest(){
@@ -85,7 +93,7 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
       if(!!user){
         user = JSON.stringify(user);
       }
-      this.setValueOrDeleteIfNull(RequiredStorageKeys.KITCHEN_CACHED_USER, user)
+      this.setValueOrDeleteIfNull(RequiredStorageKeys.CACHED_USER, user)
     }
     /**
      * Refresh Token
@@ -147,22 +155,60 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
         return this.get_auth_expires();
     }
 
+    private getCookie(cookieName: string): Cookie {
+      let cookieAsString = this.getStorageImplementation().get(cookieName);
+      return this.getCookieFromStorageString(cookieAsString);
+    }
+
+    public getCookieFromStorageString(cookieAsString: string): Cookie {
+      if(!!cookieAsString){
+        return JSON.parse(cookieAsString);
+      }
+      return null;
+    }
+
+    private setCookie(cookieName: string, cookie: Cookie) {
+      this.getStorageImplementation().set(cookieName, this.getStorageStringFromCookie(cookie));
+    }
+
+    public getStorageStringFromCookie(cookie: Cookie): string {
+      return JSON.stringify(cookie);
+    }
+
+    public getNewCookieFromKeyValue(key: string, value: string): Cookie {
+      return {
+        name: key,
+        value: value,
+        date_created: new Date(),
+      }
+    }
+
+    private deleteCookie(cookieName: string) {
+      this.getStorageImplementation().remove(cookieName);
+    }
 
     /**
      * Getter and Setter and Delete
      */
     get(key: string) { //DO not change
-        return this.getStorageImplementation().get(key);
+        let cookie = this.getCookie(key);
+        return cookie?.value;
+
+//        return this.getStorageImplementation().get(key);
         //return '';
     }
 
     set(key: string, value: string) { //DO not change
-        this.getStorageImplementation().set(key, value);
+        let cookie: Cookie = this.getNewCookieFromKeyValue(key, value);
+        this.setCookie(key, cookie);
+
+//        this.getStorageImplementation().set(key, value);
         return value;
     }
 
     delete(key: string) { //DO not change
-        this.getStorageImplementation().remove(key);
+//        this.getStorageImplementation().remove(key);
+        this.deleteCookie(key);
         return null;
     }
 
