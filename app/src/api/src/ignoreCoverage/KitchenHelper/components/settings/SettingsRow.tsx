@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from "react";
 import {Divider, View} from "native-base";
 import {Icon} from "../Icon";

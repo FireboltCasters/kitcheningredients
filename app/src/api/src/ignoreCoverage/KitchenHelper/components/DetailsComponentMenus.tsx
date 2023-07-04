@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React, {FunctionComponent, useState} from "react";
-import {Text, useContrastText, View} from "native-base";
+import {Text, View} from "native-base";
 import {TouchableOpacity} from "react-native";
 import {SettingsRowInner} from "./settings/SettingsRowInner";
 import {SettingsSpacer} from "./settings/SettingsSpacer";

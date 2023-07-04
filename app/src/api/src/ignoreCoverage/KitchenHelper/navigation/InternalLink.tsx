@@ -4,7 +4,6 @@ import {Text} from "native-base";
 import {IButtonProps} from "native-base/src/components/primitives/Button/types";
 import {IBoxProps} from "native-base/src/components/primitives/Box/index";
 import {TransparentButton} from "../components/buttons/TransparentButton";
-import {NavigatorHelper} from "./NavigatorHelper";
 import {Navigation} from "./Navigation";
 
 interface AppState {

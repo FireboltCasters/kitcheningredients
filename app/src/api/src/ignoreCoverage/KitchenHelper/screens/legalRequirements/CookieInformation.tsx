@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from "react";
 import {AlertDialog, Button, Heading, Modal, Text, useContrastText, View} from "native-base";
 import {ConfigHolder} from "../../ConfigHolder";

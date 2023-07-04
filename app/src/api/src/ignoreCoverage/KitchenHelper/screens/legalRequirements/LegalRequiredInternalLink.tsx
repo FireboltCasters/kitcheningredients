@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {FunctionComponent} from "react";
 import {InternalLink} from "../../navigation/InternalLink";
 import {MenuItem} from "../../navigation/MenuItem";

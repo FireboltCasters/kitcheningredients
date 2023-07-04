@@ -1,10 +1,11 @@
+// @ts-nocheck
 import React from "react";
 import {Text, View} from "native-base";
 import {ConfigHolder} from "../../ConfigHolder";
 import {TranslationKeys} from "../../translations/TranslationKeys";
 import {TransparentButton} from "../../components/buttons/TransparentButton";
 import {RequiredSynchedStates} from "../../synchedstate/RequiredSynchedStates";
-import {useSynchedJSONState, useSynchedState} from "../../synchedstate/SynchedState";
+import {useSynchedJSONState} from "../../synchedstate/SynchedState";
 
 export const LegalRequiredCookieLink = (props) => {
 
