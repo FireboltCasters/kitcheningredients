@@ -1,3 +1,10 @@
+import {DefaultTranslator} from "./ignoreCoverage/KitchenHelper/translations/DefaultTranslator";
+export {DefaultTranslator}
+
+import {CookieDetails, CookieGroupEnum} from "./ignoreCoverage/KitchenHelper/screens/legalRequirements/CookieHelper";
+export {CookieDetails}
+export {CookieGroupEnum}
+
 import {useMyContrastColor} from "./ignoreCoverage/KitchenHelper/theme/useMyContrastColor";
 export {useMyContrastColor}
 
