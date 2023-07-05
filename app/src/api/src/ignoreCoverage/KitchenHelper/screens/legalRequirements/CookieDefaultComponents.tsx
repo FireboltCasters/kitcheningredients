@@ -13,23 +13,6 @@ Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen f�
     </ThemedMarkdown>
   }
 
-  static getCookieGroupDescriptionNecessary(){
-    return <ThemedMarkdown markdown={`
-Cookies zur Gewährleistung der Betriebsbereitschaft können nicht deaktiert werden, soweit wir sie verwenden, um unsere Dienste bereitzustellen.
-
-Wir verwenden Cookies für die Bereitstellung unserer Dienste, zum Beispiel, um:
-- Deine Identität zu überprüfen, wenn du dich auf der App oder Webseite anmeldest.
-- Zu erkennen, ob du ein registrierter Nutzer bist, und um weitere kundenspezifische Funktionen und Dienste bereitzustellen.
-- Betrugsprävention und Sicherheit zu gewährleisten.
-- Den Offline-Modus zu ermöglichen.
-- Funktionen, Dienste und Produkte zu liefern, die für dich von Interesse sein könnten, sofern es sich um unsere Produkte und Dienste handelt.
-- Deine Einstellungen, wie zum Beispiel Design, Währung und Sprache, zu berücksichtigen.
-
-Wir verwenden Cookies zudem, um zu verstehen, wie Kunden unsere Services nutzen, damit wir Verbesserungen vornehmen können. Beispielsweise verwenden wir Cookies, um Studien und Diagnosen durchzuführen, um die Inhalte, Produkte und Services von uns zu verbessern und die Leistung unserer Services zu verstehen.
-    `}>
-    </ThemedMarkdown>
-  }
-
 
   static getCookieComponentAbout(){
     return <ThemedMarkdown>

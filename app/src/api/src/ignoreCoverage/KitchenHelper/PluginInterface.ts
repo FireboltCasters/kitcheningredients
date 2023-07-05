@@ -72,13 +72,6 @@ export abstract class PluginInterface{
       return cookieGroup+" (Missing description)";
     }
 
-    getCookieGroupDescriptionComponent(cookieGroup: string){
-      if(cookieGroup === CookieGroupEnum.Necessary){
-        return CookieDefaultComponents.getCookieGroupDescriptionNecessary();
-      }
-      return cookieGroup+" (Missing description)";
-    }
-
     getCookieAdditionalGroups(){
       return [];
     }
