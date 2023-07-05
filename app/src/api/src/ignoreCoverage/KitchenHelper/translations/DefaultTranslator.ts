@@ -26,7 +26,7 @@ export class DefaultTranslator{
         case TranslationKeys.button_translation_switch: return "Wechseln";
         case TranslationKeys.button_disabled: return "Deaktiviert";
 
-        case TranslationKeys.by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy: return "Indem du fortfährst, stimmst du den AGB zu und bestätigst, dass du unsere Datenschutzrichtlinien gelesen hast.";
+        case TranslationKeys.by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy: return "Indem du fortfährst, bestätigst du, dass du unsere Datenschutzrichtlinien gelesen hast.";
 
         case TranslationKeys.cookie_policy_consent: return "Zustimmung";
         case TranslationKeys.cookie_policy_details: return "Details";
@@ -35,7 +35,7 @@ export class DefaultTranslator{
         case TranslationKeys.cookie_policy_button_deny_all: return "Ablehnen";
         case TranslationKeys.cookie_policy_button_allow_selected: return "Auswahl erlauben";
         case TranslationKeys.cookie_policy_consent_date: return "Einwilligungsdatum";
-        case TranslationKeys.cookie_policy_policy_date_updated: return "Die Cookie-Erklärung wurde das letzte Mal aktualisiert am";
+        case TranslationKeys.cookie_policy_policy_date_updated: return "Die Cookie-Erklärung wurde das letzte Mal aktualisiert am:";
         case TranslationKeys.cookies: return "Cookies";
         case TranslationKeys.cookie_policy_details_name: return "Name";
         case TranslationKeys.cookie_policy_details_provider: return "Anbieter";

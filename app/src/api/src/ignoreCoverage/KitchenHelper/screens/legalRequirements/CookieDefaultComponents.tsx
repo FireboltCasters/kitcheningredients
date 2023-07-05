@@ -30,12 +30,6 @@ Wir verwenden Cookies zudem, um zu verstehen, wie Kunden unsere Services nutzen,
     </ThemedMarkdown>
   }
 
-  static getCookieComponentDetailsMarketing(){
-    return <ThemedMarkdown markdown={`
-Marketing-Cookies werden genutzt, um Besucher über verschiedene Websites zu identifizieren. Ziel und Zweck ist es, den einzelnen Webnutzern Werbung zu zeigen, die für sie relevant und interessant ist, und damit wertvoller für Herausgeber und Drittinserenten.
-    `}>
-    </ThemedMarkdown>
-  }
 
   static getCookieComponentAbout(){
     return <ThemedMarkdown>
