@@ -21,6 +21,11 @@ export const RootStack = (props) => {
 
   const [initialSearch, setInitialSearch] = React.useState(search);
 
+  if(!NavigatorHelper.setNavigationHistory){
+    const [history, setHistory] = Navigation.useNavigationHistory();
+    NavigatorHelper.setSetNavigationHistoryFunction(setHistory); 
+  }
+
   let Drawer = RouteRegisterer.getDrawer();
 
   function getSearchParam(startURL){

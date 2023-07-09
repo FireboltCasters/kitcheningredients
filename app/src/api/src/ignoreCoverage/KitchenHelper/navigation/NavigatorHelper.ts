@@ -67,7 +67,6 @@ export class NavigatorHelper {
 
     static async navigateToRouteName(routeName: string, props= {}, keepHistory?: boolean){
         // Perform navigation if the app has mounted
-        const [history, setHistory] = Navigation.useNavigationHistory();
 
         console.log("navigateToRouteName() " + routeName+" "+new Date().toISOString());
 
@@ -82,7 +81,8 @@ export class NavigatorHelper {
 
               NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.jumpTo(routeName, {...params}));
               if(setHistory){
-                setHistory(NavigatorHelper.getHistory());
+                NavigatorHelper.setNavigationHistory(NavigatorHelper.getHistory());
+//                setHistory(NavigatorHelper.getHistory());
               }
         } else {
           console.log("navigateToRouteName() NOT isNavigationLoaded "+new Date().toISOString());
