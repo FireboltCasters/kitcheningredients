@@ -2513,6 +2513,12 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@xtuc/long",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@xtuc/long/LICENSE"
   },
+  "@yarnpkg/lockfile@1.1.0": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/yarnpkg/yarn/blob/master/packages/lockfile",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@yarnpkg/lockfile",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@yarnpkg/lockfile/README.md"
+  },
   "@zeit/schemas@2.6.0": {
     "licenses": "MIT",
     "repository": "https://github.com/zeit/schemas",
@@ -7231,6 +7237,13 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/kind-of",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/kind-of/LICENSE"
   },
+  "klaw-sync@6.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/manidlou/node-klaw-sync",
+    "publisher": "Mani Maghsoudlou",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/klaw-sync",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/klaw-sync/LICENSE"
+  },
   "kleur@3.0.3": {
     "licenses": "MIT",
     "repository": "https://github.com/lukeed/kleur",
@@ -8869,6 +8882,13 @@
     "publisher": "Jeff Dickey @jdxcode",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/password-prompt",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/password-prompt/README.hbs"
+  },
+  "patch-package@7.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ds300/patch-package",
+    "publisher": "David Sheldrick",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/patch-package",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/patch-package/LICENSE"
   },
   "path-browserify@1.0.1": {
     "licenses": "MIT",
@@ -12246,6 +12266,14 @@
     "url": "http://blog.izs.me/",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/yallist",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/yallist/LICENSE"
+  },
+  "yaml@2.3.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/eemeli/yaml",
+    "publisher": "Eemeli Aro",
+    "email": "eemeli@gmail.com",
+    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/yaml",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/yaml/LICENSE"
   },
   "yargs-parser@18.1.3": {
     "licenses": "ISC",

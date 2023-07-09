@@ -24,31 +24,7 @@ export const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps>=
 								 ...props}: any) => {
 
   const params = props?.route?.params;
-	const [reloadnumber, setReloadnumber] = useState(0)
-	const [serverInfo, setServerInfo] = useState(props.serverInfo)
-  const mountedRef = useRef(true)
-
-	async function loadServerInfo() {
-		try{
-			let serverInfoRemote = await ServerAPI.getServerInfo();
-      if (!mountedRef.current) return null
-			setServerInfo(serverInfoRemote);
-			setReloadnumber(reloadnumber+1);
-		} catch (err){
-			console.log("Error at get Server Info");
-			console.log(err);
-		}
-	}
-
-	// corresponding componentDidMount
-	useEffect(() => {
-		if(!serverInfo){
-			loadServerInfo();
-		}
-    return () => {
-      mountedRef.current = false
-    }
-	}, [params])
+  const serverInfo = ServerAPI.tempStore.serverInfo;
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
 

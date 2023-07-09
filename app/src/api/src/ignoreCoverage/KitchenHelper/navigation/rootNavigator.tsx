@@ -20,9 +20,6 @@ export const RootStack = (props) => {
   let search = getSearchParam(startURL);
 
   const [initialSearch, setInitialSearch] = React.useState(search);
-  const [history, setHistory] = Navigation.useNavigationHistory();
-
-  NavigatorHelper.setSetNavigationHistoryFunction(setHistory);
 
   let Drawer = RouteRegisterer.getDrawer();
 
@@ -37,35 +34,6 @@ export const RootStack = (props) => {
     return searchDict;
   }
 
-  /**
-   * We have to check if the url changed and if so, we have to navigate to the new route
-   * This is a workaround for the web version of react-navigation.
-   */
-  async function handleHashChange(){
-    let currentURL = window.location.href;
-    let currentRouteName = RouteHelper.getInitialRouteName(currentURL);
-    let currentSearch = getSearchParam(currentURL);
-    Navigation.navigateTo(currentRouteName, currentSearch, true);
-  }
-
-  /**
-   * We register a listener for the hash change event
-   */
-  function registerHashChangeForWeb(){
-    if(PlatformHelper.isWeb()){
-      window.addEventListener('hashchange', handleHashChange);
-      return () => window.removeEventListener('hashchange', handleHashChange);
-    }
-  }
-
-  useEffect(() => {
-    //let cleanUpFunction = registerHashChangeForWeb()
-    //return cleanUpFunction;
-  }, []);
-
-  useEffect(() => {
-    //console.log("RootStack: useEffect: history changed");
-  }, [history]);
 
   // TODO do we have this?
   // navigationOptions={{unmountInactiveRoutes: true}}

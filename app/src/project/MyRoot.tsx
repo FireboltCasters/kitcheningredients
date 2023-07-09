@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from "react";
-import {Text, View} from "native-base";
-import {FunctionComponent} from "react";
-import {EmptyTemplate, Menu, MenuItem, RequiredSynchedStates, useSynchedJSONState, useSynchedState} from "../api/src";
+import React, {FunctionComponent} from "react";
+import {View} from "native-base";
+import {RequiredSynchedStates, useSynchedJSONState} from "../api/src";
 
 export const MyRoot: FunctionComponent = (props) => {
 

@@ -306,14 +306,16 @@
 					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = KitchenSinkappnativebase/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Kitcheningredients;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.fireboltcasters.rocketmealsdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = de.fireboltcasters.kitcheningredients;
 				PRODUCT_NAME = kitchensinkappnativebase;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -333,14 +335,16 @@
 				DEVELOPMENT_TEAM = ABBVQY3QLL;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = KitchenSinkappnativebase/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Kitcheningredients;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.fireboltcasters.rocketmealsdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = de.fireboltcasters.kitcheningredients;
 				PRODUCT_NAME = kitchensinkappnativebase;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

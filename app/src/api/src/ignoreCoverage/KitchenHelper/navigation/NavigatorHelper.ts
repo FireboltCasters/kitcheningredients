@@ -67,8 +67,12 @@ export class NavigatorHelper {
 
     static async navigateToRouteName(routeName: string, props= {}, keepHistory?: boolean){
         // Perform navigation if the app has mounted
+
+
+        console.log("navigateToRouteName() " + routeName+" "+new Date().toISOString());
+
         if (NavigatorHelper.isNavigationLoaded()) {
-              console.log("navigateToRouteName() " + routeName);
+              console.log("navigateToRouteName() isNavigationLoaded "+new Date().toISOString());
               console.log(props);
 
               // @ts-ignore
@@ -76,25 +80,13 @@ export class NavigatorHelper {
               let usedEmptyParams = keepHistory ? {} : emptyParams;
               let params = {...usedEmptyParams, ...props};
 
-              /**
-              if(PlatformHelper.isWeb()){
-                let navigateSearch = Navigation.paramsToURLSearch(props);
-                if(navigateSearch){
-                  navigateSearch = "?"+navigateSearch;
-                }
-                //console.log("After changing the hash, the hook will be called again, so we do not need to call navigateTo again");
-                //@ts-ignore
-
-                // this will trigger on same page navigation with different params and on normal navigateToRouteName
-                window.location.hash = Navigation.ROUTE_PATH_PREFIX+routeName+navigateSearch;
-              }
-               */
-
               NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.jumpTo(routeName, {...params}));
-              if(NavigatorHelper.setNavigationHistory){
-                  NavigatorHelper.setNavigationHistory(NavigatorHelper.getHistory());
+              const [history, setHistory] = Navigation.useNavigationHistory();
+              if(setHistory){
+                setHistory(NavigatorHelper.getHistory());
               }
         } else {
+          console.log("navigateToRouteName() NOT isNavigationLoaded "+new Date().toISOString());
             let queueItem = new NavigationQueueItem(routeName, props);
             NavigatorHelper.navigationQueue.push(queueItem);
             // You can decide what to do if the app hasn't mounted

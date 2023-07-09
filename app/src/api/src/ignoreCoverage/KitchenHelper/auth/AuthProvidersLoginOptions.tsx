@@ -11,18 +11,7 @@ export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
 	const [firstFetch, setfirstFetch] = useState(true)
 	const [authProviders, setAuthProviders] = useState(undefined)
 	const [reloadnumber, setReloadnumber] = useState(0)
-	const [serverInfo, setServerInfo] = useState({})
-
-	async function loadServerInfo() {
-		try{
-			let serverInfoRemote = await ServerAPI.getServerInfo();
-			setServerInfo(serverInfoRemote);
-			setReloadnumber(reloadnumber+1);
-		} catch (err){
-			console.log("Error at get Server Info");
-			console.log(err);
-		}
-	}
+  const serverInfo = ServerAPI.tempStore.serverInfo;
 
 	async function fetchAuthProviders(){
 		try{
@@ -77,7 +66,6 @@ export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
 		if(firstFetch){
 			setfirstFetch(false);
 			fetchAuthProviders();
-			loadServerInfo();
 		}
 	}, [])
 

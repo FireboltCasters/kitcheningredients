@@ -37,24 +37,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
 		md: false,
 	})
 
-	const [reloadnumber, setReloadnumber] = useState(0)
-	const [serverInfo, setServerInfo] = useState(undefined)
-
-	async function loadServerInfo() {
-		try{
-			let serverInfoRemote = await ServerAPI.getServerInfo();
-			setServerInfo(serverInfoRemote);
-			setReloadnumber(reloadnumber+1);
-		} catch (err){
-			console.log("Error at get Server Info");
-			console.log(err);
-		}
-	}
-
-	// corresponding componentDidMount
-	useEffect(() => {
-		//loadServerInfo();
-	}, [])
+  const serverInfo = ServerAPI.tempStore.serverInfo;
 
 	function renderSpaceBetweenLogoAndSignIn(){
 		return (

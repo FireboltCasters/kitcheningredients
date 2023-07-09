@@ -22,29 +22,9 @@ export const EmptyTemplate = ({
 								 ...props}: any) => {
 
   const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
-	const [reloadnumber, setReloadnumber] = useState(0)
-	const [remoteServerInfo, setServerInfo] = useState(undefined)
 
   const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
   const keyboardVerticalOffset = paddingTop;
-
-	async function loadServerInfo() {
-		try{
-			let serverInfoRemote = await ServerAPI.getServerInfo();
-			setServerInfo(serverInfoRemote);
-			setReloadnumber(reloadnumber+1);
-		} catch (err){
-			console.log("Error at get Server Info");
-			console.log(err);
-		}
-	}
-
-	// corresponding componentDidMount
-	useEffect(() => {
-		if(!serverInfo){
-			loadServerInfo();
-		}
-	}, [props?.route?.params])
 
   function setDimensions(event){
     const {width, height} = event.nativeEvent.layout;

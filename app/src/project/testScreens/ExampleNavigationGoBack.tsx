@@ -5,6 +5,8 @@ import {ExampleNavigationGoBackSub} from "./ExampleNavigationGoBackSub";
 
 export const ExampleNavigationGoBack: FunctionComponent = (props) => {
 
+  console.log("ExampleNavigationGoBack: "+new Date().toISOString());
+
   const [history, setHistory] = Navigation.useNavigationHistory();
   const rawHistory = NavigatorHelper.getHistory();
 
