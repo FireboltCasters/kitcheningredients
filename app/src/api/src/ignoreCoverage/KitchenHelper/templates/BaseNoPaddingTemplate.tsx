@@ -34,6 +34,7 @@ const BaseNoPaddingTemplate: FunctionComponent<BaseNoPaddingTemplateProps> = Rea
   )
 });
 
-BaseNoPaddingTemplate.useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;
+(BaseNoPaddingTemplate as any).useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;
+
 
 export { BaseNoPaddingTemplate };

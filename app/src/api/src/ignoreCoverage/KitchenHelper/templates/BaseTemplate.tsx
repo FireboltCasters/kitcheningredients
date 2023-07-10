@@ -28,7 +28,6 @@ const BaseTemplate: FunctionComponent<BaseTemplateProps> = React.memo(({
   )
 });
 
-// @ts-ignore
-BaseTemplate.useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;
+(BaseTemplate as any).useBaseTemplateContentWidth = Layout.useBaseTemplateContentWidth;
 
 export { BaseTemplate };
