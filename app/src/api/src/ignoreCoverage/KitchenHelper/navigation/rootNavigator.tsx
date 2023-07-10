@@ -1,14 +1,13 @@
 // @ts-nocheck
-import React, {useEffect} from 'react';
+import React from 'react';
 import {RouteRegisterer} from "./RouteRegisterer";
-import {PlatformHelper} from "../helper/PlatformHelper";
 import {Navigation} from "./Navigation";
 import {CustomDrawerContent} from "./CustomDrawerContent";
 import {ConfigHolder} from "../../KitchenHelper/ConfigHolder";
 import {Layout} from "../../KitchenHelper/templates/Layout";
 import {DefaultNavigation} from "./DefaultNavigation";
 import {RouteHelper} from "./RouteHelper";
-import {NavigatorHelper} from "./NavigatorHelper";
+import {NavigationHistorySetter} from "./NavigationHistorySetter";
 
 export const RootStack = (props) => {
 
@@ -20,11 +19,6 @@ export const RootStack = (props) => {
   let search = getSearchParam(startURL);
 
   const [initialSearch, setInitialSearch] = React.useState(search);
-
-  if(!NavigatorHelper.setNavigationHistory){
-    const [history, setHistory] = Navigation.useNavigationHistory();
-    NavigatorHelper.setSetNavigationHistoryFunction(setHistory);
-  }
 
   let Drawer = RouteRegisterer.getDrawer();
 
@@ -70,6 +64,7 @@ export const RootStack = (props) => {
 
   return (
     <>
+      <NavigationHistorySetter/>
       <Drawer.Navigator initialRouteName={initialRouteName}
                         drawerStyle={drawerStyle}
                         drawerType={drawerType}
