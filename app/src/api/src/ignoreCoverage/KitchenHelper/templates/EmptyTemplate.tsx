@@ -1,25 +1,22 @@
-// @ts-nocheck
-import React, {useEffect, useState} from "react";
-import ServerAPI from "../ServerAPI";
+import React, {useState} from "react";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
-import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {RequiredNavigationBar} from "./RequiredNavigationBar";
-import {View, KeyboardAvoidingView, Text} from "native-base";
+import {KeyboardAvoidingView, View} from "native-base";
 
 import {Platform, StatusBar} from "react-native";
 import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 
-export const EmptyTemplate = ({
-								 children,
-								 navigation,
-								 title,
-								 navigateTo,
-								 serverInfo,
-								 _status,
-								 _hStack,
-                autoOpenCookies,
-								 ...props}: any) => {
+const EmptyTemplate = React.memo(({
+                                    children,
+                                    navigation,
+                                    title,
+                                    navigateTo,
+                                    serverInfo,
+                                    _status,
+                                    _hStack,
+                                    autoOpenCookies,
+                                    ...props}: any) => {
 
   const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
 
@@ -40,7 +37,7 @@ export const EmptyTemplate = ({
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
 
 
-	return(
+  return(
     <KitchenSafeAreaView>
       <KeyboardAvoidingView
         keyboardVerticalOffset = {keyboardVerticalOffset} // adjust the value here if you need more padding
@@ -57,5 +54,7 @@ export const EmptyTemplate = ({
         </View>
       </KeyboardAvoidingView>
     </KitchenSafeAreaView>
-	)
-}
+  )
+});
+
+export { EmptyTemplate };
