@@ -23,7 +23,7 @@ export const RootStack = (props) => {
 
   if(!NavigatorHelper.setNavigationHistory){
     const [history, setHistory] = Navigation.useNavigationHistory();
-    NavigatorHelper.setSetNavigationHistoryFunction(setHistory); 
+    NavigatorHelper.setSetNavigationHistoryFunction(setHistory);
   }
 
   let Drawer = RouteRegisterer.getDrawer();

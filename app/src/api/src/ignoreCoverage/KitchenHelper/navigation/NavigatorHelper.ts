@@ -80,7 +80,7 @@ export class NavigatorHelper {
               let params = {...usedEmptyParams, ...props};
 
               NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.jumpTo(routeName, {...params}));
-              if(setHistory){
+              if(NavigatorHelper.setNavigationHistory){
                 NavigatorHelper.setNavigationHistory(NavigatorHelper.getHistory());
 //                setHistory(NavigatorHelper.getHistory());
               }
