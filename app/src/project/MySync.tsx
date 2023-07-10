@@ -10,6 +10,7 @@ import {ExampleNavigationGoBackSub} from "./testScreens/ExampleNavigationGoBackS
 import {ExampleActionSheet} from "./testScreens/ExampleActionSheet";
 import {ExampleImageScreen} from "./testScreens/ExampleImageScreen";
 import {ExampleMarkdownScreen} from "./testScreens/ExampleMarkdownScreen";
+import {ExampleHeavyScreen} from "./testScreens/ExampleHeavyScreen";
 
 export const MySync: FunctionComponent = (props) => {
 
@@ -30,6 +31,7 @@ export const MySync: FunctionComponent = (props) => {
         ExampleTemplateUsageScreen,
         ExampleRoutesInformationsScreen,
         ExampleNavigationGoBack,
+        ExampleHeavyScreen,
         ExampleNavigationGoBackSub,
         ExampleActionSheet,
         ExampleImageScreen,

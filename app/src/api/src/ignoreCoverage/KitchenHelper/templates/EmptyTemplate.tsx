@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {CookieInformation} from "../screens/legalRequirements/CookieInformation";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {RequiredNavigationBar} from "./RequiredNavigationBar";
@@ -19,6 +19,15 @@ const EmptyTemplate = React.memo(({
                                     ...props}: any) => {
 
   const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
+  const [rendered, setRendered] = useState([]);
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
+      setRendered(childrenWithProps);
+    }, 0)
+  }, []);
 
   const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
   const keyboardVerticalOffset = paddingTop;
@@ -34,7 +43,7 @@ const EmptyTemplate = React.memo(({
     setDimenstion({width: width, height: adjustedHeight});
   }
 
-  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
+
 
 
   return(
@@ -47,7 +56,7 @@ const EmptyTemplate = React.memo(({
           <View style={{height: "100%", width: "100%", flexDirection: "column-reverse"}}>
             <RequiredNavigationBar />
             <View style={{flex: 1, width: "100%", height: "100%"}} onLayout={setDimensions} >
-              {childrenWithProps}
+              {rendered}
             </View>
           </View>
           <CookieInformation autoOpenCookies={autoOpenCookies} />

@@ -1,8 +1,9 @@
-import React, {FunctionComponent, useState} from "react";
+import React, {FunctionComponent, useEffect, useState} from "react";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {BaseNoPaddingTemplate, BaseNoPaddingTemplateProps} from "./BaseNoPaddingTemplate";
 import {BasePadding} from "./BasePadding";
+import {Text} from "native-base";
 
 export interface BaseTemplateProps extends BaseNoPaddingTemplateProps{
 
@@ -17,12 +18,21 @@ const BaseTemplate: FunctionComponent<BaseTemplateProps> = React.memo(({
                                                                          ...props
                                                                        }: any) => {
 
-  const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
+  const [rendered, setRendered] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
+      setRendered(childrenWithProps);
+    }, 0)
+  }, []);
+
+
 
   return(
     <BaseNoPaddingTemplate {...props} title={title} header={header}>
       <BasePadding>
-        {childrenWithProps}
+        {rendered}
       </BasePadding>
     </BaseNoPaddingTemplate>
   )

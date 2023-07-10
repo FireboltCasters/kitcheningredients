@@ -1,8 +1,6 @@
 import React from "react";
 
-import {
-  PluginInterface,
-} from "./../api/src/index";
+import {PluginInterface,} from "./../api/src/index";
 
 import {SynchedStateKeys} from "./helper/SynchedStateKeys";
 import {StorageKeys} from "./helper/StorageKeys";
@@ -10,7 +8,6 @@ import {MySync} from "./MySync";
 import {MyLoading} from "./MyLoading";
 import {MyRoot} from "./MyRoot";
 import {ExampleHomeComponent} from "./testScreens/ExampleHomeComponent";
-import {ExampleActionSheet} from "./testScreens/ExampleActionSheet";
 
 export default class Project extends PluginInterface{
 
