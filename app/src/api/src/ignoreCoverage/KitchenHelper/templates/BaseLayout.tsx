@@ -25,64 +25,19 @@ export const BaseLayout = ({
 
 	const ssoIconColor = useProjectColor();
 
-  function renderActions(){
-    return null;
+  function renderHeadingContent(){
+    if(header!==undefined){
+      return header;
+    } else {
+      return(
+        <HeaderWithActions
+          headerBackgroundColor={ssoIconColor}
+          title={title}
+          showbackbutton={showbackbutton}
+        />
+      )
+    }
   }
-
-  function renderBottomRow(){
-    return null;
-  }
-
-	function renderHeading(){
-	  if(header!==undefined){
-	    return header;
-    }
-
-		let color = useCustomHeaderTextColor(props);
-
-
-    /**
-    if(!isSmallDevice){
-      leftButton = null;
-    }
-   */
-
-    let drawerButton = <DrawerButton />
-    let leftButton = drawerButton
-
-    if(!!showbackbutton){ //show alsways the back button even on small devices
-        leftButton = <BackButton />
-    }
-
-		return (
-      <View style={{width: "100%"}}>
-        <View style={{flexDirection: "row", width: "100%", alignItems: "center"}}>
-          {leftButton}
-          <View style={{width: 12}} />
-          <View style={{flex: 1,justifyContent: "flex-start"}}>
-            <Heading
-              color={color}
-              // fontSize={{
-              // 	lg: '3xl',
-              // }}
-              _web={{ py: 2 }}
-              isTruncated
-
-            >
-              {!!title ? title : ConfigHolder.config.title}
-            </Heading>
-          </View>
-          <View style={{justifyContent: "flex-end", flexDirection: "row", alignItems: "center"}}>
-            {renderActions()}
-          </View>
-        </View>
-        <View style={{flexDirection: "row", width: "100%", alignItems: "center"}}>
-          {renderBottomRow()}
-        </View>
-      </View>
-		)
-	}
-
 
 	let headingBackgroundColor = props.headingBackgroundColor;
 	if(!headingBackgroundColor){
@@ -121,16 +76,7 @@ export const BaseLayout = ({
 							alignItems="center"
 							w="100%"
 					>
-
-						{/* <HStack alignItems="center" justifyContent="center"> */}
-						{/* <ChevronLeftIcon /> */}
-            <HeaderWithActions
-              headerBackgroundColor={ssoIconColor}
-              title={title}
-              showbackbutton={showbackbutton}
-            />
-						{/* </HStack> */}
-						{/* <Text color={colorMode == 'dark' ? 'white' : 'gray.800'}>v3</Text> */}
+            {renderHeadingContent()}
 					</HStack>
 				</HStack>
 				<View style={{width: "100%", flex: 1, alignItems: "center"}} onLayout={props.onLayout}>
