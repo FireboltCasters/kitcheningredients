@@ -9,7 +9,7 @@ import {DefaultNavigation} from "./DefaultNavigation";
 import {RouteHelper} from "./RouteHelper";
 import {NavigationHistorySetter} from "./NavigationHistorySetter";
 import {ExampleHeavyScreen} from "../../../../../project/testScreens/ExampleHeavyScreen";
-import {ExampleHeavyScreenClass} from "../../../../../project/testScreens/ExampleHeavyScreenClass";
+import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
 
 export const RootStack = (props) => {
 
@@ -21,6 +21,7 @@ export const RootStack = (props) => {
   let search = RouteHelper.getSearchParam(startURL);
 
   const [initialSearch, setInitialSearch] = React.useState(search);
+  const [drawerConfig, setDrawerConfig] = useSynchedDrawerConfig();
 
   let Drawer = RouteRegisterer.getDrawer();
 
@@ -54,6 +55,8 @@ export const RootStack = (props) => {
 
   console.log("Render RootStack")
 
+  let drawerPosition = drawerConfig?.drawerPosition || 'left';
+
   return (
     <>
       <NavigationHistorySetter/>
@@ -64,7 +67,7 @@ export const RootStack = (props) => {
                         redirectToLogin={props.redirectToLogin+""}
                         reloadNumber={ConfigHolder.instance.state.reloadNumber}
                         swipeEnabled={false}
-                        drawerPosition={'left' /** | 'right' */}
+                        drawerPosition={drawerPosition}
                         drawerContent={(props) => <CustomDrawerContent {...props} />}
                         screenOptions={{
                           headerShown: false,

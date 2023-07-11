@@ -13,6 +13,9 @@ import {Navigation} from "../navigation/Navigation";
 import {LegalRequiredLinks} from "../screens/legalRequirements/LegalRequiredLinks";
 import {TranslationKeys} from "../translations/TranslationKeys";
 import {MyTouchableOpacity} from "../components/buttons/MyTouchableOpacity";
+import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
+import {DrawerButton} from "./../templates/DrawerButton";
+import {Layout} from "../templates/Layout";
 
 export const CustomDrawerContent: FunctionComponent = (props) => {
 
@@ -20,6 +23,12 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 
   const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
   const translation_home = useTranslation(TranslationKeys.home);
+
+  let isSmallDevice = Layout.usesSmallDevice();
+
+  const [drawerConfig, setDrawerConfig] = useSynchedDrawerConfig();
+  let drawerPosition = drawerConfig?.drawerPosition || 'left';
+  let flexDirection = drawerPosition === 'left' ? "row" : "row-reverse";
 
 	function renderDrawerItems(){
 		let output = [];
@@ -74,6 +83,17 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 		customBackgroundStyle = {backgroundColor: bgColor}
 	}
 
+	function renderDrawerCloseButton(){
+	  if(isSmallDevice){
+	    return(
+        <View style={{width: "100%", flexDirection: flexDirection}}>
+          <DrawerButton closeDrawer={true} useTextColor={true} />
+        </View>
+      )
+    }
+	  return null;
+  }
+
 	return (
 		<MyThemedBox style={[{height: "100%"}, customBackgroundStyle]}>
 			<SafeAreaView style={{height: "100%", width: "100%"}}>
@@ -98,6 +118,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 					{renderDrawerItems()}
 				</DrawerContentScrollView>
 				{renderLegalRequirements()}
+        {renderDrawerCloseButton()}
 			</SafeAreaView>
 		</MyThemedBox>
 	);

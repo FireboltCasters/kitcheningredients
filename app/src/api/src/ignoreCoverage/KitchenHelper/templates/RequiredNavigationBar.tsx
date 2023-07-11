@@ -5,6 +5,7 @@ import {ConfigHolder} from "../ConfigHolder";
 import {DrawerButton} from "./DrawerButton";
 import {useProjectColor} from "./useProjectColor";
 import {RequiredSettingsButton} from "../screens/settings/RequiredSettingsButton";
+import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
 
 export const RequiredNavigationBar = ({
                                         children,
@@ -20,6 +21,10 @@ export const RequiredNavigationBar = ({
                                       }: any) => {
 
   const ssoIconColor = useProjectColor();
+
+  const [drawerConfig, setDrawerConfig] = useSynchedDrawerConfig();
+  let drawerPosition = drawerConfig?.drawerPosition || 'left';
+  let flexDirection = drawerPosition === 'left' ? "row" : "row-reverse";
 
   let childContent = ConfigHolder.plugin.getBottomNavbarComponent();
 
@@ -45,19 +50,17 @@ export const RequiredNavigationBar = ({
     ));
   }
 
-  let leftContent = <View style={{flexDirection: "row", alignItems: "center"}}>
-    <View style={{width: 12}} />
+  let leftContent = <View style={{flexDirection: flexDirection, alignItems: "center"}}>
     <DrawerButton />
-    <View style={{width: 12}} />
   </View>
 
 	return (
     <View style={{width: "100%", backgroundColor: ssoIconColor}}>
-      <View style={{flexDirection: "row", width: "100%", alignItems: "center"}}>
+      <View style={{flexDirection: flexDirection, width: "100%", alignItems: "center"}}>
         {leftContent}
         <ScrollView
           horizontal
-          contentContainerStyle={{flexGrow: 1, flexDirection: "row"}}
+          contentContainerStyle={{flexGrow: 1, flexDirection: flexDirection}}
           showsHorizontalScrollIndicator={false}
         >
           {renderChildren(childContent)}

@@ -8,6 +8,7 @@ import {DrawerButton} from "./DrawerButton";
 import {BackButton} from "./BackButton";
 import {useCustomHeaderTextColor} from "./useHeaderTextColor";
 import {useProjectColor} from "./useProjectColor";
+import {HeaderWithActions} from "./HeaderWithActions";
 
 export const BaseLayout = ({
 						   children,
@@ -22,7 +23,6 @@ export const BaseLayout = ({
 						   ...props
 					   }: any) => {
 
-	let isSmallDevice = Layout.usesSmallDevice();
 	const ssoIconColor = useProjectColor();
 
   function renderActions(){
@@ -111,12 +111,12 @@ export const BaseLayout = ({
 					left={0}
 					top={0}
 					right={0}
-					px={4}
+					px={0}
 					zIndex={-1}
 					{..._hStack}
 					style={backgroundStyle}
 				>
-					<HStack py={2}
+					<HStack py={0}
 						// alignItems="flex-end"
 							alignItems="center"
 							w="100%"
@@ -124,7 +124,11 @@ export const BaseLayout = ({
 
 						{/* <HStack alignItems="center" justifyContent="center"> */}
 						{/* <ChevronLeftIcon /> */}
-						{renderHeading()}
+            <HeaderWithActions
+              headerBackgroundColor={ssoIconColor}
+              title={title}
+              showbackbutton={showbackbutton}
+            />
 						{/* </HStack> */}
 						{/* <Text color={colorMode == 'dark' ? 'white' : 'gray.800'}>v3</Text> */}
 					</HStack>

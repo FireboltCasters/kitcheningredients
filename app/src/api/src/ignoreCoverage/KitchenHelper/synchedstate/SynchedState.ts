@@ -27,6 +27,22 @@ export function useSynchedJSONState(storageKey): [value: any, setValue: (value) 
   ]
 }
 
+export function useSynchedDrawerConfig(){
+  let [drawerConfig, setDrawerConfig] = useSynchedJSONState(RequiredStorageKeys.CACHED_DRAWER_CONFIG);
+
+  if(!drawerConfig){
+    drawerConfig = {
+      drawerPosition: "left",
+    }
+  }
+
+  return [
+    drawerConfig,
+    setDrawerConfig
+  ];
+
+}
+
 export function useSynchedCookieConfig(): [CookieConfigType, (value: CookieConfigType) => {}] {
   // define cookieConfig type
 

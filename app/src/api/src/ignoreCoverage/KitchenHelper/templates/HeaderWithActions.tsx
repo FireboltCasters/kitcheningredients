@@ -4,6 +4,7 @@ import {DrawerButton} from "./DrawerButton";
 import {BackButton} from "./BackButton";
 
 import {Heading, Text, View} from "native-base";
+import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
 
 export interface AppState{
 	renderActions?: () => any;
@@ -14,6 +15,11 @@ export interface AppState{
 }
 export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
 	const textColor = useCustomHeaderTextColor();
+
+  const [drawerConfig, setDrawerConfig] = useSynchedDrawerConfig();
+  let drawerPosition = drawerConfig?.drawerPosition || 'left';
+  let flexDirection = drawerPosition === 'left' ? "row" : "row-reverse";
+  let textAlign = drawerPosition === 'left' ? "left" : "right";
 
 	const params = props?.route?.params;
 	const showBackButton = params?.showbackbutton;
@@ -39,9 +45,9 @@ export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
 			return props.renderCustomTitle();
 		} else if(props?.title){
 			return(
-				<Heading>
-					<Text color={textColor} >{props?.title}</Text>
-				</Heading>
+        <Heading textAlign={textAlign} flex={1}>
+          <Text color={textColor} >{props?.title}</Text>
+        </Heading>
 			)
 		}
 	}
@@ -62,7 +68,7 @@ export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
 	function renderHeader(){
 		return(
 			<View style={{width: "100%"}}>
-				<View style={{flexDirection: "row", width: "100%", alignItems: "center"}}>
+				<View style={{flexDirection: flexDirection, width: "100%", alignItems: "center"}}>
 					{renderDrawerButton()}
 					<View style={{flex: 1,justifyContent: "flex-start"}}>
 						{renderTitle()}
@@ -70,6 +76,7 @@ export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
 					<View style={{justifyContent: "flex-end", flexDirection: "row", alignItems: "center"}}>
 						{renderActions()}
 					</View>
+          <View style={{width: 4}} />
 				</View>
 				<View style={{flexDirection: "row", width: "100%", alignItems: "center"}}>
 					{renderBottomRow()}
