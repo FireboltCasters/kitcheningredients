@@ -18,7 +18,7 @@ export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
 
   const [drawerConfig, setDrawerConfig] = useSynchedDrawerConfig();
   let drawerPosition = drawerConfig?.drawerPosition || 'left';
-  let flexDirection = drawerPosition === 'left' ? "row" : "row-reverse";
+  let flexDirection: "row" | "row-reverse" | "column" | "column-reverse" = drawerPosition === 'left' ? "row" : "row-reverse";
   let textAlign = drawerPosition === 'left' ? "left" : "right";
 
 	const params = props?.route?.params;

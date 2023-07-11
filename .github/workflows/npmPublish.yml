@@ -4,14 +4,11 @@ on:
     branches:
       - main
       - master
-#on:
-#  workflow_run:
-#    workflows: ["Check"]
-#    branches: [master]
-#    types:
-#      - completed
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: ./app/src/api/
 #    if: ${{ github.event.workflow_run.conclusion == 'success' && !startsWith(github.event.head_commit.message, '[RELEASE]') }}
     if: ${{ !startsWith(github.event.head_commit.message, '[RELEASE]') }}
     runs-on: ubuntu-latest
@@ -21,12 +18,11 @@ jobs:
         with:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: cd ./app/src/api/ && npm ci
-      - run: cd ./app/src/api/ && git config --global user.name 'Firebolt Caster'
-      - run: cd ./app/src/api/ && git config --global user.email 'nilsbaumgartner@live.de'
-      - run: cd ./app/src/api/ && ls
-      - run: cd ./app/src/api/ && git stash
-      - run: cd ./app/src/api/ && ls && npm run releaseCI
+      - run: npm ci
+      - run: git config --global user.name 'Firebolt Caster'
+      - run: git config --global user.email 'nilsbaumgartner@live.de'
+      - run: git stash
+      - run: npm run releaseCI
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   gh-pages:
