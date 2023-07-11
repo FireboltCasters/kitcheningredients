@@ -8,7 +8,6 @@ import {Layout} from "../../KitchenHelper/templates/Layout";
 import {DefaultNavigation} from "./DefaultNavigation";
 import {RouteHelper} from "./RouteHelper";
 import {NavigationHistorySetter} from "./NavigationHistorySetter";
-import {ExampleHeavyScreen} from "../../../../../project/testScreens/ExampleHeavyScreen";
 import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
 
 export const RootStack = (props) => {
@@ -76,15 +75,6 @@ export const RootStack = (props) => {
                         }}
       >
         {screens}
-        <Drawer.Screen key={"test"} name={"Test"} params={undefined} initialParams={undefined}>
-          {(props) => {
-            // use react memo
-            let memoizedComponent = React.useMemo(() => {
-              return <ExampleHeavyScreen/>
-            }, []);
-            return memoizedComponent
-          }}
-        </Drawer.Screen>
       </Drawer.Navigator>
       {pluginRootComponent}
     </>
