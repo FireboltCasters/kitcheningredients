@@ -805,4 +805,4 @@ var KitchenSkeleton=function KitchenSkeleton(props){return react__WEBPACK_IMPORT
 /***/ })
 
 },[[540,1,2]]]);
-//# sourceMappingURL=app.0932b118.chunk.js.map
+//# sourceMappingURL=app.a88b9573.chunk.js.map
