@@ -11,6 +11,7 @@ import {ExampleActionSheet} from "./testScreens/ExampleActionSheet";
 import {ExampleImageScreen} from "./testScreens/ExampleImageScreen";
 import {ExampleMarkdownScreen} from "./testScreens/ExampleMarkdownScreen";
 import {ExampleHeavyScreen} from "./testScreens/ExampleHeavyScreen";
+import {ExampleHeavySkeleton} from "./testScreens/ExampleHeavySkeleton";
 
 export const MySync: FunctionComponent = (props) => {
 
@@ -35,7 +36,8 @@ export const MySync: FunctionComponent = (props) => {
         ExampleNavigationGoBackSub,
         ExampleActionSheet,
         ExampleImageScreen,
-        ExampleMarkdownScreen
+        ExampleMarkdownScreen,
+        ExampleHeavySkeleton
       ],
       BaseTemplate
     )

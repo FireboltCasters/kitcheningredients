@@ -45,9 +45,15 @@ export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
 			return props.renderCustomTitle();
 		} else if(props?.title){
 			return(
-        <Heading textAlign={textAlign} flex={1}>
-          <Text color={textColor} >{props?.title}</Text>
-        </Heading>
+          <Heading
+            textAlign={textAlign}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <Text color={textColor}>{props?.title}</Text>
+          </Heading>
 			)
 		}
 	}

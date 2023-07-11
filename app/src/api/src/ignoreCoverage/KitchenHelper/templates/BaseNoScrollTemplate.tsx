@@ -6,6 +6,7 @@ import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {NavigatorHelper} from "./../navigation/NavigatorHelper";
 import {Platform, StatusBar} from "react-native";
 import {EmptyTemplate} from "./EmptyTemplate";
+import {KitchenSkeleton} from "../project/KitchenSkeleton";
 
 export interface BaseNoScrollTemplateProps{
   title?: string,
@@ -26,6 +27,10 @@ const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps> = React
   const params = props?.route?.params;
   const serverInfo = ServerAPI.tempStore.serverInfo;
 
+  const [renderHeader, setRenderHeader] = React.useState(false);
+  const [renderContent, setRenderContent] = React.useState(false);
+  const [showLoader, setShowLoader] = React.useState(false);
+
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
 
   let showbackbutton = params?.showbackbutton;
@@ -33,15 +38,47 @@ const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps> = React
     showbackbutton = false;
   }
 
+  React.useEffect(() => {
+    setTimeout(() => {
+      setRenderHeader(true);
+    }, 1)
+    setTimeout(() => {
+      setShowLoader(true);
+    }, 1000)
+  }, []);
+
+  React.useEffect(() => {
+    if(renderHeader && !renderContent) {
+      setTimeout(() => {
+        setRenderContent(true);
+      }, 0)
+    }
+  }, [renderHeader]);
+
   const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
   const keyboardVerticalOffset = paddingTop;
+
+  let renderedContent = null;
+  if(showLoader){
+    renderedContent = (
+      <KitchenSkeleton />
+    )
+  }
+  if(renderContent){
+    renderedContent = childrenWithProps
+  }
+
+  let renderedHeader = null;
+  if(renderHeader){
+    renderedHeader = header;
+  }
 
   return (
     <EmptyTemplate autoOpenCookies={props?.autoOpenCookies}>
       <View flex={1} flexDirection={"row"}>
-        <BaseLayout title={title} serverInfo={serverInfo} header={header} showbackbutton={showbackbutton} >
+        <BaseLayout title={title} serverInfo={serverInfo} header={renderedHeader} showbackbutton={showbackbutton} >
           <View style={{width: "100%", height: "100%"}} >
-            {childrenWithProps}
+            {renderedContent}
           </View>
         </BaseLayout>
       </View>

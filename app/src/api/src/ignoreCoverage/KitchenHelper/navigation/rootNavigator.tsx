@@ -70,6 +70,7 @@ export const RootStack = (props) => {
                         drawerContent={(props) => <CustomDrawerContent {...props} />}
                         screenOptions={{
                           headerShown: false,
+                          animationEnabled: false,
                           //unmountOnBlur: true
                           // preload screens
                         }}
