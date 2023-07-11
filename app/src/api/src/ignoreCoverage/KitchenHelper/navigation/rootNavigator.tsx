@@ -42,6 +42,7 @@ export const RootStack = (props) => {
 
   const showOnlyScreensForAnonymUser = !ConfigHolder.instance.getUser();
   let screens = showOnlyScreensForAnonymUser ? DefaultNavigation.getAnonymUserScreens(initialSearch) : DefaultNavigation.getAllScreens(initialSearch);
+  let unmountOnBlur = showOnlyScreensForAnonymUser ? true : false;
 
   let pluginRootComponent = null;
   if(!!ConfigHolder.plugin.getRootComponent){
@@ -71,7 +72,7 @@ export const RootStack = (props) => {
                         screenOptions={{
                           headerShown: false,
                           animationEnabled: false,
-                          //unmountOnBlur: true
+                          unmountOnBlur: unmountOnBlur
                           // preload screens
                         }}
       >
