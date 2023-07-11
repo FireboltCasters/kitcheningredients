@@ -36,6 +36,7 @@ export class Navigation {
     static DEFAULT_MENU_KEY_SETTINGS = RouteHelper.getNameOfComponent(Settings);
 
     static ROUTE_PATH_PREFIX = "/";
+    static ROUTE_HASH_PREFIX = "#";
 
     // a dict with string to Route
     private static registeredComponents : {[key: string]: RouteProps} = {};

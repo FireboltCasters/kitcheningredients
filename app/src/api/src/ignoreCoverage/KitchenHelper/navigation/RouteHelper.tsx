@@ -21,8 +21,19 @@ export class RouteHelper {
     return routeName;
   }
 
+  static getSearchParam(startURL){
+    let search = RouteHelper.getSearchParamString(startURL);
+    // parse for search params in url to dict
+    let searchParams = new URLSearchParams(search);
+    let searchDict = {};
+    for (let [key, value] of searchParams) {
+      searchDict[key] = value;
+    }
+    return searchDict;
+  }
+
   static getHashRouteWithSearchParams(startURL){
-    let hash = startURL?.split("#")[1] || "";
+    let hash = startURL?.split(Navigation.ROUTE_HASH_PREFIX)[1] || "";
     if(hash.startsWith(Navigation.ROUTE_PATH_PREFIX)){
       hash = hash.substr(1);
     }

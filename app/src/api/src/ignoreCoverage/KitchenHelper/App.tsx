@@ -94,6 +94,12 @@ export default class App extends React.Component<any, any>{
     });
   }
 
+  async setStartURL(startURL){
+    await ConfigHolder.instance.setState({
+      startURL: startURL,
+    });
+  }
+
 	async setHideDrawer(hideDrawer, nextRouteName?){
     let currentRouteName = Navigation.getCurrentRouteName();
 		if(ConfigHolder.instance.state.hideDrawer!==hideDrawer){
@@ -103,7 +109,7 @@ export default class App extends React.Component<any, any>{
 			await ConfigHolder.instance.setState({
 				hideDrawer: hideDrawer,
 				reloadNumber: ConfigHolder.instance.state.reloadNumber+1,
-        startURL: "#"+useRouteName,
+        startURL: Navigation.ROUTE_HASH_PREFIX+useRouteName,
 			});
 		}
 	}
@@ -297,6 +303,8 @@ export default class App extends React.Component<any, any>{
     }
 
     const theme = this.getBaseTheme();
+
+		console.log("App. Render");
 
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>

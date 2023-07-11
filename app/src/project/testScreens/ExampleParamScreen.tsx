@@ -13,11 +13,13 @@ export const ExampleParamScreen: FunctionComponent = (props) => {
     <View>
       <Text>{JSON.stringify(props, null, 2)}</Text>
       <Button onPress={() => {setCounter(counter+1)}}>
-        <Text>{"State Counter: "+counter}</Text>
+        {"State Counter: "+counter}
       </Button>
       <Button onPress={() => {
         Navigation.navigateTo("ExampleParamScreen", {testParam: parseInt(testParam)+1})
-      }} ><Text>{"Increase Param: "+testParam}</Text></Button>
+      }} >
+        {"Increase Param: "+testParam}
+      </Button>
       <TouchableOpacity onPress={() => {
         Navigation.navigateTo("Subpath")
       }}>

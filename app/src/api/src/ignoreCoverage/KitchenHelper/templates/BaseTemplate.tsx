@@ -18,6 +18,7 @@ const BaseTemplate: FunctionComponent<BaseTemplateProps> = React.memo(({
                                                                          ...props
                                                                        }: any) => {
 
+  /**
   const [rendered, setRendered] = useState([]);
 
   useEffect(() => {
@@ -26,7 +27,10 @@ const BaseTemplate: FunctionComponent<BaseTemplateProps> = React.memo(({
       setRendered(childrenWithProps);
     }, 0)
   }, []);
+  */
 
+  const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});
+  const rendered = childrenWithProps;
 
 
   return(

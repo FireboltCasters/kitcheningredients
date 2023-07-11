@@ -19,6 +19,8 @@ const EmptyTemplate = React.memo(({
                                     ...props}: any) => {
 
   const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
+
+/**
   const [rendered, setRendered] = useState([]);
 
 
@@ -28,6 +30,10 @@ const EmptyTemplate = React.memo(({
       setRendered(childrenWithProps);
     }, 0)
   }, []);
+  */
+
+  const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
+  const rendered = childrenWithProps;
 
   const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
   const keyboardVerticalOffset = paddingTop;

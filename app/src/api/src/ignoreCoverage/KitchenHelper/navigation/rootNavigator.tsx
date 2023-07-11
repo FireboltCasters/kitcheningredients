@@ -8,6 +8,8 @@ import {Layout} from "../../KitchenHelper/templates/Layout";
 import {DefaultNavigation} from "./DefaultNavigation";
 import {RouteHelper} from "./RouteHelper";
 import {NavigationHistorySetter} from "./NavigationHistorySetter";
+import {ExampleHeavyScreen} from "../../../../../project/testScreens/ExampleHeavyScreen";
+import {ExampleHeavyScreenClass} from "../../../../../project/testScreens/ExampleHeavyScreenClass";
 
 export const RootStack = (props) => {
 
@@ -16,23 +18,11 @@ export const RootStack = (props) => {
   const startURL = props?.startURL || null;
 
   let initialRouteName = RouteHelper.getInitialRouteName(startURL);
-  let search = getSearchParam(startURL);
+  let search = RouteHelper.getSearchParam(startURL);
 
   const [initialSearch, setInitialSearch] = React.useState(search);
 
   let Drawer = RouteRegisterer.getDrawer();
-
-  function getSearchParam(startURL){
-    let search = RouteHelper.getSearchParamString(startURL);
-    // parse for search params in url to dict
-    let searchParams = new URLSearchParams(search);
-    let searchDict = {};
-    for (let [key, value] of searchParams) {
-      searchDict[key] = value;
-    }
-    return searchDict;
-  }
-
 
   // TODO do we have this?
   // navigationOptions={{unmountInactiveRoutes: true}}
@@ -62,12 +52,15 @@ export const RootStack = (props) => {
     initialRouteName = Navigation.DEFAULT_ROUTE_HOME;
   }
 
+  console.log("Render RootStack")
+
   return (
     <>
       <NavigationHistorySetter/>
       <Drawer.Navigator initialRouteName={initialRouteName}
                         drawerStyle={drawerStyle}
                         drawerType={drawerType}
+
                         redirectToLogin={props.redirectToLogin+""}
                         reloadNumber={ConfigHolder.instance.state.reloadNumber}
                         swipeEnabled={false}
@@ -75,10 +68,20 @@ export const RootStack = (props) => {
                         drawerContent={(props) => <CustomDrawerContent {...props} />}
                         screenOptions={{
                           headerShown: false,
-                          unmountOnBlur: true
+                          //unmountOnBlur: true
+                          // preload screens
                         }}
       >
         {screens}
+        <Drawer.Screen key={"test"} name={"Test"} params={undefined} initialParams={undefined}>
+          {(props) => {
+            // use react memo
+            let memoizedComponent = React.useMemo(() => {
+              return <ExampleHeavyScreen/>
+            }, []);
+            return memoizedComponent
+          }}
+        </Drawer.Screen>
       </Drawer.Navigator>
       {pluginRootComponent}
     </>

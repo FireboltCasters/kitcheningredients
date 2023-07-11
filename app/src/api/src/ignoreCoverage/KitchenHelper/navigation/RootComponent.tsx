@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import EnviromentHelper from "../EnviromentHelper";
 import {navigationRef, isReadyRef, NavigatorHelper} from "./NavigatorHelper";
@@ -10,9 +10,12 @@ import {useBackgroundColor} from "../templates/useBackgroundColor";
 import {Linking} from "react-native";
 import {Navigation} from "./Navigation";
 import {PlatformHelper} from "../helper/PlatformHelper";
+import {RouteHelper} from "./RouteHelper";
 
 export const Root = (props) => {
 	const bgColor = useBackgroundColor()
+
+  let ignoreNextHashChange = false;
 
   const routeNameRef = useRef();
 
@@ -21,6 +24,38 @@ export const Root = (props) => {
 			isReadyRef.current = false
 		};
 	}, []);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (ignoreNextHashChange) {
+        ignoreNextHashChange = false;
+        return;
+      }
+      console.log("handleHashChange");
+      let currentUrl = window.location.href;
+      console.log("currentUrl: "+currentUrl);
+      let hash = window.location.hash;
+      console.log("hash:"+hash);
+//      ConfigHolder.instance.setStartURL(currentUrl);
+
+      let initialRouteName = RouteHelper.getInitialRouteName(currentUrl);
+      let search = RouteHelper.getSearchParam(currentUrl);
+      console.log("initialRouteName: "+initialRouteName);
+      console.log("search: "+search);
+      NavigatorHelper.navigateToRouteName(initialRouteName, search, true);
+    }
+
+    if(PlatformHelper.isWeb()){
+      // add EventListener is url was manually changed or go back in history
+      window.addEventListener('hashchange', handleHashChange, false);
+
+      return () => {
+        // Cleanup
+        window.removeEventListener('hashchange', handleHashChange, false);
+      };
+    }
+  }, []);
+
 
 	let subroute = "myapp/app/";
 	try{
@@ -37,6 +72,8 @@ export const Root = (props) => {
   }
 	//let linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
 
+  console.log("RootComponent render");
+
 	return (
 		<NavigationContainer
 			ref={navigationRef}
@@ -52,6 +89,8 @@ export const Root = (props) => {
         }
 			}}
       onStateChange={async () => {
+        console.log("RootComponent onStateChange")
+
         let trackScreenView = () => {}
 
         if(NavigatorHelper.isNavigationLoaded()){
@@ -60,7 +99,6 @@ export const Root = (props) => {
           if(!!currentNavigation && !!currentNavigation.getCurrentRoute){
             const currentRoute = currentNavigation.getCurrentRoute()
             console.log("onStateChange");
-            console.log("currentRoute", currentRoute);
             const currentRouteName = currentRoute?.name || "";
             const currentRouteParams = currentRoute?.params || {};
             trackScreenView = () => {
@@ -76,7 +114,16 @@ export const Root = (props) => {
                 //@ts-ignore
 
                 // This handle goBack and goForward in the browser, since the hashchange event is not triggered
-                window.location.hash = Navigation.ROUTE_PATH_PREFIX+currentRouteName+navigateSearch;
+                let nextHash = Navigation.ROUTE_PATH_PREFIX+currentRouteName+navigateSearch;
+                let sameHash = Navigation.ROUTE_HASH_PREFIX+nextHash === window.location.hash;
+                if(sameHash){ // since goBack can triggers in handleHashChange (see above) we need to check if the hash is the same
+                  console.log("Same hash")
+                  // do nothing
+                } else {
+                  console.log("Different hash")
+                  ignoreNextHashChange = true;
+                  window.location.hash = nextHash;
+                }
               }
               // Your implementation of analytics goes here!
 
