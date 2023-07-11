@@ -5,6 +5,11 @@ import App from "./App";
 
 export class ConfigHolder{
 
+  static advancedSettings: any;
+  // loadedHeaderInitialState;
+  // loadedContentInitialState;
+
+
   static useCookiePolicy: boolean = true;
   static displayThemeFloater: boolean = false;
   static instance: App = null;

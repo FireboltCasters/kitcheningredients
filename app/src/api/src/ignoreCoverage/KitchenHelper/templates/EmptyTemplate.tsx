@@ -49,9 +49,6 @@ const EmptyTemplate = React.memo(({
     setDimenstion({width: width, height: adjustedHeight});
   }
 
-
-
-
   return(
     <KitchenSafeAreaView>
       <KeyboardAvoidingView

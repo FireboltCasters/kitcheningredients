@@ -1,12 +1,13 @@
 import React, {FunctionComponent} from "react";
 import {BaseLayout} from "./BaseLayout";
 import ServerAPI from "../ServerAPI";
-import {View} from "native-base";
+import {View, Text} from "native-base";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {NavigatorHelper} from "./../navigation/NavigatorHelper";
 import {Platform, StatusBar} from "react-native";
 import {EmptyTemplate} from "./EmptyTemplate";
 import {KitchenSkeleton} from "../project/KitchenSkeleton";
+import {ConfigHolder} from "../ConfigHolder";
 
 export interface BaseNoScrollTemplateProps{
   title?: string,
@@ -27,8 +28,11 @@ const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps> = React
   const params = props?.route?.params;
   const serverInfo = ServerAPI.tempStore.serverInfo;
 
-  const [renderHeader, setRenderHeader] = React.useState(false);
-  const [renderContent, setRenderContent] = React.useState(false);
+  let loadedHeaderInitialState = ConfigHolder.advancedSettings?.loadedHeaderInitialState;
+  let loadedContentInitialState = ConfigHolder.advancedSettings?.loadedContentInitialState;
+
+  const [renderHeader, setRenderHeader] = React.useState(loadedHeaderInitialState);
+  const [renderContent, setRenderContent] = React.useState(loadedContentInitialState);
   const [showLoader, setShowLoader] = React.useState(false);
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {...props});

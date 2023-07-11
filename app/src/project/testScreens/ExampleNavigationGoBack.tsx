@@ -15,14 +15,9 @@ export const ExampleNavigationGoBack: FunctionComponent = (props) => {
     <View>
       <Text>{"Normal image"}</Text>
       <Button onPress={() => {
-        Navigation.navigateTo(ExampleNavigationGoBackSub);
+        Navigation.navigateTo(ExampleNavigationGoBackSub, {showbackbutton: true});
       }}>
         <Text>{"Go to sub"}</Text>
-      </Button>
-      <Button onPress={() => {
-        NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.jumpTo("Test", undefined));
-      }}>
-        <Text>{"Go to Test"}</Text>
       </Button>
       <Text>{JSON.stringify(history, null, 2)}</Text>
       <Text>{JSON.stringify(rawHistory, null, 2)}</Text>
