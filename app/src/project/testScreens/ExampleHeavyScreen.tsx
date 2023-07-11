@@ -1,5 +1,5 @@
-import React, {FunctionComponent, useEffect, useState} from "react";
-import {Button, Text, View} from "react-native";
+import React, {FunctionComponent} from "react";
+import {Text, View} from "native-base";
 import {useSynchedJSONState} from "../../api/src";
 import {StorageKeys} from "../helper/StorageKeys";
 

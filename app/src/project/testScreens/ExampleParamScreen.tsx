@@ -1,6 +1,6 @@
 import React, {FunctionComponent, useState} from "react";
 import {Button, Text, View} from "native-base";
-import {Navigation, NavigatorHelper} from "../../api/src";
+import {Navigation} from "../../api/src";
 import {TouchableOpacity} from "react-native";
 
 export const ExampleParamScreen: FunctionComponent = (props) => {

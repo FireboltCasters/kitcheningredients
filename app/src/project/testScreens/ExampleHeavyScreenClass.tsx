@@ -1,11 +1,7 @@
-import React, {FunctionComponent, useEffect, useState} from "react";
-import {Button, Text, View} from "react-native";
-import {useSynchedJSONState} from "../../api/src";
-import {StorageKeys} from "../helper/StorageKeys";
+import React from "react";
+import {Button, Divider, Input, Text, View} from "native-base";
 
-export class ExampleHeavyScreenClass extends React.Component {
-
-
+export class ExampleHeavyScreenClass {
 
   render() {
     let rendered = [];
