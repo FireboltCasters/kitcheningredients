@@ -125,10 +125,16 @@ export {useThemeTextColor}
 import {useBackgroundColor} from "./ignoreCoverage/KitchenHelper/templates/useBackgroundColor";
 export {useBackgroundColor}
 
-import {SynchedState ,useSynchedState, useSynchedJSONState} from "./ignoreCoverage/KitchenHelper/synchedstate/SynchedState";
+import {
+  SynchedState,
+  useSynchedState,
+  useSynchedJSONState,
+  useSynchedDrawerConfig
+} from "./ignoreCoverage/KitchenHelper/synchedstate/SynchedState";
 export {useSynchedState}
 export {SynchedState}
 export {useSynchedJSONState}
+export {useSynchedDrawerConfig}
 
 import ServerAPI from "./ignoreCoverage/KitchenHelper/ServerAPI";
 export {ServerAPI}
