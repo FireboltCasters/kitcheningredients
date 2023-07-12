@@ -2,6 +2,7 @@ import {Cookie} from "../screens/legalRequirements/CookieHelper";
 
 export interface MyDirectusStorageInterface{
     get(key: string);
+    storageEntryExists(key: string): boolean;
     set(key: string, value: string);
     getAllKeys(): string[];
     delete(key: string);

@@ -155,9 +155,13 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
         return this.get_auth_expires();
     }
 
-    private getCookie(cookieName: string): Cookie {
+    public getCookie(cookieName: string): Cookie {
       let cookieAsString = this.getStorageImplementation().get(cookieName);
       return this.getCookieFromStorageString(cookieAsString);
+    }
+    public storageEntryExists(cookieName: string): boolean {
+      let cookie = this.getCookie(cookieName);
+      return !!cookie;
     }
 
     public getCookieFromStorageString(cookieAsString: string): Cookie {
@@ -167,7 +171,7 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
       return null;
     }
 
-    private setCookie(cookieName: string, cookie: Cookie) {
+    public setCookie(cookieName: string, cookie: Cookie) {
       this.getStorageImplementation().set(cookieName, this.getStorageStringFromCookie(cookie));
     }
 
