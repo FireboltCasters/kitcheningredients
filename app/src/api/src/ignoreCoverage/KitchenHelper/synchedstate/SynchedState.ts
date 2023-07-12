@@ -17,13 +17,14 @@ export function useSynchedState(storageKey): [value: string, setValue: (value) =
     ]
 }
 
-export function useSynchedJSONState(storageKey): [value: any, setValue: (value) => {}] {
+export function useSynchedJSONState(storageKey): [value: any, setValue: (value) => {}, rawValue: any] {
   const [jsonStateAsString, setJsonStateAsString] = useSynchedState(storageKey);
   const parsedJSON = JSON.parse(jsonStateAsString || "null");
   const setValue = (dict) => setJsonStateAsString(JSON.stringify(dict))
   return [
     parsedJSON,
-    setValue
+    setValue,
+    jsonStateAsString
   ]
 }
 
