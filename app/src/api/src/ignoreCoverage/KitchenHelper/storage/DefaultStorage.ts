@@ -13,7 +13,7 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     implementation: StorageImplementationInterface;
 
     async init(){
-
+      await this.implementation.init();
     }
 
     constructor(implementation: StorageImplementationInterface) {

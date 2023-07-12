@@ -42,7 +42,7 @@ export const RootStack = (props) => {
 
   const showOnlyScreensForAnonymUser = !ConfigHolder.instance.getUser();
   let screens = showOnlyScreensForAnonymUser ? DefaultNavigation.getAnonymUserScreens(initialSearch) : DefaultNavigation.getAllScreens(initialSearch);
-  let unmountOnBlur = showOnlyScreensForAnonymUser ? true : false;
+  let unmountOnBlur = showOnlyScreensForAnonymUser ? true : false; // Otherwise logged out user can see the screens of the logged in user, since they are not unmounted
 
   let pluginRootComponent = null;
   if(!!ConfigHolder.plugin.getRootComponent){

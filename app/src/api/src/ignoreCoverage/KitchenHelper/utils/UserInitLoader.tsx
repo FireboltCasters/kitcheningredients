@@ -17,11 +17,16 @@ export const UserInitLoader = (props) => {
   const configHolderUser = ConfigHolder.instance.getUser();
 
   async function load(){
+    console.log("-------------------------")
+    console.log("-------------------------")
+    console.log("Load UserInitLoader")
     let serverStatus = await loadServerInfo();
     let isOffline = !serverStatus;
     await ConfigHolder.instance.setState({offline: isOffline});
     if(!isOffline){
+      console.log("Load UserInitLoader: Online")
       let userRemote = await ConfigHolder.instance.loadUser();
+      console.log("Load UserInitLoader: userRemote", userRemote)
       setUser(userRemote);
       setSyncedUser(userRemote);
 
