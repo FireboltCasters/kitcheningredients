@@ -28,7 +28,7 @@ const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps> = React
   const params = props?.route?.params;
   const serverInfo = ServerAPI.tempStore.serverInfo;
 
-  let loadedHeaderInitialState = ConfigHolder.advancedSettings?.loadedHeaderInitialState;
+  let loadedHeaderInitialState = ConfigHolder.advancedSettings?.loadedHeaderInitialState || true;
   let loadedContentInitialState = ConfigHolder.advancedSettings?.loadedContentInitialState;
 
   const [renderHeader, setRenderHeader] = React.useState(loadedHeaderInitialState);
