@@ -34,6 +34,10 @@ interface AppState {
 }
 export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies, ...props}) => {
 
+  if(!ConfigHolder.useCookiePolicy){
+    return null;
+  }
+
   const menu_key_cookie_consent = "cookieConsent";
   const menu_key_cookie_details = "cookieDetails";
   const menu_key_cookie_about = "cookieAbout";
@@ -127,10 +131,6 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
 
   if(!cookieConsentUpToDate() && autoOpenCookies!==false){
     isOpen = true;
-  }
-
-  if(!ConfigHolder.useCookiePolicy){
-    isOpen = false;
   }
 
   //isOpen = true;
