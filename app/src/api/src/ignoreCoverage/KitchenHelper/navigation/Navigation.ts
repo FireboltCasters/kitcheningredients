@@ -12,6 +12,7 @@ import {PrivacyPolicy} from "../screens/legalRequirements/PrivacyPolicy";
 import {License} from "../screens/legalRequirements/License";
 import {Settings} from "../screens/settings/Settings";
 import {CookiePolicy} from "../screens/legalRequirements/CookiePolicy";
+import App from "../App";
 
 // todo Update to newest ReactNavigation
 // https://reactnavigation.org/docs/navigating-without-navigation-prop/
@@ -49,13 +50,16 @@ export class Navigation {
     }
 
     static drawerToggle(){
-      NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.toggleDrawer());
+      App.getCurrentNavigation()?.dispatch(DrawerActions.toggleDrawer());
+//      NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.toggleDrawer());
     }
     static drawerOpen(){
-      NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.openDrawer());
+      App.getCurrentNavigation()?.dispatch(DrawerActions.openDrawer());
+//      NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.openDrawer());
     }
     static drawerClose(){
-      NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.closeDrawer());
+      App.getCurrentNavigation()?.dispatch(DrawerActions.closeDrawer());
+//      NavigatorHelper.getCurrentNavigation()?.dispatch(DrawerActions.closeDrawer());
     }
 
     static routesResetRegistered(){

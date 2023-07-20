@@ -165,8 +165,12 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
     }
 
     public getCookieFromStorageString(cookieAsString: string): Cookie {
-      if(!!cookieAsString){
-        return JSON.parse(cookieAsString);
+      try{
+        if(!!cookieAsString){
+          return JSON.parse(cookieAsString);
+        }
+      } catch (err){
+
       }
       return null;
     }

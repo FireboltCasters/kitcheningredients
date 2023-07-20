@@ -27,15 +27,20 @@ export const LoginTemplate: FunctionComponent = (props) => {
 	};
 	 */
 
-	const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
-	const translation_by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy = useTranslation(TranslationKeys.by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy);
+//	const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
+//	const translation_by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy = useTranslation(TranslationKeys.by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy);
+    const translation_by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy = "HI";
 
   const paddingTop = Platform.OS === "android" ? StatusBar.currentHeight : 0
   const keyboardVerticalOffset = paddingTop;
-	const isSmallDevice = useBreakpointValue({
+
+  /**
+  const isSmallDevice = useBreakpointValue({
 		base: true,
 		md: false,
 	})
+   */
+  const isSmallDevice = true
 
   const serverInfo = ServerAPI.tempStore.serverInfo;
 

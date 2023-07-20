@@ -42,7 +42,7 @@ export const ShowMoreGradient: FunctionComponent<AppState> = (props) => {
     const heightWidthStyle = horizontal ? {height: "100%"} : {width: "100%"};
 
     // Custom LinearGradient
-    const steps = new Array(50).fill(0);
+    const steps = new Array(5).fill(0);
     return(
       <>
         {steps.map((_, i) => (

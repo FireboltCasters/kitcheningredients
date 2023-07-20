@@ -10,7 +10,7 @@ export class ConfigHolder{
   // loadedContentInitialState;
 
 
-  static useCookiePolicy: boolean = true;
+  static useCookiePolicy: boolean = false;
   static displayThemeFloater: boolean = false;
   static instance: App = null;
   static plugin: PluginInterface = null;

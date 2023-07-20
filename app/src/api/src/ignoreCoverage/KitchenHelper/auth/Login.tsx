@@ -9,14 +9,18 @@ import {ConfigHolder} from "../ConfigHolder";
 import {keyof} from "ts-keyof";
 import {Navigation} from "./../navigation/Navigation";
 import {RouteHelper} from "../navigation/RouteHelper";
+import {LoginTemplate} from "../templates/LoginTemplate";
+import {View} from "native-base";
+import {ViewWithBackgroundColor} from "../templates/ViewWithBackgroundColor";
 
 let lastAccessToken = null;
 
 export const Login = (props) => {
 
-  //console.log("Login passed drawer Check")
-
 	const user = ConfigHolder.instance.getUser();
+
+	console.log("User: ")
+  console.log(user);
 
 	const params = NavigatorHelper.getRouteParams(props);
 	let directus_access_token = params[EnviromentHelper.getDirectusAccessTokenName()];
@@ -67,8 +71,11 @@ export const Login = (props) => {
   let isBrowserUrlCorrect = true;
   let currentRouteName = undefined;
   if(isWeb){
+    console.log("Check: isBrowserUrlCorrect")
     let currentURL = window.location.href;
+    console.log("currentURL: "+currentURL)
     currentRouteName = RouteHelper.getInitialRouteName(currentURL);
+    console.log("currentRouteName: "+currentRouteName);
     isBrowserUrlCorrect = currentRouteName.startsWith(Navigation.DEFAULT_ROUTE_LOGIN);
   }
 
@@ -103,24 +110,39 @@ export const Login = (props) => {
     handleUseEffect();
 	}, [props?.route?.params])
 
+  /**
   if(!isBrowserUrlCorrect){
+    console.log("Login: !isBrowserUrlCorrect return null")
     return null;
   }
+   */
 
+  /**
 	if(drawerNeedsToBeHidden){ // if drawer needs to be hidden first we show a blank screen
+	  console.log("Login: drawerNeedsToBeHidden return null");
 	  return null;
 	}
+   */
 
+  /**
   if(!!user){
+    console.log("Login: has User: return null");
     return null;
   }
+   */
 
   let finishedLoading = true;
   if(!!directus_access_token){
     finishedLoading = false;
   }
 
-	return <WebViewLogin loaded={finishedLoading} user={user} handleContinue={handleContinue} />;
+  return (
+    <ViewWithBackgroundColor>
+      <LoginTemplate>
+        <WebViewLogin loaded={finishedLoading} user={user} handleContinue={handleContinue} />
+      </LoginTemplate>
+    </ViewWithBackgroundColor>
+  )
 }
 
 Login.displayName = keyof({ Login });

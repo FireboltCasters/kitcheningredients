@@ -34,6 +34,11 @@ interface AppState {
 }
 export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies, ...props}) => {
 
+  if(!ConfigHolder.useCookiePolicy){
+    return null;
+  }
+
+
   const menu_key_cookie_consent = "cookieConsent";
   const menu_key_cookie_details = "cookieDetails";
   const menu_key_cookie_about = "cookieAbout";
@@ -49,12 +54,25 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   const width = Layout.useBaseTemplateContentWidth()
 
   const [cookieConfig, setCookieConfig] = useSynchedCookieConfig();
-  let [tempCookieConfig, setTempCookieConfig] = useState(cookieConfig);
+  let [tempCookieConfig, setTempCookieConfig] = useState(() => cookieConfig);
+
 
   const date_consent = cookieConfig?.date_consent;
-  const date_consent_human_readable = getHumanReadableDate(date_consent);
   const date_cookie_policy_updated = undefined;
-  const date_cookie_policy_updated_human_readable = getHumanReadableDate(date_cookie_policy_updated);
+
+  const [dateConsentHumanReadable, setDateConsentHumanReadable] = useState<string>();
+  const [dateCookiePolicyUpdatedHumanReadable, setDateCookiePolicyUpdatedHumanReadable] = useState<string>();
+
+  useEffect(() => {
+    if (date_consent) {
+      setDateConsentHumanReadable(getHumanReadableDate(date_consent));
+    }
+
+    if (date_cookie_policy_updated) {
+      setDateCookiePolicyUpdatedHumanReadable(getHumanReadableDate(date_cookie_policy_updated));
+    }
+  }, [date_consent, date_cookie_policy_updated]);
+
 
   function getHumanReadableDate(date: string | undefined): string {
     if (!date) {
@@ -127,10 +145,6 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
 
   if(!cookieConsentUpToDate() && autoOpenCookies!==false){
     isOpen = true;
-  }
-
-  if(!ConfigHolder.useCookiePolicy){
-    isOpen = false;
   }
 
   //isOpen = true;
@@ -233,8 +247,8 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
                   {renderSwitchCookie(CookieGroupEnum.Necessary, true)}
                   {renderSwitchCookieForAdditionalGroups()}
                   <View style={{width: "100%"}}>
-                    <Text>{translation_cookie_policy_consent_date+": "+date_consent_human_readable}</Text>
-                    <Text>{translation_cookie_policy_policy_date_updated+": "+date_cookie_policy_updated_human_readable}</Text>
+                    <Text>{translation_cookie_policy_consent_date+": "+dateConsentHumanReadable}</Text>
+                    <Text>{translation_cookie_policy_policy_date_updated+": "+dateCookiePolicyUpdatedHumanReadable}</Text>
                   </View>
                 </View>
               </View>
@@ -407,8 +421,8 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
 
   return (
       <Modal isOpen={isOpen} style={{width: "100%", height: "100%"}}>
-        <KitchenSafeAreaView style={{width: width, height: "100%"}}>
-          <View style={{width: width, height: "100%"}}>
+        <KitchenSafeAreaView style={{width: width, height: "100%", justifyContent: "center", alignItems: "center"}}>
+          <View style={{width: "90%", height: "90%", borderRadius: 10, overflow: "hidden"}}>
             <AlertDialog.Header style={{padding: 0}}>
               <View style={{flexDirection: "row"}}>
                 <ProjectLogo size={"sm"} rounded={true} />
