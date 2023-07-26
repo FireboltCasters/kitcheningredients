@@ -27,6 +27,8 @@ export const LoginTemplate: FunctionComponent = (props) => {
 	};
 	 */
 
+	let renderLoginTopRight = ConfigHolder.plugin.renderLoginTemplateTopRight;
+
 	const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
 	const translation_by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy = useTranslation(TranslationKeys.by_continuing_you_agree_to_terms_and_conditions_and_privacy_policy);
 
@@ -73,7 +75,13 @@ export const LoginTemplate: FunctionComponent = (props) => {
 
           <CookieInformation />
 					<View style={{paddingHorizontal: padding, paddingTop: padding, height: "100%", width: "100%"}}>
-						<ProjectBanner serverInfo={serverInfo} />
+						<Wrap
+              flexDirection="row"
+              justify="space-between"
+            >
+              <ProjectBanner serverInfo={serverInfo} />
+              {renderLoginTopRight()}
+            </Wrap>
 						{renderSpaceBetweenLogoAndSignIn()}
 						{props.children}
 					</View>

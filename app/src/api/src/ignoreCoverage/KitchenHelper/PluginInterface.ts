@@ -120,6 +120,10 @@ export abstract class PluginInterface{
       return null;
     }
 
+    renderLoginTemplateTopRight(){
+      return null;
+    }
+
     renderCustomProjectLogo({
                               serverInfo,
                               height,
