@@ -14,8 +14,6 @@ import {CookieInformation} from "../screens/legalRequirements/CookieInformation"
 import {ConfigHolder} from "../ConfigHolder";
 import {TranslationKeys} from "../translations/TranslationKeys";
 
-const titleBoxHeight = 64;
-
 export const LoginTemplate: FunctionComponent = (props) => {
 	/**
 	breakpoints = {
@@ -43,7 +41,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
 
 	function renderSpaceBetweenLogoAndSignIn(){
 		return (
-			<View style={{height: titleBoxHeight}}></View>
+			<View style={{height: 16}}></View>
 		)
 	}
 
