@@ -1,33 +1,8 @@
 // @ts-nocheck
-import React, {FunctionComponent, useEffect, useState} from "react";
-import {AlertDialog, Button, Heading, Modal, Text, useContrastText, View} from "native-base";
+import React, {FunctionComponent, useState} from "react";
 import {ConfigHolder} from "../../ConfigHolder";
-import {DetailsComponentMenus, DetailsComponentMenuType} from "../../components/DetailsComponentMenus";
-import {TranslationKeys} from "../../translations/TranslationKeys";
 import {RequiredSynchedStates} from "../../synchedstate/RequiredSynchedStates";
 import {useSynchedCookieConfig, useSynchedJSONState} from "../../synchedstate/SynchedState";
-import {Layout} from "../../templates/Layout";
-import {useProjectColor} from "../../templates/useProjectColor";
-import {useDefaultButtonColor} from "../../theme/useDefaultButtonColor";
-import {SettingsRowBooleanSwitch} from "../../components/settings/SettingsRowBooleanSwitch";
-import {LegalRequiredLinks} from "../legalRequirements/LegalRequiredLinks";
-import {ScrollViewWithGradient} from "../../utils/ScrollViewWithGradient";
-import {SettingsSpacer} from "../../components/settings/SettingsSpacer";
-import {useBackgroundColor} from "../../templates/useBackgroundColor";
-import {ProjectLogo} from "../../project/ProjectLogo";
-import {DateHelper} from "../../helper/DateHelper";
-import {KitchenSafeAreaView} from "../../components/KitchenSafeAreaView";
-import {
-  CookieDetails,
-  CookieGroupEnum,
-  CookieHelper,
-  getAcceptAllCookieConfig,
-  getDefaultCookieConfig
-} from "./CookieHelper";
-import {SettingsRow} from "../../components/settings/SettingsRow";
-import {MyTouchableOpacity} from "../../components/buttons/MyTouchableOpacity";
-import {Linking} from "react-native";
-import {MyThemedBox} from "../../helper/MyThemedBox";
 import {CookieInformationInner} from "./CookieInformationInner";
 
 interface AppState {
@@ -40,6 +15,30 @@ export const CookieInformation: FunctionComponent<AppState> = ({autoOpenCookies,
   }
 
   let [isOpen, setIsOpen] = useSynchedJSONState(RequiredSynchedStates.showCookies)
+  const date_cookie_policy_updated = undefined;
+  const [cookieConfig, setCookieConfig] = useSynchedCookieConfig();
+  const date_consent = cookieConfig?.date_consent;
+
+  function cookieConsentUpToDate(){
+    if(!cookieConfig || !date_consent){
+      return false;
+    } else {
+      let isUpToDate = true;
+      if(!!date_cookie_policy_updated){
+        if(!!date_consent){
+          if(new Date(date_consent) < new Date(date_cookie_policy_updated)){
+            isUpToDate = false;
+          }
+        }
+      }
+
+      return isUpToDate;
+    }
+  }
+
+  if(!cookieConsentUpToDate() && autoOpenCookies!==false){
+    isOpen = true;
+  }
 
   if(isOpen){
     return <CookieInformationInner />

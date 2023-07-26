@@ -63,12 +63,10 @@ export const RootStack = (props) => {
       <Drawer.Navigator initialRouteName={initialRouteName}
                         drawerStyle={drawerStyle}
                         drawerType={drawerType}
-
                         redirectToLogin={props.redirectToLogin+""}
-                        reloadNumber={ConfigHolder.instance.state.reloadNumber}
-                        swipeEnabled={false}
+                        reloadNumber={ConfigHolder.instance.state.reloadNumber+drawerPosition}
                         drawerPosition={drawerPosition}
-                        drawerContent={(props) => <CustomDrawerContent {...props} />}
+                        drawerContent={(props) => <CustomDrawerContent drawerPosition={drawerPosition} {...props} />}
                         screenOptions={{
                           headerShown: false,
                           animationEnabled: false,

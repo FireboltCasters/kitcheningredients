@@ -112,29 +112,6 @@ export const CookieInformationInner: FunctionComponent<AppState> = ({autoOpenCoo
     [menu_key_cookie_about]: menu_about
   }
 
-  function cookieConsentUpToDate(){
-    if(!cookieConfig || !date_consent){
-      return false;
-    } else {
-      let isUpToDate = true;
-      if(!!date_cookie_policy_updated){
-        if(!!date_consent){
-          if(new Date(date_consent) < new Date(date_cookie_policy_updated)){
-            isUpToDate = false;
-          }
-        }
-      }
-
-      return isUpToDate;
-    }
-  }
-
-  if(!cookieConsentUpToDate() && autoOpenCookies!==false){
-    isOpen = true;
-  }
-
-  //isOpen = true;
-
   // corresponding componentDidMount
   useEffect(() => {
 
@@ -213,6 +190,16 @@ export const CookieInformationInner: FunctionComponent<AppState> = ({autoOpenCoo
     }
   }
 
+  function renderPolicyUpdatedDate(){
+    if(!date_cookie_policy_updated){
+      return null;
+    }
+
+    return(
+      <Text>{translation_cookie_policy_policy_date_updated+": "+date_cookie_policy_updated_human_readable}</Text>
+    )
+  }
+
   function renderCookiesConsent(){
       return (
         <View style={{width: "100%", flex: 1}}>
@@ -234,7 +221,7 @@ export const CookieInformationInner: FunctionComponent<AppState> = ({autoOpenCoo
                   {renderSwitchCookieForAdditionalGroups()}
                   <View style={{width: "100%"}}>
                     <Text>{translation_cookie_policy_consent_date+": "+date_consent_human_readable}</Text>
-                    <Text>{translation_cookie_policy_policy_date_updated+": "+date_cookie_policy_updated_human_readable}</Text>
+                    {renderPolicyUpdatedDate()}
                   </View>
                 </View>
               </View>
@@ -406,10 +393,10 @@ export const CookieInformationInner: FunctionComponent<AppState> = ({autoOpenCoo
   }
 
   return (
-      <Modal isOpen={isOpen} style={{width: "100%", height: "100%"}}>
-        <KitchenSafeAreaView style={{width: width, height: "100%"}}>
+      <Modal isOpen={true} style={{width: "100%", height: "100%", padding: Layout.padding}}>
+        <KitchenSafeAreaView style={{width: width, height: "100%", borderRadius: Layout.padding, overflow: "hidden"}}>
           <View style={{width: width, height: "100%"}}>
-            <AlertDialog.Header style={{padding: 0}}>
+            <AlertDialog.Header style={{padding: Layout.padding}}>
               <View style={{flexDirection: "row"}}>
                 <ProjectLogo size={"sm"} rounded={true} />
                 <View style={{ marginLeft: 16}}>
@@ -422,7 +409,11 @@ export const CookieInformationInner: FunctionComponent<AppState> = ({autoOpenCoo
             <View style={{width: "100%", paddingHorizontal: Layout.padding, flex: 1, backgroundColor: backgroundColor}}>
               <DetailsComponentMenus useScrollViewForHeader={true} size={"xs"} flex={1} menus={menus} defaultMenuKey={default_menu_key} key={default_menu_key} />
             </View>
-            <AlertDialog.Footer>
+            <AlertDialog.Footer
+              style={{
+                padding: Layout.padding,
+              }}
+            >
               <View style={{
                 flexDirection: "row",
                 justifyContent: "flex-end",
