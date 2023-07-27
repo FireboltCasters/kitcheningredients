@@ -58,9 +58,9 @@ const EmptyTemplate = React.memo(({
         <View style={{height: "100%", width: "100%"}}>
           <View style={{height: "100%", width: "100%", flexDirection: "column-reverse"}}>
             <RequiredNavigationBar />
-            <View style={{flex: 1, width: "100%", height: "100%"}} onLayout={setDimensions} >
-              {rendered}
-            </View>
+              <View style={{flex: 1, width: "100%", height: "100%"}} onLayout={setDimensions} >
+                {rendered}
+              </View>
           </View>
           <CookieInformation autoOpenCookies={autoOpenCookies} />
         </View>

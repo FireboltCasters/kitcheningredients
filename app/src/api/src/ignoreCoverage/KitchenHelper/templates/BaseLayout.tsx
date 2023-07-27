@@ -1,12 +1,8 @@
 // @ts-nocheck
 import React from 'react';
-import {Box, Heading, HStack, View,} from 'native-base';
+import {Box, HStack, View,} from 'native-base';
 import {SafeAreaTop} from "./SafeAreaTop";
 import {ConfigHolder} from "../ConfigHolder";
-import {Layout} from "./Layout";
-import {DrawerButton} from "./DrawerButton";
-import {BackButton} from "./BackButton";
-import {useCustomHeaderTextColor} from "./useHeaderTextColor";
 import {useProjectColor} from "./useProjectColor";
 import {HeaderWithActions} from "./HeaderWithActions";
 
@@ -24,6 +20,18 @@ export const BaseLayout = ({
 					   }: any) => {
 
 	const ssoIconColor = useProjectColor();
+
+	function renderBaseLayoutContent(){
+	  let pluginRenderBaseLayoutContent = ConfigHolder.plugin.renderBaseLayoutContent;
+
+	  return (
+      pluginRenderBaseLayoutContent(
+        <View style={{width: "100%", flex: 1, alignItems: "center"}} onLayout={props.onLayout}>
+          {children}
+        </View>
+      )
+    )
+  }
 
   function renderHeadingContent(){
     if(header!==undefined){
@@ -79,8 +87,8 @@ export const BaseLayout = ({
             {renderHeadingContent()}
 					</HStack>
 				</HStack>
-				<View style={{width: "100%", flex: 1, alignItems: "center"}} onLayout={props.onLayout}>
-					{children}
+				<View style={{width: "100%", flex: 1, alignItems: "center"}} >
+          {renderBaseLayoutContent()}
 				</View>
 
 			</Box>

@@ -1,11 +1,12 @@
 import {UserItem} from "@directus/sdk";
-import {ColorMode} from 'native-base';
+import {ColorMode, View} from 'native-base';
 import {DefaultTranslator} from "./translations/DefaultTranslator";
 import {CookieDefaultComponents} from "./screens/legalRequirements/CookieDefaultComponents";
 import {CookieDetails, CookieGroupEnum, CookieStorageTypeEnum} from "./screens/legalRequirements/CookieHelper";
 import {TranslationKeys} from "./translations/TranslationKeys";
 import {SynchedState} from "./synchedstate/SynchedState";
 import {RequiredStorageKeys} from "./storage/RequiredStorageKeys";
+import React from "react";
 
 export abstract class PluginInterface{
     initApp(){
@@ -122,6 +123,14 @@ export abstract class PluginInterface{
 
     renderLoginTemplateTopRight(){
       return null;
+    }
+
+    renderBaseLayoutContent(content){
+      return (
+        <View style={{width: "100%", flex: 1, flexDirection: "row"}}>
+          {content}
+        </View>
+      )
     }
 
     renderCustomProjectLogo({
