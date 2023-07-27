@@ -16,6 +16,7 @@ export const BaseLayout = ({
                header,
 						   doclink,
               headerBackgroundColor,
+              useProjectHeaderBackgroundColor,
               headerTextColor,
 						   navigateTo,
 						   _status,
@@ -24,9 +25,14 @@ export const BaseLayout = ({
 					   }: any) => {
 
   const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
+  const projectColor = useProjectColor();
 
   if(!headerBackgroundColor){
-    headerBackgroundColor = "#FF0000";
+    if(useProjectHeaderBackgroundColor){
+      headerBackgroundColor = projectColor;
+    } else {
+
+    }
   }
 
   const childrenWithProps = CloneChildrenWithProps.passProps(children, {dimension: dimension});
