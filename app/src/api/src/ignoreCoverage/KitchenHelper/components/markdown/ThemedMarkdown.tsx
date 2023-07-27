@@ -15,7 +15,7 @@ interface AppState {
 }
 export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
 
-  let sourceContent = props?.markdown || props.children;
+  let sourceContent: string = props?.markdown || props.children as string;
 
   if(sourceContent===undefined && !props.hideSkeleton){
     return <MarkdownSkeleton />
@@ -44,6 +44,18 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
 	const lineHeightNormal = emToPixel(parseFloat(lineHeightNormalInEm)) || 0;
 
   const md = new MarkdownIt();
+
+  let option_find_linebreaks = true;
+  if(option_find_linebreaks){
+    sourceContent = sourceContent.replaceAll("<br/>", "\n");
+    sourceContent = sourceContent.replaceAll("</br>", "\n");
+    sourceContent = sourceContent.replaceAll("<br>", "\n");
+    sourceContent = sourceContent.replaceAll("<p/>", "\n");
+    sourceContent = sourceContent.replaceAll("</p>", "\n");
+    sourceContent = sourceContent.replaceAll("<p>", "\n");
+  }
+
+
   const result = md.render(sourceContent);
 
   const source = {
