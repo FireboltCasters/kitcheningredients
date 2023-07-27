@@ -72,7 +72,7 @@ const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps> = React
     renderedContent = childrenWithProps
   }
 
-  let renderedHeader = null;
+  let renderedHeader = undefined;
   if(renderHeader){
     renderedHeader = header;
   }

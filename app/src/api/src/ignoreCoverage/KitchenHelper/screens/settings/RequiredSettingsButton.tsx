@@ -1,17 +1,29 @@
 // @ts-nocheck
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import {Navigation} from "./../../navigation/Navigation";
 import {UserProfileAvatar} from "../../project/UserProfileAvatar";
 import {ConfigHolder} from "../../ConfigHolder";
 import {MenuItem} from "../../navigation/MenuItem";
 import {useCustomHeaderTextColor} from "../../templates/useHeaderTextColor";
 import {TranslationKeys} from "../../translations/TranslationKeys";
+import {useContrastText} from "native-base";
 
-export const RequiredSettingsButton = ({color, ...props}: any) => {
+export interface AppState{
+  backgroundColor?: string
+  textColor?: string,
+}
+export const RequiredSettingsButton: FunctionComponent<AppState> = ({...props}: any) => {
+
+  const headerBackgroundColor = props?.backgroundColor;
+  let headerTextColor = props?.textColor;
+  if(!headerTextColor){
+    headerTextColor = useContrastText(headerBackgroundColor);
+  }
+  const textColor = headerTextColor
 
   let user = ConfigHolder.instance.getUser()
 
-  let usedColor = color || useCustomHeaderTextColor(props);
+  let usedColor = textColor;
 
   function handleAvatarPress(){
     //Navigation.navigateTo(Users, {id: user.id});

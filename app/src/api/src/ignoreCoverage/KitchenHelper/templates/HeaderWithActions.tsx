@@ -1,9 +1,8 @@
 import React, {FunctionComponent} from "react";
-import {useCustomHeaderTextColor} from "./useHeaderTextColor"
 import {DrawerButton} from "./DrawerButton";
 import {BackButton} from "./BackButton";
 
-import {Heading, Text, View} from "native-base";
+import {Heading, Text, useContrastText, View} from "native-base";
 import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
 import {Navigation} from "../navigation/Navigation";
 
@@ -13,9 +12,16 @@ export interface AppState{
 	title?: any;
 	renderCustomBottom?: () => any;
 	showbackbutton?: boolean;
+  backgroundColor?: string
+  textColor?: string,
 }
 export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
-	const textColor = useCustomHeaderTextColor();
+  const headerBackgroundColor = props?.backgroundColor;
+  let headerTextColor = props?.textColor;
+  if(!headerTextColor){
+    headerTextColor = useContrastText(headerBackgroundColor);
+  }
+	const textColor = headerTextColor
 
   const [drawerConfig, setDrawerConfig] = useSynchedDrawerConfig();
   let drawerPosition = drawerConfig?.drawerPosition || 'left';
@@ -30,13 +36,13 @@ export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
 		if(!showBackButton){
 			return(
 				<View accessibilityLabel={"Menu"}>
-					<DrawerButton />
+					<DrawerButton color={textColor} />
 				</View>
 			)
 		} else {
 			return (
 				<View accessibilityLabel={"Back"}>
-					<BackButton />
+					<BackButton color={textColor} />
 				</View>
 			)
 		}
@@ -75,7 +81,7 @@ export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
 
 	function renderHeader(){
 		return(
-			<View style={{width: "100%"}}>
+			<View style={{width: "100%", backgroundColor: headerBackgroundColor}}>
 				<View style={{flexDirection: flexDirection, width: "100%", alignItems: "center"}}>
 					{renderDrawerButton()}
 					<View style={{flex: 1,justifyContent: "flex-start"}}>

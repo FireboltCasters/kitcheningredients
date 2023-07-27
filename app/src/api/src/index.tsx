@@ -47,9 +47,6 @@ export {ParentDimension}
 import {RequiredSynchedStates} from "./ignoreCoverage/KitchenHelper/synchedstate/RequiredSynchedStates";
 export {RequiredSynchedStates}
 
-import {useCustomHeaderTextColor} from "./ignoreCoverage/KitchenHelper/templates/useHeaderTextColor";
-export {useCustomHeaderTextColor}
-
 import {BackButton} from "./ignoreCoverage/KitchenHelper/templates/BackButton";
 export {BackButton}
 

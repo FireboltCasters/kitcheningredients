@@ -1,9 +1,8 @@
-import React, {FunctionComponent, useEffect, useState} from "react";
+import React, {FunctionComponent} from "react";
 import {Layout} from "./Layout";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
 import {BaseNoPaddingTemplate, BaseNoPaddingTemplateProps} from "./BaseNoPaddingTemplate";
 import {BasePadding} from "./BasePadding";
-import {Text} from "native-base";
 
 export interface BaseTemplateProps extends BaseNoPaddingTemplateProps{
 

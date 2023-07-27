@@ -2,24 +2,26 @@
 import React, {FunctionComponent} from 'react';
 
 import {Icon} from "../components/Icon";
-import {useCustomHeaderTextColor} from "./useHeaderTextColor";
 import {Navigation} from "../navigation/Navigation";
 import {ConfigHolder} from "../ConfigHolder";
 import {TranslationKeys} from "../translations/TranslationKeys";
 import {MyTouchableOpacity} from "../components/buttons/MyTouchableOpacity";
+import {useContrastText} from "native-base";
 
 export interface AppState{
   color?: string;
   closeDrawer?: boolean
   useTextColor?: boolean
+  backgroundColor?: string
 }
 export const DrawerButton: FunctionComponent<AppState> = ({color, useTextColor, closeDrawer, ...props}) => {
 
-  let usedColor = color || useCustomHeaderTextColor(props);
-  if(useTextColor){
-    usedColor = undefined;
-  }
+  let usedColor = color;
 
+  const headerBackgroundColor = props?.backgroundColor;
+  if(!usedColor){
+    usedColor = useContrastText(headerBackgroundColor);
+  }
 
   const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
   const accessibilityLabel = useTranslation(TranslationKeys.sidebar_menu);

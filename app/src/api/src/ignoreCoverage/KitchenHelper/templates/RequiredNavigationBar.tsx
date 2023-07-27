@@ -20,7 +20,8 @@ export const RequiredNavigationBar = ({
                                         ...props
                                       }: any) => {
 
-  const ssoIconColor = useProjectColor();
+  const backgroundColor = props?.backgroundColor;
+  const textColor = props?.textColor;
 
   const [drawerConfig, setDrawerConfig] = useSynchedDrawerConfig();
   let drawerPosition = drawerConfig?.drawerPosition || 'left';
@@ -51,11 +52,11 @@ export const RequiredNavigationBar = ({
   }
 
   let leftContent = <View style={{flexDirection: flexDirection, alignItems: "center"}}>
-    <DrawerButton />
+    <DrawerButton color={textColor} backgroundColor={backgroundColor} />
   </View>
 
 	return (
-    <View style={{width: "100%", backgroundColor: ssoIconColor}}>
+    <View style={{width: "100%", backgroundColor: props?.backgroundColor}}>
       <View style={{flexDirection: flexDirection, width: "100%", alignItems: "center"}}>
         {leftContent}
         <ScrollView
@@ -65,7 +66,7 @@ export const RequiredNavigationBar = ({
         >
           {renderChildren(childContent)}
         </ScrollView>
-        <RequiredSettingsButton />
+        <RequiredSettingsButton textColor={textColor} backgroundColor={backgroundColor} />
       </View>
 
     </View>
