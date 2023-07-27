@@ -7,6 +7,7 @@ import {ConfigHolder} from "../ConfigHolder";
 import {TranslationKeys} from "../translations/TranslationKeys";
 import {MyTouchableOpacity} from "../components/buttons/MyTouchableOpacity";
 import {useContrastText} from "native-base";
+import {useMyContrastColor} from "../theme/useMyContrastColor";
 
 export interface AppState{
   color?: string;
@@ -20,7 +21,7 @@ export const DrawerButton: FunctionComponent<AppState> = ({color, useTextColor, 
 
   const headerBackgroundColor = props?.backgroundColor;
   if(!usedColor){
-    usedColor = useContrastText(headerBackgroundColor);
+    usedColor = useMyContrastColor(headerBackgroundColor);
   }
 
   const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();

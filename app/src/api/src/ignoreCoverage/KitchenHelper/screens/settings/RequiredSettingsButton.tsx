@@ -7,6 +7,7 @@ import {MenuItem} from "../../navigation/MenuItem";
 import {useCustomHeaderTextColor} from "../../templates/useHeaderTextColor";
 import {TranslationKeys} from "../../translations/TranslationKeys";
 import {useContrastText} from "native-base";
+import {useMyContrastColor} from "../../theme/useMyContrastColor";
 
 export interface AppState{
   backgroundColor?: string
@@ -17,7 +18,7 @@ export const RequiredSettingsButton: FunctionComponent<AppState> = ({...props}: 
   const headerBackgroundColor = props?.backgroundColor;
   let headerTextColor = props?.textColor;
   if(!headerTextColor){
-    headerTextColor = useContrastText(headerBackgroundColor);
+    headerTextColor = useMyContrastColor(headerBackgroundColor);
   }
   const textColor = headerTextColor
 

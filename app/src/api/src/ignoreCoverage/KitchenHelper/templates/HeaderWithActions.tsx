@@ -5,6 +5,7 @@ import {BackButton} from "./BackButton";
 import {Heading, Text, useContrastText, View} from "native-base";
 import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
 import {Navigation} from "../navigation/Navigation";
+import {useMyContrastColor} from "../theme/useMyContrastColor";
 
 export interface AppState{
 	renderActions?: () => any;
@@ -19,7 +20,7 @@ export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
   const headerBackgroundColor = props?.backgroundColor;
   let headerTextColor = props?.textColor;
   if(!headerTextColor){
-    headerTextColor = useContrastText(headerBackgroundColor);
+    headerTextColor = useMyContrastColor(headerBackgroundColor);
   }
 	const textColor = headerTextColor
 
