@@ -24,7 +24,6 @@ export const ProjectLogo: FunctionComponent<AppState> = (props) => {
 	let project_color = ServerInfoHelper.getProjectColor(serverInfo);
 	let project_logo_asset_id = ServerInfoHelper.getProjectLogoAssetId(serverInfo);
 
-	let borderRadius = props.rounded? 10 : 0;
 	const heightAndWidth = titleBoxHeight || 10;
 
 
@@ -34,20 +33,27 @@ export const ProjectLogo: FunctionComponent<AppState> = (props) => {
       height: heightAndWidth,
       width: heightAndWidth,
       backgroundColor: project_color,
-      borderRadius: borderRadius
 	  });
 	  if(!!rendered){
 	    return rendered;
     }
   }
 
+	let fallbackElement = (
+    <View style={{height: heightAndWidth, width: heightAndWidth, backgroundColor: project_color, borderRadius: heightAndWidth/6, alignItems: "center", justifyContent: "center", overflow: "hidden"}}>
+
+    </View>
+  )
+
 	return(
 		// @ts-ignore
-		<View style={{height: heightAndWidth, width: heightAndWidth, backgroundColor: project_color, borderRadius: borderRadius, alignItems: "center", justifyContent: "center", overflow: "hidden"}}>
+		<View style={{height: heightAndWidth, width: heightAndWidth, alignItems: "center", justifyContent: "center", overflow: "hidden"}}>
 			<DirectusImage alt={""}
 						   isPublic={true}
 						   assetId={project_logo_asset_id}
-						   style={{height: heightAndWidth*2/3, width: heightAndWidth*2/3}} />
+						   style={{height: heightAndWidth, width: heightAndWidth}}
+               fallbackElement={fallbackElement}
+      />
 		</View>
 	)
 }
