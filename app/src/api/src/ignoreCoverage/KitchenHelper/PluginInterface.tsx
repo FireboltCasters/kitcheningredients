@@ -141,6 +141,10 @@ export abstract class PluginInterface{
       )
     }
 
+    customContrastColor(backgroundColor){
+      return null;
+    }
+
     renderCustomProjectLogo({
                               serverInfo,
                               height,

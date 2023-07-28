@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, {FunctionComponent, useEffect, useState} from "react";
-import {AlertDialog, Button, Heading, Modal, Text, useContrastText, View} from "native-base";
+import {AlertDialog, Button, Heading, Modal, Text, View} from "native-base";
 import {ConfigHolder} from "../../ConfigHolder";
 import {DetailsComponentMenus, DetailsComponentMenuType} from "../../components/DetailsComponentMenus";
 import {TranslationKeys} from "../../translations/TranslationKeys";
@@ -28,6 +28,7 @@ import {SettingsRow} from "../../components/settings/SettingsRow";
 import {MyTouchableOpacity} from "../../components/buttons/MyTouchableOpacity";
 import {Linking} from "react-native";
 import {MyThemedBox} from "../../helper/MyThemedBox";
+import {useMyContrastColor} from "../../theme/useMyContrastColor";
 
 interface AppState {
   autoOpenCookies?: boolean;
@@ -45,10 +46,10 @@ export const CookieInformationInner: FunctionComponent<AppState> = ({autoOpenCoo
 
   const useTranslation = ConfigHolder.plugin.getUseTranslationFunction();
   let project_color = useProjectColor()
-  const project_color_contrast_color = useContrastText(project_color);
+  const project_color_contrast_color = useMyContrastColor(project_color);
 
   const defaultButtonColor = useDefaultButtonColor();
-  const defaultButtonContrastColor = useContrastText(defaultButtonColor);
+  const defaultButtonContrastColor = useMyContrastColor(defaultButtonColor);
 
   const width = Layout.useBaseTemplateContentWidth()
 

@@ -2,6 +2,7 @@ import EnviromentHelper from "../EnviromentHelper";
 import {ServerInfo} from "@directus/sdk";
 import ServerAPI from "../ServerAPI";
 import {CSS_Helper} from "./CSS_Helper";
+import {useMyContrastColor} from "../theme/useMyContrastColor";
 
 export class ServerInfoHelper {
 
@@ -41,7 +42,11 @@ export class ServerInfoHelper {
 
         let project_color = ServerInfoHelper.getProjectColor(serverInfo);
         customSsoIconStyle.background = customSsoIconStyle?.background || project_color;
-        customSsoIconStyle.color = customSsoIconStyle?.color || "white";
+        customSsoIconStyle.color = customSsoIconStyle?.color;
+        if(!customSsoIconStyle.color){
+          customSsoIconStyle.color = useMyContrastColor(customSsoIconStyle.background);
+        }
+
 
         return customSsoIconStyle;
     }

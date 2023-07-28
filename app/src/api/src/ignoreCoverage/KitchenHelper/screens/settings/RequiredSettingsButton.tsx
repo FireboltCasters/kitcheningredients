@@ -4,9 +4,7 @@ import {Navigation} from "./../../navigation/Navigation";
 import {UserProfileAvatar} from "../../project/UserProfileAvatar";
 import {ConfigHolder} from "../../ConfigHolder";
 import {MenuItem} from "../../navigation/MenuItem";
-import {useCustomHeaderTextColor} from "../../templates/useHeaderTextColor";
 import {TranslationKeys} from "../../translations/TranslationKeys";
-import {useContrastText} from "native-base";
 import {useMyContrastColor} from "../../theme/useMyContrastColor";
 
 export interface AppState{

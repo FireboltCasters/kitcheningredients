@@ -6,7 +6,6 @@ import {Navigation} from "../navigation/Navigation";
 import {ConfigHolder} from "../ConfigHolder";
 import {TranslationKeys} from "../translations/TranslationKeys";
 import {MyTouchableOpacity} from "../components/buttons/MyTouchableOpacity";
-import {useContrastText} from "native-base";
 import {useMyContrastColor} from "../theme/useMyContrastColor";
 
 export interface AppState{

@@ -1,7 +1,6 @@
 // @ts-nocheck
 import React, {useState} from 'react';
-import {Box, HStack, useContrastText, View,} from 'native-base';
-import {SafeAreaTop} from "./SafeAreaTop";
+import {Box, HStack, View,} from 'native-base';
 import {ConfigHolder} from "../ConfigHolder";
 import {useProjectColor} from "./useProjectColor";
 import {HeaderWithActions} from "./HeaderWithActions";
