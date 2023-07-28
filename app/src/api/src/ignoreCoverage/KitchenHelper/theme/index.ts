@@ -12,7 +12,7 @@ export default class BaseThemeGenerator {
       backgroundColor: "#A9A9A9"
     };
     defaultButton.defaultProps._light = {
-      backgroundColor: "rgb(23, 41, 64)"
+      backgroundColor: "#172940FF"
     }
 
     return extendTheme({
