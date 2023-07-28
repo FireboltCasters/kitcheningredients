@@ -13,13 +13,21 @@ export interface BaseNoScrollTemplateProps{
   title?: string,
   header?: JSX.Element,
   serverInfo?: any,
-  autoOpenCookies?: boolean
+  autoOpenCookies?: boolean,
+  headerBackgroundColor?: string,
+  headerShadeLevel?: number,
+  useProjectHeaderBackgroundColor?: boolean,
+  headerTextColor?: string,
 }
 
 const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps> = React.memo(({
                                                                                          children,
                                                                                          title,
                                                                                          header,
+                                                                                         headerBackgroundColor,
+                                                                                         headerShadeLevel,
+                                                                                         useProjectHeaderBackgroundColor,
+                                                                                         headerTextColor,
                                                                                          _status,
                                                                                          _hStack,
                                                                                          ...props
@@ -80,7 +88,15 @@ const BaseNoScrollTemplate: FunctionComponent<BaseNoScrollTemplateProps> = React
   return (
     <EmptyTemplate autoOpenCookies={props?.autoOpenCookies}>
       <View flex={1} flexDirection={"row"}>
-        <BaseLayout title={title} serverInfo={serverInfo} header={renderedHeader} showbackbutton={showbackbutton} >
+        <BaseLayout
+          title={title}
+          serverInfo={serverInfo}
+          headerBackgroundColor={headerBackgroundColor}
+          headerShadeLevel={headerShadeLevel}
+          useProjectHeaderBackgroundColor={useProjectHeaderBackgroundColor}
+          headerTextColor={headerTextColor}
+          header={renderedHeader}
+          showbackbutton={showbackbutton} >
           <View style={{width: "100%", height: "100%"}} >
             {renderedContent}
           </View>

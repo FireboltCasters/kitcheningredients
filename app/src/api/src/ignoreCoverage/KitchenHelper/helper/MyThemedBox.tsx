@@ -43,7 +43,7 @@ export const MyThemedBox: FunctionComponent<AppState & IBoxProps> = (props) => {
 
 	return(
 		<Box
-			 style={{backgroundColor: _myThemeShade}}
+			 bg={_myThemeShade}
 			 {...props}
 		>
 			{childrenWithProps}

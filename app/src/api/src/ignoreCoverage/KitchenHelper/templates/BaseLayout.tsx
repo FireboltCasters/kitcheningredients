@@ -7,6 +7,7 @@ import {useProjectColor} from "./useProjectColor";
 import {HeaderWithActions} from "./HeaderWithActions";
 import {RequiredNavigationBar} from "./RequiredNavigationBar";
 import {CloneChildrenWithProps} from "../helper/CloneChildrenWithProps";
+import {useThemedShade} from "../helper/MyThemedBox";
 
 export const BaseLayout = ({
 						   children,
@@ -16,6 +17,7 @@ export const BaseLayout = ({
                header,
 						   doclink,
               headerBackgroundColor,
+              headerShadeLevel,
               useProjectHeaderBackgroundColor,
               headerTextColor,
 						   navigateTo,
@@ -26,12 +28,16 @@ export const BaseLayout = ({
 
   const [dimension, setDimenstion] = useState({width: undefined, height: undefined})
   const projectColor = useProjectColor();
+  if(headerShadeLevel===undefined) {
+    headerShadeLevel = 1;
+  }
+  const themedBackgroundColor = useThemedShade(headerShadeLevel);
 
   if(!headerBackgroundColor){
     if(useProjectHeaderBackgroundColor){
       headerBackgroundColor = projectColor;
     } else {
-
+      headerBackgroundColor = themedBackgroundColor
     }
   }
 
