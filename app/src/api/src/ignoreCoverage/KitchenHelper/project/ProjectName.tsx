@@ -13,7 +13,7 @@ export const ProjectName: FunctionComponent<AppState> = (props) => {
 	const serverInfo = props.serverInfo || ServerAPI.tempStore.serverInfo;
 
 	let project_name = ServerInfoHelper.getProjectName(serverInfo);
-	let project_color = ServerInfoHelper.getProjectColor(serverInfo);
+	let project_color = undefined //ServerInfoHelper.getProjectColor(serverInfo);
 	let project_version = ServerInfoHelper.getProjectVersion();
 
 	let color = project_color;
@@ -23,7 +23,7 @@ export const ProjectName: FunctionComponent<AppState> = (props) => {
 
 	function renderVersion(){
 		return(
-			<View style={{marginTop: 8, marginLeft: 4, display: "flex", flexDirection: "row", alignItems: "flex-end"}}>
+			<View style={{marginTop: 0, marginLeft: 0, justifyContent: "center"}}>
 				<Text fontSize={"sm"} color={color}>
 					{"v" + project_version}
 				</Text>
@@ -32,10 +32,12 @@ export const ProjectName: FunctionComponent<AppState> = (props) => {
 	}
 
 	return(
-		<View style={{marginTop: 2, marginLeft: 16, justifyContent: "center"}}>
-			<Text fontSize="2xl" fontWeight={"bold"} color={color}>
-				{project_name}
-			</Text>
+		<View style={{marginTop: 0, marginLeft: 16, justifyContent: "center"}}>
+      <View style={{marginTop: 0, marginLeft: 0, justifyContent: "center"}}>
+        <Text fontSize="2xl" fontWeight={"bold"} color={color}>
+          {project_name}
+        </Text>
+      </View>
 			{renderVersion()}
 		</View>
 	)

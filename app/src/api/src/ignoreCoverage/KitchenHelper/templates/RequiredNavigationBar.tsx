@@ -6,6 +6,7 @@ import {DrawerButton} from "./DrawerButton";
 import {useProjectColor} from "./useProjectColor";
 import {RequiredSettingsButton} from "../screens/settings/RequiredSettingsButton";
 import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
+import {Layout} from "./Layout";
 
 export const RequiredNavigationBar = ({
                                         children,
@@ -22,6 +23,8 @@ export const RequiredNavigationBar = ({
 
   const backgroundColor = props?.backgroundColor;
   const textColor = props?.textColor;
+
+  let isSmallDevice = Layout.usesSmallDevice();
 
   const [drawerConfig, setDrawerConfig] = useSynchedDrawerConfig();
   let drawerPosition = drawerConfig?.drawerPosition || 'left';
@@ -51,9 +54,17 @@ export const RequiredNavigationBar = ({
     ));
   }
 
-  let leftContent = <View style={{flexDirection: flexDirection, alignItems: "center"}}>
+  const isHidden = !isSmallDevice;
+  let additionalStyle = {};
+  if(isHidden){
+    additionalStyle["opacity"] = 0
+  }
+
+  let leftContent = (
+    <View style={[{flexDirection: flexDirection, alignItems: "center"}, additionalStyle]}>
     <DrawerButton color={textColor} backgroundColor={backgroundColor} />
   </View>
+  )
 
 	return (
     <View style={{width: "100%", backgroundColor: props?.backgroundColor}}>

@@ -19,7 +19,7 @@ export const ProjectBanner: FunctionComponent<AppState> = (props) => {
 
 	return(
 		<View
-			style={{flexDirection: "row" ,height: boxHeight}}
+			style={{flexDirection: "row" ,height: boxHeight, alignItems: "center"}}
 		>
 			<ProjectLogo serverInfo={serverInfo} rounded={true} titleBoxHeight={boxHeight-4} />
 			<ProjectName serverInfo={serverInfo} />

@@ -42,6 +42,10 @@ export abstract class PluginInterface{
       return null;
     }
 
+    getLicenseComponent(){
+      return null;
+    }
+
     getCookieDetails(cookieName: string): CookieDetails{
       let translationWe = DefaultTranslator.useTranslation(TranslationKeys.cookie_policy_provider_we);
 

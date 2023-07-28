@@ -2,11 +2,14 @@ import React, {FunctionComponent} from "react";
 import {DrawerButton} from "./DrawerButton";
 import {BackButton} from "./BackButton";
 
-import {Heading, Text, useContrastText, View} from "native-base";
+import {Heading, Text, View} from "native-base";
 import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
 import {Navigation} from "../navigation/Navigation";
 import {useMyContrastColor} from "../theme/useMyContrastColor";
-import {useProjectColor, useThemedShade} from "kitcheningredients";
+import {useProjectColor} from "./useProjectColor";
+import {useThemedShade} from "../helper/MyThemedBox";
+import {Layout} from "../templates/Layout";
+
 
 export interface AppState{
 	renderActions?: () => any;
@@ -20,6 +23,9 @@ export interface AppState{
   useProjectHeaderBackgroundColor?: boolean
 }
 export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
+
+  let isSmallDevice = Layout.usesSmallDevice();
+
   const projectColor = useProjectColor();
   let headerShadeLevel = props?.headerShadeLevel
   if(headerShadeLevel===undefined) {
@@ -53,8 +59,14 @@ export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
 
 	function renderDrawerButton(){
 		if(!showBackButton){
+		  const isHidden = !isSmallDevice;
+		  let additionalStyle = {};
+		  if(isHidden){
+		    additionalStyle["opacity"] = 0
+      }
+
 			return(
-				<View accessibilityLabel={"Menu"}>
+				<View accessibilityLabel={"Menu"} style={additionalStyle}>
 					<DrawerButton color={textColor} />
 				</View>
 			)

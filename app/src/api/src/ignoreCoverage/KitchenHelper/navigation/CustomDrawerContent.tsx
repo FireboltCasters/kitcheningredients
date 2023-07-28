@@ -94,12 +94,14 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	  return null;
   }
 
+	const padding = 18;
+
 	return (
 		<MyThemedBox style={[{height: "100%"}, customBackgroundStyle]}>
 			<SafeAreaView style={{height: "100%", width: "100%"}}>
         <MyTouchableOpacity
           key={"ProjectLogoItem"}
-          style={{padding: 18}}
+          style={{padding: padding}}
           accessibilityLabel={translation_home}
           onPress={() => {
             if(!user){
@@ -114,9 +116,9 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
             <ProjectName themedColor={true} />
           </View>
         </MyTouchableOpacity>
-				<DrawerContentScrollView {...props}>
-					{renderDrawerItems()}
-				</DrawerContentScrollView>
+        <DrawerContentScrollView style={{paddingLeft: padding}} {...props}>
+          {renderDrawerItems()}
+        </DrawerContentScrollView>
 				{renderLegalRequirements()}
         {renderDrawerCloseButton()}
 			</SafeAreaView>

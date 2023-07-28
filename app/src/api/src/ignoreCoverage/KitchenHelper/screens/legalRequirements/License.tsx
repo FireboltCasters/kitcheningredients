@@ -2,9 +2,9 @@
 import React, {useEffect} from "react";
 import {PackagesWithLicenses} from "./PackagesWithLicenses";
 import {ConfigHolder} from "../../ConfigHolder";
-import {AboutUs} from "./AboutUs";
 import {keyof} from "ts-keyof";
 import {RouteHelper} from "../../navigation/RouteHelper";
+import {SettingsSpacer} from "../../components/settings/SettingsSpacer";
 
 export const License = (props) => {
 
@@ -15,8 +15,16 @@ export const License = (props) => {
 
 	}, [props?.route?.params])
 
+  let component = ConfigHolder.plugin.getLicenseComponent();
+
+  if(!!component){
+    return component
+  }
+
 	return(
 		<>
+      {component}
+      <SettingsSpacer />
 			<PackagesWithLicenses />
 		</>
 	)

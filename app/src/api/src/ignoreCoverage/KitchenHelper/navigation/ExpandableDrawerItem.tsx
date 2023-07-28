@@ -100,10 +100,12 @@ export const ExpandableDrawerItem: FunctionComponent<AppState> = (props) => {
       boxShadeLevel+=1;
     }
 
+    const padding = 8;
+
     return(
         <View style={{width: "100%"}}>
             <MyThemedBox _shadeLevel={boxShadeLevel} style={{width: "100%"}} >
-                <View style={{padding: 8}}>
+                <View style={{paddingVertical: padding, paddingRight: padding}}>
                     <View style={{flexDirection: "row", alignItems: "center", width: "100%"}}>
                       <TouchableOpacity onPress={handleOnPressIcon} >
                         {renderExpandIcon()}
