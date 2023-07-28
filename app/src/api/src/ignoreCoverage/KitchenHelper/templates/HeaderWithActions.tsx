@@ -6,6 +6,7 @@ import {Heading, Text, useContrastText, View} from "native-base";
 import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
 import {Navigation} from "../navigation/Navigation";
 import {useMyContrastColor} from "../theme/useMyContrastColor";
+import {useProjectColor, useThemedShade} from "kitcheningredients";
 
 export interface AppState{
 	renderActions?: () => any;
@@ -15,9 +16,26 @@ export interface AppState{
 	showbackbutton?: boolean;
   backgroundColor?: string
   textColor?: string,
+  headerShadeLevel?: number
+  useProjectHeaderBackgroundColor?: boolean
 }
 export const HeaderWithActions: FunctionComponent<AppState> = (props) => {
-  const headerBackgroundColor = props?.backgroundColor;
+  const projectColor = useProjectColor();
+  let headerShadeLevel = props?.headerShadeLevel
+  if(headerShadeLevel===undefined) {
+    headerShadeLevel = 1;
+  }
+  const themedBackgroundColor = useThemedShade(headerShadeLevel);
+  let headerBackgroundColor = props?.backgroundColor;
+
+  if(!headerBackgroundColor){
+    if(props?.useProjectHeaderBackgroundColor){
+      headerBackgroundColor = projectColor;
+    } else {
+      headerBackgroundColor = themedBackgroundColor
+    }
+  }
+
   let headerTextColor = props?.textColor;
   if(!headerTextColor){
     headerTextColor = useMyContrastColor(headerBackgroundColor);
