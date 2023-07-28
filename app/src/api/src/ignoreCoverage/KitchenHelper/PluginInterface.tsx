@@ -101,6 +101,10 @@ export abstract class PluginInterface{
       return null;
     }
 
+    getRootWrapper(content){
+      return content;
+    }
+
     getUseTranslationFunction(){
       return DefaultTranslator.useTranslation;
     }

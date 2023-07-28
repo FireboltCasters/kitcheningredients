@@ -306,11 +306,14 @@ export default class App extends React.Component<any, any>{
 
 		console.log("App. Render");
 
+		const rootWrapper = ConfigHolder.plugin.getRootWrapper;
+		let rootContent = rootWrapper(root);
+
 		return (
 			<StoreProvider store={SynchedState.getContextStore()}>
 				<NativeBaseProvider reloadNumber={this.state.syncFinished+this.state.reloadNumber+""+this.state.hideDrawer+this.state.startURL} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
           <ViewWithBackgroundColor>
-          {root}
+          {rootContent}
           </ViewWithBackgroundColor>
 				</NativeBaseProvider>
 			</StoreProvider>
