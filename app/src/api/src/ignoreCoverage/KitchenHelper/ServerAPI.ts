@@ -29,7 +29,7 @@ export default class ServerAPI{
 	}
 
 	static getDirectus(storage, customErrorHandleCallback=null){
-		let url = EnviromentHelper.getBackendURL();
+		let url = ConfigHolder.instance.getBackendUrl()
 		let transport = ServerAPI.getTransport(url, storage);
 		let auth = ServerAPI.getAuth(url, storage, customErrorHandleCallback)
     if(!!ConfigHolder.CustomDirectusTypes){
@@ -289,7 +289,7 @@ export default class ServerAPI{
 	}
 
 	private static async refreshWithRefreshToken(refresh_token: string){
-		let url = EnviromentHelper.getBackendURL()+'/auth/refresh';
+		let url = ConfigHolder.instance.getBackendUrl()+'/auth/refresh';
 		const api = ServerAPI.getAxiosInstance();
 		try{
       await ServerAPI.delayInDev(1000);

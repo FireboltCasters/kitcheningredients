@@ -46,6 +46,7 @@ export default class App extends React.Component<any, any>{
 			//NavigatorHelper.navigateToRouteName(route, params);
 		})
 		this.state = {
+		  backendUrl: EnviromentHelper.getHardCodedBackendURL(),
 		  syncFinished: false,
       startURL: undefined,
 			user: undefined,
@@ -90,7 +91,6 @@ export default class App extends React.Component<any, any>{
     await ConfigHolder.instance.setState({
       reloadNumber: 0, //ConfigHolder.instance.state.reloadNumber+1,
       syncFinished: false,
-
     });
   }
 
@@ -98,6 +98,21 @@ export default class App extends React.Component<any, any>{
     await ConfigHolder.instance.setState({
       startURL: startURL,
     });
+  }
+
+  getBackendUrl(){
+	  return this.state.backendUrl;
+  }
+
+  async setBackendUrl(url){
+	  await ConfigHolder.instance.setState({
+      backendUrl: url
+    })
+  }
+
+  async setBackendUrlAndReload(url){
+	  await ConfigHolder.instance.setBackendUrl(url);
+	  await ConfigHolder.instance.reload();
   }
 
 	async setHideDrawer(hideDrawer, nextRouteName?){

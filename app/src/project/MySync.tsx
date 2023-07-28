@@ -12,6 +12,7 @@ import {ExampleImageScreen} from "./testScreens/ExampleImageScreen";
 import {ExampleMarkdownScreen} from "./testScreens/ExampleMarkdownScreen";
 import {ExampleHeavyScreen} from "./testScreens/ExampleHeavyScreen";
 import {ExampleHeavySkeleton} from "./testScreens/ExampleHeavySkeleton";
+import {ExampleChangeBackendUrl} from "./testScreens/ExampleChangeBackendUrl";
 
 export const MySync: FunctionComponent = (props) => {
 
@@ -37,7 +38,8 @@ export const MySync: FunctionComponent = (props) => {
         ExampleActionSheet,
         ExampleImageScreen,
         ExampleMarkdownScreen,
-        ExampleHeavySkeleton
+        ExampleHeavySkeleton,
+        ExampleChangeBackendUrl
       ],
       BaseTemplate
     )
@@ -45,6 +47,7 @@ export const MySync: FunctionComponent = (props) => {
     let docs = new MenuItem({
       key: "docs",
       label: "Documentation",
+//      icon: "home"
     });
 
     docs.addChildMenuItems(MenuItem.fromRoutes(routes));

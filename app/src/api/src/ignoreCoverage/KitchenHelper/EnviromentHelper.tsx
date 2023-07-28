@@ -14,7 +14,11 @@ export default class EnviromentHelper{
     return EnviromentHelper.getAppManifest()?.extra;
   }
 
-	static getBackendURL(): string{
+  /**
+   * Please use ConfigHolder.instance.getBackendUrl()
+   * This method gives the Backend URl in the initial AppManifest which may not update dynamically
+   */
+	static getHardCodedBackendURL(): string{
 		return EnviromentHelper.getAppManifestExtra()?.BACKEND_URL;
 	}
 
@@ -22,7 +26,7 @@ export default class EnviromentHelper{
 		if(!file_id){
 			return null;
 		}
-		return EnviromentHelper.getBackendURL()+"/assets/"+file_id
+		return ConfigHolder.instance.getBackendUrl()+"/assets/"+file_id
 	}
 
 	static getBasePath(): string{
