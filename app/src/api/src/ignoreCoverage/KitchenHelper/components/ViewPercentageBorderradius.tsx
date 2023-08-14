@@ -17,18 +17,19 @@ export const ViewPercentageBorderradius: FunctionComponent<ViewProps> = ({style,
 
     let copiedStyle = JSON.parse(JSON.stringify(style || {}));
 
-    function fixPercentage(copiedValue){
-        if(!!copiedValue && typeof copiedValue==="string" && copiedValue.endsWith("%")){
-            let percentage = parseInt(copiedValue);
-            let width = dimension.width;
-            if(!!width){
-                return percentage*width/100;
-            } else {
-                return null;
-            }
-        }
-        return copiedValue;
+  function fixPercentage(copiedValue){
+    if(!!copiedValue && typeof copiedValue==="string" && copiedValue.endsWith("%")){
+      let percentage = parseInt(copiedValue);
+      let width = dimension.width;
+      if(!!width && !!percentage){
+        let radiusAsInt = parseInt(""+(percentage*width/100))
+        return radiusAsInt;
+      } else {
+        return 0; // null works for ios & web but not on android: "android.graphics.Path.isEmpty()"
+      }
     }
+    return copiedValue;
+  }
 
     function fixStyleForFields(styles, ...fieldnames){
         let mergedStyle = {};
