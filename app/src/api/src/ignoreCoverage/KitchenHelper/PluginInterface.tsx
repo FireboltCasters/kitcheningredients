@@ -7,9 +7,16 @@ import {TranslationKeys} from "./translations/TranslationKeys";
 import {SynchedState} from "./synchedstate/SynchedState";
 import {RequiredStorageKeys} from "./storage/RequiredStorageKeys";
 import React from "react";
+import {StringHelper} from "./helper/StringHelper";
 
 export abstract class PluginInterface{
-    initApp(){
+
+  // @ts-ignore
+  constructor(props) {
+    StringHelper.enableReplaceAllOnOldDevices() // Android does not support .replaceAll()
+  }
+
+  initApp(){
 
     }
     async registerRoutes(user: UserItem | null, role: any | undefined, permissions: any | undefined){
