@@ -16,6 +16,7 @@ import {MyTouchableOpacity} from "../components/buttons/MyTouchableOpacity";
 import {useSynchedDrawerConfig} from "../synchedstate/SynchedState";
 import {DrawerButton} from "./../templates/DrawerButton";
 import {Layout} from "../templates/Layout";
+import {KitchenSafeAreaView} from "../components/KitchenSafeAreaView";
 
 export const CustomDrawerContent: FunctionComponent = (props) => {
 
@@ -98,7 +99,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 
 	return (
 		<MyThemedBox style={[{height: "100%"}, customBackgroundStyle]}>
-			<SafeAreaView style={{height: "100%", width: "100%"}}>
+			<KitchenSafeAreaView style={{height: "100%", width: "100%"}}>
         <MyTouchableOpacity
           key={"ProjectLogoItem"}
           style={{padding: padding}}
@@ -121,7 +122,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
         </DrawerContentScrollView>
 				{renderLegalRequirements()}
         {renderDrawerCloseButton()}
-			</SafeAreaView>
+			</KitchenSafeAreaView>
 		</MyThemedBox>
 	);
 }
