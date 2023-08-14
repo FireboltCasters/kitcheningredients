@@ -19,7 +19,7 @@ export const DrawerButton: FunctionComponent<AppState> = ({color, useTextColor, 
   let usedColor = color;
 
   const headerBackgroundColor = props?.backgroundColor;
-  if(!usedColor){
+  if(!usedColor && !!headerBackgroundColor){
     usedColor = useMyContrastColor(headerBackgroundColor);
   }
 

@@ -88,7 +88,7 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
 	  if(isSmallDevice){
 	    return(
         <View style={{width: "100%", flexDirection: flexDirection}}>
-          <DrawerButton closeDrawer={true} useTextColor={true} />
+          <DrawerButton closeDrawer={true} backgroundColor={bgColor} />
         </View>
       )
     }
@@ -96,6 +96,8 @@ export const CustomDrawerContent: FunctionComponent = (props) => {
   }
 
 	const padding = 18;
+
+
 
 	return (
 		<MyThemedBox style={[{height: "100%"}, customBackgroundStyle]}>
