@@ -44,4 +44,12 @@ export class StringHelper{
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  static enableReplaceAllOnOldDevices(){
+    if(typeof String.prototype.replaceAll === "undefined") {
+      String.prototype.replaceAll = function(match, replace) {
+        return this.replace(new RegExp(match, 'g'), () => replace);
+      }
+    }
+  }
+
 }

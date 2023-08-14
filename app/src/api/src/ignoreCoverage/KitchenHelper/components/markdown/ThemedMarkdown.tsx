@@ -47,10 +47,6 @@ export const ThemedMarkdown: FunctionComponent<AppState> = (props) => {
 
   let option_find_linebreaks = true;
   if(option_find_linebreaks){
-    if(!sourceContent){
-      sourceContent = "";
-    }
-
     sourceContent = sourceContent.replaceAll("<br/>", "\n");
     sourceContent = sourceContent.replaceAll("</br>", "\n");
     sourceContent = sourceContent.replaceAll("<br>", "\n");

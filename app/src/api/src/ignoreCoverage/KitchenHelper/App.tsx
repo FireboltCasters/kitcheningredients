@@ -23,12 +23,15 @@ import {UserInitLoader} from "./utils/UserInitLoader";
 import {DefaultStorage} from "./storage/DefaultStorage";
 import {MyDirectusStorage} from "./storage/MyDirectusStorage";
 import {MyDirectusStorageInterface} from "./storage/MyDirectusStorageInterface";
+import {StringHelper} from "./helper/StringHelper";
 
 export default class App extends React.Component<any, any>{
   storage: MyDirectusStorageInterface;
 
 	constructor(props) {
 		super(props);
+
+		StringHelper.enableReplaceAllOnOldDevices() // Android does not support .replaceAll()
 
 		this.storage = new DefaultStorage(new MyDirectusStorage());
 
