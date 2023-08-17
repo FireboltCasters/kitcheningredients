@@ -24,7 +24,7 @@ import {DefaultStorage} from "./storage/DefaultStorage";
 import {MyDirectusStorage} from "./storage/MyDirectusStorage";
 import {MyDirectusStorageInterface} from "./storage/MyDirectusStorageInterface";
 import {StringHelper} from "./helper/StringHelper";
-import {NavigatorHelper} from "kitcheningredients";
+import {NavigatorHelper} from "./navigation/NavigatorHelper";
 
 export default class App extends React.Component<any, any>{
   storage: MyDirectusStorageInterface;
