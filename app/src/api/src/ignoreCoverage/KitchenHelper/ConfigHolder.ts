@@ -23,12 +23,39 @@ export class ConfigHolder{
   static AppConfig = null;
   static CustomDirectusTypes: any = null;
 
-  static showMailLogin: boolean = true;
-  static showMailRegister: boolean = false;
-  static showExternalLogins: boolean = true;
-  static showGuestLogin: boolean = false;
-  static startAsGuest: boolean = false;
-  static autoLogin: boolean = false;
+  static authConfig = {
+    autoLogin: true,
+    startAsAnonymous: false,
+    mail: {
+      visible: true,
+      registerVisible: false,
+      position: 4
+    },
+    guest: {
+      visible: true,
+      position: 1
+    },
+    anonymous: {
+      visible: true,
+      callbackBefore: async (handleContinue, actionsheet) => {
+        handleContinue();
+        /**
+        actionsheet.show({
+          title: "Anonymous Proceed?",
+          description: "Not all actions will be possible",
+          onAccept: () => {
+            handleContinue()
+          }
+        });
+        */
+      },
+      position: 3
+    },
+    external: {
+      visible: true,
+      position: 2
+    }
+  }
 
   static prefixes: string[] = [];
 

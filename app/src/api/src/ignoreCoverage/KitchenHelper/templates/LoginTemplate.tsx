@@ -41,7 +41,7 @@ export const LoginTemplate: FunctionComponent = (props) => {
 
 	function renderSpaceBetweenLogoAndSignIn(){
 		return (
-			<View style={{height: 64}}></View>
+			<View style={{height: 12}}></View>
 		)
 	}
 

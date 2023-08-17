@@ -18,7 +18,7 @@ export class DefaultTranslator{
         case TranslationKeys.logout_confirm_message: return "Willst du dich abmelden?";
         case TranslationKeys.logout: return "Abmelden";
         case TranslationKeys.sidebar_menu: return "Menü";
-        case TranslationKeys.continue_as_guest: return "Anonym fortfahren";
+        case TranslationKeys.continue_as_anonymous: return "Anonym fortfahren";
         case TranslationKeys.forgot_password: return "Passwort vergessen";
         case TranslationKeys.is_currently_authenticated_remember_this_account: return "Ist aktuell angemeldet. Erkennst du diesen Account?";
         case TranslationKeys.profile_and_settings: return "Profil und Einstellungen";
@@ -58,7 +58,7 @@ export class DefaultTranslator{
         case RequiredStorageKeys.CACHED_SERVER_INFO: return "Speichert die Server-Informationen";
         case RequiredStorageKeys.CACHED_THEME: return "Speichert das aktuelle Theme";
         case RequiredStorageKeys.CACHED_USER: return "Speichert den aktuellen Benutzer";
-        case RequiredStorageKeys.IS_GUEST: return "Speichert ob der Benutzer ein Gast ist";
+        case RequiredStorageKeys.IS_ANONYMOUS: return "Speichert ob der Benutzer ein Gast ist";
         case RequiredStorageKeys.COOKIE_CONFIG: return "Speichert die Cookie-Einstellungen";
         default: return "Erforderlich für die grundlegende Funktionalität der Webseite";
       }

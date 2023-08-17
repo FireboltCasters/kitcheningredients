@@ -8,6 +8,7 @@ import {EmailLogin} from "./EmailLogin";
 import {AuthProvidersLoginOptions} from "./AuthProvidersLoginOptions";
 import {ConfigHolder} from "../ConfigHolder";
 import {TranslationKeys} from "../translations/TranslationKeys";
+import {AuthProviderAnonymous} from "./AuthProviderAnonymous";
 
 export interface WebViewLoginFormState {
 	user?: UserItem;
@@ -67,25 +68,57 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
     )
   }
 
-  function renderLoginOptions(){
+  function renderLoginOptions() {
+    const loginOptions = [];
 
-	  let mailLogin = null;
-	  if(ConfigHolder.showMailLogin){
-      mailLogin = (<EmailLogin />)
+    // Push Mail login option
+    if (ConfigHolder?.authConfig?.mail?.visible) {
+      loginOptions.push({
+        position: ConfigHolder?.authConfig?.mail?.position || 0,
+        component: (
+          <>
+            <View style={{ marginVertical: 20 }}>
+              <Divider />
+            </View>
+            <EmailLogin />
+            <View style={{ marginVertical: 20 }}>
+              <Divider />
+            </View>
+          </>
+        )
+      });
     }
 
-    return(
-      <>
-        {mailLogin}
-        <View style={{marginVertical: 20}} >
-          <Divider />
-        </View>
-        <AuthProvidersLoginOptions />
-      </>
-    )
+    // Push Anonymous login option
+    if (ConfigHolder?.authConfig?.anonymous?.visible) {
+      loginOptions.push({
+        position: ConfigHolder?.authConfig?.anonymous?.position || 0,
+        component: <AuthProviderAnonymous key={"guest"} />
+      });
+    }
+
+    // Push External login option
+    if (ConfigHolder?.authConfig?.external?.visible) {
+      loginOptions.push({
+        position: ConfigHolder?.authConfig?.external?.position || 0,
+        component: <AuthProvidersLoginOptions />
+      });
+    }
+
+    // Sort login options by their position
+    loginOptions.sort((a, b) => a.position - b.position);
+
+    // Render sorted login options
+    let rendered = [];
+    loginOptions.map((option, index) => (
+      rendered.push(option.component)
+    ))
+
+    return (rendered);
   }
 
-	function renderLoginInformations(){
+
+  function renderLoginInformations(){
 		let user = props.user;
 		if(!props.loaded){
 			return renderLoading();
@@ -104,6 +137,7 @@ export const WebViewLogin: FunctionComponent<WebViewLoginFormState> = (props) =>
 	return (
 		<>
 			{renderSignInText()}
+      <View style={{height: 24}}></View>
 			{renderLoginInformations()}
 		</>
 	)

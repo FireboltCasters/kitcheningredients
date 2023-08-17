@@ -3,7 +3,7 @@ import React, {FunctionComponent, useEffect, useState} from 'react';
 import ServerAPI from "../ServerAPI";
 import {AuthProvider} from "./AuthProvider";
 import {View} from "native-base";
-import {AuthProviderGuest} from "./AuthProviderGuest";
+import {AuthProviderAnonymous} from "./AuthProviderAnonymous";
 import {ConfigHolder} from "./../ConfigHolder";
 
 export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
@@ -27,10 +27,6 @@ export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
 		return <AuthProvider key={"externalProvider"+provider?.name} provider={provider} serverInfo={serverInfo} />;
 	}
 
-	function renderAuthProviderGuest(){
-		return <AuthProviderGuest serverInfo={serverInfo} key={"guest"} />
-	}
-
 	function renderAuthProviders(){
 		let output = [];
 
@@ -43,19 +39,14 @@ export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
       }
     }
 
-		if(ConfigHolder.showGuestLogin){
-			output.push(renderAuthProviderGuest());
-		}
-
-		if(ConfigHolder.showExternalLogins){
 			if(!!authProviders){
 				for(let provider of authProviders){
 					output.push(renderAuthProvider(provider))
 				}
 			}
-		}
+
 		return (
-			<View style={{flex: 1}}>
+			<View style={{width: "100%"}}>
 				{output}
 			</View>
 		);
@@ -71,7 +62,7 @@ export const AuthProvidersLoginOptions: FunctionComponent = (props) => {
 
 
 	return (
-		<View style={{flex: 1}}>
+		<View style={{width: "100%"}}>
 			{renderAuthProviders()}
 		</View>
 	)

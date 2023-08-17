@@ -78,12 +78,15 @@ export const EmailLogin: FunctionComponent<WebViewLoginFormState> = (props) => {
 		return null;
 	}
 
+	function navigateToRegister(){
+    Navigation.navigateTo(Register)
+  }
+
+
 	function renderRegisterButton(){
-    if(ConfigHolder.showMailRegister){
+    if(ConfigHolder?.authConfig?.mail?.registerVisible){
       return(
-        <FormButton accessibilityLabel={translation_register} loading={loginInitiated} disabled={loginInitiated} onPress={() => {
-          Navigation.navigateTo(Register)
-        }}>
+        <FormButton accessibilityLabel={translation_register} loading={loginInitiated} disabled={loginInitiated} onPress={navigateToRegister}>
           {translation_register}
         </FormButton>
       )

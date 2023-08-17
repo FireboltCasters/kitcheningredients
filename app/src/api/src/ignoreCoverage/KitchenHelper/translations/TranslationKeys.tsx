@@ -14,7 +14,7 @@ export class TranslationKeys {
   static password_visible = "password_visible";
   static password_hidden = "password_hidden";
   static confirm_password = "confirm_password";
-  static continue_as_guest = "continue_as_guest";
+  static continue_as_anonymous = "continue_as_anonymous";
   static log_in_with = "log_in_with";
   static home = "home";
 

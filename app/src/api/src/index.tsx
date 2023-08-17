@@ -1,3 +1,6 @@
+import EnviromentHelper from "./ignoreCoverage/KitchenHelper/EnviromentHelper";
+export {EnviromentHelper}
+
 import {DefaultTranslator} from "./ignoreCoverage/KitchenHelper/translations/DefaultTranslator";
 export {DefaultTranslator}
 

@@ -26,12 +26,12 @@ ConfigHolder.thirdpartyLicense = thirdpartyLicense
 ConfigHolder.AppConfig = AppConfig
 
 ConfigHolder.displayThemeFloater = true;
-ConfigHolder.showMailLogin = true;
-ConfigHolder.showMailRegister = true;
-ConfigHolder.showExternalLogins = true;
-ConfigHolder.showGuestLogin = true;
-ConfigHolder.startAsGuest = false;
-ConfigHolder.autoLogin = true;
+ConfigHolder.authConfig.mail.visible = true
+ConfigHolder.authConfig.mail.registerVisible = false;
+ConfigHolder.authConfig.external.visible = true;
+ConfigHolder.authConfig.anonymous.visible = true;
+ConfigHolder.authConfig.startAsAnonymous = false;
+ConfigHolder.authConfig.autoLogin = true;
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in the Expo client or in a native build,

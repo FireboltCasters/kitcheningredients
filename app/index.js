@@ -23,12 +23,15 @@ ConfigHolder.currentpackageJsonLock = currentpackageJsonLock
 ConfigHolder.thirdpartyLicense = thirdpartyLicense
 ConfigHolder.AppConfig = AppConfig
 
+ConfigHolder.prefixes = ["mychat://", "mychat:///"];
+
 ConfigHolder.displayThemeFloater = true;
-ConfigHolder.showMailLogin = true;
-ConfigHolder.showMailRegister = false;
-ConfigHolder.showExternalLogins = true;
-ConfigHolder.showGuestLogin = true;
-ConfigHolder.autoLogin = true;
+ConfigHolder.authConfig.mail.visible = true;
+ConfigHolder.authConfig.mail.registerVisible = false;
+ConfigHolder.authConfig.external.visible = true;
+ConfigHolder.authConfig.anonymous.visible = true;
+ConfigHolder.authConfig.autoLogin = true;
+
 
 async function main() {
   registerRootComponent(App);

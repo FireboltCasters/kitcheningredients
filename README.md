@@ -310,8 +310,8 @@ In order to allow users self registration follow these steps:
 2. [Optional] Set desired default role (<YOUR_DEFAULT_ROLE_ID>): Directus => Settings => Roles & Permissions => Role `Public` => create `Directus_users`  => Field Presets => ```{"role": "<YOUR_DEFAULT_ROLE_ID>"}```
 3. Enable in your frontend app the button (in the index.js / index.web.js)
 ```ts
-ConfigHolder.showMailLogin = true; //has to be enabled
-ConfigHolder.showMailRegister = true;
+ConfigHolder.authConfig.mail.visible = true; //has to be enabled
+ConfigHolder.authConfig.mail.registerVisible = true;
 ```
 </details>
 

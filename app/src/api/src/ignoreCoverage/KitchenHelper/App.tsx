@@ -136,9 +136,9 @@ export default class App extends React.Component<any, any>{
 	  await ConfigHolder.instance.setHideDrawer(true, Navigation.DEFAULT_ROUTE_LOGIN);
 	}
 
-	async setUserAsGuest(){
-		ConfigHolder.instance.storage.set_is_guest(true);
-		await ConfigHolder.instance.setUser(UserHelper.getGuestUser());
+	async setUserAsAnonymous(){
+		ConfigHolder.instance.storage.set_is_anonymous(true);
+		await ConfigHolder.instance.setUser(UserHelper.getAnonymousUser());
 	}
 
 	async setSyncFinished(syncFinished){
@@ -155,7 +155,7 @@ export default class App extends React.Component<any, any>{
 	  console.log("App.setUser: ",user);
 
     if(!!user){
-      user.isGuest = UserHelper.isGuest(user);
+      user.isGuest = UserHelper.isAnonymous(user);
     }
     let role_id = user?.role;
 
@@ -204,12 +204,12 @@ export default class App extends React.Component<any, any>{
 				console.log("-- Load User: User loaded");
 				console.log(user);
 				return user;
-			} else if(ConfigHolder.instance.storage.is_guest()){
+			} else if(ConfigHolder.instance.storage.is_anonymous()){
 			  console.log("-- Load User: Guest");
-				return UserHelper.getGuestUser();
-			} else if(ConfigHolder.startAsGuest){
-        ConfigHolder.instance.storage.set_is_guest(true);
-        return UserHelper.getGuestUser();
+				return UserHelper.getAnonymousUser();
+			} else if(ConfigHolder?.authConfig?.startAsAnonymous){
+        ConfigHolder.instance.storage.set_is_anonymous(true);
+        return UserHelper.getAnonymousUser();
       }	else {
 			  console.log("-- Load User: No Credentials");
         return null;

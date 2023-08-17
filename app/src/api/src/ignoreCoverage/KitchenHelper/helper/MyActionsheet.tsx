@@ -9,6 +9,7 @@ import {useBackgroundColor} from "./../templates/useBackgroundColor";
 export interface MyAlertProps {
     title?: string,
     renderDescription?: any,
+    description?: string,
     acceptLabel?: string,
     onAccept?: any,
     cancelLabel?: string,
@@ -127,6 +128,8 @@ export const MyActionsheetComponent: FunctionComponent<MyAlertProps> = (props) =
     function renderDescription(){
       if(props?.renderDescription){
         return props.renderDescription();
+      } else if(props?.description){
+        return <Text>{props?.description}</Text>
       } else {
         return null;
       }

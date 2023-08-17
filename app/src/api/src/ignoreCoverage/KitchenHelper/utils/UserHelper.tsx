@@ -1,10 +1,10 @@
 export default class UserHelper{
 
-	static USER_ROLE_GUEST = "public";
+	static USER_ROLE_ANONYMOUS = "public";
 
-	static getGuestUser(){
+	static getAnonymousUser(){
 		return {
-			role: UserHelper.USER_ROLE_GUEST,
+			role: UserHelper.USER_ROLE_ANONYMOUS,
 			id: null,
 			email: null,
 			title: null,
@@ -13,8 +13,8 @@ export default class UserHelper{
 		}
 	}
 
-	static isGuest(user){
-		return !user?.role || user?.role === UserHelper.USER_ROLE_GUEST; //if no role found or role is "public" a user is a guest
+	static isAnonymous(user){
+		return !user?.role || user?.role === UserHelper.USER_ROLE_ANONYMOUS; //if no role found or role is "public" a user is a guest
 	}
 
 }

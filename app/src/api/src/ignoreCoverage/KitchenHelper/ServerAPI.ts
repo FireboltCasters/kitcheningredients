@@ -76,7 +76,7 @@ export default class ServerAPI{
 			return ServerAPI.directus;
 		}
 		let errorHandler = ServerAPI.handleLogoutError; //use default error handler
-		if(ConfigHolder.instance.storage.is_guest()){
+		if(ConfigHolder.instance.storage.is_anonymous()){
 			errorHandler = () => {}; //as guest we ignore errors
 		}
 		const directus = ServerAPI.getDirectus(ConfigHolder.instance.storage, errorHandler);
@@ -87,7 +87,7 @@ export default class ServerAPI{
 	}
 
 	private static getPublicRole(){
-	  return {"id":UserHelper.USER_ROLE_GUEST,"name":UserHelper.USER_ROLE_GUEST,"icon":"public","description":null,"ip_access":null,"enforce_tfa":false,"admin_access":false,"app_access":true,"users":[]}
+	  return {"id":UserHelper.USER_ROLE_ANONYMOUS,"name":UserHelper.USER_ROLE_ANONYMOUS,"icon":"public","description":null,"ip_access":null,"enforce_tfa":false,"admin_access":false,"app_access":true,"users":[]}
   }
 
   static async delayInDev(ms: number) {
@@ -99,7 +99,7 @@ export default class ServerAPI{
 	static async loadRole(role_id){
 			try{
 				let directus = ServerAPI.getClient();
-				if(!role_id || role_id===UserHelper.USER_ROLE_GUEST){
+				if(!role_id || role_id===UserHelper.USER_ROLE_ANONYMOUS){
 				  return ServerAPI.getPublicRole()
         }
 
@@ -116,7 +116,7 @@ export default class ServerAPI{
         let directus = ServerAPI.getClient();
 
         let query_role_id = role_id;
-        if(role_id===UserHelper.USER_ROLE_GUEST){
+        if(role_id===UserHelper.USER_ROLE_ANONYMOUS){
           query_role_id = null;
         }
 

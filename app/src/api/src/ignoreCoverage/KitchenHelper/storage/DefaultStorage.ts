@@ -58,12 +58,12 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
         return this.implementation;
     }
 
-    is_guest(){
-        return !!this.get(RequiredStorageKeys.IS_GUEST);
+    is_anonymous(){
+        return !!this.get(RequiredStorageKeys.IS_ANONYMOUS);
     }
 
-    set_is_guest(isGuest){
-        this.setValueOrDeleteIfNull(RequiredStorageKeys.IS_GUEST, isGuest)
+    set_is_anonymous(isAnonymous){
+        this.setValueOrDeleteIfNull(RequiredStorageKeys.IS_ANONYMOUS, isAnonymous)
     }
 
     setValueOrDeleteIfNull(key, value){
@@ -79,7 +79,7 @@ export class DefaultStorage implements MyDirectusStorageInterface/** extends Sto
       this.set_user(null);
       this.set_refresh_token(null);
       this.set_access_token(null);
-      this.set_is_guest(false);
+      this.set_is_anonymous(false);
     }
 
     has_credentials_saved(){

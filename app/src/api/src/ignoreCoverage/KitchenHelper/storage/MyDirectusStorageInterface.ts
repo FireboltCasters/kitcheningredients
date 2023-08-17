@@ -7,6 +7,8 @@ export interface MyDirectusStorageInterface{
     getAllKeys(): string[];
     delete(key: string);
     init();
+    is_anonymous();
+    set_is_anonymous(isAnonymous);
     initContextStores(SynchedState: any);
     get_auth_expires_date(): string;
     get_auth_refresh_token(): string;

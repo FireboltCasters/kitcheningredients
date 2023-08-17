@@ -10,7 +10,7 @@ export enum RequiredStorageKeys {
     CACHED_SERVER_INFO = 'cached_server_info',
 
     COOKIE_CONFIG = 'cookie_config',
-    IS_GUEST = 'isGuest',
+    IS_ANONYMOUS = 'isAnonymous',
 
     CACHED_DRAWER_CONFIG = 'cached_drawer_config',
 }

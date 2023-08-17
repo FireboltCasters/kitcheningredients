@@ -95,7 +95,7 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 
 	if(!!callback){
 		touchableContent = (
-      <TouchableOpacity onPress={() => {callback()}} >
+      <TouchableOpacity onPress={callback} >
         {content}
       </TouchableOpacity>
     )
@@ -108,7 +108,7 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
   }
 
 	return (
-	  <View style={{marginVertical: 6}}>
+	  <View style={{marginVertical: 6, width: "100%"}}>
       {touchableContent}
     </View>
 	)

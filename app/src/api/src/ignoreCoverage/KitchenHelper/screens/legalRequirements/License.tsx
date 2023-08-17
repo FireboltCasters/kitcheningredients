@@ -17,10 +17,6 @@ export const License = (props) => {
 
   let component = ConfigHolder.plugin.getLicenseComponent();
 
-  if(!!component){
-    return component
-  }
-
 	return(
 		<>
       {component}
