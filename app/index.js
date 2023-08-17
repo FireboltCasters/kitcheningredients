@@ -23,8 +23,6 @@ ConfigHolder.currentpackageJsonLock = currentpackageJsonLock
 ConfigHolder.thirdpartyLicense = thirdpartyLicense
 ConfigHolder.AppConfig = AppConfig
 
-ConfigHolder.prefixes = ["mychat://", "mychat:///"];
-
 ConfigHolder.displayThemeFloater = true;
 ConfigHolder.authConfig.mail.visible = true;
 ConfigHolder.authConfig.mail.registerVisible = false;

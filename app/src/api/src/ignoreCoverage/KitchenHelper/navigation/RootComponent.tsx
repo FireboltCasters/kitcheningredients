@@ -64,12 +64,6 @@ export const Root = (props) => {
 		console.log(err)
 	}
 
-	let prefixes = ["myapp:///", "http://localhost:19006/#/"];
-	if(!!ConfigHolder.prefixes && ConfigHolder.prefixes.length> 0){
-	      prefixes = ConfigHolder.prefixes;
-  }
-	//let linking = RegisteredRoutesMap.getRouteLinkingConfig(subroute, prefixes);
-
   console.log("RootComponent render");
 
 	return (
