@@ -1,13 +1,13 @@
 // @ts-nocheck
 import React from 'react';
-import {NativeBaseProvider} from 'native-base';
+import {NativeBaseProvider, Text, View} from 'native-base';
 import {Root} from './navigation/RootComponent';
 import ColorCodeHelper from "./theme/ColorCodeHelper";
 import BaseThemeGenerator from "./theme";
 import {RootStack} from "./navigation/rootNavigator";
 import {ColorStatusBar} from "./components/ColorStatusBar";
 import ServerAPI from "./ServerAPI";
-import {Linking} from "react-native";
+import {Linking, Platform} from "react-native";
 import * as ExpoLinking from "expo-linking";
 import {URL_Helper} from "./helper/URL_Helper";
 import UserHelper from "./utils/UserHelper";
@@ -24,6 +24,7 @@ import {DefaultStorage} from "./storage/DefaultStorage";
 import {MyDirectusStorage} from "./storage/MyDirectusStorage";
 import {MyDirectusStorageInterface} from "./storage/MyDirectusStorageInterface";
 import {StringHelper} from "./helper/StringHelper";
+import {NavigatorHelper} from "kitcheningredients";
 
 export default class App extends React.Component<any, any>{
   storage: MyDirectusStorageInterface;
@@ -45,8 +46,16 @@ export default class App extends React.Component<any, any>{
 			let urlSplit = screenURL.split("?");
 			let route = urlSplit[0];
 			let params = URL_Helper.getAllUrlParams(url);
-			//console.log("URL Subscribe: "+route);
-			//NavigatorHelper.navigateToRouteName(route, params);
+			console.log("URL Subscribe: "+route);
+			if(Platform.OS!=="web"){
+			  console.log("screenURL: "+screenURL);
+			  console.log("baseurl: "+baseurl);
+			  console.log("route: "+route);
+			  console.log("params:");
+			  console.log(params);
+        NavigatorHelper.navigateToRouteName(route, params);
+      }
+			//
 		})
 		this.state = {
 		  backendUrl: EnviromentHelper.getHardCodedBackendURL(),
@@ -67,6 +76,8 @@ export default class App extends React.Component<any, any>{
 	subscribe(listener) {
 		// First, you may want to do the default deep link handling
 		const onReceiveURL = ({url}) => {
+		  console.log("onReceiveURL");
+		  console.log("url: "+url);
 			listener(url);
 		};
 
@@ -331,7 +342,7 @@ export default class App extends React.Component<any, any>{
 			<StoreProvider store={SynchedState.getContextStore()}>
 				<NativeBaseProvider reloadNumber={this.state.syncFinished+this.state.reloadNumber+""+this.state.hideDrawer+this.state.startURL} theme={theme} colorModeManager={ColorCodeHelper.getManager()} config={ConfigHolder.nativebaseConfig}>
           <ViewWithBackgroundColor>
-          {rootContent}
+            {rootContent}
           </ViewWithBackgroundColor>
 				</NativeBaseProvider>
 			</StoreProvider>

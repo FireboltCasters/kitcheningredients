@@ -20,7 +20,7 @@ export default {
         BACKEND_URL: getBackendURL(),
         BASE_PATH: process.env.BASE_PATH || "",
     },
-        "scheme": "myapp",
+        "scheme": "de.fireboltcasters.kitcheningredients", // npx uri-scheme list // npx uri-scheme remove de.fireboltcasters.kitcheningredients // npx uri-scheme add <Your SCHEME>
         "name": "rocket-meals-app",
         "slug": "rocket-meals-app",
         "version": "1.0.2",
