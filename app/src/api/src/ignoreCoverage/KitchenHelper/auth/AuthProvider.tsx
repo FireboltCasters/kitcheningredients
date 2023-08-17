@@ -42,10 +42,10 @@ export const AuthProvider: FunctionComponent<AppState> = ({serverInfo, provider,
 	    return icon(color);
     }
 
-	  let family = MaterialIcons;
+	  let family = null;
 
-	  if(icon==="incognito-circle"){
-	    family = null;
+    if (MaterialIcons.glyphMap.hasOwnProperty(icon)) {
+      family = MaterialIcons;
     }
 
 		return (
