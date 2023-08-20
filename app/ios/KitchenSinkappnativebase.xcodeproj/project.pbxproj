@@ -15,6 +15,7 @@
 		96905EF65AED1B983A6B3ABC /* libPods-KitchenSinkappnativebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-KitchenSinkappnativebase.a */; };
 		A63693A9BED37F2D15B9E978 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDDF7DC9086167842572CDB /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		CBA1308D65524ADB84F5747F /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C2BAA29CC43B0B7FD5C3D /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		4E7C2BAA29CC43B0B7FD5C3D /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "KitchenSinkappnativebase/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		3CF70706A4FF4203B988B002 /* KitchenSinkappnativebase-Bridging-Header.h */ = {isa = PBXFileReference; name = "KitchenSinkappnativebase-Bridging-Header.h"; path = "KitchenSinkappnativebase/KitchenSinkappnativebase-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
+				4E7C2BAA29CC43B0B7FD5C3D /* noop-file.swift */,
+				3CF70706A4FF4203B988B002 /* KitchenSinkappnativebase-Bridging-Header.h */,
 			);
 			name = KitchenSinkappnativebase;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
+				2C6FDD12F22B404AA4193D3E /* KitchenSinkappnativebase-Bridging-Header.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +339,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				A63693A9BED37F2D15B9E978 /* ExpoModulesProvider.swift in Sources */,
+				CBA1308D65524ADB84F5747F /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,12 +384,13 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = de.fireboltcasters.kitcheningredients;
-				PRODUCT_NAME = kitchensinkappnativebase;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.fireboltcasters.rocketmealsdemo";
+				PRODUCT_NAME = "rocketmealsapp";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+				SWIFT_OBJC_BRIDGING_HEADER = KitchenSinkappnativebase/KitchenSinkappnativebase-Bridging-Header.h;
 			};
 			name = Debug;
 		};
@@ -407,11 +415,12 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = de.fireboltcasters.kitcheningredients;
-				PRODUCT_NAME = kitchensinkappnativebase;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.fireboltcasters.rocketmealsdemo";
+				PRODUCT_NAME = "rocketmealsapp";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+				SWIFT_OBJC_BRIDGING_HEADER = KitchenSinkappnativebase/KitchenSinkappnativebase-Bridging-Header.h;
 			};
 			name = Release;
 		};

@@ -10,7 +10,7 @@
   },
   "scripts": {
     "deleteDevNodeModules": "rm -rf src/api/node_modules && rm -rf src/api/lib",
-    "start": "react-native start",
+    "start": "expo start --dev-client",
     "preandroid": "npm run prebuild",
     "android": "npm run prebuild && react-native run-android",
     "android:build": "cd ./android && ./gradlew assembleRelease && cd .. && cp ./android/app/build/outputs/apk/release/app-release.apk ./app-release.apk",
@@ -84,9 +84,9 @@
     "native-base": "^3.3.0",
     "npm": "^6.14.10",
     "patch-package": "^7.0.0",
-    "react": "^18.0.0",
+    "react": "18.2.0",
     "react-dom": "^18.0.0",
-    "react-native": "0.72.0",
+    "react-native": "0.72.3",
     "react-native-code-push": "^7.0.2",
     "react-native-device-info": "^8.7.1",
     "react-native-gesture-handler": "~1.8.0",
@@ -114,6 +114,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
-    "@types/react-native": "^0.72.0"
+    "@types/react-native": "^0.72.0",
+    "@babel/core": "^7.20.0"
   }
 }
