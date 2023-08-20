@@ -47,7 +47,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-annotate-as-pure",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-annotate-as-pure/LICENSE"
   },
-  "@babel/helper-builder-binary-assignment-operator-visitor@7.18.9": {
+  "@babel/helper-builder-binary-assignment-operator-visitor@7.22.10": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -92,14 +92,6 @@
     "url": "https://babel.dev/team",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-environment-visitor",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-environment-visitor/LICENSE"
-  },
-  "@babel/helper-explode-assignable-expression@7.18.6": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-explode-assignable-expression",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-explode-assignable-expression/LICENSE"
   },
   "@babel/helper-function-name@7.19.0": {
     "licenses": "MIT",
@@ -149,7 +141,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-optimise-call-expression",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-optimise-call-expression/LICENSE"
   },
-  "@babel/helper-plugin-utils@7.20.2": {
+  "@babel/helper-plugin-utils@7.22.5": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -197,7 +189,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-split-export-declaration",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-split-export-declaration/LICENSE"
   },
-  "@babel/helper-string-parser@7.19.4": {
+  "@babel/helper-string-parser@7.22.5": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -205,7 +197,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-string-parser",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/helper-string-parser/LICENSE"
   },
-  "@babel/helper-validator-identifier@7.19.1": {
+  "@babel/helper-validator-identifier@7.22.5": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -356,14 +348,6 @@
     "url": "https://babel.dev/team",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-proposal-private-property-in-object",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-proposal-private-property-in-object/LICENSE"
-  },
-  "@babel/plugin-proposal-unicode-property-regex@7.18.6": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-proposal-unicode-property-regex",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-proposal-unicode-property-regex/LICENSE"
   },
   "@babel/plugin-syntax-async-generators@7.8.4": {
     "licenses": "MIT",
@@ -541,14 +525,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-async-generator-functions",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-async-generator-functions/LICENSE"
   },
-  "@babel/plugin-transform-async-to-generator@7.18.6": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-async-to-generator",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-async-to-generator/LICENSE"
-  },
   "@babel/plugin-transform-block-scoped-functions@7.18.6": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
@@ -605,22 +581,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-destructuring",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-destructuring/LICENSE"
   },
-  "@babel/plugin-transform-dotall-regex@7.18.6": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-dotall-regex",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-dotall-regex/LICENSE"
-  },
-  "@babel/plugin-transform-duplicate-keys@7.18.9": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-duplicate-keys",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-duplicate-keys/LICENSE"
-  },
   "@babel/plugin-transform-dynamic-import@7.22.5": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
@@ -629,7 +589,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-dynamic-import",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-dynamic-import/LICENSE"
   },
-  "@babel/plugin-transform-exponentiation-operator@7.18.6": {
+  "@babel/plugin-transform-exponentiation-operator@7.22.5": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -701,14 +661,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-member-expression-literals",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-member-expression-literals/LICENSE"
   },
-  "@babel/plugin-transform-modules-amd@7.19.6": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-modules-amd",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-modules-amd/LICENSE"
-  },
   "@babel/plugin-transform-modules-commonjs@7.19.6": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
@@ -717,22 +669,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-modules-commonjs",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-modules-commonjs/LICENSE"
   },
-  "@babel/plugin-transform-modules-systemjs@7.19.6": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-modules-systemjs",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-modules-systemjs/LICENSE"
-  },
-  "@babel/plugin-transform-modules-umd@7.18.6": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-modules-umd",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-modules-umd/LICENSE"
-  },
   "@babel/plugin-transform-named-capturing-groups-regex@7.20.5": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
@@ -740,14 +676,6 @@
     "url": "https://babel.dev/team",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-named-capturing-groups-regex",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-named-capturing-groups-regex/LICENSE"
-  },
-  "@babel/plugin-transform-new-target@7.18.6": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-new-target",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-new-target/LICENSE"
   },
   "@babel/plugin-transform-nullish-coalescing-operator@7.22.5": {
     "licenses": "MIT",
@@ -861,21 +789,13 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-react-jsx",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-react-jsx/LICENSE"
   },
-  "@babel/plugin-transform-regenerator@7.20.5": {
+  "@babel/plugin-transform-regenerator@7.22.10": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
     "url": "https://babel.dev/team",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-regenerator",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-regenerator/LICENSE"
-  },
-  "@babel/plugin-transform-reserved-words@7.18.6": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-reserved-words",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-reserved-words/LICENSE"
   },
   "@babel/plugin-transform-runtime@7.19.6": {
     "licenses": "MIT",
@@ -917,14 +837,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-template-literals",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-template-literals/LICENSE"
   },
-  "@babel/plugin-transform-typeof-symbol@7.18.9": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-typeof-symbol",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-typeof-symbol/LICENSE"
-  },
   "@babel/plugin-transform-typescript@7.20.2": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
@@ -932,14 +844,6 @@
     "url": "https://babel.dev/team",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-typescript",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-typescript/LICENSE"
-  },
-  "@babel/plugin-transform-unicode-escapes@7.18.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "publisher": "The Babel Team",
-    "url": "https://babel.dev/team",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-unicode-escapes",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/plugin-transform-unicode-escapes/LICENSE"
   },
   "@babel/plugin-transform-unicode-property-regex@7.22.5": {
     "licenses": "MIT",
@@ -981,18 +885,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/preset-flow",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/preset-flow/LICENSE"
   },
-  "@babel/preset-modules@0.1.5": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/preset-modules",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/preset-modules",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/preset-modules/LICENSE"
-  },
-  "@babel/preset-typescript@7.12.17": {
-    "licenses": "MIT",
-    "repository": "https://github.com/babel/babel",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/preset-typescript",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/preset-typescript/LICENSE"
-  },
   "@babel/register@7.22.5": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
@@ -1025,7 +917,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/traverse",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@babel/traverse/LICENSE"
   },
-  "@babel/types@7.20.5": {
+  "@babel/types@7.22.10": {
     "licenses": "MIT",
     "repository": "https://github.com/babel/babel",
     "publisher": "The Babel Team",
@@ -1124,13 +1016,6 @@
     "repository": "https://github.com/expo/expo",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@expo/config",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@expo/config/LICENSE"
-  },
-  "@expo/configure-splash-screen@0.3.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo-cli",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@expo/configure-splash-screen",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@expo/configure-splash-screen/README.md"
   },
   "@expo/dev-server@0.5.5": {
     "licenses": "MIT",
@@ -1835,7 +1720,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-aria/utils",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-aria/utils/README.md"
   },
-  "@react-native-async-storage/async-storage@1.17.11": {
+  "@react-native-async-storage/async-storage@1.19.2": {
     "licenses": "MIT",
     "repository": "https://github.com/react-native-async-storage/async-storage",
     "publisher": "Krzysztof Borowy",
@@ -1857,16 +1742,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-community/cli-debugger-ui",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-community/cli-debugger-ui/LICENSE"
   },
-  "@react-native-community/cli-platform-android@4.13.0": {
-    "licenses": "MIT",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-community/cli-platform-android",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-community/cli-platform-android/LICENSE"
-  },
-  "@react-native-community/cli-platform-ios@4.13.0": {
-    "licenses": "MIT",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-community/cli-platform-ios",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-community/cli-platform-ios/LICENSE"
-  },
   "@react-native-community/cli-server-api@11.3.7": {
     "licenses": "MIT",
     "repository": "https://github.com/react-native-community/cli",
@@ -1879,7 +1754,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-community/cli-tools",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@react-native-community/cli-tools/LICENSE"
   },
-  "@react-native-community/masked-view@0.1.10": {
+  "@react-native-community/masked-view@0.1.11": {
     "licenses": "MIT",
     "repository": "https://github.com/react-native-community/react-native-masked-view",
     "publisher": "Mike Nedosekin",
@@ -2501,20 +2376,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/yargs",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@types/yargs/LICENSE"
   },
-  "@unimodules/core@6.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@unimodules/core",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@unimodules/core/README.md"
-  },
-  "@unimodules/react-native-adapter@5.7.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@unimodules/react-native-adapter",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/@unimodules/react-native-adapter/README.md"
-  },
   "@urql/core@2.3.6": {
     "licenses": "MIT",
     "repository": "https://github.com/FormidableLabs/urql",
@@ -2781,14 +2642,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/ansi-escapes",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/ansi-escapes/license"
   },
-  "ansi-fragments@0.2.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/zamotany/ansi-fragments",
-    "publisher": "Paweł Trysła",
-    "email": "zamotany.oss@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/ansi-fragments",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/ansi-fragments/README.md"
-  },
   "ansi-html-community@0.0.8": {
     "licenses": "Apache-2.0",
     "repository": "https://github.com/mahdyar/ansi-html-community",
@@ -3003,15 +2856,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/ast-types",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/ast-types/LICENSE"
   },
-  "astral-regex@1.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/kevva/astral-regex",
-    "publisher": "Kevin Mårtensson",
-    "email": "kevinmartensson@gmail.com",
-    "url": "github.com/kevva",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/astral-regex",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/astral-regex/license"
-  },
   "async@2.6.4": {
     "licenses": "MIT",
     "repository": "https://github.com/caolan/async",
@@ -3034,14 +2878,6 @@
     "email": "opensrc@ryanzim.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/at-least-node",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/at-least-node/LICENSE"
-  },
-  "available-typed-arrays@1.0.5": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/available-typed-arrays",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/available-typed-arrays",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/available-typed-arrays/LICENSE"
   },
   "await-lock@2.2.2": {
     "licenses": "MIT",
@@ -3245,14 +3081,6 @@
     "url": "http://github.com/petkaantonov/",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/bluebird",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/bluebird/LICENSE"
-  },
-  "blueimp-md5@2.19.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/blueimp/JavaScript-MD5",
-    "publisher": "Sebastian Tschan",
-    "url": "https://blueimp.net",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/blueimp-md5",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/blueimp-md5/LICENSE.txt"
   },
   "bmp-js@0.1.0": {
     "licenses": "MIT",
@@ -3494,14 +3322,6 @@
     "url": "http://lukechilds.co.uk",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/cacheable-request",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/cacheable-request/LICENSE"
-  },
-  "call-bind@1.0.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/call-bind",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/call-bind",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/call-bind/LICENSE"
   },
   "callsite@1.0.0": {
     "licenses": "MIT*",
@@ -4033,15 +3853,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/core-js-compat",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/core-js-compat/LICENSE"
   },
-  "core-js@3.26.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/zloirock/core-js",
-    "publisher": "Denis Pushkarev",
-    "email": "zloirock@zloirock.ru",
-    "url": "http://zloirock.ru",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/core-js",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/core-js/LICENSE"
-  },
   "core-util-is@1.0.3": {
     "licenses": "MIT",
     "repository": "https://github.com/isaacs/core-util-is",
@@ -4325,13 +4136,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/dateformat",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/dateformat/LICENSE"
   },
-  "dayjs@1.11.7": {
-    "licenses": "MIT",
-    "repository": "https://github.com/iamkun/dayjs",
-    "publisher": "iamkun",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/dayjs",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/dayjs/LICENSE"
-  },
   "debug@4.3.4": {
     "licenses": "MIT",
     "repository": "https://github.com/debug-js/debug",
@@ -4383,15 +4187,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/deep-assign",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/deep-assign/license"
-  },
-  "deep-equal@2.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/node-deep-equal",
-    "publisher": "James Halliday",
-    "email": "mail@substack.net",
-    "url": "http://substack.net",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/deep-equal",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/deep-equal/LICENSE"
   },
   "deep-extend@0.6.0": {
     "licenses": "MIT",
@@ -4447,14 +4242,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/define-lazy-prop",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/define-lazy-prop/license"
-  },
-  "define-properties@1.1.4": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/define-properties",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/define-properties",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/define-properties/LICENSE"
   },
   "degenerator@3.0.2": {
     "licenses": "MIT",
@@ -4796,14 +4583,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/errorhandler",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/errorhandler/LICENSE"
   },
-  "es-get-iterator@1.1.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/es-get-iterator",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/es-get-iterator",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/es-get-iterator/LICENSE"
-  },
   "escalade@3.1.1": {
     "licenses": "MIT",
     "repository": "https://github.com/lukeed/escalade",
@@ -4943,25 +4722,11 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-application",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-application/README.md"
   },
-  "expo-asset@8.2.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-asset",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-asset/README.md"
-  },
   "expo-cli@6.3.10": {
     "licenses": "MIT",
     "repository": "https://github.com/expo/expo-cli",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-cli",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-cli/LICENSE"
-  },
-  "expo-constants@9.3.5": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-constants",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-constants/README.md"
   },
   "expo-eas-client@0.6.0": {
     "licenses": "MIT",
@@ -4970,26 +4735,12 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-eas-client",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-eas-client/README.md"
   },
-  "expo-file-system@9.3.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-file-system",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-file-system/README.md"
-  },
   "expo-font@11.4.0": {
     "licenses": "MIT",
     "repository": "https://github.com/expo/expo",
     "publisher": "650 Industries, Inc.",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-font",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-font/README.md"
-  },
-  "expo-image-loader@1.3.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-image-loader",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-image-loader/README.md"
   },
   "expo-json-utils@0.7.1": {
     "licenses": "MIT",
@@ -5005,7 +4756,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-keep-awake",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-keep-awake/README.md"
   },
-  "expo-linear-gradient@9.2.0": {
+  "expo-linear-gradient@12.3.0": {
     "licenses": "MIT",
     "repository": "https://github.com/expo/expo",
     "publisher": "650 Industries, Inc.",
@@ -5033,19 +4784,12 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-modules-autolinking",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-modules-autolinking/README.md"
   },
-  "expo-modules-core@1.5.9": {
+  "expo-modules-core@1.6.0": {
     "licenses": "MIT",
     "repository": "https://github.com/expo/expo",
     "publisher": "650 Industries, Inc.",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-modules-core",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-modules-core/README.md"
-  },
-  "expo-permissions@10.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-permissions",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-permissions/README.md"
   },
   "expo-pwa@0.0.125": {
     "licenses": "MIT",
@@ -5055,7 +4799,7 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-pwa",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/expo-pwa/LICENSE"
   },
-  "expo-splash-screen@0.8.1": {
+  "expo-splash-screen@0.20.5": {
     "licenses": "MIT",
     "repository": "https://github.com/expo/expo",
     "publisher": "650 Industries, Inc.",
@@ -5365,14 +5109,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fontfaceobserver",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/fontfaceobserver/LICENSE"
   },
-  "for-each@0.3.3": {
-    "licenses": "MIT",
-    "repository": "https://github.com/Raynos/for-each",
-    "publisher": "Raynos",
-    "email": "raynos2@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/for-each",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/for-each/LICENSE"
-  },
   "forever-agent@0.6.1": {
     "licenses": "Apache-2.0",
     "repository": "https://github.com/mikeal/forever-agent",
@@ -5501,14 +5237,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/function-bind",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/function-bind/LICENSE"
   },
-  "functions-have-names@1.2.3": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/functions-have-names",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/functions-have-names",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/functions-have-names/LICENSE"
-  },
   "gauge@2.7.4": {
     "licenses": "ISC",
     "repository": "https://github.com/iarna/gauge",
@@ -5531,14 +5259,6 @@
     "publisher": "Stefan Penner",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/get-caller-file",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/get-caller-file/LICENSE.md"
-  },
-  "get-intrinsic@1.1.3": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/get-intrinsic",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/get-intrinsic",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/get-intrinsic/LICENSE"
   },
   "get-port@3.2.0": {
     "licenses": "MIT",
@@ -5651,14 +5371,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/globby",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/globby/license"
   },
-  "gopd@1.0.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/gopd",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/gopd",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/gopd/LICENSE"
-  },
   "got@11.8.6": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/got",
@@ -5709,14 +5421,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/har-validator",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/har-validator/LICENSE"
   },
-  "has-bigints@1.0.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/has-bigints",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-bigints",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-bigints/LICENSE"
-  },
   "has-flag@3.0.0": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/has-flag",
@@ -5725,32 +5429,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-flag",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-flag/license"
-  },
-  "has-property-descriptors@1.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/has-property-descriptors",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-property-descriptors",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-property-descriptors/LICENSE"
-  },
-  "has-symbols@1.0.3": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/has-symbols",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "url": "http://ljharb.codes",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-symbols",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-symbols/LICENSE"
-  },
-  "has-tostringtag@1.0.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/has-tostringtag",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "url": "http://ljharb.codes",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-tostringtag",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/has-tostringtag/LICENSE"
   },
   "has-unicode@2.0.1": {
     "licenses": "ISC",
@@ -6147,15 +5825,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/ipaddr.js",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/ipaddr.js/LICENSE"
   },
-  "is-arguments@1.1.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-arguments",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "url": "http://ljharb.codes",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-arguments",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-arguments/LICENSE"
-  },
   "is-arrayish@0.2.1": {
     "licenses": "MIT",
     "repository": "https://github.com/qix-/node-is-arrayish",
@@ -6163,14 +5832,6 @@
     "url": "http://github.com/qix-",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-arrayish",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-arrayish/LICENSE"
-  },
-  "is-bigint@1.0.4": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-bigint",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-bigint",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-bigint/LICENSE"
   },
   "is-binary-path@2.1.0": {
     "licenses": "MIT",
@@ -6181,14 +5842,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-binary-path",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-binary-path/license"
   },
-  "is-boolean-object@1.1.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-boolean-object",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-boolean-object",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-boolean-object/LICENSE"
-  },
   "is-buffer@1.1.6": {
     "licenses": "MIT",
     "repository": "https://github.com/feross/is-buffer",
@@ -6198,15 +5851,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-buffer",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-buffer/LICENSE"
   },
-  "is-callable@1.2.7": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-callable",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "url": "http://ljharb.codes",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-callable",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-callable/LICENSE"
-  },
   "is-core-module@2.11.0": {
     "licenses": "MIT",
     "repository": "https://github.com/inspect-js/is-core-module",
@@ -6214,13 +5858,6 @@
     "email": "ljharb@gmail.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-core-module",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-core-module/LICENSE"
-  },
-  "is-date-object@1.0.5": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-date-object",
-    "publisher": "Jordan Harband",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-date-object",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-date-object/LICENSE"
   },
   "is-docker@2.2.1": {
     "licenses": "MIT",
@@ -6271,22 +5908,6 @@
     "url": "https://github.com/jonschlinkert",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-invalid-path",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-invalid-path/LICENSE"
-  },
-  "is-map@2.0.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-map",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-map",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-map/LICENSE"
-  },
-  "is-number-object@1.0.7": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-number-object",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-number-object",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-number-object/LICENSE"
   },
   "is-number@7.0.0": {
     "licenses": "MIT",
@@ -6358,14 +5979,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-reachable",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-reachable/license"
   },
-  "is-regex@1.1.4": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-regex",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-regex",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-regex/LICENSE"
-  },
   "is-root@2.1.0": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/is-root",
@@ -6375,14 +5988,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-root",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-root/license"
   },
-  "is-set@2.0.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-set",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-set",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-set/LICENSE"
-  },
   "is-stream@1.1.0": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/is-stream",
@@ -6391,31 +5996,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-stream",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-stream/license"
-  },
-  "is-string@1.0.7": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/is-string",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-string",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-string/LICENSE"
-  },
-  "is-symbol@1.0.4": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-symbol",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-symbol",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-symbol/LICENSE"
-  },
-  "is-typed-array@1.1.10": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-typed-array",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "url": "http://ljharb.codes",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-typed-array",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-typed-array/LICENSE"
   },
   "is-typedarray@1.0.0": {
     "licenses": "MIT",
@@ -6434,22 +6014,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-valid-path",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-valid-path/LICENSE"
   },
-  "is-weakmap@2.0.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-weakmap",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-weakmap",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-weakmap/LICENSE"
-  },
-  "is-weakset@2.0.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/is-weakset",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-weakset",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-weakset/LICENSE"
-  },
   "is-wsl@2.2.0": {
     "licenses": "MIT",
     "repository": "https://github.com/sindresorhus/is-wsl",
@@ -6458,15 +6022,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-wsl",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/is-wsl/license"
-  },
-  "isarray@2.0.5": {
-    "licenses": "MIT",
-    "repository": "https://github.com/juliangruber/isarray",
-    "publisher": "Julian Gruber",
-    "email": "mail@juliangruber.com",
-    "url": "http://juliangruber.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/isarray",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/isarray/LICENSE"
   },
   "isexe@2.0.0": {
     "licenses": "ISC",
@@ -6530,14 +6085,6 @@
     "repository": "https://github.com/facebook/jest",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/jest-worker",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/jest-worker/LICENSE"
-  },
-  "jetifier@1.6.8": {
-    "licenses": "MIT",
-    "repository": "https://github.com/mikehardy/jetifier",
-    "publisher": "Mike Hardy",
-    "url": "github@mikehardy.net",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/jetifier",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/jetifier/LICENSE"
   },
   "jimp-compact@0.16.1": {
     "licenses": "MIT",
@@ -6999,14 +6546,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/log-symbols",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/log-symbols/license"
-  },
-  "logkitty@0.7.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/zamotany/logkitty",
-    "publisher": "Paweł Trysła",
-    "email": "zamotany.oss@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/logkitty",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/logkitty/LICENSE"
   },
   "loose-envify@1.4.0": {
     "licenses": "MIT",
@@ -7685,38 +7224,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object-assign",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object-assign/license"
-  },
-  "object-inspect@1.12.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/object-inspect",
-    "publisher": "James Halliday",
-    "email": "mail@substack.net",
-    "url": "http://substack.net",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object-inspect",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object-inspect/LICENSE"
-  },
-  "object-is@1.1.5": {
-    "licenses": "MIT",
-    "repository": "https://github.com/es-shims/object-is",
-    "publisher": "Jordan Harband",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object-is",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object-is/LICENSE"
-  },
-  "object-keys@1.1.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/object-keys",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "url": "http://ljharb.codes",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object-keys",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object-keys/LICENSE"
-  },
-  "object.assign@4.1.4": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/object.assign",
-    "publisher": "Jordan Harband",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object.assign",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/object.assign/LICENSE"
   },
   "obuf@1.1.2": {
     "licenses": "MIT",
@@ -8882,13 +8389,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/react-native-svg",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/react-native-svg/LICENSE"
   },
-  "react-native-unimodules@0.12.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/react-native-unimodules",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/react-native-unimodules/LICENSE.md"
-  },
   "react-native-web-webview@1.0.2": {
     "licenses": "MIT",
     "repository": "https://github.com/react-native-web-community/react-native-web-webview",
@@ -9060,21 +8560,13 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/regenerator-runtime",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/regenerator-runtime/README.md"
   },
-  "regenerator-transform@0.15.1": {
+  "regenerator-transform@0.15.2": {
     "licenses": "MIT",
     "repository": "https://github.com/facebook/regenerator/tree/main/packages/transform",
     "publisher": "Ben Newman",
     "email": "bn@cs.stanford.edu",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/regenerator-transform",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/regenerator-transform/LICENSE"
-  },
-  "regexp.prototype.flags@1.4.3": {
-    "licenses": "MIT",
-    "repository": "https://github.com/es-shims/RegExp.prototype.flags",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/regexp.prototype.flags",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/regexp.prototype.flags/LICENSE"
   },
   "regexpu-core@5.2.2": {
     "licenses": "MIT",
@@ -9548,14 +9040,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/shell-quote",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/shell-quote/LICENSE"
   },
-  "side-channel@1.0.4": {
-    "licenses": "MIT",
-    "repository": "https://github.com/ljharb/side-channel",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/side-channel",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/side-channel/LICENSE"
-  },
   "signal-exit@3.0.7": {
     "licenses": "ISC",
     "repository": "https://github.com/tapjs/signal-exit",
@@ -9623,12 +9107,6 @@
     "url": "sindresorhus.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/slash",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/slash/license"
-  },
-  "slice-ansi@2.1.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/chalk/slice-ansi",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/slice-ansi",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/slice-ansi/license"
   },
   "slugify@1.6.5": {
     "licenses": "MIT",
@@ -10427,83 +9905,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unicode-property-aliases-ecmascript",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unicode-property-aliases-ecmascript/LICENSE-MIT.txt"
   },
-  "unimodules-app-loader@1.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-app-loader",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-app-loader/README.md"
-  },
-  "unimodules-barcode-scanner-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-barcode-scanner-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-barcode-scanner-interface/README.md"
-  },
-  "unimodules-camera-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-camera-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-camera-interface/README.md"
-  },
-  "unimodules-constants-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-constants-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-constants-interface/README.md"
-  },
-  "unimodules-face-detector-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-face-detector-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-face-detector-interface/README.md"
-  },
-  "unimodules-file-system-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-file-system-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-file-system-interface/README.md"
-  },
-  "unimodules-font-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-font-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-font-interface/README.md"
-  },
-  "unimodules-image-loader-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-image-loader-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-image-loader-interface/README.md"
-  },
-  "unimodules-permissions-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-permissions-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-permissions-interface/README.md"
-  },
-  "unimodules-sensors-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-sensors-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-sensors-interface/README.md"
-  },
-  "unimodules-task-manager-interface@5.4.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "publisher": "650 Industries, Inc.",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-task-manager-interface",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/unimodules-task-manager-interface/README.md"
-  },
   "unique-filename@1.1.1": {
     "licenses": "ISC",
     "repository": "https://github.com/iarna/unique-filename",
@@ -10841,37 +10242,12 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/whatwg-url",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/whatwg-url/LICENSE.txt"
   },
-  "which-boxed-primitive@1.0.2": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/which-boxed-primitive",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/which-boxed-primitive",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/which-boxed-primitive/LICENSE"
-  },
-  "which-collection@1.0.1": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/which-collection",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/which-collection",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/which-collection/LICENSE"
-  },
   "which-module@2.0.0": {
     "licenses": "ISC",
     "repository": "https://github.com/nexdrew/which-module",
     "publisher": "nexdrew",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/which-module",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/which-module/LICENSE"
-  },
-  "which-typed-array@1.1.9": {
-    "licenses": "MIT",
-    "repository": "https://github.com/inspect-js/which-typed-array",
-    "publisher": "Jordan Harband",
-    "email": "ljharb@gmail.com",
-    "url": "http://ljharb.codes",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/which-typed-array",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/which-typed-array/LICENSE"
   },
   "which@2.0.2": {
     "licenses": "ISC",
@@ -10988,14 +10364,6 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/xhr",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/xhr/LICENCE"
   },
-  "xml-js@1.6.11": {
-    "licenses": "MIT",
-    "repository": "https://github.com/nashwaan/xml-js",
-    "publisher": "Yousuf Almarzooqi",
-    "email": "ysf953@gmail.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/xml-js",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/xml-js/LICENSE"
-  },
   "xml-parse-from-string@1.0.1": {
     "licenses": "MIT",
     "repository": "https://github.com/Jam3/xml-parse-from-string",
@@ -11021,15 +10389,6 @@
     "email": "oozcitak@gmail.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/xmlbuilder",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/xmlbuilder/LICENSE"
-  },
-  "xmldoc@1.2.0": {
-    "licenses": "MIT",
-    "repository": "https://github.com/nfarina/xmldoc",
-    "publisher": "Nick Farina",
-    "email": "nfarina@gmail.com",
-    "url": "http://nfarina.com",
-    "path": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/xmldoc",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/kitcheningredients/app/node_modules/xmldoc/LICENSE"
   },
   "xregexp@2.0.0": {
     "licenses": "MIT",
